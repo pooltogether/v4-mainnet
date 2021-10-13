@@ -1,0 +1,1089 @@
+{
+  "address": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IDrawBuffer",
+          "name": "_drawBuffer",
+          "type": "address"
+        },
+        {
+          "internalType": "contract RNGInterface",
+          "name": "_rng",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_nextDrawId",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "_beaconPeriodStart",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_beaconPeriodSeconds",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_rngTimeout",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "drawPeriodSeconds",
+          "type": "uint32"
+        }
+      ],
+      "name": "BeaconPeriodSecondsUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint64",
+          "name": "startedAt",
+          "type": "uint64"
+        }
+      ],
+      "name": "BeaconPeriodStarted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "nextDrawId",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "beaconPeriodStartedAt",
+          "type": "uint64"
+        }
+      ],
+      "name": "Deployed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract IDrawBuffer",
+          "name": "newDrawBuffer",
+          "type": "address"
+        }
+      ],
+      "name": "DrawBufferUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "rngRequestId",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "rngLockBlock",
+          "type": "uint32"
+        }
+      ],
+      "name": "DrawCancelled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "randomNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "DrawCompleted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "rngRequestId",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "rngLockBlock",
+          "type": "uint32"
+        }
+      ],
+      "name": "DrawStarted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipOffered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract RNGInterface",
+          "name": "rngService",
+          "type": "address"
+        }
+      ],
+      "name": "RngServiceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "rngTimeout",
+          "type": "uint32"
+        }
+      ],
+      "name": "RngTimeoutSet",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "beaconPeriodEndAt",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "beaconPeriodRemainingSeconds",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_time",
+          "type": "uint256"
+        }
+      ],
+      "name": "calculateNextBeaconPeriodStartTime",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "calculateNextBeaconPeriodStartTimeFromCurrentTime",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "canCompleteDraw",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "canStartDraw",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "cancelDraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "completeDraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBeaconPeriodSeconds",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBeaconPeriodStartedAt",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDrawBuffer",
+      "outputs": [
+        {
+          "internalType": "contract IDrawBuffer",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLastRngLockBlock",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLastRngRequestId",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getNextDrawId",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRngService",
+      "outputs": [
+        {
+          "internalType": "contract RNGInterface",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRngTimeout",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isBeaconPeriodOver",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isRngCompleted",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isRngRequested",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isRngTimedOut",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pendingOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_beaconPeriodSeconds",
+          "type": "uint32"
+        }
+      ],
+      "name": "setBeaconPeriodSeconds",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IDrawBuffer",
+          "name": "newDrawBuffer",
+          "type": "address"
+        }
+      ],
+      "name": "setDrawBuffer",
+      "outputs": [
+        {
+          "internalType": "contract IDrawBuffer",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract RNGInterface",
+          "name": "_rngService",
+          "type": "address"
+        }
+      ],
+      "name": "setRngService",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_rngTimeout",
+          "type": "uint32"
+        }
+      ],
+      "name": "setRngTimeout",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "startDraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+  "receipt": {
+    "to": null,
+    "from": "0xE0F4217390221aF47855E094F6e112D43C8698fE",
+    "contractAddress": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+    "transactionIndex": 31,
+    "gasUsed": "1823923",
+    "logsBloom": "0x00000000010000000000000000004000100000000008000000800000000000000000020000000000000000000000000000000000000000000000040004000000000000000000000000000000000100000001000000000000000010402400000000000000020004000000000000200800008000400000000004000000000010400000000100000000000000000000000000002000000000000000000000000000000400000000000000000000002000000000000040000000080000080000000000009000800000000000100000000000000000000000000000000000400020000000000000000000000000000000000000000000000000000800080000000000",
+    "blockHash": "0x0139e4ef17600ef83444b84bd59d824227b8fefb4a7bc2e76772851f98f0e3b4",
+    "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+    "logs": [
+      {
+        "transactionIndex": 31,
+        "blockNumber": 9453413,
+        "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+        "address": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000e0f4217390221af47855e094f6e112d43c8698fe"
+        ],
+        "data": "0x",
+        "logIndex": 28,
+        "blockHash": "0x0139e4ef17600ef83444b84bd59d824227b8fefb4a7bc2e76772851f98f0e3b4"
+      },
+      {
+        "transactionIndex": 31,
+        "blockNumber": 9453413,
+        "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+        "address": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+        "topics": [
+          "0x4727494dbd863e2084366f539d6ec569aaf7ab78582a34f006f004266777cd19"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000000000000004b0",
+        "logIndex": 29,
+        "blockHash": "0x0139e4ef17600ef83444b84bd59d824227b8fefb4a7bc2e76772851f98f0e3b4"
+      },
+      {
+        "transactionIndex": 31,
+        "blockNumber": 9453413,
+        "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+        "address": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+        "topics": [
+          "0xeb70b03fab908e126e5efc33f8dfd2731fa89c716282a86769025f8dd4a6c1e0",
+          "0x000000000000000000000000fa3e81f18da442706ff68149e3656a86fbe5ad4c"
+        ],
+        "data": "0x",
+        "logIndex": 30,
+        "blockHash": "0x0139e4ef17600ef83444b84bd59d824227b8fefb4a7bc2e76772851f98f0e3b4"
+      },
+      {
+        "transactionIndex": 31,
+        "blockNumber": 9453413,
+        "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+        "address": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+        "topics": [
+          "0xf935763cc7c57ee8ed6318ed71e756cca0731294c9f46ff5b386f36d6ff1417a",
+          "0x000000000000000000000000a932e74d5263a754ea04432e5c53658434b0484b"
+        ],
+        "data": "0x",
+        "logIndex": 31,
+        "blockHash": "0x0139e4ef17600ef83444b84bd59d824227b8fefb4a7bc2e76772851f98f0e3b4"
+      },
+      {
+        "transactionIndex": 31,
+        "blockNumber": 9453413,
+        "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+        "address": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+        "topics": [
+          "0x521671714dd36d366adf3fe2efec91d3f58a3131aad68e268821d8144b5d0845"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000005460",
+        "logIndex": 32,
+        "blockHash": "0x0139e4ef17600ef83444b84bd59d824227b8fefb4a7bc2e76772851f98f0e3b4"
+      },
+      {
+        "transactionIndex": 31,
+        "blockNumber": 9453413,
+        "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+        "address": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+        "topics": [
+          "0x3125f2f28108d5eabe48aa2a11adff21d6f9244f0436278992999404ba4fc5ad"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000006165c8d1",
+        "logIndex": 33,
+        "blockHash": "0x0139e4ef17600ef83444b84bd59d824227b8fefb4a7bc2e76772851f98f0e3b4"
+      },
+      {
+        "transactionIndex": 31,
+        "blockNumber": 9453413,
+        "transactionHash": "0xef14a9cb82ae033f873a85e3e254236d52c0b2b1a07faa99b24fc83ca27684c3",
+        "address": "0xbc38855fe5797484FF293c5044029B17E206b01A",
+        "topics": [
+          "0x9e5f7e6ac833c4735b5548bbeec59dac4d413789aa351fbe11a654dac0c4306c",
+          "0x000000000000000000000000000000000000000000000000000000006165c8d1"
+        ],
+        "data": "0x",
+        "logIndex": 34,
+        "blockHash": "0x0139e4ef17600ef83444b84bd59d824227b8fefb4a7bc2e76772851f98f0e3b4"
+      }
+    ],
+    "blockNumber": 9453413,
+    "cumulativeGasUsed": "11372171",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xE0F4217390221aF47855E094F6e112D43C8698fE",
+    "0xFa3e81F18dA442706fF68149E3656A86Fbe5Ad4c",
+    "0xA932e74d5263A754Ea04432E5c53658434b0484B",
+    1,
+    1634060497,
+    1200,
+    21600
+  ],
+  "solcInputHash": "0617a234d0b660aa82c51becdcd2311f",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"contract IDrawBuffer\",\"name\":\"_drawBuffer\",\"type\":\"address\"},{\"internalType\":\"contract RNGInterface\",\"name\":\"_rng\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_nextDrawId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"_beaconPeriodStart\",\"type\":\"uint64\"},{\"internalType\":\"uint32\",\"name\":\"_beaconPeriodSeconds\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"_rngTimeout\",\"type\":\"uint32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"drawPeriodSeconds\",\"type\":\"uint32\"}],\"name\":\"BeaconPeriodSecondsUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"startedAt\",\"type\":\"uint64\"}],\"name\":\"BeaconPeriodStarted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"nextDrawId\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"beaconPeriodStartedAt\",\"type\":\"uint64\"}],\"name\":\"Deployed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract IDrawBuffer\",\"name\":\"newDrawBuffer\",\"type\":\"address\"}],\"name\":\"DrawBufferUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"rngRequestId\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"rngLockBlock\",\"type\":\"uint32\"}],\"name\":\"DrawCancelled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"randomNumber\",\"type\":\"uint256\"}],\"name\":\"DrawCompleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"rngRequestId\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"rngLockBlock\",\"type\":\"uint32\"}],\"name\":\"DrawStarted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"pendingOwner\",\"type\":\"address\"}],\"name\":\"OwnershipOffered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract RNGInterface\",\"name\":\"rngService\",\"type\":\"address\"}],\"name\":\"RngServiceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"rngTimeout\",\"type\":\"uint32\"}],\"name\":\"RngTimeoutSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"beaconPeriodEndAt\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"beaconPeriodRemainingSeconds\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_time\",\"type\":\"uint256\"}],\"name\":\"calculateNextBeaconPeriodStartTime\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"calculateNextBeaconPeriodStartTimeFromCurrentTime\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"canCompleteDraw\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"canStartDraw\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"cancelDraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"claimOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"completeDraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBeaconPeriodSeconds\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBeaconPeriodStartedAt\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDrawBuffer\",\"outputs\":[{\"internalType\":\"contract IDrawBuffer\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastRngLockBlock\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastRngRequestId\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNextDrawId\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRngService\",\"outputs\":[{\"internalType\":\"contract RNGInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRngTimeout\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isBeaconPeriodOver\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isRngCompleted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isRngRequested\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isRngTimedOut\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pendingOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_beaconPeriodSeconds\",\"type\":\"uint32\"}],\"name\":\"setBeaconPeriodSeconds\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IDrawBuffer\",\"name\":\"newDrawBuffer\",\"type\":\"address\"}],\"name\":\"setDrawBuffer\",\"outputs\":[{\"internalType\":\"contract IDrawBuffer\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract RNGInterface\",\"name\":\"_rngService\",\"type\":\"address\"}],\"name\":\"setRngService\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_rngTimeout\",\"type\":\"uint32\"}],\"name\":\"setRngTimeout\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"startDraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"PoolTogether Inc Team\",\"events\":{\"Deployed(uint32,uint64)\":{\"params\":{\"beaconPeriodStartedAt\":\"Timestamp when beacon period starts.\",\"nextDrawId\":\"Draw ID at which the DrawBeacon should start. Can't be inferior to 1.\"}}},\"kind\":\"dev\",\"methods\":{\"beaconPeriodEndAt()\":{\"returns\":{\"_0\":\"The timestamp at which the beacon period ends.\"}},\"beaconPeriodRemainingSeconds()\":{\"returns\":{\"_0\":\"The number of seconds remaining until the beacon period can be complete.\"}},\"calculateNextBeaconPeriodStartTime(uint256)\":{\"params\":{\"time\":\"The timestamp to use as the current time\"},\"returns\":{\"_0\":\"The timestamp at which the next beacon period would start\"}},\"calculateNextBeaconPeriodStartTimeFromCurrentTime()\":{\"returns\":{\"_0\":\"The next beacon period start time\"}},\"canCompleteDraw()\":{\"returns\":{\"_0\":\"True if a Draw can be completed, false otherwise.\"}},\"canStartDraw()\":{\"returns\":{\"_0\":\"True if a Draw can be started, false otherwise.\"}},\"claimOwnership()\":{\"details\":\"This function is only callable by the `_pendingOwner`.\"},\"constructor\":{\"params\":{\"_beaconPeriodSeconds\":\"The duration of the beacon period in seconds\",\"_beaconPeriodStart\":\"The starting timestamp of the beacon period.\",\"_drawBuffer\":\"The address of the draw buffer to push draws to\",\"_nextDrawId\":\"Draw ID at which the DrawBeacon should start. Can't be inferior to 1.\",\"_owner\":\"Address of the DrawBeacon owner\",\"_rng\":\"The RNG service to use\"}},\"getLastRngLockBlock()\":{\"returns\":{\"_0\":\"The block number that the RNG request is locked to\"}},\"getLastRngRequestId()\":{\"returns\":{\"_0\":\"The current Request ID\"}},\"isBeaconPeriodOver()\":{\"returns\":{\"_0\":\"True if the beacon period is over, false otherwise\"}},\"isRngCompleted()\":{\"returns\":{\"_0\":\"True if a random number request has completed, false otherwise.\"}},\"isRngRequested()\":{\"returns\":{\"_0\":\"True if a random number has been requested, false otherwise.\"}},\"isRngTimedOut()\":{\"returns\":{\"_0\":\"True if a random number request has timed out, false otherwise.\"}},\"pendingOwner()\":{\"returns\":{\"_0\":\"Current `_pendingOwner` address.\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"setBeaconPeriodSeconds(uint32)\":{\"params\":{\"beaconPeriodSeconds\":\"The new beacon period in seconds.  Must be greater than zero.\"}},\"setDrawBuffer(address)\":{\"details\":\"All subsequent Draw requests/completions will be pushed to the new DrawBuffer.\",\"params\":{\"newDrawBuffer\":\"DrawBuffer address\"},\"returns\":{\"_0\":\"DrawBuffer\"}},\"setRngService(address)\":{\"params\":{\"rngService\":\"The address of the new RNG service interface\"}},\"setRngTimeout(uint32)\":{\"params\":{\"rngTimeout\":\"The RNG request timeout in seconds.\"}},\"startDraw()\":{\"details\":\"The RNG-Request-Fee is expected to be held within this contract before calling this function\"},\"transferOwnership(address)\":{\"params\":{\"_newOwner\":\"Address to transfer ownership to.\"}}},\"stateVariables\":{\"nextDrawId\":{\"details\":\"Starts at 1. This way we know that no Draw has been recorded at 0.\"},\"rngTimeout\":{\"details\":\"If the rng completes the award can still be cancelled.\"}},\"title\":\"PoolTogether V4 DrawBeacon\",\"version\":1},\"userdoc\":{\"events\":{\"BeaconPeriodSecondsUpdated(uint32)\":{\"notice\":\"Emit when the drawPeriodSeconds is set.\"},\"BeaconPeriodStarted(uint64)\":{\"notice\":\"Emit when a draw has opened.\"},\"Deployed(uint32,uint64)\":{\"notice\":\"Emit when the DrawBeacon is deployed.\"},\"DrawBufferUpdated(address)\":{\"notice\":\"Emit when a new DrawBuffer has been set.\"},\"DrawCancelled(uint32,uint32)\":{\"notice\":\"Emit when a draw has been cancelled.\"},\"DrawCompleted(uint256)\":{\"notice\":\"Emit when a draw has been completed.\"},\"DrawStarted(uint32,uint32)\":{\"notice\":\"Emit when a draw has started.\"},\"RngServiceUpdated(address)\":{\"notice\":\"Emit when a RNG service address is set.\"},\"RngTimeoutSet(uint32)\":{\"notice\":\"Emit when a draw timeout param is set.\"}},\"kind\":\"user\",\"methods\":{\"beaconPeriodEndAt()\":{\"notice\":\"Returns the timestamp at which the beacon period ends\"},\"beaconPeriodRemainingSeconds()\":{\"notice\":\"Returns the number of seconds remaining until the beacon period can be complete.\"},\"calculateNextBeaconPeriodStartTime(uint256)\":{\"notice\":\"Calculates when the next beacon period will start.\"},\"calculateNextBeaconPeriodStartTimeFromCurrentTime()\":{\"notice\":\"Calculates the next beacon start time, assuming all beacon periods have occurred between the last and now.\"},\"canCompleteDraw()\":{\"notice\":\"Returns whether a Draw can be completed.\"},\"canStartDraw()\":{\"notice\":\"Returns whether a Draw can be started.\"},\"cancelDraw()\":{\"notice\":\"Can be called by anyone to cancel the draw request if the RNG has timed out.\"},\"claimOwnership()\":{\"notice\":\"Allows the `_pendingOwner` address to finalize the transfer.\"},\"completeDraw()\":{\"notice\":\"Completes the Draw (RNG) request and pushes a Draw onto DrawBuffer.\"},\"constructor\":{\"notice\":\"Deploy the DrawBeacon smart contract.\"},\"getLastRngLockBlock()\":{\"notice\":\"Returns the block number that the current RNG request has been locked to.\"},\"getLastRngRequestId()\":{\"notice\":\"Returns the current RNG Request ID.\"},\"isBeaconPeriodOver()\":{\"notice\":\"Returns whether the beacon period is over\"},\"isRngCompleted()\":{\"notice\":\"Returns whether the random number request has completed.\"},\"isRngRequested()\":{\"notice\":\"Returns whether a random number has been requested\"},\"isRngTimedOut()\":{\"notice\":\"Returns whether the random number request has timed out.\"},\"owner()\":{\"notice\":\"Returns the address of the current owner.\"},\"pendingOwner()\":{\"notice\":\"Gets current `_pendingOwner`.\"},\"renounceOwnership()\":{\"notice\":\"Renounce ownership of the contract.\"},\"setBeaconPeriodSeconds(uint32)\":{\"notice\":\"Allows the owner to set the beacon period in seconds.\"},\"setDrawBuffer(address)\":{\"notice\":\"Set global DrawBuffer variable.\"},\"setRngService(address)\":{\"notice\":\"Sets the RNG service that the Prize Strategy is connected to\"},\"setRngTimeout(uint32)\":{\"notice\":\"Allows the owner to set the RNG request timeout in seconds. This is the time that must elapsed before the RNG request can be cancelled and the pool unlocked.\"},\"startDraw()\":{\"notice\":\"Starts the Draw process by starting random number request. The previous beacon period must have ended.\"},\"transferOwnership(address)\":{\"notice\":\"Allows current owner to set the `_pendingOwner` address.\"}},\"notice\":\"Manages RNG (random number generator) requests and pushing Draws onto DrawBuffer. The DrawBeacon has 3 major actions for requesting a random number: start, cancel and complete. To create a new Draw, the user requests a new random number from the RNG service. When the random number is available, the user can create the draw using the create() method which will push the draw onto the DrawBuffer. If the RNG service fails to deliver a rng, when the request timeout elapses, the user can cancel the request.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"@pooltogether/v4-core/contracts/DrawBeacon.sol\":\"DrawBeacon\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `recipient`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address recipient, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `sender` to `recipient` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(\\n        address sender,\\n        address recipient,\\n        uint256 amount\\n    ) external returns (bool);\\n\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n}\\n\",\"keccak256\":\"0x027b891937d20ccf213fdb9c31531574256de774bda99d3a70ecef6e1913ed2a\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../IERC20.sol\\\";\\nimport \\\"../../../utils/Address.sol\\\";\\n\\n/**\\n * @title SafeERC20\\n * @dev Wrappers around ERC20 operations that throw on failure (when the token\\n * contract returns false). Tokens that return no value (and instead revert or\\n * throw on failure) are also supported, non-reverting calls are assumed to be\\n * successful.\\n * To use this library you can add a `using SafeERC20 for IERC20;` statement to your contract,\\n * which allows you to call the safe operations as `token.safeTransfer(...)`, etc.\\n */\\nlibrary SafeERC20 {\\n    using Address for address;\\n\\n    function safeTransfer(\\n        IERC20 token,\\n        address to,\\n        uint256 value\\n    ) internal {\\n        _callOptionalReturn(token, abi.encodeWithSelector(token.transfer.selector, to, value));\\n    }\\n\\n    function safeTransferFrom(\\n        IERC20 token,\\n        address from,\\n        address to,\\n        uint256 value\\n    ) internal {\\n        _callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));\\n    }\\n\\n    /**\\n     * @dev Deprecated. This function has issues similar to the ones found in\\n     * {IERC20-approve}, and its usage is discouraged.\\n     *\\n     * Whenever possible, use {safeIncreaseAllowance} and\\n     * {safeDecreaseAllowance} instead.\\n     */\\n    function safeApprove(\\n        IERC20 token,\\n        address spender,\\n        uint256 value\\n    ) internal {\\n        // safeApprove should only be called when setting an initial allowance,\\n        // or when resetting it to zero. To increase and decrease it, use\\n        // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'\\n        require(\\n            (value == 0) || (token.allowance(address(this), spender) == 0),\\n            \\\"SafeERC20: approve from non-zero to non-zero allowance\\\"\\n        );\\n        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));\\n    }\\n\\n    function safeIncreaseAllowance(\\n        IERC20 token,\\n        address spender,\\n        uint256 value\\n    ) internal {\\n        uint256 newAllowance = token.allowance(address(this), spender) + value;\\n        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));\\n    }\\n\\n    function safeDecreaseAllowance(\\n        IERC20 token,\\n        address spender,\\n        uint256 value\\n    ) internal {\\n        unchecked {\\n            uint256 oldAllowance = token.allowance(address(this), spender);\\n            require(oldAllowance >= value, \\\"SafeERC20: decreased allowance below zero\\\");\\n            uint256 newAllowance = oldAllowance - value;\\n            _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));\\n        }\\n    }\\n\\n    /**\\n     * @dev Imitates a Solidity high-level call (i.e. a regular function call to a contract), relaxing the requirement\\n     * on the return value: the return value is optional (but if data is returned, it must not be false).\\n     * @param token The token targeted by the call.\\n     * @param data The call data (encoded using abi.encode or one of its variants).\\n     */\\n    function _callOptionalReturn(IERC20 token, bytes memory data) private {\\n        // We need to perform a low level call here, to bypass Solidity's return data size checking mechanism, since\\n        // we're implementing it ourselves. We use {Address.functionCall} to perform this call, which verifies that\\n        // the target address contains contract code and also asserts for success in the low-level call.\\n\\n        bytes memory returndata = address(token).functionCall(data, \\\"SafeERC20: low-level call failed\\\");\\n        if (returndata.length > 0) {\\n            // Return data is optional\\n            require(abi.decode(returndata, (bool)), \\\"SafeERC20: ERC20 operation did not succeed\\\");\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x02348b2e4b9f3200c7e3907c5c2661643a6d8520e9f79939fbb9b4005a54894d\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Address.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Collection of functions related to the address type\\n */\\nlibrary Address {\\n    /**\\n     * @dev Returns true if `account` is a contract.\\n     *\\n     * [IMPORTANT]\\n     * ====\\n     * It is unsafe to assume that an address for which this function returns\\n     * false is an externally-owned account (EOA) and not a contract.\\n     *\\n     * Among others, `isContract` will return false for the following\\n     * types of addresses:\\n     *\\n     *  - an externally-owned account\\n     *  - a contract in construction\\n     *  - an address where a contract will be created\\n     *  - an address where a contract lived, but was destroyed\\n     * ====\\n     */\\n    function isContract(address account) internal view returns (bool) {\\n        // This method relies on extcodesize, which returns 0 for contracts in\\n        // construction, since the code is only stored at the end of the\\n        // constructor execution.\\n\\n        uint256 size;\\n        assembly {\\n            size := extcodesize(account)\\n        }\\n        return size > 0;\\n    }\\n\\n    /**\\n     * @dev Replacement for Solidity's `transfer`: sends `amount` wei to\\n     * `recipient`, forwarding all available gas and reverting on errors.\\n     *\\n     * https://eips.ethereum.org/EIPS/eip-1884[EIP1884] increases the gas cost\\n     * of certain opcodes, possibly making contracts go over the 2300 gas limit\\n     * imposed by `transfer`, making them unable to receive funds via\\n     * `transfer`. {sendValue} removes this limitation.\\n     *\\n     * https://diligence.consensys.net/posts/2019/09/stop-using-soliditys-transfer-now/[Learn more].\\n     *\\n     * IMPORTANT: because control is transferred to `recipient`, care must be\\n     * taken to not create reentrancy vulnerabilities. Consider using\\n     * {ReentrancyGuard} or the\\n     * https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].\\n     */\\n    function sendValue(address payable recipient, uint256 amount) internal {\\n        require(address(this).balance >= amount, \\\"Address: insufficient balance\\\");\\n\\n        (bool success, ) = recipient.call{value: amount}(\\\"\\\");\\n        require(success, \\\"Address: unable to send value, recipient may have reverted\\\");\\n    }\\n\\n    /**\\n     * @dev Performs a Solidity function call using a low level `call`. A\\n     * plain `call` is an unsafe replacement for a function call: use this\\n     * function instead.\\n     *\\n     * If `target` reverts with a revert reason, it is bubbled up by this\\n     * function (like regular Solidity function calls).\\n     *\\n     * Returns the raw returned data. To convert to the expected return value,\\n     * use https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=abi.decode#abi-encoding-and-decoding-functions[`abi.decode`].\\n     *\\n     * Requirements:\\n     *\\n     * - `target` must be a contract.\\n     * - calling `target` with `data` must not revert.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(address target, bytes memory data) internal returns (bytes memory) {\\n        return functionCall(target, data, \\\"Address: low-level call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`], but with\\n     * `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, 0, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but also transferring `value` wei to `target`.\\n     *\\n     * Requirements:\\n     *\\n     * - the calling contract must have an ETH balance of at least `value`.\\n     * - the called Solidity function must be `payable`.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(\\n        address target,\\n        bytes memory data,\\n        uint256 value\\n    ) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, value, \\\"Address: low-level call with value failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCallWithValue-address-bytes-uint256-}[`functionCallWithValue`], but\\n     * with `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(\\n        address target,\\n        bytes memory data,\\n        uint256 value,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        require(address(this).balance >= value, \\\"Address: insufficient balance for call\\\");\\n        require(isContract(target), \\\"Address: call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.call{value: value}(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {\\n        return functionStaticCall(target, data, \\\"Address: low-level static call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal view returns (bytes memory) {\\n        require(isContract(target), \\\"Address: static call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.staticcall(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a delegate call.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function functionDelegateCall(address target, bytes memory data) internal returns (bytes memory) {\\n        return functionDelegateCall(target, data, \\\"Address: low-level delegate call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],\\n     * but performing a delegate call.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function functionDelegateCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        require(isContract(target), \\\"Address: delegate call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.delegatecall(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Tool to verifies that a low level call was successful, and revert if it wasn't, either by bubbling the\\n     * revert reason using the provided one.\\n     *\\n     * _Available since v4.3._\\n     */\\n    function verifyCallResult(\\n        bool success,\\n        bytes memory returndata,\\n        string memory errorMessage\\n    ) internal pure returns (bytes memory) {\\n        if (success) {\\n            return returndata;\\n        } else {\\n            // Look for revert reason and bubble it up if present\\n            if (returndata.length > 0) {\\n                // The easiest way to bubble the revert reason is using memory via assembly\\n\\n                assembly {\\n                    let returndata_size := mload(returndata)\\n                    revert(add(32, returndata), returndata_size)\\n                }\\n            } else {\\n                revert(errorMessage);\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x3336baae5cf23e94274d75336e2d412193be508504aee185e61dc7d58cd05c8a\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/math/SafeCast.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Wrappers over Solidity's uintXX/intXX casting operators with added overflow\\n * checks.\\n *\\n * Downcasting from uint256/int256 in Solidity does not revert on overflow. This can\\n * easily result in undesired exploitation or bugs, since developers usually\\n * assume that overflows raise errors. `SafeCast` restores this intuition by\\n * reverting the transaction when such an operation overflows.\\n *\\n * Using this library instead of the unchecked operations eliminates an entire\\n * class of bugs, so it's recommended to use it always.\\n *\\n * Can be combined with {SafeMath} and {SignedSafeMath} to extend it to smaller types, by performing\\n * all math on `uint256` and `int256` and then downcasting.\\n */\\nlibrary SafeCast {\\n    /**\\n     * @dev Returns the downcasted uint224 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint224).\\n     *\\n     * Counterpart to Solidity's `uint224` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 224 bits\\n     */\\n    function toUint224(uint256 value) internal pure returns (uint224) {\\n        require(value <= type(uint224).max, \\\"SafeCast: value doesn't fit in 224 bits\\\");\\n        return uint224(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint128 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint128).\\n     *\\n     * Counterpart to Solidity's `uint128` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 128 bits\\n     */\\n    function toUint128(uint256 value) internal pure returns (uint128) {\\n        require(value <= type(uint128).max, \\\"SafeCast: value doesn't fit in 128 bits\\\");\\n        return uint128(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint96 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint96).\\n     *\\n     * Counterpart to Solidity's `uint96` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 96 bits\\n     */\\n    function toUint96(uint256 value) internal pure returns (uint96) {\\n        require(value <= type(uint96).max, \\\"SafeCast: value doesn't fit in 96 bits\\\");\\n        return uint96(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint64 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint64).\\n     *\\n     * Counterpart to Solidity's `uint64` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 64 bits\\n     */\\n    function toUint64(uint256 value) internal pure returns (uint64) {\\n        require(value <= type(uint64).max, \\\"SafeCast: value doesn't fit in 64 bits\\\");\\n        return uint64(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint32 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint32).\\n     *\\n     * Counterpart to Solidity's `uint32` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 32 bits\\n     */\\n    function toUint32(uint256 value) internal pure returns (uint32) {\\n        require(value <= type(uint32).max, \\\"SafeCast: value doesn't fit in 32 bits\\\");\\n        return uint32(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint16 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint16).\\n     *\\n     * Counterpart to Solidity's `uint16` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 16 bits\\n     */\\n    function toUint16(uint256 value) internal pure returns (uint16) {\\n        require(value <= type(uint16).max, \\\"SafeCast: value doesn't fit in 16 bits\\\");\\n        return uint16(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint8 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint8).\\n     *\\n     * Counterpart to Solidity's `uint8` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 8 bits.\\n     */\\n    function toUint8(uint256 value) internal pure returns (uint8) {\\n        require(value <= type(uint8).max, \\\"SafeCast: value doesn't fit in 8 bits\\\");\\n        return uint8(value);\\n    }\\n\\n    /**\\n     * @dev Converts a signed int256 into an unsigned uint256.\\n     *\\n     * Requirements:\\n     *\\n     * - input must be greater than or equal to 0.\\n     */\\n    function toUint256(int256 value) internal pure returns (uint256) {\\n        require(value >= 0, \\\"SafeCast: value must be positive\\\");\\n        return uint256(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int128 from int256, reverting on\\n     * overflow (when the input is less than smallest int128 or\\n     * greater than largest int128).\\n     *\\n     * Counterpart to Solidity's `int128` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 128 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt128(int256 value) internal pure returns (int128) {\\n        require(value >= type(int128).min && value <= type(int128).max, \\\"SafeCast: value doesn't fit in 128 bits\\\");\\n        return int128(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int64 from int256, reverting on\\n     * overflow (when the input is less than smallest int64 or\\n     * greater than largest int64).\\n     *\\n     * Counterpart to Solidity's `int64` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 64 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt64(int256 value) internal pure returns (int64) {\\n        require(value >= type(int64).min && value <= type(int64).max, \\\"SafeCast: value doesn't fit in 64 bits\\\");\\n        return int64(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int32 from int256, reverting on\\n     * overflow (when the input is less than smallest int32 or\\n     * greater than largest int32).\\n     *\\n     * Counterpart to Solidity's `int32` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 32 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt32(int256 value) internal pure returns (int32) {\\n        require(value >= type(int32).min && value <= type(int32).max, \\\"SafeCast: value doesn't fit in 32 bits\\\");\\n        return int32(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int16 from int256, reverting on\\n     * overflow (when the input is less than smallest int16 or\\n     * greater than largest int16).\\n     *\\n     * Counterpart to Solidity's `int16` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 16 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt16(int256 value) internal pure returns (int16) {\\n        require(value >= type(int16).min && value <= type(int16).max, \\\"SafeCast: value doesn't fit in 16 bits\\\");\\n        return int16(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int8 from int256, reverting on\\n     * overflow (when the input is less than smallest int8 or\\n     * greater than largest int8).\\n     *\\n     * Counterpart to Solidity's `int8` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 8 bits.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt8(int256 value) internal pure returns (int8) {\\n        require(value >= type(int8).min && value <= type(int8).max, \\\"SafeCast: value doesn't fit in 8 bits\\\");\\n        return int8(value);\\n    }\\n\\n    /**\\n     * @dev Converts an unsigned uint256 into a signed int256.\\n     *\\n     * Requirements:\\n     *\\n     * - input must be less than or equal to maxInt256.\\n     */\\n    function toInt256(uint256 value) internal pure returns (int256) {\\n        // Note: Unsafe cast below is okay because `type(int256).max` is guaranteed to be positive\\n        require(value <= uint256(type(int256).max), \\\"SafeCast: value doesn't fit in an int256\\\");\\n        return int256(value);\\n    }\\n}\\n\",\"keccak256\":\"0x08d867b4c0bb782b9135691fa732b6846e0f133006489c3aa505abd1f6de56cb\",\"license\":\"MIT\"},\"@pooltogether/owner-manager-contracts/contracts/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title Abstract ownable contract that can be inherited by other contracts\\n * @notice Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner is the deployer of the contract.\\n *\\n * The owner account is set through a two steps process.\\n *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`\\n *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer\\n *\\n * The manager account needs to be set using {setManager}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable {\\n    address private _owner;\\n    address private _pendingOwner;\\n\\n    /**\\n     * @dev Emitted when `_pendingOwner` has been changed.\\n     * @param pendingOwner new `_pendingOwner` address.\\n     */\\n    event OwnershipOffered(address indexed pendingOwner);\\n\\n    /**\\n     * @dev Emitted when `_owner` has been changed.\\n     * @param previousOwner previous `_owner` address.\\n     * @param newOwner new `_owner` address.\\n     */\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /* ============ Deploy ============ */\\n\\n    /**\\n     * @notice Initializes the contract setting `_initialOwner` as the initial owner.\\n     * @param _initialOwner Initial owner of the contract.\\n     */\\n    constructor(address _initialOwner) {\\n        _setOwner(_initialOwner);\\n    }\\n\\n    /* ============ External Functions ============ */\\n\\n    /**\\n     * @notice Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @notice Gets current `_pendingOwner`.\\n     * @return Current `_pendingOwner` address.\\n     */\\n    function pendingOwner() external view virtual returns (address) {\\n        return _pendingOwner;\\n    }\\n\\n    /**\\n     * @notice Renounce ownership of the contract.\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby removing any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() external virtual onlyOwner {\\n        _setOwner(address(0));\\n    }\\n\\n    /**\\n    * @notice Allows current owner to set the `_pendingOwner` address.\\n    * @param _newOwner Address to transfer ownership to.\\n    */\\n    function transferOwnership(address _newOwner) external onlyOwner {\\n        require(_newOwner != address(0), \\\"Ownable/pendingOwner-not-zero-address\\\");\\n\\n        _pendingOwner = _newOwner;\\n\\n        emit OwnershipOffered(_newOwner);\\n    }\\n\\n    /**\\n    * @notice Allows the `_pendingOwner` address to finalize the transfer.\\n    * @dev This function is only callable by the `_pendingOwner`.\\n    */\\n    function claimOwnership() external onlyPendingOwner {\\n        _setOwner(_pendingOwner);\\n        _pendingOwner = address(0);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Internal function to set the `_owner` of the contract.\\n     * @param _newOwner New `_owner` address.\\n     */\\n    function _setOwner(address _newOwner) private {\\n        address _oldOwner = _owner;\\n        _owner = _newOwner;\\n        emit OwnershipTransferred(_oldOwner, _newOwner);\\n    }\\n\\n    /* ============ Modifier Functions ============ */\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        require(owner() == msg.sender, \\\"Ownable/caller-not-owner\\\");\\n        _;\\n    }\\n\\n    /**\\n    * @dev Throws if called by any account other than the `pendingOwner`.\\n    */\\n    modifier onlyPendingOwner() {\\n        require(msg.sender == _pendingOwner, \\\"Ownable/caller-not-pendingOwner\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0xfd0fd374812c8af45f2633cc7cc4811ccb7bad0a3902a43aded35939eb4a00d1\",\"license\":\"GPL-3.0\"},\"@pooltogether/pooltogether-rng-contracts/contracts/RNGInterface.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity >=0.6.0;\\n\\n/// @title Random Number Generator Interface\\n/// @notice Provides an interface for requesting random numbers from 3rd-party RNG services (Chainlink VRF, Starkware VDF, etc..)\\ninterface RNGInterface {\\n\\n  /// @notice Emitted when a new request for a random number has been submitted\\n  /// @param requestId The indexed ID of the request used to get the results of the RNG service\\n  /// @param sender The indexed address of the sender of the request\\n  event RandomNumberRequested(uint32 indexed requestId, address indexed sender);\\n\\n  /// @notice Emitted when an existing request for a random number has been completed\\n  /// @param requestId The indexed ID of the request used to get the results of the RNG service\\n  /// @param randomNumber The random number produced by the 3rd-party service\\n  event RandomNumberCompleted(uint32 indexed requestId, uint256 randomNumber);\\n\\n  /// @notice Gets the last request id used by the RNG service\\n  /// @return requestId The last request id used in the last request\\n  function getLastRequestId() external view returns (uint32 requestId);\\n\\n  /// @notice Gets the Fee for making a Request against an RNG service\\n  /// @return feeToken The address of the token that is used to pay fees\\n  /// @return requestFee The fee required to be paid to make a request\\n  function getRequestFee() external view returns (address feeToken, uint256 requestFee);\\n\\n  /// @notice Sends a request for a random number to the 3rd-party service\\n  /// @dev Some services will complete the request immediately, others may have a time-delay\\n  /// @dev Some services require payment in the form of a token, such as $LINK for Chainlink VRF\\n  /// @return requestId The ID of the request used to get the results of the RNG service\\n  /// @return lockBlock The block number at which the RNG service will start generating time-delayed randomness.  The calling contract\\n  /// should \\\"lock\\\" all activity until the result is available via the `requestId`\\n  function requestRandomNumber() external returns (uint32 requestId, uint32 lockBlock);\\n\\n  /// @notice Checks if the request for randomness from the 3rd-party service has completed\\n  /// @dev For time-delayed requests, this function is used to check/confirm completion\\n  /// @param requestId The ID of the request used to get the results of the RNG service\\n  /// @return isCompleted True if the request has completed and a random number is available, false otherwise\\n  function isRequestComplete(uint32 requestId) external view returns (bool isCompleted);\\n\\n  /// @notice Gets the random number produced by the 3rd-party service\\n  /// @param requestId The ID of the request used to get the results of the RNG service\\n  /// @return randomNum The random number\\n  function randomNumber(uint32 requestId) external returns (uint256 randomNum);\\n}\\n\",\"keccak256\":\"0xf917c68439d7476cd226f475e8fce940e0cf1d32cb0ff12e8537072a07f2b1da\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/DrawBeacon.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@openzeppelin/contracts/utils/math/SafeCast.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol\\\";\\n\\nimport \\\"@pooltogether/pooltogether-rng-contracts/contracts/RNGInterface.sol\\\";\\nimport \\\"@pooltogether/owner-manager-contracts/contracts/Ownable.sol\\\";\\n\\nimport \\\"./interfaces/IDrawBeacon.sol\\\";\\nimport \\\"./interfaces/IDrawBuffer.sol\\\";\\n\\n\\n/**\\n  * @title  PoolTogether V4 DrawBeacon\\n  * @author PoolTogether Inc Team\\n  * @notice Manages RNG (random number generator) requests and pushing Draws onto DrawBuffer.\\n            The DrawBeacon has 3 major actions for requesting a random number: start, cancel and complete.\\n            To create a new Draw, the user requests a new random number from the RNG service.\\n            When the random number is available, the user can create the draw using the create() method\\n            which will push the draw onto the DrawBuffer.\\n            If the RNG service fails to deliver a rng, when the request timeout elapses, the user can cancel the request.\\n*/\\ncontract DrawBeacon is IDrawBeacon, Ownable {\\n    using SafeCast for uint256;\\n    using SafeERC20 for IERC20;\\n\\n    /* ============ Variables ============ */\\n\\n    /// @notice RNG contract interface\\n    RNGInterface internal rng;\\n\\n    /// @notice Current RNG Request\\n    RngRequest internal rngRequest;\\n\\n    /// @notice DrawBuffer address\\n    IDrawBuffer internal drawBuffer;\\n\\n    /**\\n     * @notice RNG Request Timeout.  In fact, this is really a \\\"complete draw\\\" timeout.\\n     * @dev If the rng completes the award can still be cancelled.\\n     */\\n    uint32 internal rngTimeout;\\n\\n    /// @notice Seconds between beacon period request\\n    uint32 internal beaconPeriodSeconds;\\n\\n    /// @notice Epoch timestamp when beacon period can start\\n    uint64 internal beaconPeriodStartedAt;\\n\\n    /**\\n     * @notice Next Draw ID to use when pushing a Draw onto DrawBuffer\\n     * @dev Starts at 1. This way we know that no Draw has been recorded at 0.\\n     */\\n    uint32 internal nextDrawId;\\n\\n    /* ============ Structs ============ */\\n\\n    /**\\n     * @notice RNG Request\\n     * @param id          RNG request ID\\n     * @param lockBlock   Block number that the RNG request is locked\\n     * @param requestedAt Time when RNG is requested\\n     */\\n    struct RngRequest {\\n        uint32 id;\\n        uint32 lockBlock;\\n        uint64 requestedAt;\\n    }\\n\\n    /* ============ Events ============ */\\n\\n    /**\\n     * @notice Emit when the DrawBeacon is deployed.\\n     * @param nextDrawId Draw ID at which the DrawBeacon should start. Can't be inferior to 1.\\n     * @param beaconPeriodStartedAt Timestamp when beacon period starts.\\n     */\\n    event Deployed(\\n        uint32 nextDrawId,\\n        uint64 beaconPeriodStartedAt\\n    );\\n\\n    /* ============ Modifiers ============ */\\n\\n    modifier requireDrawNotStarted() {\\n        _requireDrawNotStarted();\\n        _;\\n    }\\n\\n    modifier requireCanStartDraw() {\\n        require(_isBeaconPeriodOver(), \\\"DrawBeacon/beacon-period-not-over\\\");\\n        require(!isRngRequested(), \\\"DrawBeacon/rng-already-requested\\\");\\n        _;\\n    }\\n\\n    modifier requireCanCompleteRngRequest() {\\n        require(isRngRequested(), \\\"DrawBeacon/rng-not-requested\\\");\\n        require(isRngCompleted(), \\\"DrawBeacon/rng-not-complete\\\");\\n        _;\\n    }\\n\\n    /* ============ Constructor ============ */\\n\\n    /**\\n     * @notice Deploy the DrawBeacon smart contract.\\n     * @param _owner Address of the DrawBeacon owner\\n     * @param _drawBuffer The address of the draw buffer to push draws to\\n     * @param _rng The RNG service to use\\n     * @param _nextDrawId Draw ID at which the DrawBeacon should start. Can't be inferior to 1.\\n     * @param _beaconPeriodStart The starting timestamp of the beacon period.\\n     * @param _beaconPeriodSeconds The duration of the beacon period in seconds\\n     */\\n    constructor(\\n        address _owner,\\n        IDrawBuffer _drawBuffer,\\n        RNGInterface _rng,\\n        uint32 _nextDrawId,\\n        uint64 _beaconPeriodStart,\\n        uint32 _beaconPeriodSeconds,\\n        uint32 _rngTimeout\\n    ) Ownable(_owner) {\\n        require(_beaconPeriodStart > 0, \\\"DrawBeacon/beacon-period-greater-than-zero\\\");\\n        require(address(_rng) != address(0), \\\"DrawBeacon/rng-not-zero\\\");\\n        require(_nextDrawId >= 1, \\\"DrawBeacon/next-draw-id-gte-one\\\");\\n\\n        beaconPeriodStartedAt = _beaconPeriodStart;\\n        nextDrawId = _nextDrawId;\\n\\n        _setBeaconPeriodSeconds(_beaconPeriodSeconds);\\n        _setDrawBuffer(_drawBuffer);\\n        _setRngService(_rng);\\n        _setRngTimeout(_rngTimeout);\\n\\n        emit Deployed(_nextDrawId, _beaconPeriodStart);\\n        emit BeaconPeriodStarted(_beaconPeriodStart);\\n    }\\n\\n    /* ============ Public Functions ============ */\\n\\n    /**\\n     * @notice Returns whether the random number request has completed.\\n     * @return True if a random number request has completed, false otherwise.\\n     */\\n    function isRngCompleted() public view override returns (bool) {\\n        return rng.isRequestComplete(rngRequest.id);\\n    }\\n\\n    /**\\n     * @notice Returns whether a random number has been requested\\n     * @return True if a random number has been requested, false otherwise.\\n     */\\n    function isRngRequested() public view override returns (bool) {\\n        return rngRequest.id != 0;\\n    }\\n\\n    /**\\n     * @notice Returns whether the random number request has timed out.\\n     * @return True if a random number request has timed out, false otherwise.\\n     */\\n    function isRngTimedOut() public view override returns (bool) {\\n        if (rngRequest.requestedAt == 0) {\\n            return false;\\n        } else {\\n            return rngTimeout + rngRequest.requestedAt < _currentTime();\\n        }\\n    }\\n\\n    /* ============ External Functions ============ */\\n\\n    /// @inheritdoc IDrawBeacon\\n    function canStartDraw() external view override returns (bool) {\\n        return _isBeaconPeriodOver() && !isRngRequested();\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function canCompleteDraw() external view override returns (bool) {\\n        return isRngRequested() && isRngCompleted();\\n    }\\n\\n    /// @notice Calculates the next beacon start time, assuming all beacon periods have occurred between the last and now.\\n    /// @return The next beacon period start time\\n    function calculateNextBeaconPeriodStartTimeFromCurrentTime() external view returns (uint64) {\\n        return\\n            _calculateNextBeaconPeriodStartTime(\\n                beaconPeriodStartedAt,\\n                beaconPeriodSeconds,\\n                _currentTime()\\n            );\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function calculateNextBeaconPeriodStartTime(uint256 _time)\\n        external\\n        view\\n        override\\n        returns (uint64)\\n    {\\n        return\\n            _calculateNextBeaconPeriodStartTime(\\n                beaconPeriodStartedAt,\\n                beaconPeriodSeconds,\\n                uint64(_time)\\n            );\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function cancelDraw() external override {\\n        require(isRngTimedOut(), \\\"DrawBeacon/rng-not-timedout\\\");\\n        uint32 requestId = rngRequest.id;\\n        uint32 lockBlock = rngRequest.lockBlock;\\n        delete rngRequest;\\n        emit DrawCancelled(requestId, lockBlock);\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function completeDraw() external override requireCanCompleteRngRequest {\\n        uint256 randomNumber = rng.randomNumber(rngRequest.id);\\n        uint32 _nextDrawId = nextDrawId;\\n        uint64 _beaconPeriodStartedAt = beaconPeriodStartedAt;\\n        uint32 _beaconPeriodSeconds = beaconPeriodSeconds;\\n        uint64 _time = _currentTime();\\n\\n        // create Draw struct\\n        IDrawBeacon.Draw memory _draw = IDrawBeacon.Draw({\\n            winningRandomNumber: randomNumber,\\n            drawId: _nextDrawId,\\n            timestamp: rngRequest.requestedAt, // must use the startAward() timestamp to prevent front-running\\n            beaconPeriodStartedAt: _beaconPeriodStartedAt,\\n            beaconPeriodSeconds: _beaconPeriodSeconds\\n        });\\n\\n        drawBuffer.pushDraw(_draw);\\n\\n        // to avoid clock drift, we should calculate the start time based on the previous period start time.\\n        uint64 nextBeaconPeriodStartedAt = _calculateNextBeaconPeriodStartTime(\\n            _beaconPeriodStartedAt,\\n            _beaconPeriodSeconds,\\n            _time\\n        );\\n        beaconPeriodStartedAt = nextBeaconPeriodStartedAt;\\n        nextDrawId = _nextDrawId + 1;\\n\\n        // Reset the rngReqeust state so Beacon period can start again.\\n        delete rngRequest;\\n\\n        emit DrawCompleted(randomNumber);\\n        emit BeaconPeriodStarted(nextBeaconPeriodStartedAt);\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function beaconPeriodRemainingSeconds() external view override returns (uint64) {\\n        return _beaconPeriodRemainingSeconds();\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function beaconPeriodEndAt() external view override returns (uint64) {\\n        return _beaconPeriodEndAt();\\n    }\\n\\n    function getBeaconPeriodSeconds() external view returns (uint32) {\\n        return beaconPeriodSeconds;\\n    }\\n\\n    function getBeaconPeriodStartedAt() external view returns (uint64) {\\n        return beaconPeriodStartedAt;\\n    }\\n\\n    function getDrawBuffer() external view returns (IDrawBuffer) {\\n        return drawBuffer;\\n    }\\n\\n    function getNextDrawId() external view returns (uint32) {\\n        return nextDrawId;\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function getLastRngLockBlock() external view override returns (uint32) {\\n        return rngRequest.lockBlock;\\n    }\\n\\n    function getLastRngRequestId() external view override returns (uint32) {\\n        return rngRequest.id;\\n    }\\n\\n    function getRngService() external view returns (RNGInterface) {\\n        return rng;\\n    }\\n\\n    function getRngTimeout() external view returns (uint32) {\\n        return rngTimeout;\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function isBeaconPeriodOver() external view override returns (bool) {\\n        return _isBeaconPeriodOver();\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function setDrawBuffer(IDrawBuffer newDrawBuffer)\\n        external\\n        override\\n        onlyOwner\\n        returns (IDrawBuffer)\\n    {\\n        return _setDrawBuffer(newDrawBuffer);\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function startDraw() external override requireCanStartDraw {\\n        (address feeToken, uint256 requestFee) = rng.getRequestFee();\\n\\n        if (feeToken != address(0) && requestFee > 0) {\\n            IERC20(feeToken).safeApprove(address(rng), requestFee);\\n        }\\n\\n        (uint32 requestId, uint32 lockBlock) = rng.requestRandomNumber();\\n        rngRequest.id = requestId;\\n        rngRequest.lockBlock = lockBlock;\\n        rngRequest.requestedAt = _currentTime();\\n\\n        emit DrawStarted(requestId, lockBlock);\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function setBeaconPeriodSeconds(uint32 _beaconPeriodSeconds)\\n        external\\n        override\\n        onlyOwner\\n        requireDrawNotStarted\\n    {\\n        _setBeaconPeriodSeconds(_beaconPeriodSeconds);\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function setRngTimeout(uint32 _rngTimeout) external override onlyOwner requireDrawNotStarted {\\n        _setRngTimeout(_rngTimeout);\\n    }\\n\\n    /// @inheritdoc IDrawBeacon\\n    function setRngService(RNGInterface _rngService)\\n        external\\n        override\\n        onlyOwner\\n        requireDrawNotStarted\\n    {\\n        _setRngService(_rngService);\\n    }\\n\\n    /**\\n     * @notice Sets the RNG service that the Prize Strategy is connected to\\n     * @param _rngService The address of the new RNG service interface\\n     */\\n    function _setRngService(RNGInterface _rngService) internal\\n    {\\n        rng = _rngService;\\n        emit RngServiceUpdated(_rngService);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Calculates when the next beacon period will start\\n     * @param _beaconPeriodStartedAt The timestamp at which the beacon period started\\n     * @param _beaconPeriodSeconds The duration of the beacon period in seconds\\n     * @param _time The timestamp to use as the current time\\n     * @return The timestamp at which the next beacon period would start\\n     */\\n    function _calculateNextBeaconPeriodStartTime(\\n        uint64 _beaconPeriodStartedAt,\\n        uint32 _beaconPeriodSeconds,\\n        uint64 _time\\n    ) internal pure returns (uint64) {\\n        uint64 elapsedPeriods = (_time - _beaconPeriodStartedAt) / _beaconPeriodSeconds;\\n        return _beaconPeriodStartedAt + (elapsedPeriods * _beaconPeriodSeconds);\\n    }\\n\\n    /**\\n     * @notice returns the current time.  Used for testing.\\n     * @return The current time (block.timestamp)\\n     */\\n    function _currentTime() internal view virtual returns (uint64) {\\n        return uint64(block.timestamp);\\n    }\\n\\n    /**\\n     * @notice Returns the timestamp at which the beacon period ends\\n     * @return The timestamp at which the beacon period ends\\n     */\\n    function _beaconPeriodEndAt() internal view returns (uint64) {\\n        return beaconPeriodStartedAt + beaconPeriodSeconds;\\n    }\\n\\n    /**\\n     * @notice Returns the number of seconds remaining until the prize can be awarded.\\n     * @return The number of seconds remaining until the prize can be awarded.\\n     */\\n    function _beaconPeriodRemainingSeconds() internal view returns (uint64) {\\n        uint64 endAt = _beaconPeriodEndAt();\\n        uint64 time = _currentTime();\\n\\n        if (endAt <= time) {\\n            return 0;\\n        }\\n\\n        return endAt - time;\\n    }\\n\\n    /**\\n     * @notice Returns whether the beacon period is over.\\n     * @return True if the beacon period is over, false otherwise\\n     */\\n    function _isBeaconPeriodOver() internal view returns (bool) {\\n        return _beaconPeriodEndAt() <= _currentTime();\\n    }\\n\\n    /**\\n     * @notice Check to see draw is in progress.\\n     */\\n    function _requireDrawNotStarted() internal view {\\n        uint256 currentBlock = block.number;\\n\\n        require(\\n            rngRequest.lockBlock == 0 || currentBlock < rngRequest.lockBlock,\\n            \\\"DrawBeacon/rng-in-flight\\\"\\n        );\\n    }\\n\\n    /**\\n     * @notice Set global DrawBuffer variable.\\n     * @dev    All subsequent Draw requests/completions will be pushed to the new DrawBuffer.\\n     * @param _newDrawBuffer  DrawBuffer address\\n     * @return DrawBuffer\\n     */\\n    function _setDrawBuffer(IDrawBuffer _newDrawBuffer) internal returns (IDrawBuffer) {\\n        IDrawBuffer _previousDrawBuffer = drawBuffer;\\n        require(address(_newDrawBuffer) != address(0), \\\"DrawBeacon/draw-history-not-zero-address\\\");\\n\\n        require(\\n            address(_newDrawBuffer) != address(_previousDrawBuffer),\\n            \\\"DrawBeacon/existing-draw-history-address\\\"\\n        );\\n\\n        drawBuffer = _newDrawBuffer;\\n\\n        emit DrawBufferUpdated(_newDrawBuffer);\\n\\n        return _newDrawBuffer;\\n    }\\n\\n    /**\\n     * @notice Sets the beacon period in seconds.\\n     * @param _beaconPeriodSeconds The new beacon period in seconds.  Must be greater than zero.\\n     */\\n    function _setBeaconPeriodSeconds(uint32 _beaconPeriodSeconds) internal {\\n        require(_beaconPeriodSeconds > 0, \\\"DrawBeacon/beacon-period-greater-than-zero\\\");\\n        beaconPeriodSeconds = _beaconPeriodSeconds;\\n\\n        emit BeaconPeriodSecondsUpdated(_beaconPeriodSeconds);\\n    }\\n\\n    /**\\n     * @notice Sets the RNG request timeout in seconds.  This is the time that must elapsed before the RNG request can be cancelled and the pool unlocked.\\n     * @param _rngTimeout The RNG request timeout in seconds.\\n     */\\n    function _setRngTimeout(uint32 _rngTimeout) internal {\\n        require(_rngTimeout > 60, \\\"DrawBeacon/rng-timeout-gt-60-secs\\\");\\n        rngTimeout = _rngTimeout;\\n\\n        emit RngTimeoutSet(_rngTimeout);\\n    }\\n}\\n\",\"keccak256\":\"0xfaaa32030c6677cf36d0569f4007065233fa1957284c1fe421d48e39eee408b1\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/interfaces/IDrawBeacon.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@pooltogether/pooltogether-rng-contracts/contracts/RNGInterface.sol\\\";\\nimport \\\"./IDrawBuffer.sol\\\";\\n\\n/** @title  IDrawBeacon\\n  * @author PoolTogether Inc Team\\n  * @notice The DrawBeacon interface.\\n*/\\ninterface IDrawBeacon {\\n\\n    /// @notice Draw struct created every draw\\n    /// @param winningRandomNumber The random number returned from the RNG service\\n    /// @param drawId The monotonically increasing drawId for each draw\\n    /// @param timestamp Unix timestamp of the draw. Recorded when the draw is created by the DrawBeacon.\\n    /// @param beaconPeriodStartedAt Unix timestamp of when the draw started\\n    /// @param beaconPeriodSeconds Unix timestamp of the beacon draw period for this draw.\\n    struct Draw {\\n        uint256 winningRandomNumber;\\n        uint32 drawId;\\n        uint64 timestamp;\\n        uint64 beaconPeriodStartedAt;\\n        uint32 beaconPeriodSeconds;\\n    }\\n\\n    /**\\n     * @notice Emit when a new DrawBuffer has been set.\\n     * @param newDrawBuffer       The new DrawBuffer address\\n     */\\n    event DrawBufferUpdated(IDrawBuffer indexed newDrawBuffer);\\n\\n    /**\\n     * @notice Emit when a draw has opened.\\n     * @param startedAt Start timestamp\\n     */\\n    event BeaconPeriodStarted(uint64 indexed startedAt);\\n\\n    /**\\n     * @notice Emit when a draw has started.\\n     * @param rngRequestId  draw id\\n     * @param rngLockBlock  Block when draw becomes invalid\\n     */\\n    event DrawStarted(uint32 indexed rngRequestId, uint32 rngLockBlock);\\n\\n    /**\\n     * @notice Emit when a draw has been cancelled.\\n     * @param rngRequestId  draw id\\n     * @param rngLockBlock  Block when draw becomes invalid\\n     */\\n    event DrawCancelled(uint32 indexed rngRequestId, uint32 rngLockBlock);\\n\\n    /**\\n     * @notice Emit when a draw has been completed.\\n     * @param randomNumber  Random number generated from draw\\n     */\\n    event DrawCompleted(uint256 randomNumber);\\n\\n    /**\\n     * @notice Emit when a RNG service address is set.\\n     * @param rngService  RNG service address\\n     */\\n    event RngServiceUpdated(RNGInterface indexed rngService);\\n\\n    /**\\n     * @notice Emit when a draw timeout param is set.\\n     * @param rngTimeout  draw timeout param in seconds\\n     */\\n    event RngTimeoutSet(uint32 rngTimeout);\\n\\n    /**\\n     * @notice Emit when the drawPeriodSeconds is set.\\n     * @param drawPeriodSeconds Time between draw\\n     */\\n    event BeaconPeriodSecondsUpdated(uint32 drawPeriodSeconds);\\n\\n    /**\\n     * @notice Returns the number of seconds remaining until the beacon period can be complete.\\n     * @return The number of seconds remaining until the beacon period can be complete.\\n     */\\n    function beaconPeriodRemainingSeconds() external view returns (uint64);\\n\\n    /**\\n     * @notice Returns the timestamp at which the beacon period ends\\n     * @return The timestamp at which the beacon period ends.\\n     */\\n    function beaconPeriodEndAt() external view returns (uint64);\\n\\n    /**\\n     * @notice Returns whether a Draw can be started.\\n     * @return True if a Draw can be started, false otherwise.\\n     */\\n    function canStartDraw() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether a Draw can be completed.\\n     * @return True if a Draw can be completed, false otherwise.\\n     */\\n    function canCompleteDraw() external view returns (bool);\\n\\n    /**\\n     * @notice Calculates when the next beacon period will start.\\n     * @param time The timestamp to use as the current time\\n     * @return The timestamp at which the next beacon period would start\\n     */\\n    function calculateNextBeaconPeriodStartTime(uint256 time) external view returns (uint64);\\n\\n    /**\\n     * @notice Can be called by anyone to cancel the draw request if the RNG has timed out.\\n     */\\n    function cancelDraw() external;\\n\\n    /**\\n     * @notice Completes the Draw (RNG) request and pushes a Draw onto DrawBuffer.\\n     */\\n    function completeDraw() external;\\n\\n    /**\\n     * @notice Returns the block number that the current RNG request has been locked to.\\n     * @return The block number that the RNG request is locked to\\n     */\\n    function getLastRngLockBlock() external view returns (uint32);\\n\\n    /**\\n     * @notice Returns the current RNG Request ID.\\n     * @return The current Request ID\\n     */\\n    function getLastRngRequestId() external view returns (uint32);\\n\\n    /**\\n     * @notice Returns whether the beacon period is over\\n     * @return True if the beacon period is over, false otherwise\\n     */\\n    function isBeaconPeriodOver() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether the random number request has completed.\\n     * @return True if a random number request has completed, false otherwise.\\n     */\\n    function isRngCompleted() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether a random number has been requested\\n     * @return True if a random number has been requested, false otherwise.\\n     */\\n    function isRngRequested() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether the random number request has timed out.\\n     * @return True if a random number request has timed out, false otherwise.\\n     */\\n    function isRngTimedOut() external view returns (bool);\\n\\n    /**\\n     * @notice Allows the owner to set the beacon period in seconds.\\n     * @param beaconPeriodSeconds The new beacon period in seconds.  Must be greater than zero.\\n     */\\n    function setBeaconPeriodSeconds(uint32 beaconPeriodSeconds) external;\\n\\n    /**\\n     * @notice Allows the owner to set the RNG request timeout in seconds. This is the time that must elapsed before the RNG request can be cancelled and the pool unlocked.\\n     * @param rngTimeout The RNG request timeout in seconds.\\n     */\\n    function setRngTimeout(uint32 rngTimeout) external;\\n\\n    /**\\n     * @notice Sets the RNG service that the Prize Strategy is connected to\\n     * @param rngService The address of the new RNG service interface\\n     */\\n    function setRngService(RNGInterface rngService) external;\\n\\n    /**\\n     * @notice Starts the Draw process by starting random number request. The previous beacon period must have ended.\\n     * @dev The RNG-Request-Fee is expected to be held within this contract before calling this function\\n     */\\n    function startDraw() external;\\n\\n    /**\\n     * @notice Set global DrawBuffer variable.\\n     * @dev    All subsequent Draw requests/completions will be pushed to the new DrawBuffer.\\n     * @param newDrawBuffer DrawBuffer address\\n     * @return DrawBuffer\\n     */\\n    function setDrawBuffer(IDrawBuffer newDrawBuffer) external returns (IDrawBuffer);\\n}\\n\",\"keccak256\":\"0xfcf5d245779b42835e2b6f2d22dbdef5bb2102d20eaa247e39a9e0198c59dda2\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/interfaces/IDrawBuffer.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"../interfaces/IDrawBeacon.sol\\\";\\n\\n/** @title  IDrawBuffer\\n  * @author PoolTogether Inc Team\\n  * @notice The DrawBuffer interface.\\n*/\\ninterface IDrawBuffer {\\n    /**\\n     * @notice Emit when a new draw has been created.\\n     * @param drawId Draw id\\n     * @param draw The Draw struct\\n     */\\n    event DrawSet(uint32 indexed drawId, IDrawBeacon.Draw draw);\\n\\n    /**\\n     * @notice Read a ring buffer cardinality\\n     * @return Ring buffer cardinality\\n     */\\n    function getBufferCardinality() external view returns (uint32);\\n\\n    /**\\n     * @notice Read a Draw from the draws ring buffer.\\n     * @dev    Read a Draw using the Draw.drawId to calculate position in the draws ring buffer.\\n     * @param drawId Draw.drawId\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getDraw(uint32 drawId) external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Read multiple Draws from the draws ring buffer.\\n     * @dev    Read multiple Draws using each drawId to calculate position in the draws ring buffer.\\n     * @param drawIds Array of drawIds\\n     * @return IDrawBeacon.Draw[]\\n     */\\n    function getDraws(uint32[] calldata drawIds) external view returns (IDrawBeacon.Draw[] memory);\\n\\n    /**\\n     * @notice Gets the number of Draws held in the draw ring buffer.\\n     * @dev If no Draws have been pushed, it will return 0.\\n     * @dev If the ring buffer is full, it will return the cardinality.\\n     * @dev Otherwise, it will return the NewestDraw index + 1.\\n     * @return Number of Draws held in the draw ring buffer.\\n     */\\n    function getDrawCount() external view returns (uint32);\\n\\n    /**\\n     * @notice Read newest Draw from draws ring buffer.\\n     * @dev    Uses the nextDrawIndex to calculate the most recently added Draw.\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getNewestDraw() external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Read oldest Draw from draws ring buffer.\\n     * @dev    Finds the oldest Draw by comparing and/or diffing totalDraws with the cardinality.\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getOldestDraw() external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Push Draw onto draws ring buffer history.\\n     * @dev    Push new draw onto draws history via authorized manager or owner.\\n     * @param draw IDrawBeacon.Draw\\n     * @return Draw.drawId\\n     */\\n    function pushDraw(IDrawBeacon.Draw calldata draw) external returns (uint32);\\n\\n    /**\\n     * @notice Set existing Draw in draws ring buffer with new parameters.\\n     * @dev    Updating a Draw should be used sparingly and only in the event an incorrect Draw parameter has been stored.\\n     * @param newDraw IDrawBeacon.Draw\\n     * @return Draw.drawId\\n     */\\n    function setDraw(IDrawBeacon.Draw calldata newDraw) external returns (uint32);\\n}\\n\",\"keccak256\":\"0x209ff20406b6b45ff5eff40af05c41a5d697441fc84e2e015e6828d874ccaa83\",\"license\":\"GPL-3.0\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b50604051620024683803806200246883398101604081905262000034916200058e565b86620000408162000238565b506000836001600160401b031611620000a25760405162461bcd60e51b815260206004820152602a6024820152600080516020620024488339815191526044820152692d7468616e2d7a65726f60b01b60648201526084015b60405180910390fd5b6001600160a01b038516620000fa5760405162461bcd60e51b815260206004820152601760248201527f44726177426561636f6e2f726e672d6e6f742d7a65726f000000000000000000604482015260640162000099565b60018463ffffffff161015620001535760405162461bcd60e51b815260206004820152601f60248201527f44726177426561636f6e2f6e6578742d647261772d69642d6774652d6f6e6500604482015260640162000099565b6005805463ffffffff861668010000000000000000026001600160601b03199091166001600160401b038616171790556200018e8262000288565b62000199866200033d565b50620001a58562000473565b620001b081620004bd565b6040805163ffffffff861681526001600160401b03851660208201527f3125f2f28108d5eabe48aa2a11adff21d6f9244f0436278992999404ba4fc5ad910160405180910390a16040516001600160401b038416907f9e5f7e6ac833c4735b5548bbeec59dac4d413789aa351fbe11a654dac0c4306c90600090a25050505050505062000652565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60008163ffffffff1611620002e25760405162461bcd60e51b815260206004820152602a6024820152600080516020620024488339815191526044820152692d7468616e2d7a65726f60b01b606482015260840162000099565b6004805463ffffffff60c01b1916600160c01b63ffffffff8416908102919091179091556040519081527f4727494dbd863e2084366f539d6ec569aaf7ab78582a34f006f004266777cd19906020015b60405180910390a150565b6004546000906001600160a01b03908116908316620003b05760405162461bcd60e51b815260206004820152602860248201527f44726177426561636f6e2f647261772d686973746f72792d6e6f742d7a65726f6044820152672d6164647265737360c01b606482015260840162000099565b806001600160a01b0316836001600160a01b03161415620004255760405162461bcd60e51b815260206004820152602860248201527f44726177426561636f6e2f6578697374696e672d647261772d686973746f72796044820152672d6164647265737360c01b606482015260840162000099565b600480546001600160a01b0319166001600160a01b0385169081179091556040517feb70b03fab908e126e5efc33f8dfd2731fa89c716282a86769025f8dd4a6c1e090600090a25090919050565b600280546001600160a01b0319166001600160a01b0383169081179091556040517ff935763cc7c57ee8ed6318ed71e756cca0731294c9f46ff5b386f36d6ff1417a90600090a250565b603c8163ffffffff16116200051f5760405162461bcd60e51b815260206004820152602160248201527f44726177426561636f6e2f726e672d74696d656f75742d67742d36302d7365636044820152607360f81b606482015260840162000099565b6004805463ffffffff60a01b1916600160a01b63ffffffff8416908102919091179091556040519081527f521671714dd36d366adf3fe2efec91d3f58a3131aad68e268821d8144b5d08459060200162000332565b805163ffffffff811681146200058957600080fd5b919050565b600080600080600080600060e0888a031215620005aa57600080fd5b8751620005b78162000639565b6020890151909750620005ca8162000639565b6040890151909650620005dd8162000639565b9450620005ed6060890162000574565b60808901519094506001600160401b03811681146200060b57600080fd5b92506200061b60a0890162000574565b91506200062b60c0890162000574565b905092959891949750929550565b6001600160a01b03811681146200064f57600080fd5b50565b611de680620006626000396000f3fe608060405234801561001057600080fd5b50600436106101da5760003560e01c8063738bbea811610104578063a104fd79116100a2578063e11fb2bd11610071578063e11fb2bd146103aa578063e30c3978146103bd578063e4a75bb8146103ce578063f2fde38b146103d657600080fd5b8063a104fd791461036d578063ab70d49c14610375578063c57708c214610388578063d1e77657146103a257600080fd5b80637f4296d7116100de5780637f4296d71461032e57806389c36f8e146103415780638da5cb5b14610349578063919bead01461035a57600080fd5b8063738bbea81461030d57806375e38f16146103155780637ce52b181461031d57600080fd5b80633e7a39081161017c5780634e71e0c81161014b5780634e71e0c8146102d45780635020ea56146102dc5780636bea5344146102ef578063715018a61461030557600080fd5b80633e7a39081461028a5780634019f2d61461029f578063412a616a146102c45780634aba4f6b146102cc57600080fd5b80631b5344a2116101b85780631b5344a2146102165780632a7ad6091461024d5780632ae168a61461025b57806339f92c301461026357600080fd5b80630996f6e1146101df5780630bdeecbd146101fc578063111070e414610206575b600080fd5b6101e76103e9565b60405190151581526020015b60405180910390f35b61020461040a565b005b60035463ffffffff1615156101e7565b60045474010000000000000000000000000000000000000000900463ffffffff165b60405163ffffffff90911681526020016101f3565b60035463ffffffff16610238565b6102046107b9565b60055467ffffffffffffffff165b60405167ffffffffffffffff90911681526020016101f3565b600454600160c01b900463ffffffff16610238565b6004546001600160a01b03165b6040516001600160a01b0390911681526020016101f3565b610204610aae565b6101e7610b78565b610204610c17565b6102046102ea366004611b57565b610ca5565b600354640100000000900463ffffffff16610238565b610204610d22565b6101e7610d97565b610271610e16565b6002546001600160a01b03166102ac565b61020461033c366004611ab8565b610e20565b610271610e9a565b6000546001600160a01b03166102ac565b610204610368366004611b57565b610ec7565b610271610f41565b6102ac610383366004611ab8565b610f4b565b60055468010000000000000000900463ffffffff16610238565b6101e7610fc5565b6102716103b8366004611b25565b610fcf565b6001546001600160a01b03166102ac565b6101e7610ffc565b6102046103e4366004611ab8565b61101e565b60006103f361115a565b8015610405575060035463ffffffff16155b905090565b60035463ffffffff166104645760405162461bcd60e51b815260206004820152601c60248201527f44726177426561636f6e2f726e672d6e6f742d7265717565737465640000000060448201526064015b60405180910390fd5b61046c610b78565b6104b85760405162461bcd60e51b815260206004820152601b60248201527f44726177426561636f6e2f726e672d6e6f742d636f6d706c6574650000000000604482015260640161045b565b6002546003546040517f9d2a5f9800000000000000000000000000000000000000000000000000000000815263ffffffff90911660048201526000916001600160a01b031690639d2a5f9890602401602060405180830381600087803b15801561052157600080fd5b505af1158015610535573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105599190611b3e565b60055460045491925063ffffffff68010000000000000000820481169267ffffffffffffffff90921691600160c01b90041660006105944290565b6040805160a08101825287815263ffffffff8781166020830190815260035468010000000000000000900467ffffffffffffffff90811684860190815289821660608601908152898516608087019081526004805498517f089eb925000000000000000000000000000000000000000000000000000000008152885191810191909152945186166024860152915183166044850152519091166064830152519091166084820152929350916001600160a01b039091169063089eb9259060a401602060405180830381600087803b15801561066e57600080fd5b505af1158015610682573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106a69190611b74565b5060006106b4858585611180565b6005805467ffffffffffffffff191667ffffffffffffffff831617905590506106de866001611c38565b6005805463ffffffff9290921668010000000000000000027fffffffffffffffffffffffffffffffffffffffff00000000ffffffffffffffff909216919091179055600380547fffffffffffffffffffffffffffffffff000000000000000000000000000000001690556040518781527f13f646a3648ee5b5a0e8d6bc3d2d623fddf38fa7c8c5dfdbdbe6a913112edc6c9060200160405180910390a160405167ffffffffffffffff8216907f9e5f7e6ac833c4735b5548bbeec59dac4d413789aa351fbe11a654dac0c4306c90600090a250505050505050565b6107c161115a565b6108335760405162461bcd60e51b815260206004820152602160248201527f44726177426561636f6e2f626561636f6e2d706572696f642d6e6f742d6f766560448201527f7200000000000000000000000000000000000000000000000000000000000000606482015260840161045b565b60035463ffffffff16156108895760405162461bcd60e51b815260206004820181905260248201527f44726177426561636f6e2f726e672d616c72656164792d726571756573746564604482015260640161045b565b600254604080517f0d37b537000000000000000000000000000000000000000000000000000000008152815160009384936001600160a01b0390911692630d37b5379260048083019392829003018186803b1580156108e757600080fd5b505afa1580156108fb573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061091f9190611ad5565b90925090506001600160a01b0382161580159061093c5750600081115b1561095b5760025461095b906001600160a01b038481169116836111c5565b600254604080517f8678a7b2000000000000000000000000000000000000000000000000000000008152815160009384936001600160a01b0390911692638678a7b2926004808301939282900301818787803b1580156109ba57600080fd5b505af11580156109ce573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109f29190611b91565b6003805463ffffffff8084166401000000000267ffffffffffffffff19909216908516171790559092509050610a254290565b6003805467ffffffffffffffff9290921668010000000000000000027fffffffffffffffffffffffffffffffff0000000000000000ffffffffffffffff90921691909117905560405163ffffffff82811682528316907f0de3a7af7d3c2126e4fb96a7065b39f8bb17e3b9111c092e11236942fb38ca619060200160405180910390a250505050565b610ab6610d97565b610b025760405162461bcd60e51b815260206004820152601b60248201527f44726177426561636f6e2f726e672d6e6f742d74696d65646f75740000000000604482015260640161045b565b600380547fffffffffffffffffffffffffffffffff00000000000000000000000000000000811690915560405163ffffffff640100000000830481168083529216919082907f67638a3a7093a89cc6046dca58aa93d6343e30847e8f84fc3759d9d4a3e6e38b9060200160405180910390a25050565b6002546003546040517f3a19b9bc00000000000000000000000000000000000000000000000000000000815263ffffffff90911660048201526000916001600160a01b031690633a19b9bc9060240160206040518083038186803b158015610bdf57600080fd5b505afa158015610bf3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104059190611b03565b6001546001600160a01b03163314610c715760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e657200604482015260640161045b565b600154610c86906001600160a01b031661135e565b6001805473ffffffffffffffffffffffffffffffffffffffff19169055565b33610cb86000546001600160a01b031690565b6001600160a01b031614610d0e5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610d166113bb565b610d1f81611435565b50565b33610d356000546001600160a01b031690565b6001600160a01b031614610d8b5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610d95600061135e565b565b60035460009068010000000000000000900467ffffffffffffffff16610dbd5750600090565b4260035460045467ffffffffffffffff92831692610e0692680100000000000000009004169074010000000000000000000000000000000000000000900463ffffffff16611c60565b67ffffffffffffffff1610905090565b6000610405611535565b33610e336000546001600160a01b031690565b6001600160a01b031614610e895760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610e916113bb565b610d1f81611571565b6005546004546000916104059167ffffffffffffffff90911690600160c01b900463ffffffff1642611180565b33610eda6000546001600160a01b031690565b6001600160a01b031614610f305760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610f386113bb565b610d1f816115c8565b60006104056116b0565b600033610f606000546001600160a01b031690565b6001600160a01b031614610fb65760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610fbf826116db565b92915050565b600061040561115a565b600554600454600091610fbf9167ffffffffffffffff90911690600160c01b900463ffffffff1684611180565b600061100f60035463ffffffff16151590565b80156104055750610405610b78565b336110316000546001600160a01b031690565b6001600160a01b0316146110875760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b6001600160a01b0381166111035760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d616460448201527f6472657373000000000000000000000000000000000000000000000000000000606482015260840161045b565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b60004267ffffffffffffffff1661116f6116b0565b67ffffffffffffffff161115905090565b60008063ffffffff84166111948685611d01565b61119e9190611c83565b90506111b063ffffffff851682611cd1565b6111ba9086611c60565b9150505b9392505050565b80158061126757506040517fdd62ed3e0000000000000000000000000000000000000000000000000000000081523060048201526001600160a01b03838116602483015284169063dd62ed3e9060440160206040518083038186803b15801561122d57600080fd5b505afa158015611241573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906112659190611b3e565b155b6112d95760405162461bcd60e51b815260206004820152603660248201527f5361666545524332303a20617070726f76652066726f6d206e6f6e2d7a65726f60448201527f20746f206e6f6e2d7a65726f20616c6c6f77616e636500000000000000000000606482015260840161045b565b604080516001600160a01b038416602482015260448082018490528251808303909101815260649091019091526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f095ea7b300000000000000000000000000000000000000000000000000000000179052611359908490611844565b505050565b600080546001600160a01b0383811673ffffffffffffffffffffffffffffffffffffffff19831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6003544390640100000000900463ffffffff1615806113e95750600354640100000000900463ffffffff1681105b610d1f5760405162461bcd60e51b815260206004820152601860248201527f44726177426561636f6e2f726e672d696e2d666c696768740000000000000000604482015260640161045b565b603c8163ffffffff16116114b15760405162461bcd60e51b815260206004820152602160248201527f44726177426561636f6e2f726e672d74696d656f75742d67742d36302d73656360448201527f7300000000000000000000000000000000000000000000000000000000000000606482015260840161045b565b600480547fffffffffffffffff00000000ffffffffffffffffffffffffffffffffffffffff167401000000000000000000000000000000000000000063ffffffff8416908102919091179091556040519081527f521671714dd36d366adf3fe2efec91d3f58a3131aad68e268821d8144b5d0845906020015b60405180910390a150565b6000806115406116b0565b90504267ffffffffffffffff808216908316116115605760009250505090565b61156a8183611d01565b9250505090565b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517ff935763cc7c57ee8ed6318ed71e756cca0731294c9f46ff5b386f36d6ff1417a90600090a250565b60008163ffffffff16116116445760405162461bcd60e51b815260206004820152602a60248201527f44726177426561636f6e2f626561636f6e2d706572696f642d6772656174657260448201527f2d7468616e2d7a65726f00000000000000000000000000000000000000000000606482015260840161045b565b600480547fffffffff00000000ffffffffffffffffffffffffffffffffffffffffffffffff16600160c01b63ffffffff8416908102919091179091556040519081527f4727494dbd863e2084366f539d6ec569aaf7ab78582a34f006f004266777cd199060200161152a565b60045460055460009161040591600160c01b90910463ffffffff169067ffffffffffffffff16611c60565b6004546000906001600160a01b039081169083166117615760405162461bcd60e51b815260206004820152602860248201527f44726177426561636f6e2f647261772d686973746f72792d6e6f742d7a65726f60448201527f2d61646472657373000000000000000000000000000000000000000000000000606482015260840161045b565b806001600160a01b0316836001600160a01b031614156117e95760405162461bcd60e51b815260206004820152602860248201527f44726177426561636f6e2f6578697374696e672d647261772d686973746f727960448201527f2d61646472657373000000000000000000000000000000000000000000000000606482015260840161045b565b6004805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0385169081179091556040517feb70b03fab908e126e5efc33f8dfd2731fa89c716282a86769025f8dd4a6c1e090600090a25090919050565b6000611899826040518060400160405280602081526020017f5361666545524332303a206c6f772d6c6576656c2063616c6c206661696c6564815250856001600160a01b03166119299092919063ffffffff16565b80519091501561135957808060200190518101906118b79190611b03565b6113595760405162461bcd60e51b815260206004820152602a60248201527f5361666545524332303a204552433230206f7065726174696f6e20646964206e60448201527f6f74207375636365656400000000000000000000000000000000000000000000606482015260840161045b565b60606119388484600085611940565b949350505050565b6060824710156119b85760405162461bcd60e51b815260206004820152602660248201527f416464726573733a20696e73756666696369656e742062616c616e636520666f60448201527f722063616c6c0000000000000000000000000000000000000000000000000000606482015260840161045b565b843b611a065760405162461bcd60e51b815260206004820152601d60248201527f416464726573733a2063616c6c20746f206e6f6e2d636f6e7472616374000000604482015260640161045b565b600080866001600160a01b03168587604051611a229190611bcb565b60006040518083038185875af1925050503d8060008114611a5f576040519150601f19603f3d011682016040523d82523d6000602084013e611a64565b606091505b5091509150611a74828286611a7f565b979650505050505050565b60608315611a8e5750816111be565b825115611a9e5782518084602001fd5b8160405162461bcd60e51b815260040161045b9190611be7565b600060208284031215611aca57600080fd5b81356111be81611d89565b60008060408385031215611ae857600080fd5b8251611af381611d89565b6020939093015192949293505050565b600060208284031215611b1557600080fd5b815180151581146111be57600080fd5b600060208284031215611b3757600080fd5b5035919050565b600060208284031215611b5057600080fd5b5051919050565b600060208284031215611b6957600080fd5b81356111be81611d9e565b600060208284031215611b8657600080fd5b81516111be81611d9e565b60008060408385031215611ba457600080fd5b8251611baf81611d9e565b6020840151909250611bc081611d9e565b809150509250929050565b60008251611bdd818460208701611d2a565b9190910192915050565b6020815260008251806020840152611c06816040850160208701611d2a565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169190910160400192915050565b600063ffffffff808316818516808303821115611c5757611c57611d5a565b01949350505050565b600067ffffffffffffffff808316818516808303821115611c5757611c57611d5a565b600067ffffffffffffffff80841680611cc5577f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b92169190910492915050565b600067ffffffffffffffff80831681851681830481118215151615611cf857611cf8611d5a565b02949350505050565b600067ffffffffffffffff83811690831681811015611d2257611d22611d5a565b039392505050565b60005b83811015611d45578181015183820152602001611d2d565b83811115611d54576000848401525b50505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6001600160a01b0381168114610d1f57600080fd5b63ffffffff81168114610d1f57600080fdfea26469706673582212200560bb25becf6eb3464def583002e9d06bfe47cbec6708ff15307d855acca46764736f6c6343000806003344726177426561636f6e2f626561636f6e2d706572696f642d67726561746572",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101da5760003560e01c8063738bbea811610104578063a104fd79116100a2578063e11fb2bd11610071578063e11fb2bd146103aa578063e30c3978146103bd578063e4a75bb8146103ce578063f2fde38b146103d657600080fd5b8063a104fd791461036d578063ab70d49c14610375578063c57708c214610388578063d1e77657146103a257600080fd5b80637f4296d7116100de5780637f4296d71461032e57806389c36f8e146103415780638da5cb5b14610349578063919bead01461035a57600080fd5b8063738bbea81461030d57806375e38f16146103155780637ce52b181461031d57600080fd5b80633e7a39081161017c5780634e71e0c81161014b5780634e71e0c8146102d45780635020ea56146102dc5780636bea5344146102ef578063715018a61461030557600080fd5b80633e7a39081461028a5780634019f2d61461029f578063412a616a146102c45780634aba4f6b146102cc57600080fd5b80631b5344a2116101b85780631b5344a2146102165780632a7ad6091461024d5780632ae168a61461025b57806339f92c301461026357600080fd5b80630996f6e1146101df5780630bdeecbd146101fc578063111070e414610206575b600080fd5b6101e76103e9565b60405190151581526020015b60405180910390f35b61020461040a565b005b60035463ffffffff1615156101e7565b60045474010000000000000000000000000000000000000000900463ffffffff165b60405163ffffffff90911681526020016101f3565b60035463ffffffff16610238565b6102046107b9565b60055467ffffffffffffffff165b60405167ffffffffffffffff90911681526020016101f3565b600454600160c01b900463ffffffff16610238565b6004546001600160a01b03165b6040516001600160a01b0390911681526020016101f3565b610204610aae565b6101e7610b78565b610204610c17565b6102046102ea366004611b57565b610ca5565b600354640100000000900463ffffffff16610238565b610204610d22565b6101e7610d97565b610271610e16565b6002546001600160a01b03166102ac565b61020461033c366004611ab8565b610e20565b610271610e9a565b6000546001600160a01b03166102ac565b610204610368366004611b57565b610ec7565b610271610f41565b6102ac610383366004611ab8565b610f4b565b60055468010000000000000000900463ffffffff16610238565b6101e7610fc5565b6102716103b8366004611b25565b610fcf565b6001546001600160a01b03166102ac565b6101e7610ffc565b6102046103e4366004611ab8565b61101e565b60006103f361115a565b8015610405575060035463ffffffff16155b905090565b60035463ffffffff166104645760405162461bcd60e51b815260206004820152601c60248201527f44726177426561636f6e2f726e672d6e6f742d7265717565737465640000000060448201526064015b60405180910390fd5b61046c610b78565b6104b85760405162461bcd60e51b815260206004820152601b60248201527f44726177426561636f6e2f726e672d6e6f742d636f6d706c6574650000000000604482015260640161045b565b6002546003546040517f9d2a5f9800000000000000000000000000000000000000000000000000000000815263ffffffff90911660048201526000916001600160a01b031690639d2a5f9890602401602060405180830381600087803b15801561052157600080fd5b505af1158015610535573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105599190611b3e565b60055460045491925063ffffffff68010000000000000000820481169267ffffffffffffffff90921691600160c01b90041660006105944290565b6040805160a08101825287815263ffffffff8781166020830190815260035468010000000000000000900467ffffffffffffffff90811684860190815289821660608601908152898516608087019081526004805498517f089eb925000000000000000000000000000000000000000000000000000000008152885191810191909152945186166024860152915183166044850152519091166064830152519091166084820152929350916001600160a01b039091169063089eb9259060a401602060405180830381600087803b15801561066e57600080fd5b505af1158015610682573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106a69190611b74565b5060006106b4858585611180565b6005805467ffffffffffffffff191667ffffffffffffffff831617905590506106de866001611c38565b6005805463ffffffff9290921668010000000000000000027fffffffffffffffffffffffffffffffffffffffff00000000ffffffffffffffff909216919091179055600380547fffffffffffffffffffffffffffffffff000000000000000000000000000000001690556040518781527f13f646a3648ee5b5a0e8d6bc3d2d623fddf38fa7c8c5dfdbdbe6a913112edc6c9060200160405180910390a160405167ffffffffffffffff8216907f9e5f7e6ac833c4735b5548bbeec59dac4d413789aa351fbe11a654dac0c4306c90600090a250505050505050565b6107c161115a565b6108335760405162461bcd60e51b815260206004820152602160248201527f44726177426561636f6e2f626561636f6e2d706572696f642d6e6f742d6f766560448201527f7200000000000000000000000000000000000000000000000000000000000000606482015260840161045b565b60035463ffffffff16156108895760405162461bcd60e51b815260206004820181905260248201527f44726177426561636f6e2f726e672d616c72656164792d726571756573746564604482015260640161045b565b600254604080517f0d37b537000000000000000000000000000000000000000000000000000000008152815160009384936001600160a01b0390911692630d37b5379260048083019392829003018186803b1580156108e757600080fd5b505afa1580156108fb573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061091f9190611ad5565b90925090506001600160a01b0382161580159061093c5750600081115b1561095b5760025461095b906001600160a01b038481169116836111c5565b600254604080517f8678a7b2000000000000000000000000000000000000000000000000000000008152815160009384936001600160a01b0390911692638678a7b2926004808301939282900301818787803b1580156109ba57600080fd5b505af11580156109ce573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109f29190611b91565b6003805463ffffffff8084166401000000000267ffffffffffffffff19909216908516171790559092509050610a254290565b6003805467ffffffffffffffff9290921668010000000000000000027fffffffffffffffffffffffffffffffff0000000000000000ffffffffffffffff90921691909117905560405163ffffffff82811682528316907f0de3a7af7d3c2126e4fb96a7065b39f8bb17e3b9111c092e11236942fb38ca619060200160405180910390a250505050565b610ab6610d97565b610b025760405162461bcd60e51b815260206004820152601b60248201527f44726177426561636f6e2f726e672d6e6f742d74696d65646f75740000000000604482015260640161045b565b600380547fffffffffffffffffffffffffffffffff00000000000000000000000000000000811690915560405163ffffffff640100000000830481168083529216919082907f67638a3a7093a89cc6046dca58aa93d6343e30847e8f84fc3759d9d4a3e6e38b9060200160405180910390a25050565b6002546003546040517f3a19b9bc00000000000000000000000000000000000000000000000000000000815263ffffffff90911660048201526000916001600160a01b031690633a19b9bc9060240160206040518083038186803b158015610bdf57600080fd5b505afa158015610bf3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104059190611b03565b6001546001600160a01b03163314610c715760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e657200604482015260640161045b565b600154610c86906001600160a01b031661135e565b6001805473ffffffffffffffffffffffffffffffffffffffff19169055565b33610cb86000546001600160a01b031690565b6001600160a01b031614610d0e5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610d166113bb565b610d1f81611435565b50565b33610d356000546001600160a01b031690565b6001600160a01b031614610d8b5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610d95600061135e565b565b60035460009068010000000000000000900467ffffffffffffffff16610dbd5750600090565b4260035460045467ffffffffffffffff92831692610e0692680100000000000000009004169074010000000000000000000000000000000000000000900463ffffffff16611c60565b67ffffffffffffffff1610905090565b6000610405611535565b33610e336000546001600160a01b031690565b6001600160a01b031614610e895760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610e916113bb565b610d1f81611571565b6005546004546000916104059167ffffffffffffffff90911690600160c01b900463ffffffff1642611180565b33610eda6000546001600160a01b031690565b6001600160a01b031614610f305760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610f386113bb565b610d1f816115c8565b60006104056116b0565b600033610f606000546001600160a01b031690565b6001600160a01b031614610fb65760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b610fbf826116db565b92915050565b600061040561115a565b600554600454600091610fbf9167ffffffffffffffff90911690600160c01b900463ffffffff1684611180565b600061100f60035463ffffffff16151590565b80156104055750610405610b78565b336110316000546001600160a01b031690565b6001600160a01b0316146110875760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e65720000000000000000604482015260640161045b565b6001600160a01b0381166111035760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d616460448201527f6472657373000000000000000000000000000000000000000000000000000000606482015260840161045b565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b60004267ffffffffffffffff1661116f6116b0565b67ffffffffffffffff161115905090565b60008063ffffffff84166111948685611d01565b61119e9190611c83565b90506111b063ffffffff851682611cd1565b6111ba9086611c60565b9150505b9392505050565b80158061126757506040517fdd62ed3e0000000000000000000000000000000000000000000000000000000081523060048201526001600160a01b03838116602483015284169063dd62ed3e9060440160206040518083038186803b15801561122d57600080fd5b505afa158015611241573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906112659190611b3e565b155b6112d95760405162461bcd60e51b815260206004820152603660248201527f5361666545524332303a20617070726f76652066726f6d206e6f6e2d7a65726f60448201527f20746f206e6f6e2d7a65726f20616c6c6f77616e636500000000000000000000606482015260840161045b565b604080516001600160a01b038416602482015260448082018490528251808303909101815260649091019091526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f095ea7b300000000000000000000000000000000000000000000000000000000179052611359908490611844565b505050565b600080546001600160a01b0383811673ffffffffffffffffffffffffffffffffffffffff19831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6003544390640100000000900463ffffffff1615806113e95750600354640100000000900463ffffffff1681105b610d1f5760405162461bcd60e51b815260206004820152601860248201527f44726177426561636f6e2f726e672d696e2d666c696768740000000000000000604482015260640161045b565b603c8163ffffffff16116114b15760405162461bcd60e51b815260206004820152602160248201527f44726177426561636f6e2f726e672d74696d656f75742d67742d36302d73656360448201527f7300000000000000000000000000000000000000000000000000000000000000606482015260840161045b565b600480547fffffffffffffffff00000000ffffffffffffffffffffffffffffffffffffffff167401000000000000000000000000000000000000000063ffffffff8416908102919091179091556040519081527f521671714dd36d366adf3fe2efec91d3f58a3131aad68e268821d8144b5d0845906020015b60405180910390a150565b6000806115406116b0565b90504267ffffffffffffffff808216908316116115605760009250505090565b61156a8183611d01565b9250505090565b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517ff935763cc7c57ee8ed6318ed71e756cca0731294c9f46ff5b386f36d6ff1417a90600090a250565b60008163ffffffff16116116445760405162461bcd60e51b815260206004820152602a60248201527f44726177426561636f6e2f626561636f6e2d706572696f642d6772656174657260448201527f2d7468616e2d7a65726f00000000000000000000000000000000000000000000606482015260840161045b565b600480547fffffffff00000000ffffffffffffffffffffffffffffffffffffffffffffffff16600160c01b63ffffffff8416908102919091179091556040519081527f4727494dbd863e2084366f539d6ec569aaf7ab78582a34f006f004266777cd199060200161152a565b60045460055460009161040591600160c01b90910463ffffffff169067ffffffffffffffff16611c60565b6004546000906001600160a01b039081169083166117615760405162461bcd60e51b815260206004820152602860248201527f44726177426561636f6e2f647261772d686973746f72792d6e6f742d7a65726f60448201527f2d61646472657373000000000000000000000000000000000000000000000000606482015260840161045b565b806001600160a01b0316836001600160a01b031614156117e95760405162461bcd60e51b815260206004820152602860248201527f44726177426561636f6e2f6578697374696e672d647261772d686973746f727960448201527f2d61646472657373000000000000000000000000000000000000000000000000606482015260840161045b565b6004805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0385169081179091556040517feb70b03fab908e126e5efc33f8dfd2731fa89c716282a86769025f8dd4a6c1e090600090a25090919050565b6000611899826040518060400160405280602081526020017f5361666545524332303a206c6f772d6c6576656c2063616c6c206661696c6564815250856001600160a01b03166119299092919063ffffffff16565b80519091501561135957808060200190518101906118b79190611b03565b6113595760405162461bcd60e51b815260206004820152602a60248201527f5361666545524332303a204552433230206f7065726174696f6e20646964206e60448201527f6f74207375636365656400000000000000000000000000000000000000000000606482015260840161045b565b60606119388484600085611940565b949350505050565b6060824710156119b85760405162461bcd60e51b815260206004820152602660248201527f416464726573733a20696e73756666696369656e742062616c616e636520666f60448201527f722063616c6c0000000000000000000000000000000000000000000000000000606482015260840161045b565b843b611a065760405162461bcd60e51b815260206004820152601d60248201527f416464726573733a2063616c6c20746f206e6f6e2d636f6e7472616374000000604482015260640161045b565b600080866001600160a01b03168587604051611a229190611bcb565b60006040518083038185875af1925050503d8060008114611a5f576040519150601f19603f3d011682016040523d82523d6000602084013e611a64565b606091505b5091509150611a74828286611a7f565b979650505050505050565b60608315611a8e5750816111be565b825115611a9e5782518084602001fd5b8160405162461bcd60e51b815260040161045b9190611be7565b600060208284031215611aca57600080fd5b81356111be81611d89565b60008060408385031215611ae857600080fd5b8251611af381611d89565b6020939093015192949293505050565b600060208284031215611b1557600080fd5b815180151581146111be57600080fd5b600060208284031215611b3757600080fd5b5035919050565b600060208284031215611b5057600080fd5b5051919050565b600060208284031215611b6957600080fd5b81356111be81611d9e565b600060208284031215611b8657600080fd5b81516111be81611d9e565b60008060408385031215611ba457600080fd5b8251611baf81611d9e565b6020840151909250611bc081611d9e565b809150509250929050565b60008251611bdd818460208701611d2a565b9190910192915050565b6020815260008251806020840152611c06816040850160208701611d2a565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169190910160400192915050565b600063ffffffff808316818516808303821115611c5757611c57611d5a565b01949350505050565b600067ffffffffffffffff808316818516808303821115611c5757611c57611d5a565b600067ffffffffffffffff80841680611cc5577f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b92169190910492915050565b600067ffffffffffffffff80831681851681830481118215151615611cf857611cf8611d5a565b02949350505050565b600067ffffffffffffffff83811690831681811015611d2257611d22611d5a565b039392505050565b60005b83811015611d45578181015183820152602001611d2d565b83811115611d54576000848401525b50505050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6001600160a01b0381168114610d1f57600080fd5b63ffffffff81168114610d1f57600080fdfea26469706673582212200560bb25becf6eb3464def583002e9d06bfe47cbec6708ff15307d855acca46764736f6c63430008060033",
+  "devdoc": {
+    "author": "PoolTogether Inc Team",
+    "events": {
+      "Deployed(uint32,uint64)": {
+        "params": {
+          "beaconPeriodStartedAt": "Timestamp when beacon period starts.",
+          "nextDrawId": "Draw ID at which the DrawBeacon should start. Can't be inferior to 1."
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "beaconPeriodEndAt()": {
+        "returns": {
+          "_0": "The timestamp at which the beacon period ends."
+        }
+      },
+      "beaconPeriodRemainingSeconds()": {
+        "returns": {
+          "_0": "The number of seconds remaining until the beacon period can be complete."
+        }
+      },
+      "calculateNextBeaconPeriodStartTime(uint256)": {
+        "params": {
+          "time": "The timestamp to use as the current time"
+        },
+        "returns": {
+          "_0": "The timestamp at which the next beacon period would start"
+        }
+      },
+      "calculateNextBeaconPeriodStartTimeFromCurrentTime()": {
+        "returns": {
+          "_0": "The next beacon period start time"
+        }
+      },
+      "canCompleteDraw()": {
+        "returns": {
+          "_0": "True if a Draw can be completed, false otherwise."
+        }
+      },
+      "canStartDraw()": {
+        "returns": {
+          "_0": "True if a Draw can be started, false otherwise."
+        }
+      },
+      "claimOwnership()": {
+        "details": "This function is only callable by the `_pendingOwner`."
+      },
+      "constructor": {
+        "params": {
+          "_beaconPeriodSeconds": "The duration of the beacon period in seconds",
+          "_beaconPeriodStart": "The starting timestamp of the beacon period.",
+          "_drawBuffer": "The address of the draw buffer to push draws to",
+          "_nextDrawId": "Draw ID at which the DrawBeacon should start. Can't be inferior to 1.",
+          "_owner": "Address of the DrawBeacon owner",
+          "_rng": "The RNG service to use"
+        }
+      },
+      "getLastRngLockBlock()": {
+        "returns": {
+          "_0": "The block number that the RNG request is locked to"
+        }
+      },
+      "getLastRngRequestId()": {
+        "returns": {
+          "_0": "The current Request ID"
+        }
+      },
+      "isBeaconPeriodOver()": {
+        "returns": {
+          "_0": "True if the beacon period is over, false otherwise"
+        }
+      },
+      "isRngCompleted()": {
+        "returns": {
+          "_0": "True if a random number request has completed, false otherwise."
+        }
+      },
+      "isRngRequested()": {
+        "returns": {
+          "_0": "True if a random number has been requested, false otherwise."
+        }
+      },
+      "isRngTimedOut()": {
+        "returns": {
+          "_0": "True if a random number request has timed out, false otherwise."
+        }
+      },
+      "pendingOwner()": {
+        "returns": {
+          "_0": "Current `_pendingOwner` address."
+        }
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "setBeaconPeriodSeconds(uint32)": {
+        "params": {
+          "beaconPeriodSeconds": "The new beacon period in seconds.  Must be greater than zero."
+        }
+      },
+      "setDrawBuffer(address)": {
+        "details": "All subsequent Draw requests/completions will be pushed to the new DrawBuffer.",
+        "params": {
+          "newDrawBuffer": "DrawBuffer address"
+        },
+        "returns": {
+          "_0": "DrawBuffer"
+        }
+      },
+      "setRngService(address)": {
+        "params": {
+          "rngService": "The address of the new RNG service interface"
+        }
+      },
+      "setRngTimeout(uint32)": {
+        "params": {
+          "rngTimeout": "The RNG request timeout in seconds."
+        }
+      },
+      "startDraw()": {
+        "details": "The RNG-Request-Fee is expected to be held within this contract before calling this function"
+      },
+      "transferOwnership(address)": {
+        "params": {
+          "_newOwner": "Address to transfer ownership to."
+        }
+      }
+    },
+    "stateVariables": {
+      "nextDrawId": {
+        "details": "Starts at 1. This way we know that no Draw has been recorded at 0."
+      },
+      "rngTimeout": {
+        "details": "If the rng completes the award can still be cancelled."
+      }
+    },
+    "title": "PoolTogether V4 DrawBeacon",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "BeaconPeriodSecondsUpdated(uint32)": {
+        "notice": "Emit when the drawPeriodSeconds is set."
+      },
+      "BeaconPeriodStarted(uint64)": {
+        "notice": "Emit when a draw has opened."
+      },
+      "Deployed(uint32,uint64)": {
+        "notice": "Emit when the DrawBeacon is deployed."
+      },
+      "DrawBufferUpdated(address)": {
+        "notice": "Emit when a new DrawBuffer has been set."
+      },
+      "DrawCancelled(uint32,uint32)": {
+        "notice": "Emit when a draw has been cancelled."
+      },
+      "DrawCompleted(uint256)": {
+        "notice": "Emit when a draw has been completed."
+      },
+      "DrawStarted(uint32,uint32)": {
+        "notice": "Emit when a draw has started."
+      },
+      "RngServiceUpdated(address)": {
+        "notice": "Emit when a RNG service address is set."
+      },
+      "RngTimeoutSet(uint32)": {
+        "notice": "Emit when a draw timeout param is set."
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "beaconPeriodEndAt()": {
+        "notice": "Returns the timestamp at which the beacon period ends"
+      },
+      "beaconPeriodRemainingSeconds()": {
+        "notice": "Returns the number of seconds remaining until the beacon period can be complete."
+      },
+      "calculateNextBeaconPeriodStartTime(uint256)": {
+        "notice": "Calculates when the next beacon period will start."
+      },
+      "calculateNextBeaconPeriodStartTimeFromCurrentTime()": {
+        "notice": "Calculates the next beacon start time, assuming all beacon periods have occurred between the last and now."
+      },
+      "canCompleteDraw()": {
+        "notice": "Returns whether a Draw can be completed."
+      },
+      "canStartDraw()": {
+        "notice": "Returns whether a Draw can be started."
+      },
+      "cancelDraw()": {
+        "notice": "Can be called by anyone to cancel the draw request if the RNG has timed out."
+      },
+      "claimOwnership()": {
+        "notice": "Allows the `_pendingOwner` address to finalize the transfer."
+      },
+      "completeDraw()": {
+        "notice": "Completes the Draw (RNG) request and pushes a Draw onto DrawBuffer."
+      },
+      "constructor": {
+        "notice": "Deploy the DrawBeacon smart contract."
+      },
+      "getLastRngLockBlock()": {
+        "notice": "Returns the block number that the current RNG request has been locked to."
+      },
+      "getLastRngRequestId()": {
+        "notice": "Returns the current RNG Request ID."
+      },
+      "isBeaconPeriodOver()": {
+        "notice": "Returns whether the beacon period is over"
+      },
+      "isRngCompleted()": {
+        "notice": "Returns whether the random number request has completed."
+      },
+      "isRngRequested()": {
+        "notice": "Returns whether a random number has been requested"
+      },
+      "isRngTimedOut()": {
+        "notice": "Returns whether the random number request has timed out."
+      },
+      "owner()": {
+        "notice": "Returns the address of the current owner."
+      },
+      "pendingOwner()": {
+        "notice": "Gets current `_pendingOwner`."
+      },
+      "renounceOwnership()": {
+        "notice": "Renounce ownership of the contract."
+      },
+      "setBeaconPeriodSeconds(uint32)": {
+        "notice": "Allows the owner to set the beacon period in seconds."
+      },
+      "setDrawBuffer(address)": {
+        "notice": "Set global DrawBuffer variable."
+      },
+      "setRngService(address)": {
+        "notice": "Sets the RNG service that the Prize Strategy is connected to"
+      },
+      "setRngTimeout(uint32)": {
+        "notice": "Allows the owner to set the RNG request timeout in seconds. This is the time that must elapsed before the RNG request can be cancelled and the pool unlocked."
+      },
+      "startDraw()": {
+        "notice": "Starts the Draw process by starting random number request. The previous beacon period must have ended."
+      },
+      "transferOwnership(address)": {
+        "notice": "Allows current owner to set the `_pendingOwner` address."
+      }
+    },
+    "notice": "Manages RNG (random number generator) requests and pushing Draws onto DrawBuffer. The DrawBeacon has 3 major actions for requesting a random number: start, cancel and complete. To create a new Draw, the user requests a new random number from the RNG service. When the random number is available, the user can create the draw using the create() method which will push the draw onto the DrawBuffer. If the RNG service fails to deliver a rng, when the request timeout elapses, the user can cancel the request.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 2866,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 2868,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "_pendingOwner",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 3275,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "rng",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_contract(RNGInterface)3072"
+      },
+      {
+        "astId": 3279,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "rngRequest",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_struct(RngRequest)3302_storage"
+      },
+      {
+        "astId": 3283,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "drawBuffer",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_contract(IDrawBuffer)8115"
+      },
+      {
+        "astId": 3286,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "rngTimeout",
+        "offset": 20,
+        "slot": "4",
+        "type": "t_uint32"
+      },
+      {
+        "astId": 3289,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "beaconPeriodSeconds",
+        "offset": 24,
+        "slot": "4",
+        "type": "t_uint32"
+      },
+      {
+        "astId": 3292,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "beaconPeriodStartedAt",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint64"
+      },
+      {
+        "astId": 3295,
+        "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+        "label": "nextDrawId",
+        "offset": 8,
+        "slot": "5",
+        "type": "t_uint32"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IDrawBuffer)8115": {
+        "encoding": "inplace",
+        "label": "contract IDrawBuffer",
+        "numberOfBytes": "20"
+      },
+      "t_contract(RNGInterface)3072": {
+        "encoding": "inplace",
+        "label": "contract RNGInterface",
+        "numberOfBytes": "20"
+      },
+      "t_struct(RngRequest)3302_storage": {
+        "encoding": "inplace",
+        "label": "struct DrawBeacon.RngRequest",
+        "members": [
+          {
+            "astId": 3297,
+            "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+            "label": "id",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 3299,
+            "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+            "label": "lockBlock",
+            "offset": 4,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 3301,
+            "contract": "@pooltogether/v4-core/contracts/DrawBeacon.sol:DrawBeacon",
+            "label": "requestedAt",
+            "offset": 8,
+            "slot": "0",
+            "type": "t_uint64"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      },
+      "t_uint64": {
+        "encoding": "inplace",
+        "label": "uint64",
+        "numberOfBytes": "8"
+      }
+    }
+  }
+}
