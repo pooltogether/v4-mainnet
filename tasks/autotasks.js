@@ -1,6 +1,6 @@
 const { cyan, red, greenBright } = require('chalk');
-const contracts = require('../testnet.json');
-const { drawBeaconHandleDrawStartAndComplete, L1PrizeDistributionPush, L2DrawAndPrizeDistributionPush, PrizeFlushAndReserveCheckpoint, GenerateYieldForPrizePool } = require('@pooltogether/v4-autotask-lib');
+// const contracts = require('../testnet.json');
+const { drawBeaconHandleDrawStartAndComplete, L1PrizeDistributionPush, L2DrawAndPrizeDistributionPush } = require('@pooltogether/v4-autotask-lib');
 const { getUserAndWallet } = require('./utils/getUserAndWallet');
 const debug = require('debug')('tasks')
 
