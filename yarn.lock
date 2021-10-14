@@ -520,6 +520,11 @@
   resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-ethers/-/hardhat-ethers-2.0.2.tgz#c472abcba0c5185aaa4ad4070146e95213c68511"
   integrity sha512-6quxWe8wwS4X5v3Au8q1jOvXYEPkS1Fh+cME5u6AwNdnI4uERvPlVjlgRWzpnb+Rrt1l/cEqiNRH9GlsBMSDQg==
 
+"@openzeppelin/contracts@4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.3.1.tgz#c01f791ce6c9d3989ac1a643267501dbe336b9e3"
+  integrity sha512-QjgbPPlmDK2clK1hzjw2ROfY8KA5q+PfhDUUxZFEBCZP9fi6d5FuNoh/Uq0oCTMEKPmue69vhX2jcl0N/tFKGw==
+
 "@openzeppelin/contracts@4.3.2", "@openzeppelin/contracts@^4.3.1":
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.3.2.tgz#ff80affd6d352dbe1bbc5b4e1833c41afd6283b6"
@@ -585,12 +590,12 @@
     "@pooltogether/yield-source-interface" "1.3.0"
     deploy-eip-1820 "1.0.0"
 
-"@pooltogether/v4-core@1.0.0-beta.3":
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-core/-/v4-core-1.0.0-beta.3.tgz#134bf0812a1f49920064145ca5c34c41d8182281"
-  integrity sha512-WXy1UXYr+V3SYzuXCRJxmKF0zh5y54KEw6Z+MlBuuFwCIRENr19c5tuWQjJRzjk/Vwpl0lJLn1nST3X1o9XGHw==
+"@pooltogether/v4-core@1.0.0-beta.5":
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-core/-/v4-core-1.0.0-beta.5.tgz#6bfe145d8c81fb85a65e1bb8496ecef0313114ed"
+  integrity sha512-dR1JqkFuu5uHymoA1eKzQpViYiInEZLWcLfgYZG3ZnTGMpuyW7PgWCiGFTZkoLb4DgQQS5Og4V3e6E5I0LH+NA==
   dependencies:
-    "@openzeppelin/contracts" "^4.3.1"
+    "@openzeppelin/contracts" "4.3.1"
     "@pooltogether/fixed-point" "1.0.0"
     "@pooltogether/owner-manager-contracts" "1.1.0"
     "@pooltogether/pooltogether-rng-contracts" "1.4.0"
@@ -602,10 +607,10 @@
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.0.0-beta.4.tgz#04bbcc2d0cb3ebe260db063a249803d70cb13feb"
   integrity sha512-EMO+KsMSl5bg28yofVLVVim1IVz8/9teubraxgxM+N3SgCWRo8kIEZIUHuZTaZkk/zjAgr05+bDBj7ivcwBtaA==
 
-"@pooltogether/v4-periphery@1.0.0-beta.6":
-  version "1.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.0.0-beta.6.tgz#7b3d8ada7f1f0fb64561a23b513060972bdf90d6"
-  integrity sha512-ZxyJ8d7fro6YrVBcU9v68+1EWeVW59R8GRRS4GRbEW/d6+rnpU78/y3rDfIFM0SdqR8hj+y4qg7o2tUSyqd4WQ==
+"@pooltogether/v4-periphery@1.0.0-beta.7":
+  version "1.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.0.0-beta.7.tgz#d9d10677b457857109d362b0a88eac7aa24a82ca"
+  integrity sha512-GJKKfQyWLo3pV0A5bK4t4x5f7myokX1XBM1F/5FhzNVbuK/LHmkPL0GBC+30VXj0ff2Hq0lk14l+FFqIFQZZgQ==
 
 "@pooltogether/v4-testnet@^1.0.0-beta.7":
   version "1.0.0-beta.7"
