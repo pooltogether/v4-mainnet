@@ -515,6 +515,11 @@
   resolved "https://registry.yarnpkg.com/@ledgerhq/logs/-/logs-5.50.0.tgz#29c6419e8379d496ab6d0426eadf3c4d100cd186"
   integrity sha512-swKHYCOZUGyVt4ge0u8a7AwNcA//h4nx5wIi0sruGye1IJ5Cva0GyK9L2/WdX+kWVTKp92ZiEo1df31lrWGPgA==
 
+"@nomiclabs/hardhat-ethers@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-ethers/-/hardhat-ethers-2.0.2.tgz#c472abcba0c5185aaa4ad4070146e95213c68511"
+  integrity sha512-6quxWe8wwS4X5v3Au8q1jOvXYEPkS1Fh+cME5u6AwNdnI4uERvPlVjlgRWzpnb+Rrt1l/cEqiNRH9GlsBMSDQg==
+
 "@openzeppelin/contracts@4.3.2", "@openzeppelin/contracts@^4.3.1":
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.3.2.tgz#ff80affd6d352dbe1bbc5b4e1833c41afd6283b6"
@@ -557,6 +562,17 @@
   resolved "https://registry.yarnpkg.com/@pooltogether/pooltogether-rng-contracts/-/pooltogether-rng-contracts-1.4.0.tgz#310b9667a1123cfcce718aa6d8eba7c434a53c75"
   integrity sha512-dNgDpDsCMxUxaz8u6OfpjSBtMOdcp8QkLC3cwJ6E++4ux0qY2ON+ZqJEHIC3q4ZVJ4Xf6FikMJF0a8SVNtl8Zw==
 
+"@pooltogether/v4-autotask-lib@github://pooltogether/v4-autotask-lib#master":
+  version "0.1.0"
+  resolved "git+ssh://git@github.com/pooltogether/v4-autotask-lib.git#b2d3e57dffa2d954cf5e7ebec2611e75b5873b99"
+  dependencies:
+    "@nomiclabs/hardhat-ethers" "^2.0.2"
+    "@pooltogether/v4-testnet" "^1.0.0-beta.7"
+    ethers "^5.4.7"
+    hardhat "^2.6.5"
+    hardhat-dependency-compiler "^1.1.1"
+    hardhat-ethers "^1.0.1"
+
 "@pooltogether/v4-core@1.0.0-beta.2":
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-core/-/v4-core-1.0.0-beta.2.tgz#bc768bfaee67b76df90f163d994b0480fe30224a"
@@ -569,15 +585,53 @@
     "@pooltogether/yield-source-interface" "1.3.0"
     deploy-eip-1820 "1.0.0"
 
+"@pooltogether/v4-core@1.0.0-beta.3":
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-core/-/v4-core-1.0.0-beta.3.tgz#134bf0812a1f49920064145ca5c34c41d8182281"
+  integrity sha512-WXy1UXYr+V3SYzuXCRJxmKF0zh5y54KEw6Z+MlBuuFwCIRENr19c5tuWQjJRzjk/Vwpl0lJLn1nST3X1o9XGHw==
+  dependencies:
+    "@openzeppelin/contracts" "^4.3.1"
+    "@pooltogether/fixed-point" "1.0.0"
+    "@pooltogether/owner-manager-contracts" "1.1.0"
+    "@pooltogether/pooltogether-rng-contracts" "1.4.0"
+    "@pooltogether/yield-source-interface" "1.3.0"
+    deploy-eip-1820 "1.0.0"
+
+"@pooltogether/v4-periphery@1.0.0-beta.4":
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.0.0-beta.4.tgz#04bbcc2d0cb3ebe260db063a249803d70cb13feb"
+  integrity sha512-EMO+KsMSl5bg28yofVLVVim1IVz8/9teubraxgxM+N3SgCWRo8kIEZIUHuZTaZkk/zjAgr05+bDBj7ivcwBtaA==
+
 "@pooltogether/v4-periphery@1.0.0-beta.6":
   version "1.0.0-beta.6"
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.0.0-beta.6.tgz#7b3d8ada7f1f0fb64561a23b513060972bdf90d6"
   integrity sha512-ZxyJ8d7fro6YrVBcU9v68+1EWeVW59R8GRRS4GRbEW/d6+rnpU78/y3rDfIFM0SdqR8hj+y4qg7o2tUSyqd4WQ==
 
+"@pooltogether/v4-testnet@^1.0.0-beta.7":
+  version "1.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-testnet/-/v4-testnet-1.0.0-beta.7.tgz#6afc38270eb21be76f9598c440515d348d2ebc79"
+  integrity sha512-R26irJq3IwnEYz7+dS2B3h6qCHd6FByvOiHOkJpiMgWaaAcpW0OEz36RkO85Kg7iA5KkSsVge/43YixBlx9oYA==
+  dependencies:
+    "@openzeppelin/contracts" "4.3.2"
+    "@pooltogether/draw-calculator-js" "^1.0.0-beta.25"
+    "@pooltogether/hardhat-deploy-markdown-export" "^0.1.0"
+    "@pooltogether/owner-manager-contracts" "1.1.0"
+    "@pooltogether/v4-core" "1.0.0-beta.2"
+    "@pooltogether/v4-periphery" "1.0.0-beta.4"
+    "@pooltogether/v4-timelocks" "1.0.0-beta.3"
+    "@pooltogether/yield-source-interface" "1.3.0"
+    find "^0.3.0"
+    glob "^7.1.7"
+
 "@pooltogether/v4-timelocks@1.0.0-beta.3":
   version "1.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-timelocks/-/v4-timelocks-1.0.0-beta.3.tgz#fc05e5da17e220359ec2be323ec562e4e13ea0b5"
   integrity sha512-xRMBeIS77CQMmexw5oSIRfBXNPK+KL1XFaNCEezB0Dc2OMV5Sk8vbTtQ/Gh8cl8M6NFLcDZTnk2gPmxFEDg3tA==
+
+"@pooltogether/v4-timelocks@1.0.0-beta.4":
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-timelocks/-/v4-timelocks-1.0.0-beta.4.tgz#a3e2098b0821f59ae16b7260c63de0c9700c9be1"
+  integrity sha512-AKAd+PdtnHWz/HSWfH881guCUbUM9insQqJ0DI8FMZ4HgfbaFnHIMWFDYmrcc0iDqAS5wZVNM/kz66+qOWExHQ==
 
 "@pooltogether/yield-source-interface@1.3.0":
   version "1.3.0"
@@ -1614,7 +1668,7 @@ ethereumjs-util@^7.1.0, ethereumjs-util@^7.1.1:
     ethjs-util "0.1.6"
     rlp "^2.2.4"
 
-ethers@^5.4.0, ethers@^5.4.6:
+ethers@^5.4.0, ethers@^5.4.6, ethers@^5.4.7:
   version "5.4.7"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.4.7.tgz#0fd491a5da7c9793de2d6058d76b41b1e7efba8f"
   integrity sha512-iZc5p2nqfWK1sj8RabwsPM28cr37Bpq7ehTQ5rWExBr2Y09Sn1lDKZOED26n+TsZMye7Y6mIgQ/1cwpSD8XZew==
@@ -1978,6 +2032,59 @@ hardhat@^2.6.3:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/hardhat/-/hardhat-2.6.4.tgz#9ff3f139f697bfc4e14836a3fef3ca4c62357d65"
   integrity sha512-6QNfu1FptjtyGJ+jBR7LMX7AMY9gWWw9kAUD7v0YZNZH1ZBgsZdMHqXKiSzO5pLQXo+fy9zZovKAUNYbjQ/1fw==
+  dependencies:
+    "@ethereumjs/block" "^3.4.0"
+    "@ethereumjs/blockchain" "^5.4.0"
+    "@ethereumjs/common" "^2.4.0"
+    "@ethereumjs/tx" "^3.3.0"
+    "@ethereumjs/vm" "^5.5.2"
+    "@ethersproject/abi" "^5.1.2"
+    "@sentry/node" "^5.18.1"
+    "@solidity-parser/parser" "^0.11.0"
+    "@types/bn.js" "^5.1.0"
+    "@types/lru-cache" "^5.1.0"
+    abort-controller "^3.0.0"
+    adm-zip "^0.4.16"
+    ansi-escapes "^4.3.0"
+    chalk "^2.4.2"
+    chokidar "^3.4.0"
+    ci-info "^2.0.0"
+    debug "^4.1.1"
+    enquirer "^2.3.0"
+    env-paths "^2.2.0"
+    eth-sig-util "^2.5.2"
+    ethereum-cryptography "^0.1.2"
+    ethereumjs-abi "^0.6.8"
+    ethereumjs-util "^7.1.0"
+    find-up "^2.1.0"
+    fp-ts "1.19.3"
+    fs-extra "^7.0.1"
+    glob "^7.1.3"
+    https-proxy-agent "^5.0.0"
+    immutable "^4.0.0-rc.12"
+    io-ts "1.10.4"
+    lodash "^4.17.11"
+    merkle-patricia-tree "^4.2.0"
+    mnemonist "^0.38.0"
+    mocha "^7.1.2"
+    node-fetch "^2.6.0"
+    qs "^6.7.0"
+    raw-body "^2.4.1"
+    resolve "1.17.0"
+    semver "^6.3.0"
+    slash "^3.0.0"
+    solc "0.7.3"
+    source-map-support "^0.5.13"
+    stacktrace-parser "^0.1.10"
+    "true-case-path" "^2.2.1"
+    tsort "0.0.1"
+    uuid "^3.3.2"
+    ws "^7.4.6"
+
+hardhat@^2.6.5:
+  version "2.6.5"
+  resolved "https://registry.yarnpkg.com/hardhat/-/hardhat-2.6.5.tgz#61d3e22da34e1b175bbe599f77396b32f9788b58"
+  integrity sha512-sBhREWZjQTtR/KMMp2F3ySuDqL0norjNq68geR3nlXRHXYKuNKeL7xqVsmldekt3sVB5Wh1WX7xDX79kvUr+fA==
   dependencies:
     "@ethereumjs/block" "^3.4.0"
     "@ethereumjs/blockchain" "^5.4.0"

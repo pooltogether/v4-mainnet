@@ -7,6 +7,8 @@ require('@pooltogether/hardhat-deploy-markdown-export')
 // Tasks
 require('./tasks/calculations')
 require('./tasks/administrative')
+require('./tasks/autotasks')
+require('./tasks/DrawBeacon')
 require('./tasks/DrawBuffer')
 require('./tasks/PrizeDistributor')
 require('./tasks/PrizeDistributionBuffer')

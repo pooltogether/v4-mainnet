@@ -1,4 +1,5 @@
 const mnemonic = process.env.HDWALLET_MNEMONIC;
+const infuraApiKey = process.env.INFURA_API_KEY;
 
 const networks = {
   localhost: {
@@ -28,6 +29,20 @@ const networks = {
   mainnet: {
     chainId: 1,
     url: process.env.MAINNET_RPC_URL,
+    accounts: {
+      mnemonic,
+    },
+  },
+  mumbai: {
+    chainId: 80001,
+    url: 'https://rpc-mumbai.maticvigil.com',
+    accounts: {
+      mnemonic,
+    },
+  },
+  rinkeby: {
+    chainId: 4,
+    url: `https://rinkeby.infura.io/v3/${infuraApiKey}`,
     accounts: {
       mnemonic,
     },
