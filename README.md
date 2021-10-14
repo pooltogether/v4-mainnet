@@ -16,9 +16,3 @@ To run fork scripts, deploy or perform any operation with a mainnet node you wil
 ```.sh
 yarn
 ```
-
-<p align="left">
-  <a href="https://github.com/pooltogether/pooltogether--brand-assets">
-    <img src="./img/dashboard.png" alt="PoolTogether Brand" style="max-width:100%;" width="100%">
-  </a>
-</p>
