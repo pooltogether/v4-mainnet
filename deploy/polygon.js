@@ -5,8 +5,7 @@ const { setManager } = require('../src/setManager')
 const { 
   DRAW_BUFFER_CARDINALITY,
   PRIZE_DISTRIBUTION_BUFFER_CARDINALITY,
-  DRAW_CALCULATOR_TIMELOCK,
-  TOKEN_DECIMALS 
+  TOKEN_DECIMALS
 } = require('../src/constants')
 
 module.exports = async (hardhat) => {
@@ -56,7 +55,7 @@ module.exports = async (hardhat) => {
         aUSDC,
         aaveIncentivesController,
         aaveLendingPoolAddressesProviderRegistry,
-        6,
+        TOKEN_DECIMALS,
         "PTaUSDCY",
         "PoolTogether aUSDC Yield",
         executiveTeam
@@ -69,7 +68,10 @@ module.exports = async (hardhat) => {
     'YieldSourcePrizePool',
     {
       from: deployer,
-      args: [deployer,aaveUsdcYieldSourceResult.address]
+      args: [
+        deployer,
+        aaveUsdcYieldSourceResult.address
+      ]
     }
   )
 
@@ -141,7 +143,9 @@ module.exports = async (hardhat) => {
     {
       from: deployer,
       args: [
-        deployer, ticketResult.address, drawBufferResult.address, prizeDistributionBufferResult.address
+        ticketResult.address,
+        drawBufferResult.address,
+        prizeDistributionBufferResult.address
       ]
     }
   )
@@ -152,7 +156,8 @@ module.exports = async (hardhat) => {
       from: deployer,
       args: [
         deployer,
-        ticketResult.address, drawCalculatorResult.address
+        ticketResult.address,
+        drawCalculatorResult.address
       ]
     }
   )
@@ -184,7 +189,10 @@ module.exports = async (hardhat) => {
     {
       from: deployer,
       args: [
-        deployer,prizeDistributorResult.address,prizeSplitStrategyResult.address,reserveResult.address
+        deployer,
+        prizeDistributorResult.address,
+        prizeSplitStrategyResult.address,
+        reserveResult.address
       ]
     }
   )
@@ -194,7 +202,8 @@ module.exports = async (hardhat) => {
     {
       from: deployer,
       args: [
-        deployer,drawCalculatorResult.address, DRAW_CALCULATOR_TIMELOCK
+        deployer,
+        drawCalculatorResult.address
       ]
     }
   )
@@ -204,7 +213,10 @@ module.exports = async (hardhat) => {
     {
       from: deployer,
       args: [
-        deployer,drawBufferResult.address, prizeDistributionBufferResult.address,drawCalculatorTimelockResult.address
+        deployer,
+        drawBufferResult.address,
+        prizeDistributionBufferResult.address,
+        drawCalculatorTimelockResult.address
       ]
     }
   )
@@ -216,7 +228,7 @@ module.exports = async (hardhat) => {
   
   const prizeFlush = await ethers.getContract('PrizeFlush')
   await setManager('PrizeFlush', prizeFlush, defenderRelayer)
-  await transferOwnership('PrizeFlush', prizeFlush, executiveTeam)
+  await transferOwnership('PrizeFlush', prizeFlush, ptOperations)
   
   const reserve = await ethers.getContract('Reserve')
   await setManager('Reserve', reserve, prizeFlushResult.address)
@@ -224,18 +236,18 @@ module.exports = async (hardhat) => {
   
   const l2TimelockTrigger = await ethers.getContract('L2TimelockTrigger')
   await setManager('L2TimelockTrigger', l2TimelockTrigger, defenderRelayer)
-  await transferOwnership('L2TimelockTrigger', l2TimelockTrigger, executiveTeam)
+  await transferOwnership('L2TimelockTrigger', l2TimelockTrigger, ptOperations)
   
   const drawBuffer = await ethers.getContract('DrawBuffer')
   await setManager('DrawBuffer', drawBuffer, l2TimelockTrigger.address)
-  await transferOwnership('DrawBuffer', drawBuffer, executiveTeam)
+  await transferOwnership('DrawBuffer', drawBuffer, ptOperations)
   
   const drawCalculatorTimelock = await ethers.getContract('DrawCalculatorTimelock')
   await setManager('DrawCalculatorTimelock', drawCalculatorTimelock, l2TimelockTrigger.address)
-  await transferOwnership('DrawCalculatorTimelock', drawCalculatorTimelock, executiveTeam)
+  await transferOwnership('DrawCalculatorTimelock', drawCalculatorTimelock, ptOperations)
 
   const prizeDistributionBuffer = await ethers.getContract('PrizeDistributionBuffer')
   await setManager('PrizeDistributionBuffer', prizeDistributionBuffer, l2TimelockTrigger.address)
-  await transferOwnership('PrizeDistributionBuffer', prizeDistributionBuffer, executiveTeam)
+  await transferOwnership('PrizeDistributionBuffer', prizeDistributionBuffer, ptOperations)
 
 }

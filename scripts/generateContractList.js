@@ -1,9 +1,8 @@
 const fs = require("fs");
 
-const rinkebyDeployments = `${__dirname}/../deployments/rinkeby`;
-const mumbaiDeployments = `${__dirname}/../deployments/mumbai`;
+const localhostDeployments = `${__dirname}/../deployments/localhost`;
 
-const networkDeploymentPaths = [rinkebyDeployments, mumbaiDeployments];
+const networkDeploymentPaths = [localhostDeployments];
 
 const VERSION_ONE = {
   major: 1,
@@ -53,7 +52,7 @@ networkDeploymentPaths.forEach((networkDeploymentPath) => {
 });
 
 fs.writeFile(
-  `${__dirname}/../testnet.json`,
+  `${__dirname}/../mainnet.json`,
   JSON.stringify(contractList),
   (err) => {
     if (err) {

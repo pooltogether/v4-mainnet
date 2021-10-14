@@ -59,24 +59,15 @@ module.exports = async (hardhat) => {
   // Test Contracts to easily test full functionality.
   /* ========================================= */
 
-  let rngServiceAddress
-  if (!isTestEnvironment) {
-    const rngChainlink = await ethers.getContract("RNGChainlink")
-    rngServiceAddress = rngChainlink.address
-  } else {
-    const rngServiceResult = await deployAndLog('RNGServiceStub', {
-      from: deployer
-    })
-    rngServiceAddress = rngServiceResult.address
-  }
-
+  const rngChainlink = await ethers.getContract("RNGChainlink")
+ 
   const aaveUsdcYieldSourceResult = await deployAndLog('ATokenYieldSource', {
     from: deployer,
     args: [
       aUSDC,
       aaveIncentivesController,
       aaveLendingPoolAddressesProviderRegistry,
-      6,
+      TOKEN_DECIMALS,
       "PTaUSDCY",
       "PoolTogether aUSDC Yield",
       executiveTeam
@@ -168,9 +159,9 @@ module.exports = async (hardhat) => {
   const drawBeaconResult = await deployAndLog('DrawBeacon', {
     from: deployer,
     args: [
-      executiveTeam,
+      ptOperations,
       drawBufferResult.address,
-      rngServiceAddress,
+      rngChainlink.address,
       1, // Starting DrawID
       BEACON_START_TIME,
       BEACON_PERIOD_SECONDS,
@@ -181,7 +172,7 @@ module.exports = async (hardhat) => {
 
   const drawBuffer = await ethers.getContract('DrawBuffer')
   await setManager('DrawBuffer', drawBuffer, drawBeaconResult.address)
-  await transferOwnership('DrawBuffer', drawBuffer, executiveTeam)
+  await transferOwnership('DrawBuffer', drawBuffer, ptOperations)
 
   const prizeDistributionBufferResult = await deployAndLog('PrizeDistributionBuffer', {
     from: deployer,
@@ -195,7 +186,6 @@ module.exports = async (hardhat) => {
   const drawCalculatorResult = await deployAndLog('DrawCalculator', {
     from: deployer,
     args: [
-      executiveTeam,
       ticketResult.address,
       drawBufferResult.address,
       prizeDistributionBufferResult.address
@@ -228,7 +218,7 @@ module.exports = async (hardhat) => {
 
   const prizeFlush = await ethers.getContract('PrizeFlush')
   await setManager('PrizeFlush', prizeFlush, defenderRelayer)
-  await transferOwnership('PrizeFlush', prizeFlush, executiveTeam)
+  await transferOwnership('PrizeFlush', prizeFlush, ptOperations)
 
   const reserve = await ethers.getContract('Reserve')
   await setManager('Reserve', reserve, prizeFlushResult.address)
@@ -243,8 +233,7 @@ module.exports = async (hardhat) => {
     from: deployer,
     args: [
       deployer,
-      drawCalculatorResult.address,
-      DRAW_CALCULATOR_TIMELOCK
+      drawCalculatorResult.address
     ],
     skipIfAlreadyDeployed: true
   })
@@ -266,15 +255,15 @@ module.exports = async (hardhat) => {
 
   const prizeDistributionBuffer = await ethers.getContract('PrizeDistributionBuffer')
   await setManager('PrizeDistributionBuffer', prizeDistributionBuffer, L1TimelockTriggerResult.address)
-  await transferOwnership('PrizeDistributionBuffer', prizeDistributionBuffer, executiveTeam)
+  await transferOwnership('PrizeDistributionBuffer', prizeDistributionBuffer, ptOperations)
 
   const drawCalculatorTimelock = await ethers.getContract('DrawCalculatorTimelock')
   await setManager('DrawCalculatorTimelock', drawCalculatorTimelock, L1TimelockTriggerResult.address)
-  await transferOwnership('DrawCalculatorTimelock', drawCalculatorTimelock, executiveTeam)
+  await transferOwnership('DrawCalculatorTimelock', drawCalculatorTimelock, ptOperations)
 
   const l1TimelockTrigger = await ethers.getContract('L1TimelockTrigger')
   await setManager('L1TimelockTrigger', l1TimelockTrigger, defenderRelayer)
-  await transferOwnership('L1TimelockTrigger', l1TimelockTrigger, executiveTeam)
+  await transferOwnership('L1TimelockTrigger', l1TimelockTrigger, ptOperations)
 
   // Phase 4 ---------------------------------
   await deployAndLog('PrizeTierHistory', {
