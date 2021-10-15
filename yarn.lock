@@ -530,9 +530,10 @@
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.3.2.tgz#ff80affd6d352dbe1bbc5b4e1833c41afd6283b6"
   integrity sha512-AybF1cesONZStg5kWf6ao9OlqTZuPqddvprc0ky7lrUVOjXeKpmQ2Y9FK+6ygxasb+4aic4O5pneFBfwVsRRRg==
 
-"@pooltogether/aave-yield-source@github://pooltogether/aave-yield-source#pool-1772-update-aave-yield-source-to-be-a":
-  version "2.0.0"
-  resolved "https://codeload.github.com/pooltogether/aave-yield-source/tar.gz/abffb5df43851ac47bb2ba5baeca96d2fd6dc611"
+"@pooltogether/aave-yield-source@2.0.0-beta.1":
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@pooltogether/aave-yield-source/-/aave-yield-source-2.0.0-beta.1.tgz#76d3fd02e7b2fcd625565eb7fd2173423fbc461d"
+  integrity sha512-fEnbQJCYa0n25nJQ7+1gULNiqHTCCUaEmO6DPDTAe3O24gqA/QFTBI4sp2x9CrhH7ALCPSJMzHALn5IQKLhaZg==
   dependencies:
     "@openzeppelin/contracts" "4.3.2"
     "@pooltogether/fixed-point" "1.0.0"
