@@ -7,9 +7,9 @@ const {
   PRIZE_DISTRIBUTION_BUFFER_CARDINALITY,
   BEACON_START_TIME,
   BEACON_PERIOD_SECONDS,
-  DRAW_CALCULATOR_TIMELOCK,
+  END_TIMESTAMP_OFFSET,
   RNG_TIMEOUT_SECONDS,
-  VALIDITY_DURATION,
+  EXPIRY_DURATION,
   TOKEN_DECIMALS 
 } = require('../src/constants')
 
@@ -38,7 +38,6 @@ module.exports = async (hardhat) => {
   } = await getNamedAccounts();
 
   const chainId = parseInt(await getChainId(), 10)
-  const isTestEnvironment = chainId === 31337 || chainId === 1337;
   
   dim(`chainId ${chainId} `)
   dim(`---------------------------------------------------`)
@@ -281,14 +280,15 @@ module.exports = async (hardhat) => {
       drawId: 1,
       bitRangeSize: 2,
       maxPicksPerUser: 2,
-      prize: '13630000000',
-      tiers: ['183418928', 0, 0, '315480557', 0, '501100513', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      validityDuration: VALIDITY_DURATION
+      endTimestampOffset: END_TIMESTAMP_OFFSET,
+      prize: '14980000000',
+      tiers: ['166889185', 0, 0, '320427236', 0, '512683578', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      expiryDuration: EXPIRY_DURATION
     })
     await pushTx.wait(1)
     green(`Prize tiers for draw 1 set!`)
   }
-  await transferOwnership('PrizeTierHistory', prizeTierHistory, executiveTeam)
+  await transferOwnership('PrizeTierHistory', prizeTierHistory, ptOperations)
 
   dim(`---------------------------------------------------`)
   const costToDeploy = startingBalance.sub(await ethers.provider.getBalance((await ethers.getSigners())[0].address))

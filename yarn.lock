@@ -578,6 +578,18 @@
     hardhat-dependency-compiler "^1.1.1"
     hardhat-ethers "^1.0.1"
 
+"@pooltogether/v4-core@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-core/-/v4-core-1.0.0.tgz#a1969eba8be17776b0148aad47a7d0be68f6c178"
+  integrity sha512-e+37K1skcsTGn1JMpKSghtJnjyDmopNtTmqFcdDHGpZTC8Aclb/zSvb2OxHIThkjYZdJ7P6dcvZTR3y3RAyoDQ==
+  dependencies:
+    "@openzeppelin/contracts" "4.3.1"
+    "@pooltogether/fixed-point" "1.0.0"
+    "@pooltogether/owner-manager-contracts" "1.1.0"
+    "@pooltogether/pooltogether-rng-contracts" "1.4.0"
+    "@pooltogether/yield-source-interface" "1.3.0"
+    deploy-eip-1820 "1.0.0"
+
 "@pooltogether/v4-core@1.0.0-beta.2":
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-core/-/v4-core-1.0.0-beta.2.tgz#bc768bfaee67b76df90f163d994b0480fe30224a"
@@ -590,27 +602,15 @@
     "@pooltogether/yield-source-interface" "1.3.0"
     deploy-eip-1820 "1.0.0"
 
-"@pooltogether/v4-core@1.0.0-beta.5":
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-core/-/v4-core-1.0.0-beta.5.tgz#6bfe145d8c81fb85a65e1bb8496ecef0313114ed"
-  integrity sha512-dR1JqkFuu5uHymoA1eKzQpViYiInEZLWcLfgYZG3ZnTGMpuyW7PgWCiGFTZkoLb4DgQQS5Og4V3e6E5I0LH+NA==
-  dependencies:
-    "@openzeppelin/contracts" "4.3.1"
-    "@pooltogether/fixed-point" "1.0.0"
-    "@pooltogether/owner-manager-contracts" "1.1.0"
-    "@pooltogether/pooltogether-rng-contracts" "1.4.0"
-    "@pooltogether/yield-source-interface" "1.3.0"
-    deploy-eip-1820 "1.0.0"
+"@pooltogether/v4-periphery@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.0.0.tgz#a24f5acee41b1673475ab6d5f0f5f4e32974445d"
+  integrity sha512-pLoVvNBS94X0NWdukZjXNV0nlJU39LqFmH9ms0MpQAbYvlt8TCAx/JS6/a9ePE4rTH7qlwcJC/QneGuIZNct0g==
 
 "@pooltogether/v4-periphery@1.0.0-beta.4":
   version "1.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.0.0-beta.4.tgz#04bbcc2d0cb3ebe260db063a249803d70cb13feb"
   integrity sha512-EMO+KsMSl5bg28yofVLVVim1IVz8/9teubraxgxM+N3SgCWRo8kIEZIUHuZTaZkk/zjAgr05+bDBj7ivcwBtaA==
-
-"@pooltogether/v4-periphery@1.0.0-beta.7":
-  version "1.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.0.0-beta.7.tgz#d9d10677b457857109d362b0a88eac7aa24a82ca"
-  integrity sha512-GJKKfQyWLo3pV0A5bK4t4x5f7myokX1XBM1F/5FhzNVbuK/LHmkPL0GBC+30VXj0ff2Hq0lk14l+FFqIFQZZgQ==
 
 "@pooltogether/v4-testnet@^1.0.0-beta.7":
   version "1.0.0-beta.7"
@@ -628,15 +628,15 @@
     find "^0.3.0"
     glob "^7.1.7"
 
+"@pooltogether/v4-timelocks@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-timelocks/-/v4-timelocks-1.0.0.tgz#ae1a7a378b79c72f1c55b7cb778eb192c4dd32cc"
+  integrity sha512-8rcDPOrEab1Ka/Ws/QnUZTXef4C48iw3Rc4eHbmA59nzTe2hF36Q1Q5xX5KpWNzAAJOlzDBqGf1FOyk4rHGvxA==
+
 "@pooltogether/v4-timelocks@1.0.0-beta.3":
   version "1.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-timelocks/-/v4-timelocks-1.0.0-beta.3.tgz#fc05e5da17e220359ec2be323ec562e4e13ea0b5"
   integrity sha512-xRMBeIS77CQMmexw5oSIRfBXNPK+KL1XFaNCEezB0Dc2OMV5Sk8vbTtQ/Gh8cl8M6NFLcDZTnk2gPmxFEDg3tA==
-
-"@pooltogether/v4-timelocks@1.0.0-beta.4":
-  version "1.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-timelocks/-/v4-timelocks-1.0.0-beta.4.tgz#a3e2098b0821f59ae16b7260c63de0c9700c9be1"
-  integrity sha512-AKAd+PdtnHWz/HSWfH881guCUbUM9insQqJ0DI8FMZ4HgfbaFnHIMWFDYmrcc0iDqAS5wZVNM/kz66+qOWExHQ==
 
 "@pooltogether/yield-source-interface@1.3.0":
   version "1.3.0"

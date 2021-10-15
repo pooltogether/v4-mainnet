@@ -44,7 +44,7 @@ const config = {
     executiveTeam: {
       default: 0,
       1: '0xDa63D70332139E6A8eCA7513f4b6E2E0Dc93b693',
-      137: '0xd2146c8D93fD7Edd45C07634af7038E825880a64' // ptOperations
+      137: '0x3feE50d2888F2F7106fcdC0120295EBA3ae59245'
     },
     ptOperations: {
       default: 0,
