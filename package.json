@@ -11,7 +11,7 @@
     "compile": "hardhat compile",
     "task": "hardhat",
     "dashboard": "node tasks/dashboard",
-    "docs": "hardhat deploy-markdown-export --name 'V4 Testnet' --npm-package-name @pooltogether/v4-testnet --github-base-url 'https://github.com/pooltogether/v4-testnet/tree/master' --output-filepath testnet.md",
+    "docs": "hardhat deploy-markdown-export --name 'V4 Mainnet' --npm-package-name @pooltogether/v4-mainnet --github-base-url 'https://github.com/pooltogether/v4-mainnet/tree/master' --output-filepath mainnet.md",
     "verify-polygon": "hardhat --network polygon etherscan-verify --api-key $POLYGONSCAN_API_KEY",
     "verify-mainnet": "hardhat --network mainnet etherscan-verify --api-key $ETHERSCAN_API_KEY",
     "deploy-mainnet-to-polygon": "DEPLOY=polygon hardhat deploy --network polygon",
@@ -70,6 +70,6 @@
     "artifacts",
     "deployments/polygon",
     "deployments/mainnet",
-    "testnet.json"
+    "mainnet.json"
   ]
 }

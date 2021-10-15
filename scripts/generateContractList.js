@@ -1,8 +1,9 @@
 const fs = require("fs");
 
-const localhostDeployments = `${__dirname}/../deployments/localhost`;
+const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
+const polygonDeployments = `${__dirname}/../deployments/polygon`;
 
-const networkDeploymentPaths = [localhostDeployments];
+const networkDeploymentPaths = [mainnetDeployments, polygonDeployments];
 
 const VERSION_ONE = {
   major: 1,

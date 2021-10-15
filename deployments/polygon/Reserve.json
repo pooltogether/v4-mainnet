@@ -1,0 +1,606 @@
+{
+  "address": "0xCE148f6acFee9FEFb42A736B4976e657f35982b8",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IERC20",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "reserveAccumulated",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "withdrawAccumulated",
+          "type": "uint256"
+        }
+      ],
+      "name": "Checkpoint",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract IERC20",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "Deployed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newManager",
+          "type": "address"
+        }
+      ],
+      "name": "ManagerTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipOffered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Withdrawn",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "checkpoint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_startTimestamp",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_endTimestamp",
+          "type": "uint32"
+        }
+      ],
+      "name": "getReserveAccumulatedBetween",
+      "outputs": [
+        {
+          "internalType": "uint224",
+          "name": "",
+          "type": "uint224"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getToken",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "manager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pendingOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newManager",
+          "type": "address"
+        }
+      ],
+      "name": "setManager",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawAccumulator",
+      "outputs": [
+        {
+          "internalType": "uint224",
+          "name": "",
+          "type": "uint224"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawTo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xd6e0942684c86a9779b993c4918a9eadf13907ce619479426fd1dc5be6c47c61",
+  "receipt": {
+    "to": null,
+    "from": "0xE0F4217390221aF47855E094F6e112D43C8698fE",
+    "contractAddress": "0xCE148f6acFee9FEFb42A736B4976e657f35982b8",
+    "transactionIndex": 33,
+    "gasUsed": "1269697",
+    "logsBloom": "0x00000000010000000000000000000000000000000020000000800000000000000000000001000000002000000000100000008000000000000000000000000000000004000000000000000000000000800001000001000000000100400000000000000000020000000000000000000800008000000000000080000000000000400020000000000000800000100000000000000000000000000000000040000000200000000000000000000001000000000000000000000000000000000000004000000000000000000001000000000000000000000000000000100000000020000000000000010000000000000000000000000000000000000000000000100000",
+    "blockHash": "0xd79948dbf05c99cc96f5964a5b63b93678619ab8a0a3d46362e7302d2b928a73",
+    "transactionHash": "0xd6e0942684c86a9779b993c4918a9eadf13907ce619479426fd1dc5be6c47c61",
+    "logs": [
+      {
+        "transactionIndex": 33,
+        "blockNumber": 20226810,
+        "transactionHash": "0xd6e0942684c86a9779b993c4918a9eadf13907ce619479426fd1dc5be6c47c61",
+        "address": "0xCE148f6acFee9FEFb42A736B4976e657f35982b8",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000e0f4217390221af47855e094f6e112d43c8698fe"
+        ],
+        "data": "0x",
+        "logIndex": 199,
+        "blockHash": "0xd79948dbf05c99cc96f5964a5b63b93678619ab8a0a3d46362e7302d2b928a73"
+      },
+      {
+        "transactionIndex": 33,
+        "blockNumber": 20226810,
+        "transactionHash": "0xd6e0942684c86a9779b993c4918a9eadf13907ce619479426fd1dc5be6c47c61",
+        "address": "0xCE148f6acFee9FEFb42A736B4976e657f35982b8",
+        "topics": [
+          "0xf40fcec21964ffb566044d083b4073f29f7f7929110ea19e1b3ebe375d89055e",
+          "0x0000000000000000000000006a304dfdb9f808741244b6bfee65ca7b3b3a6076"
+        ],
+        "data": "0x",
+        "logIndex": 200,
+        "blockHash": "0xd79948dbf05c99cc96f5964a5b63b93678619ab8a0a3d46362e7302d2b928a73"
+      },
+      {
+        "transactionIndex": 33,
+        "blockNumber": 20226810,
+        "transactionHash": "0xd6e0942684c86a9779b993c4918a9eadf13907ce619479426fd1dc5be6c47c61",
+        "address": "0x0000000000000000000000000000000000001010",
+        "topics": [
+          "0x4dfe1bbbcf077ddc3e01291eea2d5c70c2b422b415d95645b9adcfd678cb1d63",
+          "0x0000000000000000000000000000000000000000000000000000000000001010",
+          "0x000000000000000000000000e0f4217390221af47855e094f6e112d43c8698fe",
+          "0x0000000000000000000000007b5000af8ab69fd59eb0d4f5762bff57c9c04385"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000087537b17b8ac00000000000000000000000000000000000000000000000005600281296487531a000000000000000000000000000000000000000000002950d402c629851aef540000000000000000000000000000000000000000000000055f7b2dae4ccea71a000000000000000000000000000000000000000000002950d48a19a49cd39b54",
+        "logIndex": 201,
+        "blockHash": "0xd79948dbf05c99cc96f5964a5b63b93678619ab8a0a3d46362e7302d2b928a73"
+      }
+    ],
+    "blockNumber": 20226810,
+    "cumulativeGasUsed": "6985178",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xE0F4217390221aF47855E094F6e112D43C8698fE",
+    "0x6a304dFdb9f808741244b6bfEe65ca7B3b3A6076"
+  ],
+  "solcInputHash": "7e8084d0a22db9e877c42567b125a31e",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"contract IERC20\",\"name\":\"_token\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"reserveAccumulated\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"withdrawAccumulated\",\"type\":\"uint256\"}],\"name\":\"Checkpoint\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract IERC20\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"Deployed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousManager\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newManager\",\"type\":\"address\"}],\"name\":\"ManagerTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"pendingOwner\",\"type\":\"address\"}],\"name\":\"OwnershipOffered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Withdrawn\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"checkpoint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"claimOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_startTimestamp\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"_endTimestamp\",\"type\":\"uint32\"}],\"name\":\"getReserveAccumulatedBetween\",\"outputs\":[{\"internalType\":\"uint224\",\"name\":\"\",\"type\":\"uint224\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getToken\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"manager\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pendingOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newManager\",\"type\":\"address\"}],\"name\":\"setManager\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdrawAccumulator\",\"outputs\":[{\"internalType\":\"uint224\",\"name\":\"\",\"type\":\"uint224\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"withdrawTo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"PoolTogether Inc Team\",\"details\":\"By calculating the total held tokens in a specific time range, contracts that require knowledge  of captured interest during a draw period, can easily call into the Reserve and deterministically determine the newly aqcuired tokens for that time range. \",\"kind\":\"dev\",\"methods\":{\"checkpoint()\":{\"details\":\"Calculates total desposited tokens since last checkpoint and creates new accumulator checkpoint.\"},\"claimOwnership()\":{\"details\":\"This function is only callable by the `_pendingOwner`.\"},\"constructor\":{\"params\":{\"_owner\":\"Owner address\",\"_token\":\"ERC20 address\"}},\"getReserveAccumulatedBetween(uint32,uint32)\":{\"details\":\"Search the ring buffer for two checkpoint observations and diffs accumulator amount.\",\"params\":{\"endTimestamp\":\"Transfer amount\",\"startTimestamp\":\"Account address\"}},\"getToken()\":{\"returns\":{\"_0\":\"IERC20\"}},\"manager()\":{\"returns\":{\"_0\":\"Current `_manager` address.\"}},\"pendingOwner()\":{\"returns\":{\"_0\":\"Current `_pendingOwner` address.\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"setManager(address)\":{\"details\":\"Throws if called by any account other than the owner.\",\"params\":{\"_newManager\":\"New _manager address.\"},\"returns\":{\"_0\":\"Boolean to indicate if the operation was successful or not.\"}},\"transferOwnership(address)\":{\"params\":{\"_newOwner\":\"Address to transfer ownership to.\"}},\"withdrawTo(address,uint256)\":{\"details\":\"Creates checkpoint before token transfer. Increments withdrawAccumulator with amount.\",\"params\":{\"amount\":\"Transfer amount\",\"recipient\":\"Account address\"}}},\"title\":\"PoolTogether V4 Reserve\",\"version\":1},\"userdoc\":{\"events\":{\"Checkpoint(uint256,uint256)\":{\"notice\":\"Emit when checkpoint is created.\"},\"Withdrawn(address,uint256)\":{\"notice\":\"Emit when the withdrawTo function has executed.\"}},\"kind\":\"user\",\"methods\":{\"checkpoint()\":{\"notice\":\"Create observation checkpoint in ring bufferr.\"},\"claimOwnership()\":{\"notice\":\"Allows the `_pendingOwner` address to finalize the transfer.\"},\"constructor\":{\"notice\":\"Constructs Ticket with passed parameters.\"},\"getReserveAccumulatedBetween(uint32,uint32)\":{\"notice\":\"Calculate token accumulation beween timestamp range.\"},\"getToken()\":{\"notice\":\"Read global token value.\"},\"manager()\":{\"notice\":\"Gets current `_manager`.\"},\"owner()\":{\"notice\":\"Returns the address of the current owner.\"},\"pendingOwner()\":{\"notice\":\"Gets current `_pendingOwner`.\"},\"renounceOwnership()\":{\"notice\":\"Renounce ownership of the contract.\"},\"setManager(address)\":{\"notice\":\"Set or change of manager.\"},\"token()\":{\"notice\":\"ERC20 token\"},\"transferOwnership(address)\":{\"notice\":\"Allows current owner to set the `_pendingOwner` address.\"},\"withdrawAccumulator()\":{\"notice\":\"Total withdraw amount from reserve\"},\"withdrawTo(address,uint256)\":{\"notice\":\"Transfer Reserve token balance to recipient address.\"}},\"notice\":\"The Reserve contract provides historical lookups of a token balance increase during a target timerange. As the Reserve contract transfers OUT tokens, the withdraw accumulator is increased. When tokens are transfered IN new checkpoint *can* be created if checkpoint() is called after transfering tokens. By using the reserve and withdraw accumulators to create a new checkpoint, any contract or account can lookup the balance increase of the reserve for a target timerange.   \",\"version\":1}},\"settings\":{\"compilationTarget\":{\"@pooltogether/v4-core/contracts/Reserve.sol\":\"Reserve\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `recipient`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address recipient, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `sender` to `recipient` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(\\n        address sender,\\n        address recipient,\\n        uint256 amount\\n    ) external returns (bool);\\n\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n}\\n\",\"keccak256\":\"0x027b891937d20ccf213fdb9c31531574256de774bda99d3a70ecef6e1913ed2a\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../IERC20.sol\\\";\\nimport \\\"../../../utils/Address.sol\\\";\\n\\n/**\\n * @title SafeERC20\\n * @dev Wrappers around ERC20 operations that throw on failure (when the token\\n * contract returns false). Tokens that return no value (and instead revert or\\n * throw on failure) are also supported, non-reverting calls are assumed to be\\n * successful.\\n * To use this library you can add a `using SafeERC20 for IERC20;` statement to your contract,\\n * which allows you to call the safe operations as `token.safeTransfer(...)`, etc.\\n */\\nlibrary SafeERC20 {\\n    using Address for address;\\n\\n    function safeTransfer(\\n        IERC20 token,\\n        address to,\\n        uint256 value\\n    ) internal {\\n        _callOptionalReturn(token, abi.encodeWithSelector(token.transfer.selector, to, value));\\n    }\\n\\n    function safeTransferFrom(\\n        IERC20 token,\\n        address from,\\n        address to,\\n        uint256 value\\n    ) internal {\\n        _callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));\\n    }\\n\\n    /**\\n     * @dev Deprecated. This function has issues similar to the ones found in\\n     * {IERC20-approve}, and its usage is discouraged.\\n     *\\n     * Whenever possible, use {safeIncreaseAllowance} and\\n     * {safeDecreaseAllowance} instead.\\n     */\\n    function safeApprove(\\n        IERC20 token,\\n        address spender,\\n        uint256 value\\n    ) internal {\\n        // safeApprove should only be called when setting an initial allowance,\\n        // or when resetting it to zero. To increase and decrease it, use\\n        // 'safeIncreaseAllowance' and 'safeDecreaseAllowance'\\n        require(\\n            (value == 0) || (token.allowance(address(this), spender) == 0),\\n            \\\"SafeERC20: approve from non-zero to non-zero allowance\\\"\\n        );\\n        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, value));\\n    }\\n\\n    function safeIncreaseAllowance(\\n        IERC20 token,\\n        address spender,\\n        uint256 value\\n    ) internal {\\n        uint256 newAllowance = token.allowance(address(this), spender) + value;\\n        _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));\\n    }\\n\\n    function safeDecreaseAllowance(\\n        IERC20 token,\\n        address spender,\\n        uint256 value\\n    ) internal {\\n        unchecked {\\n            uint256 oldAllowance = token.allowance(address(this), spender);\\n            require(oldAllowance >= value, \\\"SafeERC20: decreased allowance below zero\\\");\\n            uint256 newAllowance = oldAllowance - value;\\n            _callOptionalReturn(token, abi.encodeWithSelector(token.approve.selector, spender, newAllowance));\\n        }\\n    }\\n\\n    /**\\n     * @dev Imitates a Solidity high-level call (i.e. a regular function call to a contract), relaxing the requirement\\n     * on the return value: the return value is optional (but if data is returned, it must not be false).\\n     * @param token The token targeted by the call.\\n     * @param data The call data (encoded using abi.encode or one of its variants).\\n     */\\n    function _callOptionalReturn(IERC20 token, bytes memory data) private {\\n        // We need to perform a low level call here, to bypass Solidity's return data size checking mechanism, since\\n        // we're implementing it ourselves. We use {Address.functionCall} to perform this call, which verifies that\\n        // the target address contains contract code and also asserts for success in the low-level call.\\n\\n        bytes memory returndata = address(token).functionCall(data, \\\"SafeERC20: low-level call failed\\\");\\n        if (returndata.length > 0) {\\n            // Return data is optional\\n            require(abi.decode(returndata, (bool)), \\\"SafeERC20: ERC20 operation did not succeed\\\");\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x02348b2e4b9f3200c7e3907c5c2661643a6d8520e9f79939fbb9b4005a54894d\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Address.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Collection of functions related to the address type\\n */\\nlibrary Address {\\n    /**\\n     * @dev Returns true if `account` is a contract.\\n     *\\n     * [IMPORTANT]\\n     * ====\\n     * It is unsafe to assume that an address for which this function returns\\n     * false is an externally-owned account (EOA) and not a contract.\\n     *\\n     * Among others, `isContract` will return false for the following\\n     * types of addresses:\\n     *\\n     *  - an externally-owned account\\n     *  - a contract in construction\\n     *  - an address where a contract will be created\\n     *  - an address where a contract lived, but was destroyed\\n     * ====\\n     */\\n    function isContract(address account) internal view returns (bool) {\\n        // This method relies on extcodesize, which returns 0 for contracts in\\n        // construction, since the code is only stored at the end of the\\n        // constructor execution.\\n\\n        uint256 size;\\n        assembly {\\n            size := extcodesize(account)\\n        }\\n        return size > 0;\\n    }\\n\\n    /**\\n     * @dev Replacement for Solidity's `transfer`: sends `amount` wei to\\n     * `recipient`, forwarding all available gas and reverting on errors.\\n     *\\n     * https://eips.ethereum.org/EIPS/eip-1884[EIP1884] increases the gas cost\\n     * of certain opcodes, possibly making contracts go over the 2300 gas limit\\n     * imposed by `transfer`, making them unable to receive funds via\\n     * `transfer`. {sendValue} removes this limitation.\\n     *\\n     * https://diligence.consensys.net/posts/2019/09/stop-using-soliditys-transfer-now/[Learn more].\\n     *\\n     * IMPORTANT: because control is transferred to `recipient`, care must be\\n     * taken to not create reentrancy vulnerabilities. Consider using\\n     * {ReentrancyGuard} or the\\n     * https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].\\n     */\\n    function sendValue(address payable recipient, uint256 amount) internal {\\n        require(address(this).balance >= amount, \\\"Address: insufficient balance\\\");\\n\\n        (bool success, ) = recipient.call{value: amount}(\\\"\\\");\\n        require(success, \\\"Address: unable to send value, recipient may have reverted\\\");\\n    }\\n\\n    /**\\n     * @dev Performs a Solidity function call using a low level `call`. A\\n     * plain `call` is an unsafe replacement for a function call: use this\\n     * function instead.\\n     *\\n     * If `target` reverts with a revert reason, it is bubbled up by this\\n     * function (like regular Solidity function calls).\\n     *\\n     * Returns the raw returned data. To convert to the expected return value,\\n     * use https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=abi.decode#abi-encoding-and-decoding-functions[`abi.decode`].\\n     *\\n     * Requirements:\\n     *\\n     * - `target` must be a contract.\\n     * - calling `target` with `data` must not revert.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(address target, bytes memory data) internal returns (bytes memory) {\\n        return functionCall(target, data, \\\"Address: low-level call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`], but with\\n     * `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, 0, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but also transferring `value` wei to `target`.\\n     *\\n     * Requirements:\\n     *\\n     * - the calling contract must have an ETH balance of at least `value`.\\n     * - the called Solidity function must be `payable`.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(\\n        address target,\\n        bytes memory data,\\n        uint256 value\\n    ) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, value, \\\"Address: low-level call with value failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCallWithValue-address-bytes-uint256-}[`functionCallWithValue`], but\\n     * with `errorMessage` as a fallback revert reason when `target` reverts.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function functionCallWithValue(\\n        address target,\\n        bytes memory data,\\n        uint256 value,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        require(address(this).balance >= value, \\\"Address: insufficient balance for call\\\");\\n        require(isContract(target), \\\"Address: call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.call{value: value}(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {\\n        return functionStaticCall(target, data, \\\"Address: low-level static call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],\\n     * but performing a static call.\\n     *\\n     * _Available since v3.3._\\n     */\\n    function functionStaticCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal view returns (bytes memory) {\\n        require(isContract(target), \\\"Address: static call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.staticcall(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a delegate call.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function functionDelegateCall(address target, bytes memory data) internal returns (bytes memory) {\\n        return functionDelegateCall(target, data, \\\"Address: low-level delegate call failed\\\");\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],\\n     * but performing a delegate call.\\n     *\\n     * _Available since v3.4._\\n     */\\n    function functionDelegateCall(\\n        address target,\\n        bytes memory data,\\n        string memory errorMessage\\n    ) internal returns (bytes memory) {\\n        require(isContract(target), \\\"Address: delegate call to non-contract\\\");\\n\\n        (bool success, bytes memory returndata) = target.delegatecall(data);\\n        return verifyCallResult(success, returndata, errorMessage);\\n    }\\n\\n    /**\\n     * @dev Tool to verifies that a low level call was successful, and revert if it wasn't, either by bubbling the\\n     * revert reason using the provided one.\\n     *\\n     * _Available since v4.3._\\n     */\\n    function verifyCallResult(\\n        bool success,\\n        bytes memory returndata,\\n        string memory errorMessage\\n    ) internal pure returns (bytes memory) {\\n        if (success) {\\n            return returndata;\\n        } else {\\n            // Look for revert reason and bubble it up if present\\n            if (returndata.length > 0) {\\n                // The easiest way to bubble the revert reason is using memory via assembly\\n\\n                assembly {\\n                    let returndata_size := mload(returndata)\\n                    revert(add(32, returndata), returndata_size)\\n                }\\n            } else {\\n                revert(errorMessage);\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x3336baae5cf23e94274d75336e2d412193be508504aee185e61dc7d58cd05c8a\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/math/SafeCast.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Wrappers over Solidity's uintXX/intXX casting operators with added overflow\\n * checks.\\n *\\n * Downcasting from uint256/int256 in Solidity does not revert on overflow. This can\\n * easily result in undesired exploitation or bugs, since developers usually\\n * assume that overflows raise errors. `SafeCast` restores this intuition by\\n * reverting the transaction when such an operation overflows.\\n *\\n * Using this library instead of the unchecked operations eliminates an entire\\n * class of bugs, so it's recommended to use it always.\\n *\\n * Can be combined with {SafeMath} and {SignedSafeMath} to extend it to smaller types, by performing\\n * all math on `uint256` and `int256` and then downcasting.\\n */\\nlibrary SafeCast {\\n    /**\\n     * @dev Returns the downcasted uint224 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint224).\\n     *\\n     * Counterpart to Solidity's `uint224` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 224 bits\\n     */\\n    function toUint224(uint256 value) internal pure returns (uint224) {\\n        require(value <= type(uint224).max, \\\"SafeCast: value doesn't fit in 224 bits\\\");\\n        return uint224(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint128 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint128).\\n     *\\n     * Counterpart to Solidity's `uint128` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 128 bits\\n     */\\n    function toUint128(uint256 value) internal pure returns (uint128) {\\n        require(value <= type(uint128).max, \\\"SafeCast: value doesn't fit in 128 bits\\\");\\n        return uint128(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint96 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint96).\\n     *\\n     * Counterpart to Solidity's `uint96` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 96 bits\\n     */\\n    function toUint96(uint256 value) internal pure returns (uint96) {\\n        require(value <= type(uint96).max, \\\"SafeCast: value doesn't fit in 96 bits\\\");\\n        return uint96(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint64 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint64).\\n     *\\n     * Counterpart to Solidity's `uint64` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 64 bits\\n     */\\n    function toUint64(uint256 value) internal pure returns (uint64) {\\n        require(value <= type(uint64).max, \\\"SafeCast: value doesn't fit in 64 bits\\\");\\n        return uint64(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint32 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint32).\\n     *\\n     * Counterpart to Solidity's `uint32` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 32 bits\\n     */\\n    function toUint32(uint256 value) internal pure returns (uint32) {\\n        require(value <= type(uint32).max, \\\"SafeCast: value doesn't fit in 32 bits\\\");\\n        return uint32(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint16 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint16).\\n     *\\n     * Counterpart to Solidity's `uint16` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 16 bits\\n     */\\n    function toUint16(uint256 value) internal pure returns (uint16) {\\n        require(value <= type(uint16).max, \\\"SafeCast: value doesn't fit in 16 bits\\\");\\n        return uint16(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted uint8 from uint256, reverting on\\n     * overflow (when the input is greater than largest uint8).\\n     *\\n     * Counterpart to Solidity's `uint8` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 8 bits.\\n     */\\n    function toUint8(uint256 value) internal pure returns (uint8) {\\n        require(value <= type(uint8).max, \\\"SafeCast: value doesn't fit in 8 bits\\\");\\n        return uint8(value);\\n    }\\n\\n    /**\\n     * @dev Converts a signed int256 into an unsigned uint256.\\n     *\\n     * Requirements:\\n     *\\n     * - input must be greater than or equal to 0.\\n     */\\n    function toUint256(int256 value) internal pure returns (uint256) {\\n        require(value >= 0, \\\"SafeCast: value must be positive\\\");\\n        return uint256(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int128 from int256, reverting on\\n     * overflow (when the input is less than smallest int128 or\\n     * greater than largest int128).\\n     *\\n     * Counterpart to Solidity's `int128` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 128 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt128(int256 value) internal pure returns (int128) {\\n        require(value >= type(int128).min && value <= type(int128).max, \\\"SafeCast: value doesn't fit in 128 bits\\\");\\n        return int128(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int64 from int256, reverting on\\n     * overflow (when the input is less than smallest int64 or\\n     * greater than largest int64).\\n     *\\n     * Counterpart to Solidity's `int64` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 64 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt64(int256 value) internal pure returns (int64) {\\n        require(value >= type(int64).min && value <= type(int64).max, \\\"SafeCast: value doesn't fit in 64 bits\\\");\\n        return int64(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int32 from int256, reverting on\\n     * overflow (when the input is less than smallest int32 or\\n     * greater than largest int32).\\n     *\\n     * Counterpart to Solidity's `int32` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 32 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt32(int256 value) internal pure returns (int32) {\\n        require(value >= type(int32).min && value <= type(int32).max, \\\"SafeCast: value doesn't fit in 32 bits\\\");\\n        return int32(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int16 from int256, reverting on\\n     * overflow (when the input is less than smallest int16 or\\n     * greater than largest int16).\\n     *\\n     * Counterpart to Solidity's `int16` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 16 bits\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt16(int256 value) internal pure returns (int16) {\\n        require(value >= type(int16).min && value <= type(int16).max, \\\"SafeCast: value doesn't fit in 16 bits\\\");\\n        return int16(value);\\n    }\\n\\n    /**\\n     * @dev Returns the downcasted int8 from int256, reverting on\\n     * overflow (when the input is less than smallest int8 or\\n     * greater than largest int8).\\n     *\\n     * Counterpart to Solidity's `int8` operator.\\n     *\\n     * Requirements:\\n     *\\n     * - input must fit into 8 bits.\\n     *\\n     * _Available since v3.1._\\n     */\\n    function toInt8(int256 value) internal pure returns (int8) {\\n        require(value >= type(int8).min && value <= type(int8).max, \\\"SafeCast: value doesn't fit in 8 bits\\\");\\n        return int8(value);\\n    }\\n\\n    /**\\n     * @dev Converts an unsigned uint256 into a signed int256.\\n     *\\n     * Requirements:\\n     *\\n     * - input must be less than or equal to maxInt256.\\n     */\\n    function toInt256(uint256 value) internal pure returns (int256) {\\n        // Note: Unsafe cast below is okay because `type(int256).max` is guaranteed to be positive\\n        require(value <= uint256(type(int256).max), \\\"SafeCast: value doesn't fit in an int256\\\");\\n        return int256(value);\\n    }\\n}\\n\",\"keccak256\":\"0x08d867b4c0bb782b9135691fa732b6846e0f133006489c3aa505abd1f6de56cb\",\"license\":\"MIT\"},\"@pooltogether/owner-manager-contracts/contracts/Manageable.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"./Ownable.sol\\\";\\n\\n/**\\n * @title Abstract manageable contract that can be inherited by other contracts\\n * @notice Contract module based on Ownable which provides a basic access control mechanism, where\\n * there is an owner and a manager that can be granted exclusive access to specific functions.\\n *\\n * By default, the owner is the deployer of the contract.\\n *\\n * The owner account is set through a two steps process.\\n *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`\\n *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer\\n *\\n * The manager account needs to be set using {setManager}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyManager`, which can be applied to your functions to restrict their use to\\n * the manager.\\n */\\nabstract contract Manageable is Ownable {\\n    address private _manager;\\n\\n    /**\\n     * @dev Emitted when `_manager` has been changed.\\n     * @param previousManager previous `_manager` address.\\n     * @param newManager new `_manager` address.\\n     */\\n    event ManagerTransferred(address indexed previousManager, address indexed newManager);\\n\\n    /* ============ External Functions ============ */\\n\\n    /**\\n     * @notice Gets current `_manager`.\\n     * @return Current `_manager` address.\\n     */\\n    function manager() public view virtual returns (address) {\\n        return _manager;\\n    }\\n\\n    /**\\n     * @notice Set or change of manager.\\n     * @dev Throws if called by any account other than the owner.\\n     * @param _newManager New _manager address.\\n     * @return Boolean to indicate if the operation was successful or not.\\n     */\\n    function setManager(address _newManager) external onlyOwner returns (bool) {\\n        return _setManager(_newManager);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Set or change of manager.\\n     * @param _newManager New _manager address.\\n     * @return Boolean to indicate if the operation was successful or not.\\n     */\\n    function _setManager(address _newManager) private returns (bool) {\\n        address _previousManager = _manager;\\n\\n        require(_newManager != _previousManager, \\\"Manageable/existing-manager-address\\\");\\n\\n        _manager = _newManager;\\n\\n        emit ManagerTransferred(_previousManager, _newManager);\\n        return true;\\n    }\\n\\n    /* ============ Modifier Functions ============ */\\n\\n    /**\\n     * @dev Throws if called by any account other than the manager.\\n     */\\n    modifier onlyManager() {\\n        require(manager() == msg.sender, \\\"Manageable/caller-not-manager\\\");\\n        _;\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the manager or the owner.\\n     */\\n    modifier onlyManagerOrOwner() {\\n        require(manager() == msg.sender || owner() == msg.sender, \\\"Manageable/caller-not-manager-or-owner\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0xdd8ac008df192c6aa4df83e7037ab090970fda38e1f9fd712bc0ab5e0485fc04\",\"license\":\"GPL-3.0\"},\"@pooltogether/owner-manager-contracts/contracts/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title Abstract ownable contract that can be inherited by other contracts\\n * @notice Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner is the deployer of the contract.\\n *\\n * The owner account is set through a two steps process.\\n *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`\\n *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer\\n *\\n * The manager account needs to be set using {setManager}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable {\\n    address private _owner;\\n    address private _pendingOwner;\\n\\n    /**\\n     * @dev Emitted when `_pendingOwner` has been changed.\\n     * @param pendingOwner new `_pendingOwner` address.\\n     */\\n    event OwnershipOffered(address indexed pendingOwner);\\n\\n    /**\\n     * @dev Emitted when `_owner` has been changed.\\n     * @param previousOwner previous `_owner` address.\\n     * @param newOwner new `_owner` address.\\n     */\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /* ============ Deploy ============ */\\n\\n    /**\\n     * @notice Initializes the contract setting `_initialOwner` as the initial owner.\\n     * @param _initialOwner Initial owner of the contract.\\n     */\\n    constructor(address _initialOwner) {\\n        _setOwner(_initialOwner);\\n    }\\n\\n    /* ============ External Functions ============ */\\n\\n    /**\\n     * @notice Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @notice Gets current `_pendingOwner`.\\n     * @return Current `_pendingOwner` address.\\n     */\\n    function pendingOwner() external view virtual returns (address) {\\n        return _pendingOwner;\\n    }\\n\\n    /**\\n     * @notice Renounce ownership of the contract.\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby removing any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() external virtual onlyOwner {\\n        _setOwner(address(0));\\n    }\\n\\n    /**\\n    * @notice Allows current owner to set the `_pendingOwner` address.\\n    * @param _newOwner Address to transfer ownership to.\\n    */\\n    function transferOwnership(address _newOwner) external onlyOwner {\\n        require(_newOwner != address(0), \\\"Ownable/pendingOwner-not-zero-address\\\");\\n\\n        _pendingOwner = _newOwner;\\n\\n        emit OwnershipOffered(_newOwner);\\n    }\\n\\n    /**\\n    * @notice Allows the `_pendingOwner` address to finalize the transfer.\\n    * @dev This function is only callable by the `_pendingOwner`.\\n    */\\n    function claimOwnership() external onlyPendingOwner {\\n        _setOwner(_pendingOwner);\\n        _pendingOwner = address(0);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Internal function to set the `_owner` of the contract.\\n     * @param _newOwner New `_owner` address.\\n     */\\n    function _setOwner(address _newOwner) private {\\n        address _oldOwner = _owner;\\n        _owner = _newOwner;\\n        emit OwnershipTransferred(_oldOwner, _newOwner);\\n    }\\n\\n    /* ============ Modifier Functions ============ */\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        require(owner() == msg.sender, \\\"Ownable/caller-not-owner\\\");\\n        _;\\n    }\\n\\n    /**\\n    * @dev Throws if called by any account other than the `pendingOwner`.\\n    */\\n    modifier onlyPendingOwner() {\\n        require(msg.sender == _pendingOwner, \\\"Ownable/caller-not-pendingOwner\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0xfd0fd374812c8af45f2633cc7cc4811ccb7bad0a3902a43aded35939eb4a00d1\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/Reserve.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@pooltogether/owner-manager-contracts/contracts/Manageable.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol\\\";\\n\\nimport \\\"./interfaces/IReserve.sol\\\";\\nimport \\\"./libraries/ObservationLib.sol\\\";\\nimport \\\"./libraries/RingBufferLib.sol\\\";\\n\\n/**\\n    * @title  PoolTogether V4 Reserve\\n    * @author PoolTogether Inc Team\\n    * @notice The Reserve contract provides historical lookups of a token balance increase during a target timerange.\\n              As the Reserve contract transfers OUT tokens, the withdraw accumulator is increased. When tokens are\\n              transfered IN new checkpoint *can* be created if checkpoint() is called after transfering tokens.\\n              By using the reserve and withdraw accumulators to create a new checkpoint, any contract or account\\n              can lookup the balance increase of the reserve for a target timerange.   \\n    * @dev    By calculating the total held tokens in a specific time range, contracts that require knowledge \\n              of captured interest during a draw period, can easily call into the Reserve and deterministically\\n              determine the newly aqcuired tokens for that time range. \\n */\\ncontract Reserve is IReserve, Manageable {\\n    using SafeERC20 for IERC20;\\n\\n    /// @notice ERC20 token\\n    IERC20 public immutable token;\\n\\n    /// @notice Total withdraw amount from reserve\\n    uint224 public withdrawAccumulator;\\n    uint32 private _gap;\\n\\n    uint24 internal nextIndex;\\n    uint24 internal cardinality;\\n\\n    /// @notice The maximum number of twab entries\\n    uint24 internal constant MAX_CARDINALITY = 16777215; // 2**24 - 1\\n\\n    ObservationLib.Observation[MAX_CARDINALITY] internal reserveAccumulators;\\n\\n    /* ============ Events ============ */\\n\\n    event Deployed(IERC20 indexed token);\\n\\n    /* ============ Constructor ============ */\\n\\n    /**\\n     * @notice Constructs Ticket with passed parameters.\\n     * @param _owner Owner address\\n     * @param _token ERC20 address\\n     */\\n    constructor(address _owner, IERC20 _token) Ownable(_owner) {\\n        token = _token;\\n        emit Deployed(_token);\\n    }\\n\\n    /* ============ External Functions ============ */\\n\\n    /// @inheritdoc IReserve\\n    function checkpoint() external override {\\n        _checkpoint();\\n    }\\n\\n    /// @inheritdoc IReserve\\n    function getToken() external view override returns (IERC20) {\\n        return token;\\n    }\\n\\n    /// @inheritdoc IReserve\\n    function getReserveAccumulatedBetween(uint32 _startTimestamp, uint32 _endTimestamp)\\n        external\\n        view\\n        override\\n        returns (uint224)\\n    {\\n        require(_startTimestamp < _endTimestamp, \\\"Reserve/start-less-then-end\\\");\\n        uint24 _cardinality = cardinality;\\n        uint24 _nextIndex = nextIndex;\\n\\n        (uint24 _newestIndex, ObservationLib.Observation memory _newestObservation) = _getNewestObservation(_nextIndex);\\n        (uint24 _oldestIndex, ObservationLib.Observation memory _oldestObservation) = _getOldestObservation(_nextIndex);\\n\\n        uint224 _start = _getReserveAccumulatedAt(\\n            _newestObservation,\\n            _oldestObservation,\\n            _newestIndex,\\n            _oldestIndex,\\n            _cardinality,\\n            _startTimestamp\\n        );\\n\\n        uint224 _end = _getReserveAccumulatedAt(\\n            _newestObservation,\\n            _oldestObservation,\\n            _newestIndex,\\n            _oldestIndex,\\n            _cardinality,\\n            _endTimestamp\\n        );\\n\\n        return _end - _start;\\n    }\\n\\n    /// @inheritdoc IReserve\\n    function withdrawTo(address _recipient, uint256 _amount) external override onlyManagerOrOwner {\\n        _checkpoint();\\n\\n        withdrawAccumulator += uint224(_amount);\\n        \\n        token.safeTransfer(_recipient, _amount);\\n\\n        emit Withdrawn(_recipient, _amount);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Find optimal observation checkpoint using target timestamp\\n     * @dev    Uses binary search if target timestamp is within ring buffer range.\\n     * @param _newestObservation ObservationLib.Observation\\n     * @param _oldestObservation ObservationLib.Observation\\n     * @param _newestIndex The index of the newest observation\\n     * @param _oldestIndex The index of the oldest observation\\n     * @param _cardinality       RingBuffer Range\\n     * @param _timestamp          Timestamp target\\n     *\\n     * @return Optimal reserveAccumlator for timestamp.\\n     */\\n    function _getReserveAccumulatedAt(\\n        ObservationLib.Observation memory _newestObservation,\\n        ObservationLib.Observation memory _oldestObservation,\\n        uint24 _newestIndex,\\n        uint24 _oldestIndex,\\n        uint24 _cardinality,\\n        uint32 _timestamp\\n    ) internal view returns (uint224) {\\n        uint32 timeNow = uint32(block.timestamp);\\n\\n        // IF empty ring buffer exit early.\\n        if (_cardinality == 0) return 0;\\n\\n        /**\\n         * Ring Buffer Search Optimization\\n         * Before performing binary search on the ring buffer check\\n         * to see if timestamp is within range of [o T n] by comparing\\n         * the target timestamp to the oldest/newest observation.timestamps\\n         * IF the timestamp is out of the ring buffer range avoid starting\\n         * a binary search, because we can return NULL or oldestObservation.amount\\n         */\\n\\n        /**\\n         * IF oldestObservation.timestamp is after timestamp: T[old ]\\n         * the Reserve did NOT have a balance or the ring buffer\\n         * no longer contains that timestamp checkpoint.\\n         */\\n        if (_oldestObservation.timestamp > _timestamp) {\\n            return 0;\\n        }\\n\\n        /**\\n         * IF newestObservation.timestamp is before timestamp: [ new]T\\n         * return _newestObservation.amount since observation\\n         * contains the highest checkpointed reserveAccumulator.\\n         */\\n        if (_newestObservation.timestamp <= _timestamp) {\\n            return _newestObservation.amount;\\n        }\\n\\n        // IF the timestamp is witin range of ring buffer start/end: [new T old]\\n        // FIND the closest observation to the left(or exact) of timestamp: [OT ]\\n        (\\n            ObservationLib.Observation memory beforeOrAt,\\n            ObservationLib.Observation memory atOrAfter\\n        ) = ObservationLib.binarySearch(\\n                reserveAccumulators,\\n                _newestIndex,\\n                _oldestIndex,\\n                _timestamp,\\n                _cardinality,\\n                timeNow\\n            );\\n\\n        // IF target timestamp is EXACT match for atOrAfter.timestamp observation return amount.\\n        // NOT having an exact match with atOrAfter means values will contain accumulator value AFTER the searchable range.\\n        // ELSE return observation.totalDepositedAccumulator closest to LEFT of target timestamp.\\n        if (atOrAfter.timestamp == _timestamp) {\\n            return atOrAfter.amount;\\n        } else {\\n            return beforeOrAt.amount;\\n        }\\n    }\\n\\n    /// @notice Records the currently accrued reserve amount.\\n    function _checkpoint() internal {\\n        uint24 _cardinality = cardinality;\\n        uint24 _nextIndex = nextIndex;\\n        uint256 _balanceOfReserve = token.balanceOf(address(this));\\n        uint224 _withdrawAccumulator = withdrawAccumulator; //sload\\n        (uint24 newestIndex, ObservationLib.Observation memory newestObservation) = _getNewestObservation(_nextIndex);\\n\\n        /**\\n         * IF tokens have been deposited into Reserve contract since the last checkpoint\\n         * create a new Reserve balance checkpoint. The will will update multiple times in a single block.\\n         */\\n        if (_balanceOfReserve + _withdrawAccumulator > newestObservation.amount) {\\n            uint32 nowTime = uint32(block.timestamp);\\n\\n            // checkpointAccumulator = currentBalance + totalWithdraws\\n            uint224 newReserveAccumulator = uint224(_balanceOfReserve) + _withdrawAccumulator;\\n\\n            // IF newestObservation IS NOT in the current block.\\n            // CREATE observation in the accumulators ring buffer.\\n            if (newestObservation.timestamp != nowTime) {\\n                reserveAccumulators[_nextIndex] = ObservationLib.Observation({\\n                    amount: newReserveAccumulator,\\n                    timestamp: nowTime\\n                });\\n                nextIndex = uint24(RingBufferLib.nextIndex(_nextIndex, MAX_CARDINALITY));\\n                if (_cardinality < MAX_CARDINALITY) {\\n                    cardinality = _cardinality + 1;\\n                }\\n            }\\n            // ELSE IF newestObservation IS in the current block.\\n            // UPDATE the checkpoint previously created in block history.\\n            else {\\n                reserveAccumulators[newestIndex] = ObservationLib.Observation({\\n                    amount: newReserveAccumulator,\\n                    timestamp: nowTime\\n                });\\n            }\\n\\n            emit Checkpoint(newReserveAccumulator, _withdrawAccumulator);\\n        }\\n    }\\n\\n    /// @notice Retrieves the oldest observation\\n    /// @param _nextIndex The next index of the Reserve observations\\n    function _getOldestObservation(uint24 _nextIndex)\\n        internal\\n        view\\n        returns (uint24 index, ObservationLib.Observation memory observation)\\n    {\\n        index = _nextIndex;\\n        observation = reserveAccumulators[index];\\n\\n        // If the TWAB is not initialized we go to the beginning of the TWAB circular buffer at index 0\\n        if (observation.timestamp == 0) {\\n            index = 0;\\n            observation = reserveAccumulators[0];\\n        }\\n    }\\n\\n    /// @notice Retrieves the newest observation\\n    /// @param _nextIndex The next index of the Reserve observations\\n    function _getNewestObservation(uint24 _nextIndex)\\n        internal\\n        view\\n        returns (uint24 index, ObservationLib.Observation memory observation)\\n    {\\n        index = uint24(RingBufferLib.newestIndex(_nextIndex, MAX_CARDINALITY));\\n        observation = reserveAccumulators[index];\\n    }\\n}\\n\",\"keccak256\":\"0xe168db11cdb2b85a466b2186c9a4a237e74c3295c4fd108fd6ca5bd44557e13f\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/interfaces/IReserve.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\n\\ninterface IReserve {\\n    /**\\n     * @notice Emit when checkpoint is created.\\n     * @param reserveAccumulated  Total depsosited\\n     * @param withdrawAccumulated Total withdrawn\\n     */\\n\\n    event Checkpoint(uint256 reserveAccumulated, uint256 withdrawAccumulated);\\n    /**\\n     * @notice Emit when the withdrawTo function has executed.\\n     * @param recipient Address receiving funds\\n     * @param amount    Amount of tokens transfered.\\n     */\\n    event Withdrawn(address indexed recipient, uint256 amount);\\n\\n    /**\\n     * @notice Create observation checkpoint in ring bufferr.\\n     * @dev    Calculates total desposited tokens since last checkpoint and creates new accumulator checkpoint.\\n     */\\n    function checkpoint() external;\\n\\n    /**\\n     * @notice Read global token value.\\n     * @return IERC20\\n     */\\n    function getToken() external view returns (IERC20);\\n\\n    /**\\n     * @notice Calculate token accumulation beween timestamp range.\\n     * @dev    Search the ring buffer for two checkpoint observations and diffs accumulator amount.\\n     * @param startTimestamp Account address\\n     * @param endTimestamp   Transfer amount\\n     */\\n    function getReserveAccumulatedBetween(uint32 startTimestamp, uint32 endTimestamp)\\n        external\\n        returns (uint224);\\n\\n    /**\\n     * @notice Transfer Reserve token balance to recipient address.\\n     * @dev    Creates checkpoint before token transfer. Increments withdrawAccumulator with amount.\\n     * @param recipient Account address\\n     * @param amount    Transfer amount\\n     */\\n    function withdrawTo(address recipient, uint256 amount) external;\\n}\\n\",\"keccak256\":\"0x630c99a29c1df33cf2cf9492ea8640e875fa6cbb46c53a9d1ce935567589fef6\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/libraries/ObservationLib.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@openzeppelin/contracts/utils/math/SafeCast.sol\\\";\\n\\nimport \\\"./OverflowSafeComparatorLib.sol\\\";\\nimport \\\"./RingBufferLib.sol\\\";\\n\\n/**\\n* @title Observation Library\\n* @notice This library allows one to store an array of timestamped values and efficiently binary search them.\\n* @dev Largely pulled from Uniswap V3 Oracle.sol: https://github.com/Uniswap/v3-core/blob/c05a0e2c8c08c460fb4d05cfdda30b3ad8deeaac/contracts/libraries/Oracle.sol\\n* @author PoolTogether Inc.\\n*/\\nlibrary ObservationLib {\\n    using OverflowSafeComparatorLib for uint32;\\n    using SafeCast for uint256;\\n\\n    /// @notice The maximum number of observations\\n    uint24 public constant MAX_CARDINALITY = 16777215; // 2**24\\n\\n    /**\\n    * @notice Observation, which includes an amount and timestamp.\\n    * @param amount `amount` at `timestamp`.\\n    * @param timestamp Recorded `timestamp`.\\n    */\\n    struct Observation {\\n        uint224 amount;\\n        uint32 timestamp;\\n    }\\n\\n    /**\\n    * @notice Fetches Observations `beforeOrAt` and `atOrAfter` a `_target`, eg: where [`beforeOrAt`, `atOrAfter`] is satisfied.\\n    * The result may be the same Observation, or adjacent Observations.\\n    * @dev The answer must be contained in the array used when the target is located within the stored Observation.\\n    * boundaries: older than the most recent Observation and younger, or the same age as, the oldest Observation.\\n    * @dev  If `_newestObservationIndex` is less than `_oldestObservationIndex`, it means that we've wrapped around the circular buffer.\\n    *       So the most recent observation will be at `_oldestObservationIndex + _cardinality - 1`, at the beginning of the circular buffer.\\n    * @param _observations List of Observations to search through.\\n    * @param _newestObservationIndex Index of the newest Observation. Right side of the circular buffer.\\n    * @param _oldestObservationIndex Index of the oldest Observation. Left side of the circular buffer.\\n    * @param _target Timestamp at which we are searching the Observation.\\n    * @param _cardinality Cardinality of the circular buffer we are searching through.\\n    * @param _time Timestamp at which we perform the binary search.\\n    * @return beforeOrAt Observation recorded before, or at, the target.\\n    * @return atOrAfter Observation recorded at, or after, the target.\\n    */\\n    function binarySearch(\\n        Observation[MAX_CARDINALITY] storage _observations,\\n        uint24 _newestObservationIndex,\\n        uint24 _oldestObservationIndex,\\n        uint32 _target,\\n        uint24 _cardinality,\\n        uint32 _time\\n    ) internal view returns (Observation memory beforeOrAt, Observation memory atOrAfter) {\\n        uint256 leftSide = _oldestObservationIndex;\\n        uint256 rightSide = _newestObservationIndex < leftSide\\n            ? leftSide + _cardinality - 1\\n            : _newestObservationIndex;\\n        uint256 currentIndex;\\n\\n        while (true) {\\n            // We start our search in the middle of the `leftSide` and `rightSide`.\\n            // After each iteration, we narrow down the search to the left or the right side while still starting our search in the middle.\\n            currentIndex = (leftSide + rightSide) / 2;\\n\\n            beforeOrAt = _observations[uint24(RingBufferLib.wrap(currentIndex, _cardinality))];\\n            uint32 beforeOrAtTimestamp = beforeOrAt.timestamp;\\n\\n            // We've landed on an uninitialized timestamp, keep searching higher (more recently).\\n            if (beforeOrAtTimestamp == 0) {\\n                leftSide = currentIndex + 1;\\n                continue;\\n            }\\n\\n            atOrAfter = _observations[uint24(RingBufferLib.nextIndex(currentIndex, _cardinality))];\\n\\n            bool targetAtOrAfter = beforeOrAtTimestamp.lte(_target, _time);\\n\\n            // Check if we've found the corresponding Observation.\\n            if (targetAtOrAfter && _target.lte(atOrAfter.timestamp, _time)) {\\n                break;\\n            }\\n\\n            // If `beforeOrAtTimestamp` is greater than `_target`, then we keep searching lower. To the left of the current index.\\n            if (!targetAtOrAfter) {\\n                rightSide = currentIndex - 1;\\n            } else {\\n                // Otherwise, we keep searching higher. To the left of the current index.\\n                leftSide = currentIndex + 1;\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x225592b42013fc0af60822e75bc047d53b42a5fcf15f2173cdc3b50bea334b0a\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/libraries/OverflowSafeComparatorLib.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\n/// @title OverflowSafeComparatorLib library to share comparator functions between contracts\\n/// @dev Code taken from Uniswap V3 Oracle.sol: https://github.com/Uniswap/v3-core/blob/3e88af408132fc957e3e406f65a0ce2b1ca06c3d/contracts/libraries/Oracle.sol\\n/// @author PoolTogether Inc.\\nlibrary OverflowSafeComparatorLib {\\n    /// @notice 32-bit timestamps comparator.\\n    /// @dev safe for 0 or 1 overflows, `_a` and `_b` must be chronologically before or equal to time.\\n    /// @param _a A comparison timestamp from which to determine the relative position of `_timestamp`.\\n    /// @param _b Timestamp to compare against `_a`.\\n    /// @param _timestamp A timestamp truncated to 32 bits.\\n    /// @return bool Whether `_a` is chronologically < `_b`.\\n    function lt(\\n        uint32 _a,\\n        uint32 _b,\\n        uint32 _timestamp\\n    ) internal pure returns (bool) {\\n        // No need to adjust if there hasn't been an overflow\\n        if (_a <= _timestamp && _b <= _timestamp) return _a < _b;\\n\\n        uint256 aAdjusted = _a > _timestamp ? _a : _a + 2**32;\\n        uint256 bAdjusted = _b > _timestamp ? _b : _b + 2**32;\\n\\n        return aAdjusted < bAdjusted;\\n    }\\n\\n    /// @notice 32-bit timestamps comparator.\\n    /// @dev safe for 0 or 1 overflows, `_a` and `_b` must be chronologically before or equal to time.\\n    /// @param _a A comparison timestamp from which to determine the relative position of `_timestamp`.\\n    /// @param _b Timestamp to compare against `_a`.\\n    /// @param _timestamp A timestamp truncated to 32 bits.\\n    /// @return bool Whether `_a` is chronologically <= `_b`.\\n    function lte(\\n        uint32 _a,\\n        uint32 _b,\\n        uint32 _timestamp\\n    ) internal pure returns (bool) {\\n\\n        // No need to adjust if there hasn't been an overflow\\n        if (_a <= _timestamp && _b <= _timestamp) return _a <= _b;\\n\\n        uint256 aAdjusted = _a > _timestamp ? _a : _a + 2**32;\\n        uint256 bAdjusted = _b > _timestamp ? _b : _b + 2**32;\\n\\n        return aAdjusted <= bAdjusted;\\n    }\\n\\n    /// @notice 32-bit timestamp subtractor\\n    /// @dev safe for 0 or 1 overflows, where `_a` and `_b` must be chronologically before or equal to time\\n    /// @param _a The subtraction left operand\\n    /// @param _b The subtraction right operand\\n    /// @param _timestamp The current time.  Expected to be chronologically after both.\\n    /// @return The difference between a and b, adjusted for overflow\\n    function checkedSub(\\n        uint32 _a,\\n        uint32 _b,\\n        uint32 _timestamp\\n    ) internal pure returns (uint32) {\\n        // No need to adjust if there hasn't been an overflow\\n\\n        if (_a <= _timestamp && _b <= _timestamp) return _a - _b;\\n\\n        uint256 aAdjusted = _a > _timestamp ? _a : _a + 2**32;\\n        uint256 bAdjusted = _b > _timestamp ? _b : _b + 2**32;\\n\\n        return uint32(aAdjusted - bAdjusted);\\n    }\\n}\\n\",\"keccak256\":\"0x20630cf89e7b92462946defe979fd0e69fa119841d55886121948ad810778c74\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/libraries/RingBufferLib.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nlibrary RingBufferLib {\\n    /**\\n    * @notice Returns wrapped TWAB index.\\n    * @dev  In order to navigate the TWAB circular buffer, we need to use the modulo operator.\\n    * @dev  For example, if `_index` is equal to 32 and the TWAB circular buffer is of `_cardinality` 32,\\n    *       it will return 0 and will point to the first element of the array.\\n    * @param _index Index used to navigate through the TWAB circular buffer.\\n    * @param _cardinality TWAB buffer cardinality.\\n    * @return TWAB index.\\n    */\\n    function wrap(uint256 _index, uint256 _cardinality) internal pure returns (uint256) {\\n        return _index % _cardinality;\\n    }\\n\\n    /**\\n    * @notice Computes the negative offset from the given index, wrapped by the cardinality.\\n    * @dev  We add `_cardinality` to `_index` to be able to offset even if `_amount` is superior to `_cardinality`.\\n    * @param _index The index from which to offset\\n    * @param _amount The number of indices to offset.  This is subtracted from the given index.\\n    * @param _cardinality The number of elements in the ring buffer\\n    * @return Offsetted index.\\n     */\\n    function offset(\\n        uint256 _index,\\n        uint256 _amount,\\n        uint256 _cardinality\\n    ) internal pure returns (uint256) {\\n        return wrap(_index + _cardinality - _amount, _cardinality);\\n    }\\n\\n    /// @notice Returns the index of the last recorded TWAB\\n    /// @param _nextIndex The next available twab index.  This will be recorded to next.\\n    /// @param _cardinality The cardinality of the TWAB history.\\n    /// @return The index of the last recorded TWAB\\n    function newestIndex(uint256 _nextIndex, uint256 _cardinality)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        if (_cardinality == 0) {\\n            return 0;\\n        }\\n\\n        return wrap(_nextIndex + _cardinality - 1, _cardinality);\\n    }\\n\\n    /// @notice Computes the ring buffer index that follows the given one, wrapped by cardinality\\n    /// @param _index The index to increment\\n    /// @param _cardinality The number of elements in the Ring Buffer\\n    /// @return The next index relative to the given index.  Will wrap around to 0 if the next index == cardinality\\n    function nextIndex(uint256 _index, uint256 _cardinality)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        return wrap(_index + 1, _cardinality);\\n    }\\n}\\n\",\"keccak256\":\"0x052e3bf6bfb30f32950e322c853589a8d153cf34f4b1ee292b17eb46f2ae656c\",\"license\":\"GPL-3.0\"}},\"version\":1}",
+  "bytecode": "0x60a06040523480156200001157600080fd5b50604051620016ee380380620016ee8339810160408190526200003491620000df565b8162000040816200008f565b506001600160601b0319606082901b166080526040516001600160a01b038216907ff40fcec21964ffb566044d083b4073f29f7f7929110ea19e1b3ebe375d89055e90600090a2505062000137565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60008060408385031215620000f357600080fd5b825162000100816200011e565b602084015190925062000113816200011e565b809150509250929050565b6001600160a01b03811681146200013457600080fd5b50565b60805160601c6115846200016a6000396000818160fb015281816101fc01528181610327015261078601526115846000f3fe608060405234801561001057600080fd5b50600436106100df5760003560e01c80638da5cb5b1161008c578063d0ebdbe711610066578063d0ebdbe7146101b0578063e30c3978146101d3578063f2fde38b146101e4578063fc0c546a146101f757600080fd5b80638da5cb5b14610184578063af6a940014610195578063c2c4c5c1146101a857600080fd5b8063481c6a75116100bd578063481c6a75146101635780634e71e0c814610174578063715018a61461017c57600080fd5b8063205c2878146100e457806321df0da7146100f95780632d00ddda14610138575b600080fd5b6100f76100f23660046112ef565b61021e565b005b7f00000000000000000000000000000000000000000000000000000000000000005b6040516001600160a01b0390911681526020015b60405180910390f35b60035461014b906001600160e01b031681565b6040516001600160e01b03909116815260200161012f565b6002546001600160a01b031661011b565b6100f76103a5565b6100f7610433565b6000546001600160a01b031661011b565b61014b6101a3366004611354565b6104a8565b6100f7610576565b6101c36101be3660046112d4565b61057e565b604051901515815260200161012f565b6001546001600160a01b031661011b565b6100f76101f23660046112d4565b6105fa565b61011b7f000000000000000000000000000000000000000000000000000000000000000081565b336102316002546001600160a01b031690565b6001600160a01b0316148061025f5750336102546000546001600160a01b031690565b6001600160a01b0316145b6102d65760405162461bcd60e51b815260206004820152602660248201527f4d616e61676561626c652f63616c6c65722d6e6f742d6d616e616765722d6f7260448201527f2d6f776e6572000000000000000000000000000000000000000000000000000060648201526084015b60405180910390fd5b6102de610736565b600380548291906000906102fc9084906001600160e01b03166113f4565b92506101000a8154816001600160e01b0302191690836001600160e01b0316021790555061035e82827f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03166109fd9092919063ffffffff16565b816001600160a01b03167f7084f5476618d8e60b11ef0d7d3f06914655adb8793e28ff7f018d4c76d505d58260405161039991815260200190565b60405180910390a25050565b6001546001600160a01b031633146103ff5760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e65720060448201526064016102cd565b600154610414906001600160a01b0316610a6d565b6001805473ffffffffffffffffffffffffffffffffffffffff19169055565b336104466000546001600160a01b031690565b6001600160a01b03161461049c5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102cd565b6104a66000610a6d565b565b60008163ffffffff168363ffffffff16106105055760405162461bcd60e51b815260206004820152601b60248201527f526573657276652f73746172742d6c6573732d7468656e2d656e64000000000060448201526064016102cd565b60045462ffffff630100000082048116911660008061052383610aca565b9150915060008061053385610b40565b915091506000610547848387868b8f610bb3565b90506000610559858488878c8f610bb3565b90506105658282611489565b985050505050505050505b92915050565b6104a6610736565b6000336105936000546001600160a01b031690565b6001600160a01b0316146105e95760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102cd565b6105f282610c5a565b90505b919050565b3361060d6000546001600160a01b031690565b6001600160a01b0316146106635760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102cd565b6001600160a01b0381166106df5760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d616460448201527f647265737300000000000000000000000000000000000000000000000000000060648201526084016102cd565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b600480546040517f70a08231000000000000000000000000000000000000000000000000000000008152309281019290925262ffffff630100000082048116929116906000906001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016906370a082319060240160206040518083038186803b1580156107c857600080fd5b505afa1580156107dc573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610800919061133b565b6003549091506001600160e01b031660008061081b85610aca565b9150915080600001516001600160e01b0316836001600160e01b031685610842919061143d565b11156109f55742600061085585876113f4565b90508163ffffffff16836020015163ffffffff161461094a576040518060400160405280826001600160e01b031681526020018363ffffffff1681525060058862ffffff1662ffffff81106108ac576108ac611538565b825160209093015163ffffffff16600160e01b026001600160e01b03909316929092179101556108e262ffffff80891690610d46565b600480547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000001662ffffff92831617905588811610156109455761092688600161141f565b600460036101000a81548162ffffff021916908362ffffff1602179055505b6109af565b6040518060400160405280826001600160e01b031681526020018363ffffffff1681525060058562ffffff1662ffffff811061098857610988611538565b825160209093015163ffffffff16600160e01b026001600160e01b03909316929092179101555b604080516001600160e01b038084168252871660208201527f21d81d5d656869e8ce3ba8d65526a2f0dbbcd3d36f5f9999eb7c84360e45eced910160405180910390a150505b505050505050565b604080516001600160a01b038416602482015260448082018490528251808303909101815260649091019091526020810180516001600160e01b03167fa9059cbb00000000000000000000000000000000000000000000000000000000179052610a68908490610d63565b505050565b600080546001600160a01b0383811673ffffffffffffffffffffffffffffffffffffffff19831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6040805180820190915260008082526020820181905290610af162ffffff80851690610e48565b915060058262ffffff1662ffffff8110610b0d57610b0d611538565b604080518082019091529101546001600160e01b0381168252600160e01b900463ffffffff166020820152919391925050565b60408051808201909152600080825260208201528190600562ffffff808416908110610b6e57610b6e611538565b604080518082019091529101546001600160e01b0381168252600160e01b900463ffffffff1660208201819052909150610bae5760009150600582610b0d565b915091565b60004262ffffff8416610bca576000915050610c50565b8263ffffffff16876020015163ffffffff161115610bec576000915050610c50565b8263ffffffff16886020015163ffffffff1611610c0c5750508551610c50565b600080610c1e60058989888a88610e70565b915091508463ffffffff16816020015163ffffffff161415610c4557519250610c50915050565b50519150610c509050565b9695505050505050565b6002546000906001600160a01b03908116908316811415610ce35760405162461bcd60e51b815260206004820152602360248201527f4d616e61676561626c652f6578697374696e672d6d616e616765722d6164647260448201527f657373000000000000000000000000000000000000000000000000000000000060648201526084016102cd565b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0385811691821790925560405190918316907f9cb45c728de594dab506a1f1a8554e24c8eeaf983618d5ec5dd7bc6f3c49feee90600090a350600192915050565b6000610d5c610d5684600161143d565b8361103d565b9392505050565b6000610db8826040518060400160405280602081526020017f5361666545524332303a206c6f772d6c6576656c2063616c6c206661696c6564815250856001600160a01b03166110499092919063ffffffff16565b805190915015610a685780806020019051810190610dd69190611319565b610a685760405162461bcd60e51b815260206004820152602a60248201527f5361666545524332303a204552433230206f7065726174696f6e20646964206e60448201527f6f7420737563636565640000000000000000000000000000000000000000000060648201526084016102cd565b600081610e5757506000610570565b610d5c6001610e66848661143d565b610d5691906114b1565b6040805180820190915260008082526020820152604080518082019091526000808252602082015260008662ffffff1690506000818962ffffff1610610ebb578862ffffff16610ed6565b6001610ecc62ffffff88168461143d565b610ed691906114b1565b905060005b6002610ee7838561143d565b610ef19190611475565b90508a610f03828962ffffff1661103d565b62ffffff1662ffffff8110610f1a57610f1a611538565b604080518082019091529101546001600160e01b0381168252600160e01b900463ffffffff166020820181905290955080610f6257610f5a82600161143d565b935050610edb565b8b610f72838a62ffffff16610d46565b62ffffff1662ffffff8110610f8957610f89611538565b604080518082019091529101546001600160e01b038116825263ffffffff600160e01b90910481166020830152909550600090610fce90838116908c908b9061106016565b9050808015610ff75750610ff78660200151898c63ffffffff166110609092919063ffffffff16565b1561100357505061102f565b8061101a576110136001846114b1565b9350611028565b61102583600161143d565b94505b5050610edb565b505050965096945050505050565b6000610d5c82846114f8565b60606110588484600085611131565b949350505050565b60008163ffffffff168463ffffffff161115801561108a57508163ffffffff168363ffffffff1611155b156110a6578263ffffffff168463ffffffff1611159050610d5c565b60008263ffffffff168563ffffffff16116110d5576110d063ffffffff8616640100000000611455565b6110dd565b8463ffffffff165b64ffffffffff16905060008363ffffffff168563ffffffff16116111155761111063ffffffff8616640100000000611455565b61111d565b8463ffffffff165b64ffffffffff169091111595945050505050565b6060824710156111a95760405162461bcd60e51b815260206004820152602660248201527f416464726573733a20696e73756666696369656e742062616c616e636520666f60448201527f722063616c6c000000000000000000000000000000000000000000000000000060648201526084016102cd565b843b6111f75760405162461bcd60e51b815260206004820152601d60248201527f416464726573733a2063616c6c20746f206e6f6e2d636f6e747261637400000060448201526064016102cd565b600080866001600160a01b031685876040516112139190611387565b60006040518083038185875af1925050503d8060008114611250576040519150601f19603f3d011682016040523d82523d6000602084013e611255565b606091505b5091509150611265828286611270565b979650505050505050565b6060831561127f575081610d5c565b82511561128f5782518084602001fd5b8160405162461bcd60e51b81526004016102cd91906113a3565b80356001600160a01b03811681146105f557600080fd5b803563ffffffff811681146105f557600080fd5b6000602082840312156112e657600080fd5b610d5c826112a9565b6000806040838503121561130257600080fd5b61130b836112a9565b946020939093013593505050565b60006020828403121561132b57600080fd5b81518015158114610d5c57600080fd5b60006020828403121561134d57600080fd5b5051919050565b6000806040838503121561136757600080fd5b611370836112c0565b915061137e602084016112c0565b90509250929050565b600082516113998184602087016114c8565b9190910192915050565b60208152600082518060208401526113c28160408501602087016114c8565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169190910160400192915050565b60006001600160e01b038083168185168083038211156114165761141661150c565b01949350505050565b600062ffffff8083168185168083038211156114165761141661150c565b600082198211156114505761145061150c565b500190565b600064ffffffffff8083168185168083038211156114165761141661150c565b60008261148457611484611522565b500490565b60006001600160e01b03838116908316818110156114a9576114a961150c565b039392505050565b6000828210156114c3576114c361150c565b500390565b60005b838110156114e35781810151838201526020016114cb565b838111156114f2576000848401525b50505050565b60008261150757611507611522565b500690565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052601260045260246000fd5b634e487b7160e01b600052603260045260246000fdfea2646970667358221220f51cc89886f0f2e1df101513bf23249d915db3b1778ad81e9088ca4fc457db0464736f6c63430008060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100df5760003560e01c80638da5cb5b1161008c578063d0ebdbe711610066578063d0ebdbe7146101b0578063e30c3978146101d3578063f2fde38b146101e4578063fc0c546a146101f757600080fd5b80638da5cb5b14610184578063af6a940014610195578063c2c4c5c1146101a857600080fd5b8063481c6a75116100bd578063481c6a75146101635780634e71e0c814610174578063715018a61461017c57600080fd5b8063205c2878146100e457806321df0da7146100f95780632d00ddda14610138575b600080fd5b6100f76100f23660046112ef565b61021e565b005b7f00000000000000000000000000000000000000000000000000000000000000005b6040516001600160a01b0390911681526020015b60405180910390f35b60035461014b906001600160e01b031681565b6040516001600160e01b03909116815260200161012f565b6002546001600160a01b031661011b565b6100f76103a5565b6100f7610433565b6000546001600160a01b031661011b565b61014b6101a3366004611354565b6104a8565b6100f7610576565b6101c36101be3660046112d4565b61057e565b604051901515815260200161012f565b6001546001600160a01b031661011b565b6100f76101f23660046112d4565b6105fa565b61011b7f000000000000000000000000000000000000000000000000000000000000000081565b336102316002546001600160a01b031690565b6001600160a01b0316148061025f5750336102546000546001600160a01b031690565b6001600160a01b0316145b6102d65760405162461bcd60e51b815260206004820152602660248201527f4d616e61676561626c652f63616c6c65722d6e6f742d6d616e616765722d6f7260448201527f2d6f776e6572000000000000000000000000000000000000000000000000000060648201526084015b60405180910390fd5b6102de610736565b600380548291906000906102fc9084906001600160e01b03166113f4565b92506101000a8154816001600160e01b0302191690836001600160e01b0316021790555061035e82827f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03166109fd9092919063ffffffff16565b816001600160a01b03167f7084f5476618d8e60b11ef0d7d3f06914655adb8793e28ff7f018d4c76d505d58260405161039991815260200190565b60405180910390a25050565b6001546001600160a01b031633146103ff5760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e65720060448201526064016102cd565b600154610414906001600160a01b0316610a6d565b6001805473ffffffffffffffffffffffffffffffffffffffff19169055565b336104466000546001600160a01b031690565b6001600160a01b03161461049c5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102cd565b6104a66000610a6d565b565b60008163ffffffff168363ffffffff16106105055760405162461bcd60e51b815260206004820152601b60248201527f526573657276652f73746172742d6c6573732d7468656e2d656e64000000000060448201526064016102cd565b60045462ffffff630100000082048116911660008061052383610aca565b9150915060008061053385610b40565b915091506000610547848387868b8f610bb3565b90506000610559858488878c8f610bb3565b90506105658282611489565b985050505050505050505b92915050565b6104a6610736565b6000336105936000546001600160a01b031690565b6001600160a01b0316146105e95760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102cd565b6105f282610c5a565b90505b919050565b3361060d6000546001600160a01b031690565b6001600160a01b0316146106635760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102cd565b6001600160a01b0381166106df5760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d616460448201527f647265737300000000000000000000000000000000000000000000000000000060648201526084016102cd565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b600480546040517f70a08231000000000000000000000000000000000000000000000000000000008152309281019290925262ffffff630100000082048116929116906000906001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016906370a082319060240160206040518083038186803b1580156107c857600080fd5b505afa1580156107dc573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610800919061133b565b6003549091506001600160e01b031660008061081b85610aca565b9150915080600001516001600160e01b0316836001600160e01b031685610842919061143d565b11156109f55742600061085585876113f4565b90508163ffffffff16836020015163ffffffff161461094a576040518060400160405280826001600160e01b031681526020018363ffffffff1681525060058862ffffff1662ffffff81106108ac576108ac611538565b825160209093015163ffffffff16600160e01b026001600160e01b03909316929092179101556108e262ffffff80891690610d46565b600480547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000001662ffffff92831617905588811610156109455761092688600161141f565b600460036101000a81548162ffffff021916908362ffffff1602179055505b6109af565b6040518060400160405280826001600160e01b031681526020018363ffffffff1681525060058562ffffff1662ffffff811061098857610988611538565b825160209093015163ffffffff16600160e01b026001600160e01b03909316929092179101555b604080516001600160e01b038084168252871660208201527f21d81d5d656869e8ce3ba8d65526a2f0dbbcd3d36f5f9999eb7c84360e45eced910160405180910390a150505b505050505050565b604080516001600160a01b038416602482015260448082018490528251808303909101815260649091019091526020810180516001600160e01b03167fa9059cbb00000000000000000000000000000000000000000000000000000000179052610a68908490610d63565b505050565b600080546001600160a01b0383811673ffffffffffffffffffffffffffffffffffffffff19831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6040805180820190915260008082526020820181905290610af162ffffff80851690610e48565b915060058262ffffff1662ffffff8110610b0d57610b0d611538565b604080518082019091529101546001600160e01b0381168252600160e01b900463ffffffff166020820152919391925050565b60408051808201909152600080825260208201528190600562ffffff808416908110610b6e57610b6e611538565b604080518082019091529101546001600160e01b0381168252600160e01b900463ffffffff1660208201819052909150610bae5760009150600582610b0d565b915091565b60004262ffffff8416610bca576000915050610c50565b8263ffffffff16876020015163ffffffff161115610bec576000915050610c50565b8263ffffffff16886020015163ffffffff1611610c0c5750508551610c50565b600080610c1e60058989888a88610e70565b915091508463ffffffff16816020015163ffffffff161415610c4557519250610c50915050565b50519150610c509050565b9695505050505050565b6002546000906001600160a01b03908116908316811415610ce35760405162461bcd60e51b815260206004820152602360248201527f4d616e61676561626c652f6578697374696e672d6d616e616765722d6164647260448201527f657373000000000000000000000000000000000000000000000000000000000060648201526084016102cd565b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0385811691821790925560405190918316907f9cb45c728de594dab506a1f1a8554e24c8eeaf983618d5ec5dd7bc6f3c49feee90600090a350600192915050565b6000610d5c610d5684600161143d565b8361103d565b9392505050565b6000610db8826040518060400160405280602081526020017f5361666545524332303a206c6f772d6c6576656c2063616c6c206661696c6564815250856001600160a01b03166110499092919063ffffffff16565b805190915015610a685780806020019051810190610dd69190611319565b610a685760405162461bcd60e51b815260206004820152602a60248201527f5361666545524332303a204552433230206f7065726174696f6e20646964206e60448201527f6f7420737563636565640000000000000000000000000000000000000000000060648201526084016102cd565b600081610e5757506000610570565b610d5c6001610e66848661143d565b610d5691906114b1565b6040805180820190915260008082526020820152604080518082019091526000808252602082015260008662ffffff1690506000818962ffffff1610610ebb578862ffffff16610ed6565b6001610ecc62ffffff88168461143d565b610ed691906114b1565b905060005b6002610ee7838561143d565b610ef19190611475565b90508a610f03828962ffffff1661103d565b62ffffff1662ffffff8110610f1a57610f1a611538565b604080518082019091529101546001600160e01b0381168252600160e01b900463ffffffff166020820181905290955080610f6257610f5a82600161143d565b935050610edb565b8b610f72838a62ffffff16610d46565b62ffffff1662ffffff8110610f8957610f89611538565b604080518082019091529101546001600160e01b038116825263ffffffff600160e01b90910481166020830152909550600090610fce90838116908c908b9061106016565b9050808015610ff75750610ff78660200151898c63ffffffff166110609092919063ffffffff16565b1561100357505061102f565b8061101a576110136001846114b1565b9350611028565b61102583600161143d565b94505b5050610edb565b505050965096945050505050565b6000610d5c82846114f8565b60606110588484600085611131565b949350505050565b60008163ffffffff168463ffffffff161115801561108a57508163ffffffff168363ffffffff1611155b156110a6578263ffffffff168463ffffffff1611159050610d5c565b60008263ffffffff168563ffffffff16116110d5576110d063ffffffff8616640100000000611455565b6110dd565b8463ffffffff165b64ffffffffff16905060008363ffffffff168563ffffffff16116111155761111063ffffffff8616640100000000611455565b61111d565b8463ffffffff165b64ffffffffff169091111595945050505050565b6060824710156111a95760405162461bcd60e51b815260206004820152602660248201527f416464726573733a20696e73756666696369656e742062616c616e636520666f60448201527f722063616c6c000000000000000000000000000000000000000000000000000060648201526084016102cd565b843b6111f75760405162461bcd60e51b815260206004820152601d60248201527f416464726573733a2063616c6c20746f206e6f6e2d636f6e747261637400000060448201526064016102cd565b600080866001600160a01b031685876040516112139190611387565b60006040518083038185875af1925050503d8060008114611250576040519150601f19603f3d011682016040523d82523d6000602084013e611255565b606091505b5091509150611265828286611270565b979650505050505050565b6060831561127f575081610d5c565b82511561128f5782518084602001fd5b8160405162461bcd60e51b81526004016102cd91906113a3565b80356001600160a01b03811681146105f557600080fd5b803563ffffffff811681146105f557600080fd5b6000602082840312156112e657600080fd5b610d5c826112a9565b6000806040838503121561130257600080fd5b61130b836112a9565b946020939093013593505050565b60006020828403121561132b57600080fd5b81518015158114610d5c57600080fd5b60006020828403121561134d57600080fd5b5051919050565b6000806040838503121561136757600080fd5b611370836112c0565b915061137e602084016112c0565b90509250929050565b600082516113998184602087016114c8565b9190910192915050565b60208152600082518060208401526113c28160408501602087016114c8565b601f017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0169190910160400192915050565b60006001600160e01b038083168185168083038211156114165761141661150c565b01949350505050565b600062ffffff8083168185168083038211156114165761141661150c565b600082198211156114505761145061150c565b500190565b600064ffffffffff8083168185168083038211156114165761141661150c565b60008261148457611484611522565b500490565b60006001600160e01b03838116908316818110156114a9576114a961150c565b039392505050565b6000828210156114c3576114c361150c565b500390565b60005b838110156114e35781810151838201526020016114cb565b838111156114f2576000848401525b50505050565b60008261150757611507611522565b500690565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052601260045260246000fd5b634e487b7160e01b600052603260045260246000fdfea2646970667358221220f51cc89886f0f2e1df101513bf23249d915db3b1778ad81e9088ca4fc457db0464736f6c63430008060033",
+  "devdoc": {
+    "author": "PoolTogether Inc Team",
+    "details": "By calculating the total held tokens in a specific time range, contracts that require knowledge  of captured interest during a draw period, can easily call into the Reserve and deterministically determine the newly aqcuired tokens for that time range. ",
+    "kind": "dev",
+    "methods": {
+      "checkpoint()": {
+        "details": "Calculates total desposited tokens since last checkpoint and creates new accumulator checkpoint."
+      },
+      "claimOwnership()": {
+        "details": "This function is only callable by the `_pendingOwner`."
+      },
+      "constructor": {
+        "params": {
+          "_owner": "Owner address",
+          "_token": "ERC20 address"
+        }
+      },
+      "getReserveAccumulatedBetween(uint32,uint32)": {
+        "details": "Search the ring buffer for two checkpoint observations and diffs accumulator amount.",
+        "params": {
+          "endTimestamp": "Transfer amount",
+          "startTimestamp": "Account address"
+        }
+      },
+      "getToken()": {
+        "returns": {
+          "_0": "IERC20"
+        }
+      },
+      "manager()": {
+        "returns": {
+          "_0": "Current `_manager` address."
+        }
+      },
+      "pendingOwner()": {
+        "returns": {
+          "_0": "Current `_pendingOwner` address."
+        }
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "setManager(address)": {
+        "details": "Throws if called by any account other than the owner.",
+        "params": {
+          "_newManager": "New _manager address."
+        },
+        "returns": {
+          "_0": "Boolean to indicate if the operation was successful or not."
+        }
+      },
+      "transferOwnership(address)": {
+        "params": {
+          "_newOwner": "Address to transfer ownership to."
+        }
+      },
+      "withdrawTo(address,uint256)": {
+        "details": "Creates checkpoint before token transfer. Increments withdrawAccumulator with amount.",
+        "params": {
+          "amount": "Transfer amount",
+          "recipient": "Account address"
+        }
+      }
+    },
+    "title": "PoolTogether V4 Reserve",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "Checkpoint(uint256,uint256)": {
+        "notice": "Emit when checkpoint is created."
+      },
+      "Withdrawn(address,uint256)": {
+        "notice": "Emit when the withdrawTo function has executed."
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "checkpoint()": {
+        "notice": "Create observation checkpoint in ring bufferr."
+      },
+      "claimOwnership()": {
+        "notice": "Allows the `_pendingOwner` address to finalize the transfer."
+      },
+      "constructor": {
+        "notice": "Constructs Ticket with passed parameters."
+      },
+      "getReserveAccumulatedBetween(uint32,uint32)": {
+        "notice": "Calculate token accumulation beween timestamp range."
+      },
+      "getToken()": {
+        "notice": "Read global token value."
+      },
+      "manager()": {
+        "notice": "Gets current `_manager`."
+      },
+      "owner()": {
+        "notice": "Returns the address of the current owner."
+      },
+      "pendingOwner()": {
+        "notice": "Gets current `_pendingOwner`."
+      },
+      "renounceOwnership()": {
+        "notice": "Renounce ownership of the contract."
+      },
+      "setManager(address)": {
+        "notice": "Set or change of manager."
+      },
+      "token()": {
+        "notice": "ERC20 token"
+      },
+      "transferOwnership(address)": {
+        "notice": "Allows current owner to set the `_pendingOwner` address."
+      },
+      "withdrawAccumulator()": {
+        "notice": "Total withdraw amount from reserve"
+      },
+      "withdrawTo(address,uint256)": {
+        "notice": "Transfer Reserve token balance to recipient address."
+      }
+    },
+    "notice": "The Reserve contract provides historical lookups of a token balance increase during a target timerange. As the Reserve contract transfers OUT tokens, the withdraw accumulator is increased. When tokens are transfered IN new checkpoint *can* be created if checkpoint() is called after transfering tokens. By using the reserve and withdraw accumulators to create a new checkpoint, any contract or account can lookup the balance increase of the reserve for a target timerange.   ",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 4754,
+        "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 4756,
+        "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+        "label": "_pendingOwner",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 4652,
+        "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+        "label": "_manager",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 8318,
+        "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+        "label": "withdrawAccumulator",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint224"
+      },
+      {
+        "astId": 8320,
+        "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+        "label": "_gap",
+        "offset": 28,
+        "slot": "3",
+        "type": "t_uint32"
+      },
+      {
+        "astId": 8322,
+        "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+        "label": "nextIndex",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint24"
+      },
+      {
+        "astId": 8324,
+        "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+        "label": "cardinality",
+        "offset": 3,
+        "slot": "4",
+        "type": "t_uint24"
+      },
+      {
+        "astId": 8333,
+        "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+        "label": "reserveAccumulators",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_array(t_struct(Observation)11159_storage)16777215_storage"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_struct(Observation)11159_storage)16777215_storage": {
+        "base": "t_struct(Observation)11159_storage",
+        "encoding": "inplace",
+        "label": "struct ObservationLib.Observation[16777215]",
+        "numberOfBytes": "536870880"
+      },
+      "t_struct(Observation)11159_storage": {
+        "encoding": "inplace",
+        "label": "struct ObservationLib.Observation",
+        "members": [
+          {
+            "astId": 11156,
+            "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+            "label": "amount",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint224"
+          },
+          {
+            "astId": 11158,
+            "contract": "@pooltogether/v4-core/contracts/Reserve.sol:Reserve",
+            "label": "timestamp",
+            "offset": 28,
+            "slot": "0",
+            "type": "t_uint32"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint224": {
+        "encoding": "inplace",
+        "label": "uint224",
+        "numberOfBytes": "28"
+      },
+      "t_uint24": {
+        "encoding": "inplace",
+        "label": "uint24",
+        "numberOfBytes": "3"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  }
+}

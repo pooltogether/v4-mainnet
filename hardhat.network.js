@@ -28,7 +28,9 @@ const networks = {
   },
   mainnet: {
     chainId: 1,
+    timeout: 1200000, // 20 minute timeout in ms
     url: process.env.MAINNET_RPC_URL,
+    gasPrice: 200000000000,
     accounts: {
       mnemonic,
     },

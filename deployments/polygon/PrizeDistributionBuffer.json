@@ -1,0 +1,1101 @@
+{
+  "address": "0xcf6030BDEaB4E503D186426510aD88C1DA7125A3",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_cardinality",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "cardinality",
+          "type": "uint8"
+        }
+      ],
+      "name": "Deployed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newManager",
+          "type": "address"
+        }
+      ],
+      "name": "ManagerTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipOffered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "drawId",
+          "type": "uint32"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "bitRangeSize",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "matchCardinality",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint32",
+              "name": "startTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "endTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "maxPicksPerUser",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "expiryDuration",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint104",
+              "name": "numberOfPicks",
+              "type": "uint104"
+            },
+            {
+              "internalType": "uint32[16]",
+              "name": "tiers",
+              "type": "uint32[16]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prize",
+              "type": "uint256"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IPrizeDistributionBuffer.PrizeDistribution",
+          "name": "prizeDistribution",
+          "type": "tuple"
+        }
+      ],
+      "name": "PrizeDistributionSet",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "claimOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBufferCardinality",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getNewestPrizeDistribution",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "bitRangeSize",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "matchCardinality",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint32",
+              "name": "startTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "endTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "maxPicksPerUser",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "expiryDuration",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint104",
+              "name": "numberOfPicks",
+              "type": "uint104"
+            },
+            {
+              "internalType": "uint32[16]",
+              "name": "tiers",
+              "type": "uint32[16]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPrizeDistributionBuffer.PrizeDistribution",
+          "name": "prizeDistribution",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint32",
+          "name": "drawId",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOldestPrizeDistribution",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "bitRangeSize",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "matchCardinality",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint32",
+              "name": "startTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "endTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "maxPicksPerUser",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "expiryDuration",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint104",
+              "name": "numberOfPicks",
+              "type": "uint104"
+            },
+            {
+              "internalType": "uint32[16]",
+              "name": "tiers",
+              "type": "uint32[16]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPrizeDistributionBuffer.PrizeDistribution",
+          "name": "prizeDistribution",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint32",
+          "name": "drawId",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_drawId",
+          "type": "uint32"
+        }
+      ],
+      "name": "getPrizeDistribution",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "bitRangeSize",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "matchCardinality",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint32",
+              "name": "startTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "endTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "maxPicksPerUser",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "expiryDuration",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint104",
+              "name": "numberOfPicks",
+              "type": "uint104"
+            },
+            {
+              "internalType": "uint32[16]",
+              "name": "tiers",
+              "type": "uint32[16]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPrizeDistributionBuffer.PrizeDistribution",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPrizeDistributionCount",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "_drawIds",
+          "type": "uint32[]"
+        }
+      ],
+      "name": "getPrizeDistributions",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "bitRangeSize",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "matchCardinality",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint32",
+              "name": "startTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "endTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "maxPicksPerUser",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "expiryDuration",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint104",
+              "name": "numberOfPicks",
+              "type": "uint104"
+            },
+            {
+              "internalType": "uint32[16]",
+              "name": "tiers",
+              "type": "uint32[16]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPrizeDistributionBuffer.PrizeDistribution[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "manager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pendingOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_drawId",
+          "type": "uint32"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "bitRangeSize",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "matchCardinality",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint32",
+              "name": "startTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "endTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "maxPicksPerUser",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "expiryDuration",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint104",
+              "name": "numberOfPicks",
+              "type": "uint104"
+            },
+            {
+              "internalType": "uint32[16]",
+              "name": "tiers",
+              "type": "uint32[16]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPrizeDistributionBuffer.PrizeDistribution",
+          "name": "_prizeDistribution",
+          "type": "tuple"
+        }
+      ],
+      "name": "pushPrizeDistribution",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newManager",
+          "type": "address"
+        }
+      ],
+      "name": "setManager",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_drawId",
+          "type": "uint32"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "bitRangeSize",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "matchCardinality",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint32",
+              "name": "startTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "endTimestampOffset",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "maxPicksPerUser",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "expiryDuration",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint104",
+              "name": "numberOfPicks",
+              "type": "uint104"
+            },
+            {
+              "internalType": "uint32[16]",
+              "name": "tiers",
+              "type": "uint32[16]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "prize",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IPrizeDistributionBuffer.PrizeDistribution",
+          "name": "_prizeDistribution",
+          "type": "tuple"
+        }
+      ],
+      "name": "setPrizeDistribution",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x4926b1f7b2364eb2ab3837acd913ef04b0c99f9a7dc1966f8c9c066402224a79",
+  "receipt": {
+    "to": null,
+    "from": "0xE0F4217390221aF47855E094F6e112D43C8698fE",
+    "contractAddress": "0xcf6030BDEaB4E503D186426510aD88C1DA7125A3",
+    "transactionIndex": 143,
+    "gasUsed": "1833766",
+    "logsBloom": "0x00000000010000000000000000001000000000000020000000800000000000000000000000000000000000000000000000008000000000000000000000000000000004000000000000000000000000800001000000000000000100400000000000000000020000000000000000008800008000000000000080000020000000400000000000000000800000000000000000000000000000000000000000000000200000000000000000020000000000000000000000000000000000000000004000000000100000000001000000000000000000000000000000100000000020000000000000000000000080000000000000000000000000000000000000100000",
+    "blockHash": "0x63573811e5f0f8b739b662a3f2ba629f9286f893f963bab8c7a621821cdc385d",
+    "transactionHash": "0x4926b1f7b2364eb2ab3837acd913ef04b0c99f9a7dc1966f8c9c066402224a79",
+    "logs": [
+      {
+        "transactionIndex": 143,
+        "blockNumber": 20226798,
+        "transactionHash": "0x4926b1f7b2364eb2ab3837acd913ef04b0c99f9a7dc1966f8c9c066402224a79",
+        "address": "0xcf6030BDEaB4E503D186426510aD88C1DA7125A3",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000e0f4217390221af47855e094f6e112d43c8698fe"
+        ],
+        "data": "0x",
+        "logIndex": 354,
+        "blockHash": "0x63573811e5f0f8b739b662a3f2ba629f9286f893f963bab8c7a621821cdc385d"
+      },
+      {
+        "transactionIndex": 143,
+        "blockNumber": 20226798,
+        "transactionHash": "0x4926b1f7b2364eb2ab3837acd913ef04b0c99f9a7dc1966f8c9c066402224a79",
+        "address": "0xcf6030BDEaB4E503D186426510aD88C1DA7125A3",
+        "topics": [
+          "0x7da7688769fade6088b3de366e63c95090bc5b0db6e9b43f043dee741d7544fe"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000000000000000b4",
+        "logIndex": 355,
+        "blockHash": "0x63573811e5f0f8b739b662a3f2ba629f9286f893f963bab8c7a621821cdc385d"
+      },
+      {
+        "transactionIndex": 143,
+        "blockNumber": 20226798,
+        "transactionHash": "0x4926b1f7b2364eb2ab3837acd913ef04b0c99f9a7dc1966f8c9c066402224a79",
+        "address": "0x0000000000000000000000000000000000001010",
+        "topics": [
+          "0x4dfe1bbbcf077ddc3e01291eea2d5c70c2b422b415d95645b9adcfd678cb1d63",
+          "0x0000000000000000000000000000000000000000000000000000000000001010",
+          "0x000000000000000000000000e0f4217390221af47855e094f6e112d43c8698fe",
+          "0x0000000000000000000000007b5000af8ab69fd59eb0d4f5762bff57c9c04385"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000c372038aef880000000000000000000000000000000000000000000000000561fca8766b969f1a00000000000000000000000000000000000000000000295080fe5819feffc93300000000000000000000000000000000000000000000000561393672e0a7171a00000000000000000000000000000000000000000000295081c1ca1d89ef5133",
+        "logIndex": 356,
+        "blockHash": "0x63573811e5f0f8b739b662a3f2ba629f9286f893f963bab8c7a621821cdc385d"
+      }
+    ],
+    "blockNumber": 20226798,
+    "cumulativeGasUsed": "13951459",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xE0F4217390221aF47855E094F6e112D43C8698fE",
+    180
+  ],
+  "solcInputHash": "7e8084d0a22db9e877c42567b125a31e",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_cardinality\",\"type\":\"uint8\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"cardinality\",\"type\":\"uint8\"}],\"name\":\"Deployed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousManager\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newManager\",\"type\":\"address\"}],\"name\":\"ManagerTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"pendingOwner\",\"type\":\"address\"}],\"name\":\"OwnershipOffered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"},{\"components\":[{\"internalType\":\"uint8\",\"name\":\"bitRangeSize\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"matchCardinality\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"startTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxPicksPerUser\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"expiryDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint104\",\"name\":\"numberOfPicks\",\"type\":\"uint104\"},{\"internalType\":\"uint32[16]\",\"name\":\"tiers\",\"type\":\"uint32[16]\"},{\"internalType\":\"uint256\",\"name\":\"prize\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct IPrizeDistributionBuffer.PrizeDistribution\",\"name\":\"prizeDistribution\",\"type\":\"tuple\"}],\"name\":\"PrizeDistributionSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"claimOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBufferCardinality\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNewestPrizeDistribution\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8\",\"name\":\"bitRangeSize\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"matchCardinality\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"startTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxPicksPerUser\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"expiryDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint104\",\"name\":\"numberOfPicks\",\"type\":\"uint104\"},{\"internalType\":\"uint32[16]\",\"name\":\"tiers\",\"type\":\"uint32[16]\"},{\"internalType\":\"uint256\",\"name\":\"prize\",\"type\":\"uint256\"}],\"internalType\":\"struct IPrizeDistributionBuffer.PrizeDistribution\",\"name\":\"prizeDistribution\",\"type\":\"tuple\"},{\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOldestPrizeDistribution\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8\",\"name\":\"bitRangeSize\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"matchCardinality\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"startTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxPicksPerUser\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"expiryDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint104\",\"name\":\"numberOfPicks\",\"type\":\"uint104\"},{\"internalType\":\"uint32[16]\",\"name\":\"tiers\",\"type\":\"uint32[16]\"},{\"internalType\":\"uint256\",\"name\":\"prize\",\"type\":\"uint256\"}],\"internalType\":\"struct IPrizeDistributionBuffer.PrizeDistribution\",\"name\":\"prizeDistribution\",\"type\":\"tuple\"},{\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_drawId\",\"type\":\"uint32\"}],\"name\":\"getPrizeDistribution\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8\",\"name\":\"bitRangeSize\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"matchCardinality\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"startTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxPicksPerUser\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"expiryDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint104\",\"name\":\"numberOfPicks\",\"type\":\"uint104\"},{\"internalType\":\"uint32[16]\",\"name\":\"tiers\",\"type\":\"uint32[16]\"},{\"internalType\":\"uint256\",\"name\":\"prize\",\"type\":\"uint256\"}],\"internalType\":\"struct IPrizeDistributionBuffer.PrizeDistribution\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPrizeDistributionCount\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32[]\",\"name\":\"_drawIds\",\"type\":\"uint32[]\"}],\"name\":\"getPrizeDistributions\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8\",\"name\":\"bitRangeSize\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"matchCardinality\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"startTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxPicksPerUser\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"expiryDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint104\",\"name\":\"numberOfPicks\",\"type\":\"uint104\"},{\"internalType\":\"uint32[16]\",\"name\":\"tiers\",\"type\":\"uint32[16]\"},{\"internalType\":\"uint256\",\"name\":\"prize\",\"type\":\"uint256\"}],\"internalType\":\"struct IPrizeDistributionBuffer.PrizeDistribution[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"manager\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pendingOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_drawId\",\"type\":\"uint32\"},{\"components\":[{\"internalType\":\"uint8\",\"name\":\"bitRangeSize\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"matchCardinality\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"startTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxPicksPerUser\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"expiryDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint104\",\"name\":\"numberOfPicks\",\"type\":\"uint104\"},{\"internalType\":\"uint32[16]\",\"name\":\"tiers\",\"type\":\"uint32[16]\"},{\"internalType\":\"uint256\",\"name\":\"prize\",\"type\":\"uint256\"}],\"internalType\":\"struct IPrizeDistributionBuffer.PrizeDistribution\",\"name\":\"_prizeDistribution\",\"type\":\"tuple\"}],\"name\":\"pushPrizeDistribution\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newManager\",\"type\":\"address\"}],\"name\":\"setManager\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_drawId\",\"type\":\"uint32\"},{\"components\":[{\"internalType\":\"uint8\",\"name\":\"bitRangeSize\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"matchCardinality\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"startTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTimestampOffset\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxPicksPerUser\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"expiryDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint104\",\"name\":\"numberOfPicks\",\"type\":\"uint104\"},{\"internalType\":\"uint32[16]\",\"name\":\"tiers\",\"type\":\"uint32[16]\"},{\"internalType\":\"uint256\",\"name\":\"prize\",\"type\":\"uint256\"}],\"internalType\":\"struct IPrizeDistributionBuffer.PrizeDistribution\",\"name\":\"_prizeDistribution\",\"type\":\"tuple\"}],\"name\":\"setPrizeDistribution\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"PoolTogether Inc Team\",\"events\":{\"Deployed(uint8)\":{\"params\":{\"cardinality\":\"The maximum number of records in the buffer before they begin to expire.\"}}},\"kind\":\"dev\",\"methods\":{\"claimOwnership()\":{\"details\":\"This function is only callable by the `_pendingOwner`.\"},\"constructor\":{\"params\":{\"_cardinality\":\"Cardinality of the `bufferMetadata`\",\"_owner\":\"Address of the PrizeDistributionBuffer owner\"}},\"getBufferCardinality()\":{\"returns\":{\"_0\":\"Ring buffer cardinality\"}},\"getNewestPrizeDistribution()\":{\"details\":\"Uses nextDrawIndex to calculate the most recently added PrizeDistribution.\",\"returns\":{\"drawId\":\"drawId\",\"prizeDistribution\":\"prizeDistribution\"}},\"getOldestPrizeDistribution()\":{\"details\":\"Finds the oldest Draw by buffer.nextIndex and buffer.lastDrawId\",\"returns\":{\"drawId\":\"drawId\",\"prizeDistribution\":\"prizeDistribution\"}},\"getPrizeDistribution(uint32)\":{\"params\":{\"drawId\":\"drawId\"},\"returns\":{\"_0\":\"prizeDistribution\"}},\"getPrizeDistributionCount()\":{\"details\":\"If no Draws have been pushed, it will return 0.If the ring buffer is full, it will return the cardinality.Otherwise, it will return the NewestPrizeDistribution index + 1.\",\"returns\":{\"_0\":\"Number of PrizeDistributions stored in the prize distributions ring buffer.\"}},\"getPrizeDistributions(uint32[])\":{\"params\":{\"drawIds\":\"drawIds to get PrizeDistribution for\"},\"returns\":{\"_0\":\"prizeDistributionList\"}},\"manager()\":{\"returns\":{\"_0\":\"Current `_manager` address.\"}},\"pendingOwner()\":{\"returns\":{\"_0\":\"Current `_pendingOwner` address.\"}},\"pushPrizeDistribution(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))\":{\"details\":\"Only callable by the owner or manager\",\"params\":{\"drawId\":\"Draw ID linked to PrizeDistribution parameters\",\"prizeDistribution\":\"PrizeDistribution parameters struct\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"setManager(address)\":{\"details\":\"Throws if called by any account other than the owner.\",\"params\":{\"_newManager\":\"New _manager address.\"},\"returns\":{\"_0\":\"Boolean to indicate if the operation was successful or not.\"}},\"setPrizeDistribution(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))\":{\"details\":\"Retroactively updates an existing PrizeDistribution and should be thought of as a \\\"safety\\\" fallback. If the manager is setting invalid PrizeDistribution parameters the Owner can update the invalid parameters with correct parameters.\",\"returns\":{\"_0\":\"drawId\"}},\"transferOwnership(address)\":{\"params\":{\"_newOwner\":\"Address to transfer ownership to.\"}}},\"stateVariables\":{\"MAX_CARDINALITY\":{\"details\":\"even with daily draws, 256 will give us over 8 months of history.\"},\"TIERS_CEILING\":{\"details\":\"It's fixed point 9 because 1e9 is the largest \\\"1\\\" that fits into 2**32\"}},\"title\":\"PoolTogether V4 PrizeDistributionBuffer\",\"version\":1},\"userdoc\":{\"events\":{\"Deployed(uint8)\":{\"notice\":\"Emitted when the contract is deployed.\"},\"PrizeDistributionSet(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))\":{\"notice\":\"Emit when PrizeDistribution is set.\"}},\"kind\":\"user\",\"methods\":{\"claimOwnership()\":{\"notice\":\"Allows the `_pendingOwner` address to finalize the transfer.\"},\"constructor\":{\"notice\":\"Constructor for PrizeDistributionBuffer\"},\"getBufferCardinality()\":{\"notice\":\"Read a ring buffer cardinality\"},\"getNewestPrizeDistribution()\":{\"notice\":\"Read newest PrizeDistribution from prize distributions ring buffer.\"},\"getOldestPrizeDistribution()\":{\"notice\":\"Read oldest PrizeDistribution from prize distributions ring buffer.\"},\"getPrizeDistribution(uint32)\":{\"notice\":\"Gets the PrizeDistributionBuffer for a drawId\"},\"getPrizeDistributionCount()\":{\"notice\":\"Gets the number of PrizeDistributions stored in the prize distributions ring buffer.\"},\"getPrizeDistributions(uint32[])\":{\"notice\":\"Gets PrizeDistribution list from array of drawIds\"},\"manager()\":{\"notice\":\"Gets current `_manager`.\"},\"owner()\":{\"notice\":\"Returns the address of the current owner.\"},\"pendingOwner()\":{\"notice\":\"Gets current `_pendingOwner`.\"},\"pushPrizeDistribution(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))\":{\"notice\":\"Adds new PrizeDistribution record to ring buffer storage.\"},\"renounceOwnership()\":{\"notice\":\"Renounce ownership of the contract.\"},\"setManager(address)\":{\"notice\":\"Set or change of manager.\"},\"setPrizeDistribution(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))\":{\"notice\":\"Sets existing PrizeDistribution with new PrizeDistribution parameters in ring buffer storage.\"},\"transferOwnership(address)\":{\"notice\":\"Allows current owner to set the `_pendingOwner` address.\"}},\"notice\":\"The PrizeDistributionBuffer contract provides historical lookups of PrizeDistribution struct parameters (linked with a Draw ID) via a circular ring buffer. Historical PrizeDistribution parameters can be accessed on-chain using a drawId to calculate ring buffer storage slot. The PrizeDistribution parameters can be created by manager/owner and existing PrizeDistribution parameters can only be updated the owner. When adding a new PrizeDistribution basic sanity checks will be used to validate the incoming parameters.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol\":\"PrizeDistributionBuffer\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"@pooltogether/owner-manager-contracts/contracts/Manageable.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"./Ownable.sol\\\";\\n\\n/**\\n * @title Abstract manageable contract that can be inherited by other contracts\\n * @notice Contract module based on Ownable which provides a basic access control mechanism, where\\n * there is an owner and a manager that can be granted exclusive access to specific functions.\\n *\\n * By default, the owner is the deployer of the contract.\\n *\\n * The owner account is set through a two steps process.\\n *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`\\n *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer\\n *\\n * The manager account needs to be set using {setManager}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyManager`, which can be applied to your functions to restrict their use to\\n * the manager.\\n */\\nabstract contract Manageable is Ownable {\\n    address private _manager;\\n\\n    /**\\n     * @dev Emitted when `_manager` has been changed.\\n     * @param previousManager previous `_manager` address.\\n     * @param newManager new `_manager` address.\\n     */\\n    event ManagerTransferred(address indexed previousManager, address indexed newManager);\\n\\n    /* ============ External Functions ============ */\\n\\n    /**\\n     * @notice Gets current `_manager`.\\n     * @return Current `_manager` address.\\n     */\\n    function manager() public view virtual returns (address) {\\n        return _manager;\\n    }\\n\\n    /**\\n     * @notice Set or change of manager.\\n     * @dev Throws if called by any account other than the owner.\\n     * @param _newManager New _manager address.\\n     * @return Boolean to indicate if the operation was successful or not.\\n     */\\n    function setManager(address _newManager) external onlyOwner returns (bool) {\\n        return _setManager(_newManager);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Set or change of manager.\\n     * @param _newManager New _manager address.\\n     * @return Boolean to indicate if the operation was successful or not.\\n     */\\n    function _setManager(address _newManager) private returns (bool) {\\n        address _previousManager = _manager;\\n\\n        require(_newManager != _previousManager, \\\"Manageable/existing-manager-address\\\");\\n\\n        _manager = _newManager;\\n\\n        emit ManagerTransferred(_previousManager, _newManager);\\n        return true;\\n    }\\n\\n    /* ============ Modifier Functions ============ */\\n\\n    /**\\n     * @dev Throws if called by any account other than the manager.\\n     */\\n    modifier onlyManager() {\\n        require(manager() == msg.sender, \\\"Manageable/caller-not-manager\\\");\\n        _;\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the manager or the owner.\\n     */\\n    modifier onlyManagerOrOwner() {\\n        require(manager() == msg.sender || owner() == msg.sender, \\\"Manageable/caller-not-manager-or-owner\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0xdd8ac008df192c6aa4df83e7037ab090970fda38e1f9fd712bc0ab5e0485fc04\",\"license\":\"GPL-3.0\"},\"@pooltogether/owner-manager-contracts/contracts/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title Abstract ownable contract that can be inherited by other contracts\\n * @notice Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner is the deployer of the contract.\\n *\\n * The owner account is set through a two steps process.\\n *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`\\n *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer\\n *\\n * The manager account needs to be set using {setManager}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable {\\n    address private _owner;\\n    address private _pendingOwner;\\n\\n    /**\\n     * @dev Emitted when `_pendingOwner` has been changed.\\n     * @param pendingOwner new `_pendingOwner` address.\\n     */\\n    event OwnershipOffered(address indexed pendingOwner);\\n\\n    /**\\n     * @dev Emitted when `_owner` has been changed.\\n     * @param previousOwner previous `_owner` address.\\n     * @param newOwner new `_owner` address.\\n     */\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /* ============ Deploy ============ */\\n\\n    /**\\n     * @notice Initializes the contract setting `_initialOwner` as the initial owner.\\n     * @param _initialOwner Initial owner of the contract.\\n     */\\n    constructor(address _initialOwner) {\\n        _setOwner(_initialOwner);\\n    }\\n\\n    /* ============ External Functions ============ */\\n\\n    /**\\n     * @notice Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @notice Gets current `_pendingOwner`.\\n     * @return Current `_pendingOwner` address.\\n     */\\n    function pendingOwner() external view virtual returns (address) {\\n        return _pendingOwner;\\n    }\\n\\n    /**\\n     * @notice Renounce ownership of the contract.\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby removing any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() external virtual onlyOwner {\\n        _setOwner(address(0));\\n    }\\n\\n    /**\\n    * @notice Allows current owner to set the `_pendingOwner` address.\\n    * @param _newOwner Address to transfer ownership to.\\n    */\\n    function transferOwnership(address _newOwner) external onlyOwner {\\n        require(_newOwner != address(0), \\\"Ownable/pendingOwner-not-zero-address\\\");\\n\\n        _pendingOwner = _newOwner;\\n\\n        emit OwnershipOffered(_newOwner);\\n    }\\n\\n    /**\\n    * @notice Allows the `_pendingOwner` address to finalize the transfer.\\n    * @dev This function is only callable by the `_pendingOwner`.\\n    */\\n    function claimOwnership() external onlyPendingOwner {\\n        _setOwner(_pendingOwner);\\n        _pendingOwner = address(0);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Internal function to set the `_owner` of the contract.\\n     * @param _newOwner New `_owner` address.\\n     */\\n    function _setOwner(address _newOwner) private {\\n        address _oldOwner = _owner;\\n        _owner = _newOwner;\\n        emit OwnershipTransferred(_oldOwner, _newOwner);\\n    }\\n\\n    /* ============ Modifier Functions ============ */\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        require(owner() == msg.sender, \\\"Ownable/caller-not-owner\\\");\\n        _;\\n    }\\n\\n    /**\\n    * @dev Throws if called by any account other than the `pendingOwner`.\\n    */\\n    modifier onlyPendingOwner() {\\n        require(msg.sender == _pendingOwner, \\\"Ownable/caller-not-pendingOwner\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0xfd0fd374812c8af45f2633cc7cc4811ccb7bad0a3902a43aded35939eb4a00d1\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@pooltogether/owner-manager-contracts/contracts/Manageable.sol\\\";\\n\\nimport \\\"./libraries/DrawRingBufferLib.sol\\\";\\nimport \\\"./interfaces/IPrizeDistributionBuffer.sol\\\";\\n\\n/**\\n  * @title  PoolTogether V4 PrizeDistributionBuffer\\n  * @author PoolTogether Inc Team\\n  * @notice The PrizeDistributionBuffer contract provides historical lookups of PrizeDistribution struct parameters (linked with a Draw ID) via a\\n            circular ring buffer. Historical PrizeDistribution parameters can be accessed on-chain using a drawId to calculate\\n            ring buffer storage slot. The PrizeDistribution parameters can be created by manager/owner and existing PrizeDistribution\\n            parameters can only be updated the owner. When adding a new PrizeDistribution basic sanity checks will be used to\\n            validate the incoming parameters.\\n*/\\ncontract PrizeDistributionBuffer is IPrizeDistributionBuffer, Manageable {\\n    using DrawRingBufferLib for DrawRingBufferLib.Buffer;\\n\\n    /// @notice The maximum cardinality of the prize distribution ring buffer.\\n    /// @dev even with daily draws, 256 will give us over 8 months of history.\\n    uint256 internal constant MAX_CARDINALITY = 256;\\n\\n    /// @notice The ceiling for prize distributions.  1e9 = 100%.\\n    /// @dev It's fixed point 9 because 1e9 is the largest \\\"1\\\" that fits into 2**32\\n    uint256 internal constant TIERS_CEILING = 1e9;\\n\\n    /// @notice Emitted when the contract is deployed.\\n    /// @param cardinality The maximum number of records in the buffer before they begin to expire.\\n    event Deployed(uint8 cardinality);\\n\\n    /// @notice PrizeDistribution ring buffer history.\\n    IPrizeDistributionBuffer.PrizeDistribution[MAX_CARDINALITY]\\n        internal prizeDistributionRingBuffer;\\n\\n    /// @notice Ring buffer metadata (nextIndex, lastId, cardinality)\\n    DrawRingBufferLib.Buffer internal bufferMetadata;\\n\\n    /* ============ Constructor ============ */\\n\\n    /**\\n     * @notice Constructor for PrizeDistributionBuffer\\n     * @param _owner Address of the PrizeDistributionBuffer owner\\n     * @param _cardinality Cardinality of the `bufferMetadata`\\n     */\\n    constructor(address _owner, uint8 _cardinality) Ownable(_owner) {\\n        bufferMetadata.cardinality = _cardinality;\\n        emit Deployed(_cardinality);\\n    }\\n\\n    /* ============ External Functions ============ */\\n\\n    /// @inheritdoc IPrizeDistributionBuffer\\n    function getBufferCardinality() external view override returns (uint32) {\\n        return bufferMetadata.cardinality;\\n    }\\n\\n    /// @inheritdoc IPrizeDistributionBuffer\\n    function getPrizeDistribution(uint32 _drawId)\\n        external\\n        view\\n        override\\n        returns (IPrizeDistributionBuffer.PrizeDistribution memory)\\n    {\\n        return _getPrizeDistribution(bufferMetadata, _drawId);\\n    }\\n\\n    /// @inheritdoc IPrizeDistributionBuffer\\n    function getPrizeDistributions(uint32[] calldata _drawIds)\\n        external\\n        view\\n        override\\n        returns (IPrizeDistributionBuffer.PrizeDistribution[] memory)\\n    {\\n        uint256 drawIdsLength = _drawIds.length;\\n        DrawRingBufferLib.Buffer memory buffer = bufferMetadata;\\n        IPrizeDistributionBuffer.PrizeDistribution[]\\n            memory _prizeDistributions = new IPrizeDistributionBuffer.PrizeDistribution[](\\n                drawIdsLength\\n            );\\n\\n        for (uint256 i = 0; i < drawIdsLength; i++) {\\n            _prizeDistributions[i] = _getPrizeDistribution(buffer, _drawIds[i]);\\n        }\\n\\n        return _prizeDistributions;\\n    }\\n\\n    /// @inheritdoc IPrizeDistributionBuffer\\n    function getPrizeDistributionCount() external view override returns (uint32) {\\n        DrawRingBufferLib.Buffer memory buffer = bufferMetadata;\\n\\n        if (buffer.lastDrawId == 0) {\\n            return 0;\\n        }\\n\\n        uint32 bufferNextIndex = buffer.nextIndex;\\n\\n        // If the buffer is full return the cardinality, else retun the nextIndex\\n        if (prizeDistributionRingBuffer[bufferNextIndex].matchCardinality != 0) {\\n            return buffer.cardinality;\\n        } else {\\n            return bufferNextIndex;\\n        }\\n    }\\n\\n    /// @inheritdoc IPrizeDistributionBuffer\\n    function getNewestPrizeDistribution()\\n        external\\n        view\\n        override\\n        returns (IPrizeDistributionBuffer.PrizeDistribution memory prizeDistribution, uint32 drawId)\\n    {\\n        DrawRingBufferLib.Buffer memory buffer = bufferMetadata;\\n\\n        return (prizeDistributionRingBuffer[buffer.getIndex(buffer.lastDrawId)], buffer.lastDrawId);\\n    }\\n\\n    /// @inheritdoc IPrizeDistributionBuffer\\n    function getOldestPrizeDistribution()\\n        external\\n        view\\n        override\\n        returns (IPrizeDistributionBuffer.PrizeDistribution memory prizeDistribution, uint32 drawId)\\n    {\\n        DrawRingBufferLib.Buffer memory buffer = bufferMetadata;\\n\\n        // if the ring buffer is full, the oldest is at the nextIndex\\n        prizeDistribution = prizeDistributionRingBuffer[buffer.nextIndex];\\n\\n        // The PrizeDistribution at index 0 IS by default the oldest prizeDistribution.\\n        if (buffer.lastDrawId == 0) {\\n            drawId = 0; // return 0 to indicate no prizeDistribution ring buffer history\\n        } else if (prizeDistribution.bitRangeSize == 0) {\\n            // IF the next PrizeDistribution.bitRangeSize == 0 the ring buffer HAS NOT looped around so the oldest is the first entry.\\n            prizeDistribution = prizeDistributionRingBuffer[0];\\n            drawId = (buffer.lastDrawId + 1) - buffer.nextIndex;\\n        } else {\\n            // Calculates the drawId using the ring buffer cardinality\\n            // Sequential drawIds are gauranteed by DrawRingBufferLib.push()\\n            drawId = (buffer.lastDrawId + 1) - buffer.cardinality;\\n        }\\n    }\\n\\n    /// @inheritdoc IPrizeDistributionBuffer\\n    function pushPrizeDistribution(\\n        uint32 _drawId,\\n        IPrizeDistributionBuffer.PrizeDistribution calldata _prizeDistribution\\n    ) external override onlyManagerOrOwner returns (bool) {\\n        return _pushPrizeDistribution(_drawId, _prizeDistribution);\\n    }\\n\\n    /// @inheritdoc IPrizeDistributionBuffer\\n    function setPrizeDistribution(\\n        uint32 _drawId,\\n        IPrizeDistributionBuffer.PrizeDistribution calldata _prizeDistribution\\n    ) external override onlyOwner returns (uint32) {\\n        DrawRingBufferLib.Buffer memory buffer = bufferMetadata;\\n        uint32 index = buffer.getIndex(_drawId);\\n        prizeDistributionRingBuffer[index] = _prizeDistribution;\\n\\n        emit PrizeDistributionSet(_drawId, _prizeDistribution);\\n\\n        return _drawId;\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Gets the PrizeDistributionBuffer for a drawId\\n     * @param _buffer DrawRingBufferLib.Buffer\\n     * @param _drawId drawId\\n     */\\n    function _getPrizeDistribution(DrawRingBufferLib.Buffer memory _buffer, uint32 _drawId)\\n        internal\\n        view\\n        returns (IPrizeDistributionBuffer.PrizeDistribution memory)\\n    {\\n        return prizeDistributionRingBuffer[_buffer.getIndex(_drawId)];\\n    }\\n\\n    /**\\n     * @notice Set newest PrizeDistributionBuffer in ring buffer storage.\\n     * @param _drawId       drawId\\n     * @param _prizeDistribution PrizeDistributionBuffer struct\\n     */\\n    function _pushPrizeDistribution(\\n        uint32 _drawId,\\n        IPrizeDistributionBuffer.PrizeDistribution calldata _prizeDistribution\\n    ) internal returns (bool) {\\n        require(_drawId > 0, \\\"DrawCalc/draw-id-gt-0\\\");\\n        require(_prizeDistribution.matchCardinality > 0, \\\"DrawCalc/matchCardinality-gt-0\\\");\\n        require(\\n            _prizeDistribution.bitRangeSize <= 256 / _prizeDistribution.matchCardinality,\\n            \\\"DrawCalc/bitRangeSize-too-large\\\"\\n        );\\n\\n        require(_prizeDistribution.bitRangeSize > 0, \\\"DrawCalc/bitRangeSize-gt-0\\\");\\n        require(_prizeDistribution.maxPicksPerUser > 0, \\\"DrawCalc/maxPicksPerUser-gt-0\\\");\\n        require(_prizeDistribution.expiryDuration > 0, \\\"DrawCalc/expiryDuration-gt-0\\\");\\n\\n        // ensure that the sum of the tiers are not gt 100%\\n        uint256 sumTotalTiers = 0;\\n        uint256 tiersLength = _prizeDistribution.tiers.length;\\n\\n        for (uint256 index = 0; index < tiersLength; index++) {\\n            uint256 tier = _prizeDistribution.tiers[index];\\n            sumTotalTiers += tier;\\n        }\\n\\n        // Each tier amount stored as uint32 - summed can't exceed 1e9\\n        require(sumTotalTiers <= TIERS_CEILING, \\\"DrawCalc/tiers-gt-100%\\\");\\n\\n        DrawRingBufferLib.Buffer memory buffer = bufferMetadata;\\n\\n        // store the PrizeDistribution in the ring buffer\\n        prizeDistributionRingBuffer[buffer.nextIndex] = _prizeDistribution;\\n\\n        // update the ring buffer data\\n        bufferMetadata = buffer.push(_drawId);\\n\\n        emit PrizeDistributionSet(_drawId, _prizeDistribution);\\n\\n        return true;\\n    }\\n}\\n\",\"keccak256\":\"0x8b533d030da432b4cadf34a930f5b445661cc0800c2081b7bffffa88f05cf043\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/interfaces/IPrizeDistributionBuffer.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\n/** @title  IPrizeDistributionBuffer\\n  * @author PoolTogether Inc Team\\n  * @notice The PrizeDistributionBuffer interface.\\n*/\\ninterface IPrizeDistributionBuffer {\\n\\n    ///@notice PrizeDistribution struct created every draw\\n    ///@param bitRangeSize Decimal representation of bitRangeSize\\n    ///@param matchCardinality The number of numbers to consider in the 256 bit random number. Must be > 1 and < 256/bitRangeSize.\\n    ///@param startTimestampOffset The starting time offset in seconds from which Ticket balances are calculated.\\n    ///@param endTimestampOffset The end time offset in seconds from which Ticket balances are calculated.\\n    ///@param maxPicksPerUser Maximum number of picks a user can make in this draw\\n    ///@param expiryDuration Length of time in seconds the PrizeDistribution is valid for. Relative to the Draw.timestamp.\\n    ///@param numberOfPicks Number of picks this draw has (may vary across networks according to how much the network has contributed to the Reserve)\\n    ///@param tiers Array of prize tiers percentages, expressed in fraction form with base 1e9. Ordering: index0: grandPrize, index1: runnerUp, etc.\\n    ///@param prize Total prize amount available in this draw calculator for this draw (may vary from across networks)\\n    struct PrizeDistribution {\\n        uint8 bitRangeSize;\\n        uint8 matchCardinality;\\n        uint32 startTimestampOffset;\\n        uint32 endTimestampOffset;\\n        uint32 maxPicksPerUser;\\n        uint32 expiryDuration;\\n        uint104 numberOfPicks;\\n        uint32[16] tiers;\\n        uint256 prize;\\n    }\\n\\n    /**\\n     * @notice Emit when PrizeDistribution is set.\\n     * @param drawId       Draw id\\n     * @param prizeDistribution IPrizeDistributionBuffer.PrizeDistribution\\n     */\\n    event PrizeDistributionSet(\\n        uint32 indexed drawId,\\n        IPrizeDistributionBuffer.PrizeDistribution prizeDistribution\\n    );\\n\\n    /**\\n     * @notice Read a ring buffer cardinality\\n     * @return Ring buffer cardinality\\n     */\\n    function getBufferCardinality() external view returns (uint32);\\n\\n    /**\\n     * @notice Read newest PrizeDistribution from prize distributions ring buffer.\\n     * @dev    Uses nextDrawIndex to calculate the most recently added PrizeDistribution.\\n     * @return prizeDistribution\\n     * @return drawId\\n     */\\n    function getNewestPrizeDistribution()\\n        external\\n        view\\n        returns (IPrizeDistributionBuffer.PrizeDistribution memory prizeDistribution, uint32 drawId);\\n\\n    /**\\n     * @notice Read oldest PrizeDistribution from prize distributions ring buffer.\\n     * @dev    Finds the oldest Draw by buffer.nextIndex and buffer.lastDrawId\\n     * @return prizeDistribution\\n     * @return drawId\\n     */\\n    function getOldestPrizeDistribution()\\n        external\\n        view\\n        returns (IPrizeDistributionBuffer.PrizeDistribution memory prizeDistribution, uint32 drawId);\\n\\n    /**\\n     * @notice Gets PrizeDistribution list from array of drawIds\\n     * @param drawIds drawIds to get PrizeDistribution for\\n     * @return prizeDistributionList\\n     */\\n    function getPrizeDistributions(uint32[] calldata drawIds)\\n        external\\n        view\\n        returns (IPrizeDistributionBuffer.PrizeDistribution[] memory);\\n\\n    /**\\n     * @notice Gets the PrizeDistributionBuffer for a drawId\\n     * @param drawId drawId\\n     * @return prizeDistribution\\n     */\\n    function getPrizeDistribution(uint32 drawId)\\n        external\\n        view\\n        returns (IPrizeDistributionBuffer.PrizeDistribution memory);\\n\\n    /**\\n     * @notice Gets the number of PrizeDistributions stored in the prize distributions ring buffer.\\n     * @dev If no Draws have been pushed, it will return 0.\\n     * @dev If the ring buffer is full, it will return the cardinality.\\n     * @dev Otherwise, it will return the NewestPrizeDistribution index + 1.\\n     * @return Number of PrizeDistributions stored in the prize distributions ring buffer.\\n     */\\n    function getPrizeDistributionCount() external view returns (uint32);\\n\\n    /**\\n     * @notice Adds new PrizeDistribution record to ring buffer storage.\\n     * @dev    Only callable by the owner or manager\\n     * @param drawId            Draw ID linked to PrizeDistribution parameters\\n     * @param prizeDistribution PrizeDistribution parameters struct\\n     */\\n    function pushPrizeDistribution(\\n        uint32 drawId,\\n        IPrizeDistributionBuffer.PrizeDistribution calldata prizeDistribution\\n    ) external returns (bool);\\n\\n    /**\\n     * @notice Sets existing PrizeDistribution with new PrizeDistribution parameters in ring buffer storage.\\n     * @dev    Retroactively updates an existing PrizeDistribution and should be thought of as a \\\"safety\\\"\\n               fallback. If the manager is setting invalid PrizeDistribution parameters the Owner can update\\n               the invalid parameters with correct parameters.\\n     * @return drawId\\n     */\\n    function setPrizeDistribution(uint32 drawId, IPrizeDistributionBuffer.PrizeDistribution calldata draw)\\n        external\\n        returns (uint32);\\n}\\n\",\"keccak256\":\"0xf663c4749b6f02485e10a76369a0dc775f18014ba7755b9f0bca0ae5cb1afe77\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/libraries/DrawRingBufferLib.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"./RingBufferLib.sol\\\";\\n\\n/// @title Library for creating and managing a draw ring buffer.\\nlibrary DrawRingBufferLib {\\n    /// @notice Draw buffer struct.\\n    struct Buffer {\\n        uint32 lastDrawId;\\n        uint32 nextIndex;\\n        uint32 cardinality;\\n    }\\n\\n    /// @notice Helper function to know if the draw ring buffer has been initialized.\\n    /// @dev since draws start at 1 and are monotonically increased, we know we are uninitialized if nextIndex = 0 and lastDrawId = 0.\\n    /// @param _buffer The buffer to check.\\n    function isInitialized(Buffer memory _buffer) internal pure returns (bool) {\\n        return !(_buffer.nextIndex == 0 && _buffer.lastDrawId == 0);\\n    }\\n\\n    /// @notice Push a draw to the buffer.\\n    /// @param _buffer The buffer to push to.\\n    /// @param _drawId The drawID to push.\\n    /// @return The new buffer.\\n    function push(Buffer memory _buffer, uint32 _drawId) internal pure returns (Buffer memory) {\\n        require(!isInitialized(_buffer) || _drawId == _buffer.lastDrawId + 1, \\\"DRB/must-be-contig\\\");\\n\\n        return\\n            Buffer({\\n                lastDrawId: _drawId,\\n                nextIndex: uint32(RingBufferLib.nextIndex(_buffer.nextIndex, _buffer.cardinality)),\\n                cardinality: _buffer.cardinality\\n            });\\n    }\\n\\n    /// @notice Get draw ring buffer index pointer.\\n    /// @param _buffer The buffer to get the `nextIndex` from.\\n    /// @param _drawId The draw id to get the index for.\\n    /// @return The draw ring buffer index pointer.\\n    function getIndex(Buffer memory _buffer, uint32 _drawId) internal pure returns (uint32) {\\n        require(isInitialized(_buffer) && _drawId <= _buffer.lastDrawId, \\\"DRB/future-draw\\\");\\n\\n        uint32 indexOffset = _buffer.lastDrawId - _drawId;\\n        require(indexOffset < _buffer.cardinality, \\\"DRB/expired-draw\\\");\\n\\n        uint256 mostRecent = RingBufferLib.newestIndex(_buffer.nextIndex, _buffer.cardinality);\\n\\n        return uint32(RingBufferLib.offset(uint32(mostRecent), indexOffset, _buffer.cardinality));\\n    }\\n}\\n\",\"keccak256\":\"0xdcf6f0b0a5c176e505dcd284d1f160fcd5b4c6ba5868047935de3cd1a41fe675\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/libraries/RingBufferLib.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nlibrary RingBufferLib {\\n    /**\\n    * @notice Returns wrapped TWAB index.\\n    * @dev  In order to navigate the TWAB circular buffer, we need to use the modulo operator.\\n    * @dev  For example, if `_index` is equal to 32 and the TWAB circular buffer is of `_cardinality` 32,\\n    *       it will return 0 and will point to the first element of the array.\\n    * @param _index Index used to navigate through the TWAB circular buffer.\\n    * @param _cardinality TWAB buffer cardinality.\\n    * @return TWAB index.\\n    */\\n    function wrap(uint256 _index, uint256 _cardinality) internal pure returns (uint256) {\\n        return _index % _cardinality;\\n    }\\n\\n    /**\\n    * @notice Computes the negative offset from the given index, wrapped by the cardinality.\\n    * @dev  We add `_cardinality` to `_index` to be able to offset even if `_amount` is superior to `_cardinality`.\\n    * @param _index The index from which to offset\\n    * @param _amount The number of indices to offset.  This is subtracted from the given index.\\n    * @param _cardinality The number of elements in the ring buffer\\n    * @return Offsetted index.\\n     */\\n    function offset(\\n        uint256 _index,\\n        uint256 _amount,\\n        uint256 _cardinality\\n    ) internal pure returns (uint256) {\\n        return wrap(_index + _cardinality - _amount, _cardinality);\\n    }\\n\\n    /// @notice Returns the index of the last recorded TWAB\\n    /// @param _nextIndex The next available twab index.  This will be recorded to next.\\n    /// @param _cardinality The cardinality of the TWAB history.\\n    /// @return The index of the last recorded TWAB\\n    function newestIndex(uint256 _nextIndex, uint256 _cardinality)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        if (_cardinality == 0) {\\n            return 0;\\n        }\\n\\n        return wrap(_nextIndex + _cardinality - 1, _cardinality);\\n    }\\n\\n    /// @notice Computes the ring buffer index that follows the given one, wrapped by cardinality\\n    /// @param _index The index to increment\\n    /// @param _cardinality The number of elements in the Ring Buffer\\n    /// @return The next index relative to the given index.  Will wrap around to 0 if the next index == cardinality\\n    function nextIndex(uint256 _index, uint256 _cardinality)\\n        internal\\n        pure\\n        returns (uint256)\\n    {\\n        return wrap(_index + 1, _cardinality);\\n    }\\n}\\n\",\"keccak256\":\"0x052e3bf6bfb30f32950e322c853589a8d153cf34f4b1ee292b17eb46f2ae656c\",\"license\":\"GPL-3.0\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b50604051620020b2380380620020b28339810160408190526200003491620000f2565b816200004081620000a2565b50610403805463ffffffff60401b191660ff8316680100000000000000008102919091179091556040519081527f7da7688769fade6088b3de366e63c95090bc5b0db6e9b43f043dee741d7544fe9060200160405180910390a1505062000141565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b600080604083850312156200010657600080fd5b82516001600160a01b03811681146200011e57600080fd5b602084015190925060ff811681146200013657600080fd5b809150509250929050565b611f6180620001516000396000f3fe608060405234801561001057600080fd5b50600436106100f55760003560e01c8063715018a611610097578063d0ebdbe711610066578063d0ebdbe7146101f3578063d30a5daf14610206578063e30c397814610226578063f2fde38b1461023757600080fd5b8063715018a6146101ac5780638da5cb5b146101b4578063caeef7ec146101c5578063ce336ce9146101e057600080fd5b806324c21446116100d357806324c21446146101555780633cd8e2d51461015d578063481c6a751461017d5780634e71e0c8146101a257600080fd5b80631124e1dc146100fa57806321e98ad9146101225780632439093a1461013f575b600080fd5b61010d610108366004611822565b61024a565b60405190151581526020015b60405180910390f35b61012a610317565b60405163ffffffff9091168152602001610119565b61014761039e565b604051610119929190611adb565b610147610671565b61017061016b366004611805565b610804565b6040516101199190611acc565b6002546001600160a01b03165b6040516001600160a01b039091168152602001610119565b6101aa610852565b005b6101aa6108e0565b6000546001600160a01b031661018a565b6104035468010000000000000000900463ffffffff1661012a565b61012a6101ee366004611822565b610955565b61010d610201366004611760565b610a84565b610219610214366004611790565b610afd565b60405161011991906119b9565b6001546001600160a01b031661018a565b6101aa610245366004611760565b610c08565b60003361025f6002546001600160a01b031690565b6001600160a01b0316148061028d5750336102826000546001600160a01b031690565b6001600160a01b0316145b6103045760405162461bcd60e51b815260206004820152602660248201527f4d616e61676561626c652f63616c6c65722d6e6f742d6d616e616765722d6f7260448201527f2d6f776e6572000000000000000000000000000000000000000000000000000060648201526084015b60405180910390fd5b61030e8383610d44565b90505b92915050565b604080516060810182526104035463ffffffff80821680845264010000000083048216602085015268010000000000000000909204169282019290925260009161036357600091505090565b6020810151600363ffffffff8216610100811061038257610382611c7d565b6004020154610100900460ff1615610311575060400151919050565b6103a66116cd565b604080516060810182526104035463ffffffff8082168352640100000000820481166020840181905268010000000000000000909204169282019290925260009160039061010081106103fb576103fb611c7d565b604080516101208101825260049290920292909201805460ff8082168452610100820416602084015262010000810463ffffffff9081168486015266010000000000008204811660608501526a01000000000000000000008204811660808501526e01000000000000000000000000000082041660a0840152720100000000000000000000000000000000000090046cffffffffffffffffffffffffff1660c083015282516102008101938490529192909160e08401916001840190601090826000855b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116104bf5750505092845250505060039190910154602090910152815190935063ffffffff166105275760009150509091565b825160ff1661065f5760408051610120810182526003805460ff8082168452610100820416602084015263ffffffff62010000820481168486015266010000000000008204811660608501526a01000000000000000000008204811660808501526e01000000000000000000000000000082041660a08401526cffffffffffffffffffffffffff72010000000000000000000000000000000000009091041660c083015282516102008101938490529192909160e0840191600490601090826000855b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116105ea575050509284525050506003919091015460209182015282015182519194509061064e906001611b16565b6106589190611b76565b9150509091565b6040810151815161064e906001611b16565b6106796116cd565b604080516060810182526104035463ffffffff808216808452640100000000830482166020850152680100000000000000009092048116938301939093526000926003916106ca9184919061119916565b63ffffffff1661010081106106e1576106e1611c7d565b8251604080516101208101825260049390930293909301805460ff8082168552610100820416602085015262010000810463ffffffff9081168587015266010000000000008204811660608601526a01000000000000000000008204811660808601526e01000000000000000000000000000082041660a0850152720100000000000000000000000000000000000090046cffffffffffffffffffffffffff1660c084015283516102008101948590529093919291849160e08401916001840190601090826000855b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116107aa57905050505050508152602001600382015481525050915092509250509091565b61080c6116cd565b604080516060810182526104035463ffffffff808216835264010000000082048116602084015268010000000000000000909104169181019190915261031190836112c9565b6001546001600160a01b031633146108ac5760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e65720060448201526064016102fb565b6001546108c1906001600160a01b031661140f565b6001805473ffffffffffffffffffffffffffffffffffffffff19169055565b336108f36000546001600160a01b031690565b6001600160a01b0316146109495760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102fb565b610953600061140f565b565b60003361096a6000546001600160a01b031690565b6001600160a01b0316146109c05760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102fb565b604080516060810182526104035463ffffffff80821683526401000000008204811660208401526801000000000000000090910481169282019290925290600090610a0f908390879061119916565b90508360038263ffffffff166101008110610a2c57610a2c611c7d565b60040201610a3a8282611cc3565b9050508463ffffffff167f2d81da839b2f3db2ed762907f74df3acecdc30461dba4813694c225ba911e1f685604051610a739190611a08565b60405180910390a250929392505050565b600033610a996000546001600160a01b031690565b6001600160a01b031614610aef5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102fb565b6103118261146c565b919050565b60408051606081810183526104035463ffffffff8082168452640100000000820481166020850152680100000000000000009091041692820192909252829060008267ffffffffffffffff811115610b5757610b57611c93565b604051908082528060200260200182016040528015610b9057816020015b610b7d6116cd565b815260200190600190039081610b755790505b50905060005b83811015610bfe57610bce83888884818110610bb457610bb4611c7d565b9050602002016020810190610bc99190611805565b6112c9565b828281518110610be057610be0611c7d565b60200260200101819052508080610bf690611c04565b915050610b96565b5095945050505050565b33610c1b6000546001600160a01b031690565b6001600160a01b031614610c715760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102fb565b6001600160a01b038116610ced5760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d616460448201527f647265737300000000000000000000000000000000000000000000000000000060648201526084016102fb565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b6000808363ffffffff1611610d9b5760405162461bcd60e51b815260206004820152601560248201527f4472617743616c632f647261772d69642d67742d30000000000000000000000060448201526064016102fb565b6000610dad6040840160208501611883565b60ff1611610dfd5760405162461bcd60e51b815260206004820152601e60248201527f4472617743616c632f6d6174636843617264696e616c6974792d67742d30000060448201526064016102fb565b610e0d6040830160208401611883565b610e1c9060ff16610100611b3e565b61ffff16610e2d6020840184611883565b60ff161115610e7e5760405162461bcd60e51b815260206004820152601f60248201527f4472617743616c632f62697452616e676553697a652d746f6f2d6c617267650060448201526064016102fb565b6000610e8d6020840184611883565b60ff1611610edd5760405162461bcd60e51b815260206004820152601a60248201527f4472617743616c632f62697452616e676553697a652d67742d3000000000000060448201526064016102fb565b6000610eef60a0840160808501611805565b63ffffffff1611610f425760405162461bcd60e51b815260206004820152601d60248201527f4472617743616c632f6d61785069636b73506572557365722d67742d3000000060448201526064016102fb565b6000610f5460c0840160a08501611805565b63ffffffff1611610fa75760405162461bcd60e51b815260206004820152601c60248201527f4472617743616c632f6578706972794475726174696f6e2d67742d300000000060448201526064016102fb565b60006010815b818110156110075760008560e0018260108110610fcc57610fcc611c7d565b602002016020810190610fdf9190611805565b63ffffffff169050610ff18185611afe565b9350508080610fff90611c04565b915050610fad565b50633b9aca0082111561105c5760405162461bcd60e51b815260206004820152601660248201527f4472617743616c632f74696572732d67742d313030250000000000000000000060448201526064016102fb565b604080516060810182526104035463ffffffff8082168352640100000000820481166020840181905268010000000000000000909204169282019290925290859060039061010081106110b1576110b1611c7d565b600402016110bf8282611cc3565b506110cc90508187611558565b80516104038054602084015160409485015163ffffffff90811668010000000000000000027fffffffffffffffffffffffffffffffffffffffff00000000ffffffffffffffff928216640100000000027fffffffffffffffffffffffffffffffffffffffffffffffff00000000000000009094169582169590951792909217169290921790559051908716907f2d81da839b2f3db2ed762907f74df3acecdc30461dba4813694c225ba911e1f690611185908890611a08565b60405180910390a250600195945050505050565b60006111a483611643565b80156111c05750826000015163ffffffff168263ffffffff1611155b61120c5760405162461bcd60e51b815260206004820152600f60248201527f4452422f6675747572652d64726177000000000000000000000000000000000060448201526064016102fb565b825160009061121c908490611b76565b9050836040015163ffffffff168163ffffffff161061127d5760405162461bcd60e51b815260206004820152601060248201527f4452422f657870697265642d647261770000000000000000000000000000000060448201526064016102fb565b600061129d856020015163ffffffff16866040015163ffffffff1661166b565b90506112c08163ffffffff168363ffffffff16876040015163ffffffff16611699565b95945050505050565b6112d16116cd565b60036112dd8484611199565b63ffffffff1661010081106112f4576112f4611c7d565b604080516101208101825260049290920292909201805460ff8082168452610100820416602084015262010000810463ffffffff9081168486015266010000000000008204811660608501526a01000000000000000000008204811660808501526e01000000000000000000000000000082041660a0840152720100000000000000000000000000000000000090046cffffffffffffffffffffffffff1660c083015282516102008101938490529192909160e08401916001840190601090826000855b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116113b857905050505050508152602001600382015481525050905092915050565b600080546001600160a01b0383811673ffffffffffffffffffffffffffffffffffffffff19831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6002546000906001600160a01b039081169083168114156114f55760405162461bcd60e51b815260206004820152602360248201527f4d616e61676561626c652f6578697374696e672d6d616e616765722d6164647260448201527f657373000000000000000000000000000000000000000000000000000000000060648201526084016102fb565b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0385811691821790925560405190918316907f9cb45c728de594dab506a1f1a8554e24c8eeaf983618d5ec5dd7bc6f3c49feee90600090a350600192915050565b604080516060810182526000808252602082018190529181019190915261157e83611643565b15806115a157508251611592906001611b16565b63ffffffff168263ffffffff16145b6115ed5760405162461bcd60e51b815260206004820152601260248201527f4452422f6d7573742d62652d636f6e746967000000000000000000000000000060448201526064016102fb565b60405180606001604052808363ffffffff168152602001611622856020015163ffffffff16866040015163ffffffff166116b1565b63ffffffff168152602001846040015163ffffffff16815250905092915050565b6000816020015163ffffffff1660001480156116645750815163ffffffff16155b1592915050565b60008161167a57506000610311565b61030e60016116898486611afe565b6116939190611b5f565b836116c1565b60006116a9836116898487611afe565b949350505050565b600061030e611693846001611afe565b600061030e8284611c3d565b6040805161012081018252600080825260208201819052918101829052606081018290526080810182905260a0810182905260c081019190915260e08101611713611720565b8152602001600081525090565b6040518061020001604052806010906020820280368337509192915050565b8035610af881611eec565b8035610af881611f0a565b8035610af881611f1c565b60006020828403121561177257600080fd5b81356001600160a01b038116811461178957600080fd5b9392505050565b600080602083850312156117a357600080fd5b823567ffffffffffffffff808211156117bb57600080fd5b818501915085601f8301126117cf57600080fd5b8135818111156117de57600080fd5b8660208260051b85010111156117f357600080fd5b60209290920196919550909350505050565b60006020828403121561181757600080fd5b813561178981611f0a565b60008082840361032081121561183757600080fd5b833561184281611f0a565b92506103007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe08201121561187557600080fd5b506020830190509250929050565b60006020828403121561189557600080fd5b813561178981611f1c565b8060005b60108110156118d35781356118b881611f0a565b63ffffffff16845260209384019391909101906001016118a4565b50505050565b8060005b60108110156118d357815163ffffffff168452602093840193909101906001016118dd565b60ff815116825260ff6020820151166020830152604081015161192d604084018263ffffffff169052565b506060810151611945606084018263ffffffff169052565b50608081015161195d608084018263ffffffff169052565b5060a081015161197560a084018263ffffffff169052565b5060c081015161199660c08401826cffffffffffffffffffffffffff169052565b5060e08101516119a960e08401826118d9565b5061010001516102e09190910152565b6020808252825182820181905260009190848201906040850190845b818110156119fc576119e8838551611902565b9284019261030092909201916001016119d5565b50909695505050505050565b61030081018235611a1881611f1c565b60ff168252611a2960208401611755565b60ff166020830152611a3d6040840161174a565b63ffffffff166040830152611a546060840161174a565b63ffffffff166060830152611a6b6080840161174a565b63ffffffff166080830152611a8260a0840161174a565b63ffffffff1660a0830152611a9960c0840161173f565b6cffffffffffffffffffffffffff1660c0830152611abd60e08084019085016118a0565b6102e092830135919092015290565b61030081016103118284611902565b6103208101611aea8285611902565b63ffffffff83166103008301529392505050565b60008219821115611b1157611b11611c51565b500190565b600063ffffffff808316818516808303821115611b3557611b35611c51565b01949350505050565b600061ffff80841680611b5357611b53611c67565b92169190910492915050565b600082821015611b7157611b71611c51565b500390565b600063ffffffff83811690831681811015611b9357611b93611c51565b039392505050565b81816000805b6010811015611bfc578335611bb581611f0a565b835463ffffffff600385901b81811b801990931693909116901b1617835560209390930192600490910190601c821115611bf457600091506001830192505b600101611ba1565b505050505050565b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff821415611c3657611c36611c51565b5060010190565b600082611c4c57611c4c611c67565b500690565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052601260045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052604160045260246000fd5b6000813561031181611eec565b6000813561031181611f0a565b8135611cce81611f1c565b60ff811690508154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0082161783556020840135611d0b81611f1c565b61ff008160081b16837fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000841617178455505050611d84611d4d60408401611cb6565b82547fffffffffffffffffffffffffffffffffffffffffffffffffffff00000000ffff1660109190911b65ffffffff000016178255565b611dce611d9360608401611cb6565b82547fffffffffffffffffffffffffffffffffffffffffffff00000000ffffffffffff1660309190911b69ffffffff00000000000016178255565b611e1c611ddd60808401611cb6565b82547fffffffffffffffffffffffffffffffffffff00000000ffffffffffffffffffff1660509190911b6dffffffff0000000000000000000016178255565b611e6e611e2b60a08401611cb6565b82547fffffffffffffffffffffffffffff00000000ffffffffffffffffffffffffffff1660709190911b71ffffffff000000000000000000000000000016178255565b611ecd611e7d60c08401611ca9565b82547fff00000000000000000000000000ffffffffffffffffffffffffffffffffffff1660909190911b7effffffffffffffffffffffffff00000000000000000000000000000000000016178255565b611edd60e0830160018301611b9b565b6102e082013560038201555050565b6cffffffffffffffffffffffffff81168114611f0757600080fd5b50565b63ffffffff81168114611f0757600080fd5b60ff81168114611f0757600080fdfea26469706673582212208ae8d6d492eb3bd8f7c57c03c8534092542c241148344b2fb5acb1e8e53f761f64736f6c63430008060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100f55760003560e01c8063715018a611610097578063d0ebdbe711610066578063d0ebdbe7146101f3578063d30a5daf14610206578063e30c397814610226578063f2fde38b1461023757600080fd5b8063715018a6146101ac5780638da5cb5b146101b4578063caeef7ec146101c5578063ce336ce9146101e057600080fd5b806324c21446116100d357806324c21446146101555780633cd8e2d51461015d578063481c6a751461017d5780634e71e0c8146101a257600080fd5b80631124e1dc146100fa57806321e98ad9146101225780632439093a1461013f575b600080fd5b61010d610108366004611822565b61024a565b60405190151581526020015b60405180910390f35b61012a610317565b60405163ffffffff9091168152602001610119565b61014761039e565b604051610119929190611adb565b610147610671565b61017061016b366004611805565b610804565b6040516101199190611acc565b6002546001600160a01b03165b6040516001600160a01b039091168152602001610119565b6101aa610852565b005b6101aa6108e0565b6000546001600160a01b031661018a565b6104035468010000000000000000900463ffffffff1661012a565b61012a6101ee366004611822565b610955565b61010d610201366004611760565b610a84565b610219610214366004611790565b610afd565b60405161011991906119b9565b6001546001600160a01b031661018a565b6101aa610245366004611760565b610c08565b60003361025f6002546001600160a01b031690565b6001600160a01b0316148061028d5750336102826000546001600160a01b031690565b6001600160a01b0316145b6103045760405162461bcd60e51b815260206004820152602660248201527f4d616e61676561626c652f63616c6c65722d6e6f742d6d616e616765722d6f7260448201527f2d6f776e6572000000000000000000000000000000000000000000000000000060648201526084015b60405180910390fd5b61030e8383610d44565b90505b92915050565b604080516060810182526104035463ffffffff80821680845264010000000083048216602085015268010000000000000000909204169282019290925260009161036357600091505090565b6020810151600363ffffffff8216610100811061038257610382611c7d565b6004020154610100900460ff1615610311575060400151919050565b6103a66116cd565b604080516060810182526104035463ffffffff8082168352640100000000820481166020840181905268010000000000000000909204169282019290925260009160039061010081106103fb576103fb611c7d565b604080516101208101825260049290920292909201805460ff8082168452610100820416602084015262010000810463ffffffff9081168486015266010000000000008204811660608501526a01000000000000000000008204811660808501526e01000000000000000000000000000082041660a0840152720100000000000000000000000000000000000090046cffffffffffffffffffffffffff1660c083015282516102008101938490529192909160e08401916001840190601090826000855b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116104bf5750505092845250505060039190910154602090910152815190935063ffffffff166105275760009150509091565b825160ff1661065f5760408051610120810182526003805460ff8082168452610100820416602084015263ffffffff62010000820481168486015266010000000000008204811660608501526a01000000000000000000008204811660808501526e01000000000000000000000000000082041660a08401526cffffffffffffffffffffffffff72010000000000000000000000000000000000009091041660c083015282516102008101938490529192909160e0840191600490601090826000855b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116105ea575050509284525050506003919091015460209182015282015182519194509061064e906001611b16565b6106589190611b76565b9150509091565b6040810151815161064e906001611b16565b6106796116cd565b604080516060810182526104035463ffffffff808216808452640100000000830482166020850152680100000000000000009092048116938301939093526000926003916106ca9184919061119916565b63ffffffff1661010081106106e1576106e1611c7d565b8251604080516101208101825260049390930293909301805460ff8082168552610100820416602085015262010000810463ffffffff9081168587015266010000000000008204811660608601526a01000000000000000000008204811660808601526e01000000000000000000000000000082041660a0850152720100000000000000000000000000000000000090046cffffffffffffffffffffffffff1660c084015283516102008101948590529093919291849160e08401916001840190601090826000855b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116107aa57905050505050508152602001600382015481525050915092509250509091565b61080c6116cd565b604080516060810182526104035463ffffffff808216835264010000000082048116602084015268010000000000000000909104169181019190915261031190836112c9565b6001546001600160a01b031633146108ac5760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e65720060448201526064016102fb565b6001546108c1906001600160a01b031661140f565b6001805473ffffffffffffffffffffffffffffffffffffffff19169055565b336108f36000546001600160a01b031690565b6001600160a01b0316146109495760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102fb565b610953600061140f565b565b60003361096a6000546001600160a01b031690565b6001600160a01b0316146109c05760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102fb565b604080516060810182526104035463ffffffff80821683526401000000008204811660208401526801000000000000000090910481169282019290925290600090610a0f908390879061119916565b90508360038263ffffffff166101008110610a2c57610a2c611c7d565b60040201610a3a8282611cc3565b9050508463ffffffff167f2d81da839b2f3db2ed762907f74df3acecdc30461dba4813694c225ba911e1f685604051610a739190611a08565b60405180910390a250929392505050565b600033610a996000546001600160a01b031690565b6001600160a01b031614610aef5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102fb565b6103118261146c565b919050565b60408051606081810183526104035463ffffffff8082168452640100000000820481166020850152680100000000000000009091041692820192909252829060008267ffffffffffffffff811115610b5757610b57611c93565b604051908082528060200260200182016040528015610b9057816020015b610b7d6116cd565b815260200190600190039081610b755790505b50905060005b83811015610bfe57610bce83888884818110610bb457610bb4611c7d565b9050602002016020810190610bc99190611805565b6112c9565b828281518110610be057610be0611c7d565b60200260200101819052508080610bf690611c04565b915050610b96565b5095945050505050565b33610c1b6000546001600160a01b031690565b6001600160a01b031614610c715760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016102fb565b6001600160a01b038116610ced5760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d616460448201527f647265737300000000000000000000000000000000000000000000000000000060648201526084016102fb565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b6000808363ffffffff1611610d9b5760405162461bcd60e51b815260206004820152601560248201527f4472617743616c632f647261772d69642d67742d30000000000000000000000060448201526064016102fb565b6000610dad6040840160208501611883565b60ff1611610dfd5760405162461bcd60e51b815260206004820152601e60248201527f4472617743616c632f6d6174636843617264696e616c6974792d67742d30000060448201526064016102fb565b610e0d6040830160208401611883565b610e1c9060ff16610100611b3e565b61ffff16610e2d6020840184611883565b60ff161115610e7e5760405162461bcd60e51b815260206004820152601f60248201527f4472617743616c632f62697452616e676553697a652d746f6f2d6c617267650060448201526064016102fb565b6000610e8d6020840184611883565b60ff1611610edd5760405162461bcd60e51b815260206004820152601a60248201527f4472617743616c632f62697452616e676553697a652d67742d3000000000000060448201526064016102fb565b6000610eef60a0840160808501611805565b63ffffffff1611610f425760405162461bcd60e51b815260206004820152601d60248201527f4472617743616c632f6d61785069636b73506572557365722d67742d3000000060448201526064016102fb565b6000610f5460c0840160a08501611805565b63ffffffff1611610fa75760405162461bcd60e51b815260206004820152601c60248201527f4472617743616c632f6578706972794475726174696f6e2d67742d300000000060448201526064016102fb565b60006010815b818110156110075760008560e0018260108110610fcc57610fcc611c7d565b602002016020810190610fdf9190611805565b63ffffffff169050610ff18185611afe565b9350508080610fff90611c04565b915050610fad565b50633b9aca0082111561105c5760405162461bcd60e51b815260206004820152601660248201527f4472617743616c632f74696572732d67742d313030250000000000000000000060448201526064016102fb565b604080516060810182526104035463ffffffff8082168352640100000000820481166020840181905268010000000000000000909204169282019290925290859060039061010081106110b1576110b1611c7d565b600402016110bf8282611cc3565b506110cc90508187611558565b80516104038054602084015160409485015163ffffffff90811668010000000000000000027fffffffffffffffffffffffffffffffffffffffff00000000ffffffffffffffff928216640100000000027fffffffffffffffffffffffffffffffffffffffffffffffff00000000000000009094169582169590951792909217169290921790559051908716907f2d81da839b2f3db2ed762907f74df3acecdc30461dba4813694c225ba911e1f690611185908890611a08565b60405180910390a250600195945050505050565b60006111a483611643565b80156111c05750826000015163ffffffff168263ffffffff1611155b61120c5760405162461bcd60e51b815260206004820152600f60248201527f4452422f6675747572652d64726177000000000000000000000000000000000060448201526064016102fb565b825160009061121c908490611b76565b9050836040015163ffffffff168163ffffffff161061127d5760405162461bcd60e51b815260206004820152601060248201527f4452422f657870697265642d647261770000000000000000000000000000000060448201526064016102fb565b600061129d856020015163ffffffff16866040015163ffffffff1661166b565b90506112c08163ffffffff168363ffffffff16876040015163ffffffff16611699565b95945050505050565b6112d16116cd565b60036112dd8484611199565b63ffffffff1661010081106112f4576112f4611c7d565b604080516101208101825260049290920292909201805460ff8082168452610100820416602084015262010000810463ffffffff9081168486015266010000000000008204811660608501526a01000000000000000000008204811660808501526e01000000000000000000000000000082041660a0840152720100000000000000000000000000000000000090046cffffffffffffffffffffffffff1660c083015282516102008101938490529192909160e08401916001840190601090826000855b82829054906101000a900463ffffffff1663ffffffff16815260200190600401906020826003010492830192600103820291508084116113b857905050505050508152602001600382015481525050905092915050565b600080546001600160a01b0383811673ffffffffffffffffffffffffffffffffffffffff19831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6002546000906001600160a01b039081169083168114156114f55760405162461bcd60e51b815260206004820152602360248201527f4d616e61676561626c652f6578697374696e672d6d616e616765722d6164647260448201527f657373000000000000000000000000000000000000000000000000000000000060648201526084016102fb565b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0385811691821790925560405190918316907f9cb45c728de594dab506a1f1a8554e24c8eeaf983618d5ec5dd7bc6f3c49feee90600090a350600192915050565b604080516060810182526000808252602082018190529181019190915261157e83611643565b15806115a157508251611592906001611b16565b63ffffffff168263ffffffff16145b6115ed5760405162461bcd60e51b815260206004820152601260248201527f4452422f6d7573742d62652d636f6e746967000000000000000000000000000060448201526064016102fb565b60405180606001604052808363ffffffff168152602001611622856020015163ffffffff16866040015163ffffffff166116b1565b63ffffffff168152602001846040015163ffffffff16815250905092915050565b6000816020015163ffffffff1660001480156116645750815163ffffffff16155b1592915050565b60008161167a57506000610311565b61030e60016116898486611afe565b6116939190611b5f565b836116c1565b60006116a9836116898487611afe565b949350505050565b600061030e611693846001611afe565b600061030e8284611c3d565b6040805161012081018252600080825260208201819052918101829052606081018290526080810182905260a0810182905260c081019190915260e08101611713611720565b8152602001600081525090565b6040518061020001604052806010906020820280368337509192915050565b8035610af881611eec565b8035610af881611f0a565b8035610af881611f1c565b60006020828403121561177257600080fd5b81356001600160a01b038116811461178957600080fd5b9392505050565b600080602083850312156117a357600080fd5b823567ffffffffffffffff808211156117bb57600080fd5b818501915085601f8301126117cf57600080fd5b8135818111156117de57600080fd5b8660208260051b85010111156117f357600080fd5b60209290920196919550909350505050565b60006020828403121561181757600080fd5b813561178981611f0a565b60008082840361032081121561183757600080fd5b833561184281611f0a565b92506103007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe08201121561187557600080fd5b506020830190509250929050565b60006020828403121561189557600080fd5b813561178981611f1c565b8060005b60108110156118d35781356118b881611f0a565b63ffffffff16845260209384019391909101906001016118a4565b50505050565b8060005b60108110156118d357815163ffffffff168452602093840193909101906001016118dd565b60ff815116825260ff6020820151166020830152604081015161192d604084018263ffffffff169052565b506060810151611945606084018263ffffffff169052565b50608081015161195d608084018263ffffffff169052565b5060a081015161197560a084018263ffffffff169052565b5060c081015161199660c08401826cffffffffffffffffffffffffff169052565b5060e08101516119a960e08401826118d9565b5061010001516102e09190910152565b6020808252825182820181905260009190848201906040850190845b818110156119fc576119e8838551611902565b9284019261030092909201916001016119d5565b50909695505050505050565b61030081018235611a1881611f1c565b60ff168252611a2960208401611755565b60ff166020830152611a3d6040840161174a565b63ffffffff166040830152611a546060840161174a565b63ffffffff166060830152611a6b6080840161174a565b63ffffffff166080830152611a8260a0840161174a565b63ffffffff1660a0830152611a9960c0840161173f565b6cffffffffffffffffffffffffff1660c0830152611abd60e08084019085016118a0565b6102e092830135919092015290565b61030081016103118284611902565b6103208101611aea8285611902565b63ffffffff83166103008301529392505050565b60008219821115611b1157611b11611c51565b500190565b600063ffffffff808316818516808303821115611b3557611b35611c51565b01949350505050565b600061ffff80841680611b5357611b53611c67565b92169190910492915050565b600082821015611b7157611b71611c51565b500390565b600063ffffffff83811690831681811015611b9357611b93611c51565b039392505050565b81816000805b6010811015611bfc578335611bb581611f0a565b835463ffffffff600385901b81811b801990931693909116901b1617835560209390930192600490910190601c821115611bf457600091506001830192505b600101611ba1565b505050505050565b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff821415611c3657611c36611c51565b5060010190565b600082611c4c57611c4c611c67565b500690565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052601260045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052604160045260246000fd5b6000813561031181611eec565b6000813561031181611f0a565b8135611cce81611f1c565b60ff811690508154817fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0082161783556020840135611d0b81611f1c565b61ff008160081b16837fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000841617178455505050611d84611d4d60408401611cb6565b82547fffffffffffffffffffffffffffffffffffffffffffffffffffff00000000ffff1660109190911b65ffffffff000016178255565b611dce611d9360608401611cb6565b82547fffffffffffffffffffffffffffffffffffffffffffff00000000ffffffffffff1660309190911b69ffffffff00000000000016178255565b611e1c611ddd60808401611cb6565b82547fffffffffffffffffffffffffffffffffffff00000000ffffffffffffffffffff1660509190911b6dffffffff0000000000000000000016178255565b611e6e611e2b60a08401611cb6565b82547fffffffffffffffffffffffffffff00000000ffffffffffffffffffffffffffff1660709190911b71ffffffff000000000000000000000000000016178255565b611ecd611e7d60c08401611ca9565b82547fff00000000000000000000000000ffffffffffffffffffffffffffffffffffff1660909190911b7effffffffffffffffffffffffff00000000000000000000000000000000000016178255565b611edd60e0830160018301611b9b565b6102e082013560038201555050565b6cffffffffffffffffffffffffff81168114611f0757600080fd5b50565b63ffffffff81168114611f0757600080fd5b60ff81168114611f0757600080fdfea26469706673582212208ae8d6d492eb3bd8f7c57c03c8534092542c241148344b2fb5acb1e8e53f761f64736f6c63430008060033",
+  "devdoc": {
+    "author": "PoolTogether Inc Team",
+    "events": {
+      "Deployed(uint8)": {
+        "params": {
+          "cardinality": "The maximum number of records in the buffer before they begin to expire."
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "claimOwnership()": {
+        "details": "This function is only callable by the `_pendingOwner`."
+      },
+      "constructor": {
+        "params": {
+          "_cardinality": "Cardinality of the `bufferMetadata`",
+          "_owner": "Address of the PrizeDistributionBuffer owner"
+        }
+      },
+      "getBufferCardinality()": {
+        "returns": {
+          "_0": "Ring buffer cardinality"
+        }
+      },
+      "getNewestPrizeDistribution()": {
+        "details": "Uses nextDrawIndex to calculate the most recently added PrizeDistribution.",
+        "returns": {
+          "drawId": "drawId",
+          "prizeDistribution": "prizeDistribution"
+        }
+      },
+      "getOldestPrizeDistribution()": {
+        "details": "Finds the oldest Draw by buffer.nextIndex and buffer.lastDrawId",
+        "returns": {
+          "drawId": "drawId",
+          "prizeDistribution": "prizeDistribution"
+        }
+      },
+      "getPrizeDistribution(uint32)": {
+        "params": {
+          "drawId": "drawId"
+        },
+        "returns": {
+          "_0": "prizeDistribution"
+        }
+      },
+      "getPrizeDistributionCount()": {
+        "details": "If no Draws have been pushed, it will return 0.If the ring buffer is full, it will return the cardinality.Otherwise, it will return the NewestPrizeDistribution index + 1.",
+        "returns": {
+          "_0": "Number of PrizeDistributions stored in the prize distributions ring buffer."
+        }
+      },
+      "getPrizeDistributions(uint32[])": {
+        "params": {
+          "drawIds": "drawIds to get PrizeDistribution for"
+        },
+        "returns": {
+          "_0": "prizeDistributionList"
+        }
+      },
+      "manager()": {
+        "returns": {
+          "_0": "Current `_manager` address."
+        }
+      },
+      "pendingOwner()": {
+        "returns": {
+          "_0": "Current `_pendingOwner` address."
+        }
+      },
+      "pushPrizeDistribution(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))": {
+        "details": "Only callable by the owner or manager",
+        "params": {
+          "drawId": "Draw ID linked to PrizeDistribution parameters",
+          "prizeDistribution": "PrizeDistribution parameters struct"
+        }
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "setManager(address)": {
+        "details": "Throws if called by any account other than the owner.",
+        "params": {
+          "_newManager": "New _manager address."
+        },
+        "returns": {
+          "_0": "Boolean to indicate if the operation was successful or not."
+        }
+      },
+      "setPrizeDistribution(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))": {
+        "details": "Retroactively updates an existing PrizeDistribution and should be thought of as a \"safety\" fallback. If the manager is setting invalid PrizeDistribution parameters the Owner can update the invalid parameters with correct parameters.",
+        "returns": {
+          "_0": "drawId"
+        }
+      },
+      "transferOwnership(address)": {
+        "params": {
+          "_newOwner": "Address to transfer ownership to."
+        }
+      }
+    },
+    "stateVariables": {
+      "MAX_CARDINALITY": {
+        "details": "even with daily draws, 256 will give us over 8 months of history."
+      },
+      "TIERS_CEILING": {
+        "details": "It's fixed point 9 because 1e9 is the largest \"1\" that fits into 2**32"
+      }
+    },
+    "title": "PoolTogether V4 PrizeDistributionBuffer",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "Deployed(uint8)": {
+        "notice": "Emitted when the contract is deployed."
+      },
+      "PrizeDistributionSet(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))": {
+        "notice": "Emit when PrizeDistribution is set."
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "claimOwnership()": {
+        "notice": "Allows the `_pendingOwner` address to finalize the transfer."
+      },
+      "constructor": {
+        "notice": "Constructor for PrizeDistributionBuffer"
+      },
+      "getBufferCardinality()": {
+        "notice": "Read a ring buffer cardinality"
+      },
+      "getNewestPrizeDistribution()": {
+        "notice": "Read newest PrizeDistribution from prize distributions ring buffer."
+      },
+      "getOldestPrizeDistribution()": {
+        "notice": "Read oldest PrizeDistribution from prize distributions ring buffer."
+      },
+      "getPrizeDistribution(uint32)": {
+        "notice": "Gets the PrizeDistributionBuffer for a drawId"
+      },
+      "getPrizeDistributionCount()": {
+        "notice": "Gets the number of PrizeDistributions stored in the prize distributions ring buffer."
+      },
+      "getPrizeDistributions(uint32[])": {
+        "notice": "Gets PrizeDistribution list from array of drawIds"
+      },
+      "manager()": {
+        "notice": "Gets current `_manager`."
+      },
+      "owner()": {
+        "notice": "Returns the address of the current owner."
+      },
+      "pendingOwner()": {
+        "notice": "Gets current `_pendingOwner`."
+      },
+      "pushPrizeDistribution(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))": {
+        "notice": "Adds new PrizeDistribution record to ring buffer storage."
+      },
+      "renounceOwnership()": {
+        "notice": "Renounce ownership of the contract."
+      },
+      "setManager(address)": {
+        "notice": "Set or change of manager."
+      },
+      "setPrizeDistribution(uint32,(uint8,uint8,uint32,uint32,uint32,uint32,uint104,uint32[16],uint256))": {
+        "notice": "Sets existing PrizeDistribution with new PrizeDistribution parameters in ring buffer storage."
+      },
+      "transferOwnership(address)": {
+        "notice": "Allows current owner to set the `_pendingOwner` address."
+      }
+    },
+    "notice": "The PrizeDistributionBuffer contract provides historical lookups of PrizeDistribution struct parameters (linked with a Draw ID) via a circular ring buffer. Historical PrizeDistribution parameters can be accessed on-chain using a drawId to calculate ring buffer storage slot. The PrizeDistribution parameters can be created by manager/owner and existing PrizeDistribution parameters can only be updated the owner. When adding a new PrizeDistribution basic sanity checks will be used to validate the incoming parameters.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 4754,
+        "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 4756,
+        "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+        "label": "_pendingOwner",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 4652,
+        "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+        "label": "_manager",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 7451,
+        "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+        "label": "prizeDistributionRingBuffer",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_array(t_struct(PrizeDistribution)10152_storage)256_storage"
+      },
+      {
+        "astId": 7455,
+        "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+        "label": "bufferMetadata",
+        "offset": 0,
+        "slot": "1027",
+        "type": "t_struct(Buffer)10954_storage"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_struct(PrizeDistribution)10152_storage)256_storage": {
+        "base": "t_struct(PrizeDistribution)10152_storage",
+        "encoding": "inplace",
+        "label": "struct IPrizeDistributionBuffer.PrizeDistribution[256]",
+        "numberOfBytes": "32768"
+      },
+      "t_array(t_uint32)16_storage": {
+        "base": "t_uint32",
+        "encoding": "inplace",
+        "label": "uint32[16]",
+        "numberOfBytes": "64"
+      },
+      "t_struct(Buffer)10954_storage": {
+        "encoding": "inplace",
+        "label": "struct DrawRingBufferLib.Buffer",
+        "members": [
+          {
+            "astId": 10949,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "lastDrawId",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 10951,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "nextIndex",
+            "offset": 4,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 10953,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "cardinality",
+            "offset": 8,
+            "slot": "0",
+            "type": "t_uint32"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_struct(PrizeDistribution)10152_storage": {
+        "encoding": "inplace",
+        "label": "struct IPrizeDistributionBuffer.PrizeDistribution",
+        "members": [
+          {
+            "astId": 10133,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "bitRangeSize",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 10135,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "matchCardinality",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 10137,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "startTimestampOffset",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 10139,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "endTimestampOffset",
+            "offset": 6,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 10141,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "maxPicksPerUser",
+            "offset": 10,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 10143,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "expiryDuration",
+            "offset": 14,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 10145,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "numberOfPicks",
+            "offset": 18,
+            "slot": "0",
+            "type": "t_uint104"
+          },
+          {
+            "astId": 10149,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "tiers",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint32)16_storage"
+          },
+          {
+            "astId": 10151,
+            "contract": "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol:PrizeDistributionBuffer",
+            "label": "prize",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_uint104": {
+        "encoding": "inplace",
+        "label": "uint104",
+        "numberOfBytes": "13"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}
