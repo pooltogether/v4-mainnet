@@ -150,14 +150,25 @@ module.exports = async (hardhat) => {
     }
   )
 
+  const drawCalculatorTimelockResult = await deployAndLog(
+    'DrawCalculatorTimelock',
+    {
+      from: deployer,
+      args: [
+        deployer,
+        drawCalculatorResult.address
+      ]
+    }
+  )
+
   const prizeDistributorResult = await deployAndLog(
     'PrizeDistributor',
     {
       from: deployer,
       args: [
-        deployer,
+        executiveTeam,
         ticketResult.address,
-        drawCalculatorResult.address
+        drawCalculatorTimelockResult.address
       ]
     }
   )
@@ -193,17 +204,6 @@ module.exports = async (hardhat) => {
         prizeDistributorResult.address,
         prizeSplitStrategyResult.address,
         reserveResult.address
-      ]
-    }
-  )
-
-  const drawCalculatorTimelockResult = await deployAndLog(
-    'DrawCalculatorTimelock',
-    {
-      from: deployer,
-      args: [
-        deployer,
-        drawCalculatorResult.address
       ]
     }
   )

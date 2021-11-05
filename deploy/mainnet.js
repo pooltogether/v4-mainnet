@@ -192,12 +192,21 @@ module.exports = async (hardhat) => {
     skipIfAlreadyDeployed: true
   })
 
+  const drawCalculatorTimelockResult = await deployAndLog('DrawCalculatorTimelock', {
+    from: deployer,
+    args: [
+      deployer,
+      drawCalculatorResult.address
+    ],
+    skipIfAlreadyDeployed: true
+  })
+
   const prizeDistributorResult = await deployAndLog('PrizeDistributor', {
     from: deployer,
     args: [
       executiveTeam,
       ticketResult.address,
-      drawCalculatorResult.address
+      drawCalculatorTimelockResult.address
     ],
     skipIfAlreadyDeployed: true
   })
@@ -228,15 +237,6 @@ module.exports = async (hardhat) => {
   // Setup the Timelock contracts
   /* ========================================= */
   
-  const drawCalculatorTimelockResult = await deployAndLog('DrawCalculatorTimelock', {
-    from: deployer,
-    args: [
-      deployer,
-      drawCalculatorResult.address
-    ],
-    skipIfAlreadyDeployed: true
-  })
-
   const L1TimelockTriggerResult = await deployAndLog('L1TimelockTrigger', {
     from: deployer,
     args: [
