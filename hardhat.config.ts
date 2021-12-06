@@ -1,25 +1,10 @@
-const networks = require('./hardhat.network')
-require('hardhat-dependency-compiler')
-require('hardhat-deploy')
-require('hardhat-deploy-ethers')
-require('@pooltogether/hardhat-deploy-markdown-export')
-
-// Tasks
-require('./tasks/calculations')
-require('./tasks/administrative')
-require('./tasks/autotasks')
-require('./tasks/DrawBeacon')
-require('./tasks/DrawBuffer')
-require('./tasks/PrizeDistributor')
-require('./tasks/PrizeDistributionBuffer')
-require('./tasks/PrizePool')
-require('./tasks/Ticket')
-require('./tasks/PrizeTierHistory')
-
-const debug = require('debug')('pt:hardhat.config')
+import networks from './hardhat.network';
+import 'hardhat-dependency-compiler';
+import 'hardhat-deploy';
+import 'hardhat-deploy-ethers';
+import '@pooltogether/hardhat-deploy-markdown-export';
 
 const optimizerEnabled = true
-
 const config = {
   networks,
   defaultNetwork: 'mainnet',
@@ -109,15 +94,14 @@ const config = {
   }
 };
 
-
-if (process.env.FORK_CHAIN_ID == process.env.MAINNET_CHAIN_ID) {
-  debug(`Setting up RNG contracts for mainnet`)
-  config.external.deployments.hardhat = config.external.deployments.mainnet
-  config.external.deployments.localhost = config.external.deployments.mainnet
-} else if (process.env.FORK_CHAIN_ID == process.env.POLYGON_CHAIN_ID) {
-  debug(`Setting up RNG contracts for polygon`)
-  config.external.deployments.hardhat = config.external.deployments.polygon
-  config.external.deployments.localhost = config.external.deployments.polygon
-}
+// if (process.env.FORK_CHAIN_ID == process.env.MAINNET_CHAIN_ID) {
+//   debug(`Setting up RNG contracts for mainnet`)
+//   config.external.deployments.hardhat = config.external.deployments.mainnet
+//   config.external.deployments.localhost = config.external.deployments.mainnet
+// } else if (process.env.FORK_CHAIN_ID == process.env.POLYGON_CHAIN_ID) {
+//   debug(`Setting up RNG contracts for polygon`)
+//   config.external.deployments.hardhat = config.external.deployments.polygon
+//   config.external.deployments.localhost = config.external.deployments.polygon
+// }
 
 module.exports = config
