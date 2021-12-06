@@ -36,9 +36,9 @@
     "@pooltogether/draw-calculator-js": "^1.0.0-beta.25",
     "@pooltogether/hardhat-deploy-markdown-export": "^0.1.1",
     "@pooltogether/owner-manager-contracts": "1.1.0",
-    "@pooltogether/v4-core": "1.0.0",
-    "@pooltogether/v4-periphery": "1.0.0",
-    "@pooltogether/v4-timelocks": "1.0.0",
+    "@pooltogether/v4-core": "^1.2.0",
+    "@pooltogether/v4-periphery": "1.0.0-beta.9",
+    "@pooltogether/v4-timelocks": "1.0.0-beta.5",
     "@pooltogether/yield-source-interface": "1.3.0",
     "find": "^0.3.0",
     "glob": "^7.1.7"
