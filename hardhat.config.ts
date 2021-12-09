@@ -16,6 +16,9 @@ const config: HardhatUserConfig = {
     deployer: {
       default: 0
     },
+    rngService: {
+      1: '0xb2dc5571f477b1c5b36509a71013bfedd9cc492f'
+    },
     executiveTeam: {
       default: 0,
       1: '0xDa63D70332139E6A8eCA7513f4b6E2E0Dc93b693',

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { dim, cyan, green } from '../../src/colors';
 import { deployAndLog } from '../../src/deployAndLog';
 import { transferOwnership } from '../../src/transferOwnership';

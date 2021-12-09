@@ -1,13 +1,6 @@
 import { deployContract } from '../../deployContract'
 
-export interface handleBeaconContractDeployConfig {
-  startingDrawId: string;
-  startTimestamp: number;
-  beaconPeriodSeconds: number;
-  rngTimeoutSeconds: number;
-}
-
-export async function handleBeaconContractDeploy(deploy: Function, deployer: string, ethers: any, config: handleBeaconContractDeployConfig) {
+export async function handleBeaconContractDeploy(deploy: Function, deployer: string, ethers: any) {
   const prizeTierHistory = await ethers.getContract('PrizeTierHistory')
   const drawBuffer = await ethers.getContract('DrawBuffer')
   const prizeDistributionBuffer = await ethers.getContract('PrizeDistributionBuffer')

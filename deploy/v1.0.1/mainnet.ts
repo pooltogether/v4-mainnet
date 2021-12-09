@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { dim, cyan, green } from '../../src/colors';
 import { deployAndLog } from '../../src/deployAndLog';
 import { transferOwnership } from '../../src/transferOwnership';
@@ -34,7 +35,8 @@ const mainnetDeploy = async (hardhat) => {
     ptOperations,
     aUSDC,
     aaveIncentivesController,
-    aaveLendingPoolAddressesProviderRegistry
+    aaveLendingPoolAddressesProviderRegistry,
+    rngService
   } = await getNamedAccounts();
 
   const chainId = parseInt(await getChainId(), 10)
@@ -57,8 +59,6 @@ const mainnetDeploy = async (hardhat) => {
   // Phase 0 ---------------------------------
   // Test Contracts to easily test full functionality.
   /* ========================================= */
-
-  const rngChainlink = await ethers.getContract("RNGChainlink")
 
   const aaveUsdcYieldSourceResult = await deployAndLog('ATokenYieldSource', {
     from: deployer,
@@ -160,7 +160,7 @@ const mainnetDeploy = async (hardhat) => {
     args: [
       ptOperations,
       drawBufferResult.address,
-      rngChainlink.address,
+      rngService,
       1, // Starting DrawID
       BEACON_START_TIME,
       BEACON_PERIOD_SECONDS,
