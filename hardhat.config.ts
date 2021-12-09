@@ -1,27 +1,17 @@
+import { HardhatUserConfig } from 'hardhat/config';
 import networks from './hardhat.network';
+import { dependencyCompiler, external } from './hardhat.config.dependencies'
 import 'hardhat-dependency-compiler';
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 import '@pooltogether/hardhat-deploy-markdown-export';
 
 const optimizerEnabled = true
-const config = {
+const config: HardhatUserConfig = {
   networks,
   defaultNetwork: 'mainnet',
-  solidity: {
-    compilers: [
-      {
-        version: '0.8.6',
-        settings: {
-          optimizer: {
-            enabled: optimizerEnabled,
-            runs: 2000,
-          },
-          evmVersion: 'berlin',
-        },
-      },
-    ],
-  },
+  dependencyCompiler,
+  external,
   namedAccounts: {
     deployer: {
       default: 0
@@ -54,54 +44,20 @@ const config = {
       137: '0x3ac4e9aa29940770aeC38fe853a4bbabb2dA9C19'
     }
   },
-  external: {
-    contracts: [
+  solidity: {
+    compilers: [
       {
-        artifacts: "node_modules/@pooltogether/pooltogether-rng-contracts/build",
+        version: '0.8.6',
+        settings: {
+          optimizer: {
+            enabled: optimizerEnabled,
+            runs: 2000,
+          },
+          evmVersion: 'berlin',
+        },
       },
-      {
-        artifacts: "node_modules/@pooltogether/yield-source-interface/artifacts"
-      }
     ],
-    deployments: {
-      mainnet: ["node_modules/@pooltogether/pooltogether-rng-contracts/deployments/mainnet"],
-      polygon: ["node_modules/@pooltogether/pooltogether-rng-contracts/deployments/matic_137"],
-    },
   },
-  dependencyCompiler: {
-    paths: [
-      // Core
-      "@pooltogether/v4-core/contracts/DrawBeacon.sol",
-      "@pooltogether/v4-core/contracts/DrawCalculator.sol",
-      "@pooltogether/v4-core/contracts/DrawBuffer.sol",
-      "@pooltogether/v4-core/contracts/PrizeDistributor.sol",
-      "@pooltogether/v4-core/contracts/PrizeDistributionBuffer.sol",
-      "@pooltogether/v4-core/contracts/Ticket.sol",
-      "@pooltogether/v4-core/contracts/prize-strategy/PrizeSplitStrategy.sol",
-      "@pooltogether/v4-core/contracts/Reserve.sol",
-      "@pooltogether/v4-core/contracts/prize-pool/YieldSourcePrizePool.sol",
-      "@pooltogether/v4-core/contracts/test/ERC20Mintable.sol",
-      // Timelock
-      "@pooltogether/v4-timelocks/contracts/L1TimelockTrigger.sol",
-      "@pooltogether/v4-timelocks/contracts/L2TimelockTrigger.sol",
-      "@pooltogether/v4-timelocks/contracts/DrawCalculatorTimelock.sol",
-      // Periphery
-      "@pooltogether/v4-periphery/contracts/PrizeFlush.sol",
-      "@pooltogether/v4-periphery/contracts/PrizeTierHistory.sol",
-      // yield source
-      "@pooltogether/aave-yield-source/contracts/yield-source/ATokenYieldSource.sol"
-    ]
-  }
 };
 
-// if (process.env.FORK_CHAIN_ID == process.env.MAINNET_CHAIN_ID) {
-//   debug(`Setting up RNG contracts for mainnet`)
-//   config.external.deployments.hardhat = config.external.deployments.mainnet
-//   config.external.deployments.localhost = config.external.deployments.mainnet
-// } else if (process.env.FORK_CHAIN_ID == process.env.POLYGON_CHAIN_ID) {
-//   debug(`Setting up RNG contracts for polygon`)
-//   config.external.deployments.hardhat = config.external.deployments.polygon
-//   config.external.deployments.localhost = config.external.deployments.polygon
-// }
-
-module.exports = config
+export default config
