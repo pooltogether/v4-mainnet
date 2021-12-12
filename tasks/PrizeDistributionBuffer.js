@@ -9,8 +9,8 @@ task("getPrizeDistribution", "Read single prize distribution parameters")
 .addParam("id", "")
 .setAction(async ({id}, { ethers }) => {
     const prizeDistributionBuffer = await ethers.getContract('PrizeDistributionBuffer')
-    const {drawId, prizeDistribution} = await prizeDistributionBuffer.getPrizeDistribution(id)
-    convertPrizeDistributionToTable(drawId, prizeDistribution, prizeDistributionBuffer.address )
+    const prizeDistribution = await prizeDistributionBuffer.getPrizeDistribution(id)
+    convertPrizeDistributionToTable(prizeDistribution.drawId, prizeDistribution, prizeDistributionBuffer.address )
 });
 
 /**
@@ -84,12 +84,13 @@ function convertPrizeDistributionToTable (drawId, prizeDistribution, address) {
     console.log('Draw ID:', drawId, `retrieved from ${address}`)
     console.log('----------------------------------------------------------------------------')
 
-    console.log(green(`Prize: ${cyan(ethers.utils.formatEther(prizeDistribution.prize))}`))
+    console.log(green(`Prize: ${cyan(ethers.utils.formatUnits(prizeDistribution.prize, 6))}`))
     console.log(green(`BitRange: ${cyan(prizeDistribution.bitRangeSize)}`))
     console.log(green(`MatchCardinality: ${cyan(prizeDistribution.matchCardinality)}`))
     console.log(green(`Start timestamp offset: ${cyan(prizeDistribution.startTimestampOffset)}`))
     console.log(green(`End timestamp offset: ${cyan(prizeDistribution.endTimestampOffset)}`))
     console.log(green(`Max User Picks: ${cyan(prizeDistribution.maxPicksPerUser)}`))
     console.log(green(`Number of Picks: ${cyan(prizeDistribution.numberOfPicks)}`))
+    console.log(green(`Total picks:\t ${(2**prizeDistribution.bitRangeSize)**prizeDistribution.matchCardinality}`))
     console.log('----------------------------------------------------------------------------\n')
 }
