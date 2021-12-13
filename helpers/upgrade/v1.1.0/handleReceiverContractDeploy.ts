@@ -1,6 +1,6 @@
 import { deployContract } from '../../deployContract'
 
-export async function handleBeaconContractDeploy(deploy: Function, deployer: string, ethers: any) {
+export async function handleReceiverContractDeploy(deploy: Function, deployer: string, ethers: any) {
   const prizeTierHistory = await ethers.getContract('PrizeTierHistory')
   const drawBuffer = await ethers.getContract('DrawBuffer')
   const prizeDistributionBuffer = await ethers.getContract('PrizeDistributionBuffer')
@@ -17,7 +17,7 @@ export async function handleBeaconContractDeploy(deploy: Function, deployer: str
     1000000 // @NOTE:  1 USDC = 1000000 wei = Minumum ticket cost
   ])
 
-  const beaconTimelockAndPushRouterResult = await deployContract(deploy, 'BeaconTimelockAndPushRouter', deployer, [
+  const beaconTimelockAndPushRouterResult = await deployContract(deploy, 'ReceiverTimelockAndPushRouter', deployer, [
     deployer,
     prizeDistributionFactoryResult.address,
     drawCalculatorTimelock.address
