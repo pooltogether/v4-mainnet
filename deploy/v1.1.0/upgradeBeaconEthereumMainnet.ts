@@ -1,8 +1,8 @@
 import { dim } from 'chalk';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
-import saveUpgradePopulatedTransactions from '../../helpers/files/saveUpgradePopulatedTransactions';
 import { configureBeaconDeployment } from '../../helpers/upgrade/v1.1.0/configureBeaconDeployment'
 import { handleBeaconContractDeploy } from '../../helpers/upgrade/v1.1.0/handleBeaconContractDeploy'
+import saveUpgradePopulatedTransactions from '../../helpers/files/saveUpgradePopulatedTransactions';
 
 const upgradeBeaconEthereumMainnet = async (hardhat: HardhatRuntimeEnvironment) => {
   // @ts-ignore

@@ -1,8 +1,8 @@
 import { dim } from 'chalk';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
+import { configureReceiverDeployment } from '../../helpers/upgrade/v1.1.0/configureReceiverDeployment'
+import { handleReceiverContractDeploy } from '../../helpers/upgrade/v1.1.0/handleReceiverContractDeploy'
 import saveUpgradePopulatedTransactions from '../../helpers/files/saveUpgradePopulatedTransactions';
-import { configureBeaconDeployment } from '../../helpers/upgrade/v1.1.0/configureBeaconDeployment'
-import { handleBeaconContractDeploy } from '../../helpers/upgrade/v1.1.0/handleBeaconContractDeploy'
 
 const upgradeReceiverPolygonMainnet = async (hardhat: HardhatRuntimeEnvironment) => {
   // @ts-ignore
@@ -11,11 +11,11 @@ const upgradeReceiverPolygonMainnet = async (hardhat: HardhatRuntimeEnvironment)
   const { deployer } = await getNamedAccounts();
   const { deploy } = deployments;
   if (process.env.DEPLOY === 'polygon.upgrade.v1.10.0') {
-    dim(`Deploying: Receiver Chain Ethereum Mainnet`)
+    dim(`Deploying: Receiver Chain Polygon Mainnet`)
     dim(`Version: 1.0.1 to 1.1.0`)
   } else { return }
-  await handleBeaconContractDeploy(deploy, deployer, ethers)
-  const populatedTransactions = await configureBeaconDeployment(ethers)
+  await handleReceiverContractDeploy(deploy, deployer, ethers)
+  const populatedTransactions = await configureReceiverDeployment(ethers)
   saveUpgradePopulatedTransactions(populatedTransactions, `${__dirname}/populatedTransactions.receiver.${chainId}.json`)
   console.log(`Transactions Generated: deploy/v1.1.0/populatedTransactions.receiver.${chainId}.json`)
 }
