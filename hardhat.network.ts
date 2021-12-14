@@ -3,6 +3,7 @@ const mnemonic = process.env.HDWALLET_MNEMONIC;
 const infuraApiKey = process.env.INFURA_API_KEY;
 const forkChainId = process.env.FORK_CHAIN_ID || "1";
 const forkBlockNumber = process.env.FORK_BLOCK_NUMBER || "0";
+const avalanche = process.env.AVALANCHE_ENABLED;
 
 const networks: HardhatUserConfig['networks'] = {
   localhost: {
@@ -53,5 +54,24 @@ const networks: HardhatUserConfig['networks'] = {
     },
   }
 };
+
+if (!!avalanche) {
+  networks.avalancheMainnet = {
+    chainId: 43114,
+    gas: 12000000,
+    url: 'https://api.avax.network/ext/bc/C/rpc',
+    accounts: {
+      mnemonic,
+    },
+  }
+
+  networks.avalancheFuji = {
+    chainId: 43113,
+    url: 'https://api.avax-test.network/ext/bc/C/rpc',
+    accounts: {
+      mnemonic,
+    },
+  }
+}
 
 export default networks;
