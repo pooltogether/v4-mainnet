@@ -33,22 +33,7 @@ export async function configureReceiverChainDeployment(ethers: any, manager: str
     console.log(cyan('\nSetting PrizeTierHistory first PrizeTier'))
     await prizeTierHistory.push(nextPrizeTier)
   } else {
-    const prizeD = await prizeDistributionFactory.calculatePrizeDistribution(1, '10000000')
-    prizeD
-    console.log("calculatePrizeDistribution: ", prizeD)
-  }
-
-  /**
-   * MockYieldSource Configuration
-   * Sets the mock YieldSource.ticket to the MintableToken contract.
-   */
-  const yieldSourcePrizePool = await ethers.getContract('YieldSourcePrizePool')
-  const ticket = await ethers.getContract('Ticket')
-  if (await yieldSourcePrizePool.getTicket() != ticket.address) {
-    console.log(console.log(cyan('\nSetting ticket on prize pool...')))
-    const tx = await yieldSourcePrizePool.setTicket(ticket.address)
-    await tx.wait(1)
-    console.log(green(`\nSet ticket!`))
+    // const prizeD = await prizeDistributionFactory.calculatePrizeDistribution(1, '10000000')
   }
 
   /**

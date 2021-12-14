@@ -1,5 +1,5 @@
 # PoolTogether V4 Mainnet
-The V4 mainnet deployed contracts and essential hardhat tasks.
+The PoolTogether V4 mainnet deployed contract artifacts.
 
 # Getting Started
 Install `direnv` module.

@@ -24,11 +24,6 @@ export async function handlePrizePoolCoreDeploy(
     aaveIncentivesController,
     aaveLendingPoolAddressesProviderRegistry,
   } = await getNamedAccounts();
-  console.log(
-    executiveTeam,
-    aUSDC,
-    aaveIncentivesController,
-    aaveLendingPoolAddressesProviderRegistry)
   const yieldSourcePrizePool = await deployContract(deploy, 'ATokenYieldSource', deployer, [
     aUSDC,
     aaveIncentivesController,
@@ -39,15 +34,15 @@ export async function handlePrizePoolCoreDeploy(
     executiveTeam
   ])
   const ticketResult = await deployContract(deploy, 'Ticket', deployer, ["Ticket", "TICK", decimals, yieldSourcePrizePool.address])
-  const prizeTierHistoryResult = await deployContract(deploy, 'PrizeTierHistory', deployer, [executiveTeam])
-  const drawBufferResult = await deployContract(deploy, 'DrawBuffer', deployer, [executiveTeam, drawDufferCardinality])
-  const prizeDistributionBufferResult = await deployContract(deploy, 'PrizeDistributionBuffer', deployer, [executiveTeam, prizeDistributionBufferCardinality])
+  const prizeTierHistoryResult = await deployContract(deploy, 'PrizeTierHistory', deployer, [deployer])
+  const drawBufferResult = await deployContract(deploy, 'DrawBuffer', deployer, [deployer, drawDufferCardinality])
+  const prizeDistributionBufferResult = await deployContract(deploy, 'PrizeDistributionBuffer', deployer, [deployer, prizeDistributionBufferCardinality])
   const drawCalculatorResult = await deployContract(deploy, 'DrawCalculator', deployer, [ticketResult.address, drawBufferResult.address, prizeDistributionBufferResult.address])
-  const prizeDistributorResult = await deployContract(deploy, 'PrizeDistributor', deployer, [executiveTeam, ticketResult.address, drawCalculatorResult.address])
-  const prizeSplitStrategyResult = await deployContract(deploy, 'PrizeSplitStrategy', deployer, [executiveTeam, yieldSourcePrizePool.address])
-  const reserveResult = await deployContract(deploy, 'Reserve', deployer, [executiveTeam, ticketResult.address])
+  const prizeDistributorResult = await deployContract(deploy, 'PrizeDistributor', deployer, [deployer, ticketResult.address, drawCalculatorResult.address])
+  const prizeSplitStrategyResult = await deployContract(deploy, 'PrizeSplitStrategy', deployer, [deployer, yieldSourcePrizePool.address])
+  const reserveResult = await deployContract(deploy, 'Reserve', deployer, [deployer, ticketResult.address])
   const prizeSplitStrategy = await ethers.getContract('PrizeSplitStrategy')
-  const drawCalculatorTimelockResult = await deployContract(deploy, 'DrawCalculatorTimelock', deployer, [executiveTeam, drawCalculatorResult.address])
+  const drawCalculatorTimelockResult = await deployContract(deploy, 'DrawCalculatorTimelock', deployer, [deployer, drawCalculatorResult.address])
   const prizeDistributionFactoryResult = await deployContract(deploy, 'PrizeDistributionFactory', deployer, [
     deployer,
     prizeTierHistoryResult.address,
