@@ -19,7 +19,7 @@ const deployReceiverAvalancheMainnet = async (hardhat: HardhatRuntimeEnvironment
   const { deploy } = deployments;
   if (process.env.DEPLOY === 'avalanche.deploy.v1.1.0') {
     dim(`Deploying: Receiver Chain Avalanche Mainnet`)
-    dim(`Version: 1.0.1 to 1.1.0`)
+    dim(`Version: 1.1.0`)
   } else { return }
   await handlePrizePoolCoreDeploy(deploy, deployer, ethers, getNamedAccounts, TOKEN_DECIMALS, DRAW_BUFFER_CARDINALITY, PRIZE_DISTRIBUTION_BUFFER_CARDINALITY);
   await handlePeripheryContractDeploy(deploy, deployer, ethers);
