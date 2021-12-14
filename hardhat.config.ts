@@ -50,7 +50,7 @@ const config: HardhatUserConfig = {
     aaveLendingPoolAddressesProviderRegistry: {
       1: '0x52D306e36E3B6B02c153d0266ff0f85d18BCD413',
       137: '0x3ac4e9aa29940770aeC38fe853a4bbabb2dA9C19',
-      43114: '0xb6A86025F0FE1862B372cb0ca18CE3EDe02A318f'
+      43114: '0x4235E22d9C3f28DCDA82b58276cb6370B01265C2'
     }
   },
   solidity: {

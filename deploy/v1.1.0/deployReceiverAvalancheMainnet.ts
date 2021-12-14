@@ -14,7 +14,8 @@ import {
 
 const deployReceiverAvalancheMainnet = async (hardhat: HardhatRuntimeEnvironment) => {
   // @ts-ignore
-  const { ethers, deployments, getNamedAccounts } = hardhat
+  const { ethers, deployments, getNamedAccounts, network, getChainId } = hardhat
+  console.log(getChainId(), 'getChainId')
   const { deployer, manager } = await getNamedAccounts();
   const { deploy } = deployments;
   if (process.env.DEPLOY === 'avalanche.deploy.v1.10.0') {

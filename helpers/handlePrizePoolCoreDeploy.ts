@@ -24,6 +24,11 @@ export async function handlePrizePoolCoreDeploy(
     aaveIncentivesController,
     aaveLendingPoolAddressesProviderRegistry,
   } = await getNamedAccounts();
+  console.log(
+    executiveTeam,
+    aUSDC,
+    aaveIncentivesController,
+    aaveLendingPoolAddressesProviderRegistry)
   const yieldSourcePrizePool = await deployContract(deploy, 'ATokenYieldSource', deployer, [
     aUSDC,
     aaveIncentivesController,
