@@ -53,6 +53,7 @@
   "devDependencies": {
     "@ethersproject/hardware-wallets": "^5.0.14",
     "@types/jsonfile": "^6.0.1",
+    "@types/node": "^16.11.12",
     "ajv": "^6.12.2",
     "blessed": "^0.1.81",
     "blessed-contrib": "^4.10.1",
