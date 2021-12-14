@@ -10,7 +10,7 @@ const upgradeReceiverPolygonMainnet = async (hardhat: HardhatRuntimeEnvironment)
   const chainId = await getChainId();
   const { deployer } = await getNamedAccounts();
   const { deploy } = deployments;
-  if (process.env.DEPLOY === 'polygon.upgrade.v1.10.0') {
+  if (process.env.DEPLOY === 'polygon.upgrade.v1.1.0') {
     dim(`Deploying: Receiver Chain Polygon Mainnet`)
     dim(`Version: 1.0.1 to 1.1.0`)
   } else { return }

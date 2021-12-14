@@ -17,7 +17,7 @@ const deployReceiverAvalancheMainnet = async (hardhat: HardhatRuntimeEnvironment
   const { ethers, deployments, getNamedAccounts } = hardhat
   const { deployer, executiveTeam } = await getNamedAccounts();
   const { deploy } = deployments;
-  if (process.env.DEPLOY === 'avalanche.deploy.v1.10.0') {
+  if (process.env.DEPLOY === 'avalanche.deploy.v1.1.0') {
     dim(`Deploying: Receiver Chain Avalanche Mainnet`)
     dim(`Version: 1.0.1 to 1.1.0`)
   } else { return }
