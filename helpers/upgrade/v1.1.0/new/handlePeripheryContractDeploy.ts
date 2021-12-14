@@ -1,4 +1,4 @@
-import { deployContract } from './deployContract'
+import { deployContract } from '../../../deployContract'
 
 export async function handlePeripheryContractDeploy(deploy: Function, deployer: string, ethers: any) {
   const prizeDistributor = await ethers.getContract('PrizeDistributor')

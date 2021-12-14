@@ -1,7 +1,7 @@
-import { deployContract } from './deployContract'
+import { deployContract } from '../../../deployContract'
 import {
   TOKEN_DECIMALS
-} from '../src/constants';
+} from '../../../constants';
 export interface handlePrizePoolCoreDeployConfig {
   decimals: number | string,
   drawDufferCardinality: number | string,
@@ -49,7 +49,7 @@ export async function handlePrizePoolCoreDeploy(
     drawBufferResult.address,
     prizeDistributionBufferResult.address,
     ticketResult.address,
-    1000000 // 1 USDC @TODO: remove hardcoded value
+    1000000 // 1 USDC
   ])
 
   return {

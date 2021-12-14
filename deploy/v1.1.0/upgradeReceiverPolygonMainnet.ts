@@ -1,7 +1,7 @@
 import { dim } from 'chalk';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
-import { configureReceiverDeployment } from '../../helpers/upgrade/v1.1.0/configureReceiverDeployment'
-import { handleReceiverContractDeploy } from '../../helpers/upgrade/v1.1.0/handleReceiverContractDeploy'
+import { configureReceiverDeployment } from '../../helpers/upgrade/v1.1.0/upgrade/configureReceiverDeployment'
+import { handleReceiverContractDeploy } from '../../helpers/upgrade/v1.1.0/upgrade/handleReceiverContractDeploy'
 import saveUpgradePopulatedTransactions from '../../helpers/files/saveUpgradePopulatedTransactions';
 
 const upgradeReceiverPolygonMainnet = async (hardhat: HardhatRuntimeEnvironment) => {

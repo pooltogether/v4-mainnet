@@ -1,4 +1,4 @@
-import { deployContract } from './deployContract'
+import { deployContract } from '../../../deployContract'
 
 export interface handleBeaconChainContractDeployConfig {
   startingDrawId: string;

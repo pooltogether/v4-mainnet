@@ -53,9 +53,13 @@ yarn upgrade:avalanche
 
 When running a fork of blockchain the `test` command can be added at the end of the target `action`.
 
+```bash
 yarn upgrade:mainnet:test
+
 yarn upgrade:polygon:test
+
 yarn upgrade:avalanche:test
+```
 
 ## Test Deployment Scripts Contracts
 

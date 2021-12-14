@@ -1,4 +1,4 @@
-import { deployContract } from './deployContract'
+import { deployContract } from '../../../deployContract'
 
 export async function handleReceiverChainContractDeploy(deploy: Function, deployer: string, ethers: any) {
   const drawBuffer = await ethers.getContract('DrawBuffer')

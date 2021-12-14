@@ -5,7 +5,7 @@ import {
   handlePeripheryContractDeploy,
   handleReceiverChainContractDeploy,
   configureReceiverChainDeployment
-} from '../../helpers'
+} from '../../helpers/upgrade/v1.1.0/new'
 import {
   DRAW_BUFFER_CARDINALITY,
   PRIZE_DISTRIBUTION_BUFFER_CARDINALITY,
