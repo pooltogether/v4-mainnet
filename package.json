@@ -6,6 +6,7 @@
   "author": "PoolTogether Inc.",
   "license": "GPL-3.0",
   "scripts": {
+    "hh": "hardhat",
     "addPrizes": "hardhat run ./scripts/addPrizes.js --network ",
     "clean": "rm -rf cache/ artifacts/",
     "compile": "hardhat compile",
@@ -16,7 +17,7 @@
     "docs": "hardhat deploy-markdown-export --name 'V4 Mainnet' --npm-package-name @pooltogether/v4-mainnet --github-base-url 'https://github.com/pooltogether/v4-mainnet/tree/master' --output-filepath mainnet.md",
     "disburse": "hardhat run ./scripts/disburse.js --network ",
     "deposit": "hardhat run ./scripts/deposit.js --network ",
-    "generate": "node ./scripts/generateContractList.js",
+    "generate": "node ./scripts/generateContractList.ts",
     "deploy:mainnet": "DEPLOY=mainnet hardhat deploy --network mainnet",
     "deploy:polygon": "DEPLOY=polygon hardhat deploy --network poolygon",
     "deploy:avalanche": "DEPLOY=avalanche.deploy.v1.10.0 hardhat deploy --network avalanche",

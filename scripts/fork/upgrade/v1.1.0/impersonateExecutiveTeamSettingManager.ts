@@ -1,10 +1,10 @@
 import chalk from 'chalk';
 import hre from "hardhat";
-import config from '../../hardhat.config';
+import config from '../../../../hardhat.config';
 
 async function run(){
-    console.log(chalk.dim("Impersonating accounts..."))
     await hre.ethers.provider.send("hardhat_impersonateAccount",[config.namedAccounts.executiveTeam])
     console.log(chalk.green('Impersonated accounts'))
 }
+
 run()

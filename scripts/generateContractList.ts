@@ -1,19 +1,20 @@
-const fs = require("fs");
 
+const fs = require("fs");
 const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
 const polygonDeployments = `${__dirname}/../deployments/polygon`;
+const avalancheDeployments = `${__dirname}/../deployments/avalanche`;
 
-const networkDeploymentPaths = [mainnetDeployments, polygonDeployments];
+const networkDeploymentPaths = [mainnetDeployments, polygonDeployments, avalancheDeployments];
 
-const VERSION_ONE = {
+const VERSION = {
   major: 1,
-  minor: 0,
+  minor: 1,
   patch: 0,
 };
 
 const contractList = {
-  name: "Testnet Linked Prize Pool",
-  version: VERSION_ONE,
+  name: "Mainnet Linked Prize Pool",
+  version: VERSION,
   tags: {},
   contracts: [],
 };
@@ -22,7 +23,7 @@ const formatContract = (chainId, contractName, deploymentBlob) => {
   return {
     chainId,
     address: deploymentBlob.address,
-    version: VERSION_ONE,
+    version: VERSION,
     type: contractName,
     abi: deploymentBlob.abi,
     tags: [],
@@ -53,7 +54,7 @@ networkDeploymentPaths.forEach((networkDeploymentPath) => {
 });
 
 fs.writeFile(
-  `${__dirname}/../mainnet.json`,
+  `${__dirname}/../contracts.json`,
   JSON.stringify(contractList),
   (err) => {
     if (err) {
