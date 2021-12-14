@@ -16,3 +16,22 @@ To run fork scripts, deploy or perform any operation with a mainnet node you wil
 ```.sh
 yarn
 ```
+
+# Development
+
+
+## Forking Networks
+
+yarn fork:[NETWORK]
+
+```bash
+yarn fork:mainnet
+```
+
+```bash
+yarn fork:polygon
+```
+
+```bash
+yarn fork:avalanche
+```
