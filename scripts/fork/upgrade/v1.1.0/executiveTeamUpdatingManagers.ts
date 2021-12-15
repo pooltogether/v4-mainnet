@@ -1,10 +1,10 @@
 import { PopulatedTransaction } from "ethers";
 import hre from "hardhat";
 
-async function executiveTeamUpdatingManagers(transactions: Array<PopulatedTransaction>, executiveTeam: string){
+async function executiveTeamUpdatingManagers(transactions: Array<PopulatedTransaction>, ptOperations: string){
     for (let index = 0; index < transactions.length; index++) {
         let transaction = transactions[index]
-        const signer = await hre.ethers.provider.getUncheckedSigner(executiveTeam)
+        const signer = hre.ethers.provider.getUncheckedSigner(ptOperations)
         transaction.from = signer._address;
         const tx = await signer.sendTransaction(transaction)
         await tx.wait(1)
