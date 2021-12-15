@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { dim, cyan, green } from '../../src/colors';
 import { deployAndLog } from '../../src/deployAndLog';
 import { transferOwnership } from '../../src/transferOwnership';
@@ -7,7 +6,7 @@ import {
   DRAW_BUFFER_CARDINALITY,
   PRIZE_DISTRIBUTION_BUFFER_CARDINALITY,
   TOKEN_DECIMALS
-} from '../../src/constants';
+} from '../../helpers/constants';
 
 const polygonDeploy = async (hardhat) => {
   if (process.env.DEPLOY != 'polygon') {

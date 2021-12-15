@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { dim, cyan, green } from '../../src/colors';
 import { deployAndLog } from '../../src/deployAndLog';
 import { transferOwnership } from '../../src/transferOwnership';
@@ -12,7 +11,7 @@ import {
   RNG_TIMEOUT_SECONDS,
   EXPIRY_DURATION,
   TOKEN_DECIMALS
-} from '../../src/constants';
+} from '../../helpers/constants';
 
 const mainnetDeploy = async (hardhat) => {
 

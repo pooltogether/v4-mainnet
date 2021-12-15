@@ -2,6 +2,7 @@ import hre from "hardhat";
 import impersonateNamedAccounts from './helpers/impersonateNamedAccounts'
 import distributeEthToAccounts from './helpers/distributeEthToAccounts'
 import actionIncreaseTimeAndStartCompleteDraw from './actions/actionIncreaseTimeAndStartCompleteDraw'
+import beaconDrawLockAndNetworkTotalSupplyPush from './actions/beaconDrawLockAndNetworkTotalSupplyPush'
 import executiveTeamUpdatingManagers from './upgrade/v1.1.0/executiveTeamUpdatingManagers'
 import testBeaconTimelockAndPushRouterConfiguration from './upgrade/v1.1.0/testBeaconTimelockAndPushRouterConfiguration'
 
@@ -15,7 +16,7 @@ import transactions from '../../deploy/v1.1.0/populatedTransactions.beacon.1.jso
  */
 export async function forkRunUpgradeV110(){
     const chainId = await hre.getChainId()
-    const { executiveTeam, ptOperations } = await hre.getNamedAccounts()
+    const { ptOperations } = await hre.getNamedAccounts()
     console.log("ChainID: ", chainId)
     impersonateNamedAccounts(ptOperations)
     await distributeEthToAccounts();
@@ -31,7 +32,7 @@ export async function forkRunUpgradeV110(){
      * 1. Increase Time, Start Draw and Complete Draw
      * 2. Push Draw/NetworkTotalSupply to BeaconTimelock
      */
-    actionIncreaseTimeAndStartCompleteDraw()
-    // testBeaconTimelockAndPushRouterConfiguration()
+    // actionIncreaseTimeAndStartCompleteDraw()
+    testBeaconTimelockAndPushRouterConfiguration(ptOperations)
 }
 forkRunUpgradeV110()
