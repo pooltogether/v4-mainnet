@@ -24,8 +24,9 @@ async function testBeaconTimelockAndPushRouterConfiguration(ptOperations: string
         contractsBlob,
         config
       );
-      const signer = hre.ethers.provider.getUncheckedSigner(ptOperations)
-      transaction.from = ptOperations
+      const signer = hre.ethers.provider.getUncheckedSigner('0x029Aa20Dcc15c022b1b61D420aaCf7f179A9C73f')
+      // transaction.from = '0xdd0134236ab968f39c1ccfc5d3d0de577f73b6d7'
+      console.log("TRANS: ", transaction)
       console.log('BeaconTimelockAndPushRouter: Pushing New Draw and NetworkTotalSupply')
       try {
         await signer.sendTransaction(transaction)

@@ -2,9 +2,9 @@
 const fs = require("fs");
 const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
 const polygonDeployments = `${__dirname}/../deployments/polygon`;
-const avalancheDeployments = `${__dirname}/../deployments/avalanche`;
+// const avalancheDeployments = `${__dirname}/../deployments/avalanche`;
 
-const networkDeploymentPaths = [mainnetDeployments, polygonDeployments, avalancheDeployments];
+const networkDeploymentPaths = [mainnetDeployments, polygonDeployments];
 
 const VERSION = {
   major: 1,

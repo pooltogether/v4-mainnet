@@ -39,7 +39,7 @@
     "verify:mainnet": "hardhat --config hardhat.config.ts run ./scripts/verify.ts --network mainnet",
     "verify:polygon": "hardhat --config hardhat.config.polygon.ts run ./scripts/verify.ts --network polygon",
     "verify:avalanche": "hardhat --config hardhat.config.avalanche.ts run ./scripts/verify.ts --network avalanche",
-    "mainnetForkSetup": "rm -rf deployments/localhost ; cp -r deployments/mainnet deployments/localhost"
+    "mainnetForkSetup": "rm -rf deployments/localhost ; cp -r deployments/mainnet deployments/localhost;  rm -f deploy/v1.1.0/populatedTransactions.beacon.1.json"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.3.2",

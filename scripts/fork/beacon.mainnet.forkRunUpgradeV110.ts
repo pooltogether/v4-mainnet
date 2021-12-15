@@ -16,9 +16,9 @@ import transactions from '../../deploy/v1.1.0/populatedTransactions.beacon.1.jso
  */
 export async function forkRunUpgradeV110(){
     const chainId = await hre.getChainId()
-    const { ptOperations } = await hre.getNamedAccounts()
+    const { ptOperations, defenderRelayer } = await hre.getNamedAccounts()
     console.log("ChainID: ", chainId)
-    impersonateNamedAccounts(ptOperations)
+    impersonateNamedAccounts([ptOperations, defenderRelayer])
     await distributeEthToAccounts();
     
     /**

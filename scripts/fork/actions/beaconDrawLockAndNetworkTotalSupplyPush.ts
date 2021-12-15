@@ -22,6 +22,9 @@ export interface PrizePoolNetworkConfig {
     if (config?.beaconChain?.providerUrl) {
       providerBeaconChain = getJsonRpcProvider(config?.beaconChain?.providerUrl);
     }
+
+    const { ptOperations, defenderRelayer } = await hre.getNamedAccounts()
+    const signer = hre.ethers.provider.getUncheckedSigner(defenderRelayer)
   
   
     // TODO: throw error if no provider?
@@ -29,11 +32,11 @@ export interface PrizePoolNetworkConfig {
       return undefined;
     }
 
-    const drawBufferBeaconChain = await hre.ethers.getContract('DrawBuffer');
-    const prizeTierHistoryBeaconChain = await hre.ethers.getContract('PrizeTierHistory');
-    const prizeDistributionBufferBeaconChain = await hre.ethers.getContract('PrizeDistributionBuffer');
-    const beaconTimelockAndPushRouter = await hre.ethers.getContract('BeaconTimelockAndPushRouter');
-    const ticketBeaconChain = await hre.ethers.getContract('Ticket');
+    const drawBufferBeaconChain = await hre.ethers.getContract('DrawBuffer', signer);
+    const prizeTierHistoryBeaconChain = await hre.ethers.getContract('PrizeTierHistory', signer);
+    const prizeDistributionBufferBeaconChain = await hre.ethers.getContract('PrizeDistributionBuffer', signer);
+    const beaconTimelockAndPushRouter = await hre.ethers.getContract('BeaconTimelockAndPushRouter', signer);
+    const ticketBeaconChain = await hre.ethers.getContract('Ticket', signer);
   
     // TODO: throw error if any of the contracts is unavailable?
     if (
@@ -99,10 +102,14 @@ export interface PrizePoolNetworkConfig {
   
       console.log('Draw: ', drawFromBeaconChainToPush);
       console.log('TotalNetworkSupply: ', totalNetworkTicketSupply);
+      console.log(await beaconTimelockAndPushRouter.owner())
+      console.log("Manager: ", await beaconTimelockAndPushRouter.manager())
+
       return await beaconTimelockAndPushRouter.populateTransaction.push(
         drawFromBeaconChainToPush,
         totalNetworkTicketSupply
       );
+
     } else {
       console.log('No Draw to lock and push');
       return undefined;
