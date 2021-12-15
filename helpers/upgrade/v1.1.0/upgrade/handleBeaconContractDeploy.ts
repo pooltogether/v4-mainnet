@@ -1,3 +1,4 @@
+import hre from "hardhat";
 import { deployContract } from '../../../deployContract'
 
 export async function handleBeaconContractDeploy(deploy: Function, deployer: string, ethers: any) {
@@ -7,9 +8,10 @@ export async function handleBeaconContractDeploy(deploy: Function, deployer: str
   const ticket = await ethers.getContract('Ticket')
   const drawCalculatorTimelock = await ethers.getContract('DrawCalculatorTimelock')
 
-
+  const { ptOperations } = await hre.getNamedAccounts()
+  
   const prizeDistributionFactoryResult = await deployContract(deploy, 'PrizeDistributionFactory', deployer, [
-    deployer,
+    ptOperations,
     prizeTierHistory.address,
     drawBuffer.address,
     prizeDistributionBuffer.address,
@@ -18,7 +20,7 @@ export async function handleBeaconContractDeploy(deploy: Function, deployer: str
   ])
 
   const beaconTimelockAndPushRouterResult = await deployContract(deploy, 'BeaconTimelockAndPushRouter', deployer, [
-    deployer,
+    ptOperations,
     prizeDistributionFactoryResult.address,
     drawCalculatorTimelock.address
   ])

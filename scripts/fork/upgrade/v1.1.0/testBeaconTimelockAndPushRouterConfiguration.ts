@@ -25,12 +25,14 @@ async function testBeaconTimelockAndPushRouterConfiguration(ptOperations: string
         config
       );
       const signer = hre.ethers.provider.getUncheckedSigner(ptOperations)
+      transaction.from = ptOperations
       console.log('BeaconTimelockAndPushRouter: Pushing New Draw and NetworkTotalSupply')
       try {
         await signer.sendTransaction(transaction)
         console.log('BeaconTimelockAndPushRouter: Complete')
       } catch (error) {
         console.log('BeaconTimelockAndPushRouter: ERROR')
+        console.log(error)
       }
 }
 

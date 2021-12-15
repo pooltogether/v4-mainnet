@@ -32,7 +32,7 @@ export async function forkRunUpgradeV110(){
      * 1. Increase Time, Start Draw and Complete Draw
      * 2. Push Draw/NetworkTotalSupply to BeaconTimelock
      */
-    // actionIncreaseTimeAndStartCompleteDraw()
+    actionIncreaseTimeAndStartCompleteDraw()
     testBeaconTimelockAndPushRouterConfiguration(ptOperations)
 }
 forkRunUpgradeV110()

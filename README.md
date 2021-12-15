@@ -19,6 +19,20 @@ yarn
 
 # Development
 
+Simulate the Fork on Mainnet
+
+```
+yarn fork:mainnet
+```
+
+```
+yarn upgrade:mainnet:test
+```
+
+```
+yarn simulate:mainnet
+```
+
 ## Deploy Contracts
 
 `yarn deploy:[NETWORK]`
