@@ -22,7 +22,6 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
 
   const { getNamedAccounts } = hardhat
 
-  // @ts-ignore
   const {
     deployer,
     executiveTeam,

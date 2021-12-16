@@ -12,6 +12,5 @@ import { getUserAndWallet } from './utils/getUserAndWallet';
  .setAction(async (args, hre) => {
      const { manager, wallet } = await getUserAndWallet(hre.ethers, args)
      const manageable = await hre.ethers.getContractAt('Manageable', args.contract, wallet)
-    const tx = await manageable.setManager(manager)
-    return tx
+    return await manageable.setManager(manager)
  });

@@ -27,6 +27,3 @@ export AVALANCHE_CHAIN_ID=43114
 export AVALANCHE_FORK_BLOCK_NUMBER=1
 export AVALANCHE_RPC_URL=""
 export SNOWTRACE_API_KEY=""
-
-# Block number from which to fork
-export FORK_ENABLED=0

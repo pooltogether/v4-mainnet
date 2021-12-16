@@ -11,7 +11,6 @@ const upgradeBeaconEthereumMainnet = async (hardhat: HardhatRuntimeEnvironment) 
     dim(`Version: 1.0.1 to 1.1.0`)
   } else { return }
 
-  // @ts-ignore
   const { ethers, getNamedAccounts } = hardhat
   
   const {

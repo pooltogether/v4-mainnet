@@ -7,10 +7,10 @@ export const verifyAddress = async (hardhat: HardhatRuntimeEnvironment, address:
   console.log("Arguments: ", args)
   try {
     const result = await hardhat.run("verify:verify", {
-      address: address,
+      address,
       constructorArguments: args || [],
-      config: config,
-      network: network,
+      config,
+      network,
     });
     console.log("Verify Result: ", result)
   } catch (error) {

@@ -1,4 +1,3 @@
-// @ts-nocheck
 const chalk = require('chalk');
 
 export function dim(...args) {
