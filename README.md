@@ -15,6 +15,38 @@ This version was the original V4 launch across Ethereum and Polygon.
 
 This version launched V4 on Avalanche, and included upgrades to Ethereum and Polygon. 
 
+**Post-Deploy Configuration Changes**
+
+### Polygon
+
+- exec team needs to claim ownership of PrizeDistributionFactory
+- exec team needs to claim ownership of ReceiverTimelockTrigger
+- exec team needs to claim ownership of PrizeTierHistory
+- PrizeDistributionBuffer needs to be managed by the PDFactory
+- DrawCalculatorTimelock needs to be managed by the ReceiverTimelockTrigger
+- DrawBuffer to be managed by the ReceiverTimelockTrigger
+
+### Mainnet
+
+- exec team needs to claim ownership of PrizeDistributionFactory
+- exec team needs to claim ownership of BeaconTimelockTrigger
+- PrizeDistributionBuffer needs to be managed by the PDFactory
+- DrawCalculatorTimelock needs to be managed by the BeaconTimelockTrigger
+
+### Avalanche
+
+- exec teams needs to claim ownership of PrizeDistributionFactory
+- exec teams needs to claim ownership of DrawCalculatorTimelock
+- exec teams needs to claim ownership of PrizeFlush
+- exec teams needs to claim ownership of Reserve
+- exec teams needs to claim ownership of YieldSourcePrizePool
+- exec teams needs to claim ownership of PrizeTierHistory
+- exec teams needs to claim ownership of PrizeSplitStrategy
+- exec teams needs to claim ownership of DrawBuffer
+- exec teams needs to claim ownership of PrizeDistributionBuffer
+- exec teams needs to claim ownership of ReceiverTimelockTrigger
+
+
 # Getting Started
 
 Install `direnv` module.

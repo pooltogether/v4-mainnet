@@ -98,4 +98,5 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
   await transferOwnership('PrizeSplitStrategy', null, executiveTeam)
   await transferOwnership('DrawBuffer', null, executiveTeam)
   await transferOwnership('PrizeDistributionBuffer', null, executiveTeam)
+  await transferOwnership('ReceiverTimelockAndPushRouter', null, executiveTeam)
 }
