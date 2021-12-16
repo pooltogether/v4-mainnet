@@ -1,7 +1,5 @@
 import { HardhatUserConfig } from 'hardhat/config';
 const mnemonic = process.env.HDWALLET_MNEMONIC;
-const infuraApiKey = process.env.INFURA_API_KEY;
-const avalanche = process.env.AVALANCHE_ENABLED;
 
 const networks: HardhatUserConfig['networks'] = {
   localhost: {
@@ -31,40 +29,15 @@ const networks: HardhatUserConfig['networks'] = {
       mnemonic,
     },
   },
-  mumbai: {
-    chainId: 80001,
-    url: 'https://rpc-mumbai.maticvigil.com',
-    accounts: {
-      mnemonic,
-    },
-  },
-  rinkeby: {
-    chainId: 4,
-    url: `https://rinkeby.infura.io/v3/${infuraApiKey}`,
+  avalancheMainnet: {
+    chainId: 43114,
+    gas: 12000000,
+    url: process.env.AVALANCHE_RPC_URL,
     accounts: {
       mnemonic,
     },
   }
 };
-
-if (!!avalanche) {
-  networks.avalancheMainnet = {
-    chainId: 43114,
-    gas: 12000000,
-    url: 'https://api.avax.network/ext/bc/C/rpc',
-    accounts: {
-      mnemonic,
-    },
-  }
-
-  networks.avalancheFuji = {
-    chainId: 43113,
-    url: 'https://api.avax-test.network/ext/bc/C/rpc',
-    accounts: {
-      mnemonic,
-    },
-  }
-}
 
 if (!!process.env.FORK_ENABLED) {
   networks.hardhat = {
