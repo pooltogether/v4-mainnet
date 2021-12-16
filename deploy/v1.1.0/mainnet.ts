@@ -37,7 +37,7 @@ const upgradeBeaconEthereumMainnet = async (hardhat: HardhatRuntimeEnvironment) 
       drawBuffer.address,
       prizeDistributionBuffer.address,
       ticket.address,
-      PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST // @NOTE:  1 USDC = 1000000 wei = Minumum ticket cost
+      PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST // @NOTE:  1 USDC = 1000000 wei = Minimum ticket cost
     ]
   })
   const beaconTimelockAndPushRouterResult = await deployAndLog('BeaconTimelockAndPushRouter', {
