@@ -94,6 +94,7 @@
     "artifacts",
     "deployments/polygon",
     "deployments/mainnet",
+    "deployments/avalanche",
     "mainnet.json"
   ]
 }
