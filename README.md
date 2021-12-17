@@ -13,11 +13,13 @@ This version was the original V4 launch across Ethereum and Polygon.
 
 ## v1.1.0
 
-This version launched V4 on Avalanche, and included upgrades to Ethereum and Polygon. 
+This version launched V4 on Avalanche, and included upgrades to Ethereum and Polygon.  New contracts are being deployed across Avalanche, Ethereum and Polygon.
 
-**Post-Deploy Configuration Changes**
+This version upgrades the existing configuration, so some changes need to be completed by the PoolTogether Executive Team once the contracts have been launched.  Those post-deploy configuration changes are detailed below.
 
-### Polygon
+### v1.1.0 Post-Deploy Configuration Changes
+
+#### Polygon
 
 - exec team needs to claim ownership of PrizeDistributionFactory
 - exec team needs to claim ownership of ReceiverTimelockTrigger
@@ -26,14 +28,14 @@ This version launched V4 on Avalanche, and included upgrades to Ethereum and Pol
 - DrawCalculatorTimelock needs to be managed by the ReceiverTimelockTrigger
 - DrawBuffer to be managed by the ReceiverTimelockTrigger
 
-### Mainnet
+#### Mainnet
 
 - exec team needs to claim ownership of PrizeDistributionFactory
 - exec team needs to claim ownership of BeaconTimelockTrigger
 - PrizeDistributionBuffer needs to be managed by the PDFactory
 - DrawCalculatorTimelock needs to be managed by the BeaconTimelockTrigger
 
-### Avalanche
+#### Avalanche
 
 - exec teams needs to claim ownership of PrizeDistributionFactory
 - exec teams needs to claim ownership of DrawCalculatorTimelock
@@ -57,112 +59,60 @@ We use [direnv](https://direnv.net/) to manage environment variables.  You'll li
 cp .envrc.example .envrc
 ```
 
-To run fork scripts, deploy or perform any operation with a mainnet node you will need Alchemy accounts
+The RPC endpoints will need to be updated if you wish to deploy.  The RPC endpoints will also need to point to archival nodes if you wish to run fork tests.
 
-# Setup
 ```.sh
 yarn
 ```
 
 # Development
 
-Simulate the Fork on Mainnet
+The deployment scripts can be tested in forked environments.  The following commands will fork the network then run the deployment script against the fork.
+
+Note: You must configure RPC endpoints for archival nodes in the .envrc.
+
+## Fork and Deploy
 
 ```
-yarn fork:mainnet
+yarn test:v1.0.1.mainnet
 ```
 
 ```
-yarn upgrade:mainnet:test
+yarn test:v1.0.1.polygon
 ```
 
 ```
-yarn simulate:mainnet
+yarn test:v1.1.0.mainnet
 ```
 
-## Deploy Contracts
-
-`yarn deploy:[NETWORK]`
-
-```bash
-yarn deploy:mainnet
+```
+yarn test:v1.1.0.avalanche
 ```
 
-```bash
-yarn deploy:polygon
+```
+yarn test:v1.1.0.polygon
 ```
 
-```bash
-yarn deploy:avalanche
+# Deployment
+
+If you wish to deploy the contracts, use the deployment commands:
+
+```
+yarn deploy:v1.0.1.mainnet
 ```
 
-## Upgrade Contracts
-
-`yarn upgrade:[NETWORK]`
-
-```bash
-yarn upgrade:mainnet
+```
+yarn deploy:v1.0.1.polygon
 ```
 
-```bash
-yarn upgrade:polygon
+```
+yarn deploy:v1.1.0.mainnet
 ```
 
-```bash
-yarn upgrade:avalanche
+```
+yarn deploy:v1.1.0.avalanche
 ```
 
-When running a fork of blockchain the `test` command can be added at the end of the target `action`.
-
-```bash
-yarn upgrade:mainnet:test
-
-yarn upgrade:polygon:test
-
-yarn upgrade:avalanche:test
 ```
-
-## Test Deployment Scripts Contracts
-
-`yarn node:[NETWORK]`
-
-```bash
-yarn node:mainnet
-```
-
-```bash
-yarn node:polygon
-```
-
-```bash
-yarn node:avalanche
-```
-
-## Forking Networks
-To run the deployment scripts against a staging environment all the target chains can be forked at a target block number.
-
-The `.envrc` file holds RPC url, fork blocknumber and enabled status for all networks.
-
-Environment Variable Examples
-```bash
-# Polygon Support
-export POLYGON_ENABLED=1
-export POLYGON_CHAIN_ID=137
-export POLYGON_RPC_URL=""
-export POLYGON_FORK_BLOCK_NUMBER=1
-export POLYGON_RPC_URL=""
-export POLYGONSCAN_API_KEY=""
-```
-`yarn fork:[NETWORK]`
-
-```bash
-yarn fork:mainnet
-```
-
-```bash
-yarn fork:polygon
-```
-
-```bash
-yarn fork:avalanche
+yarn deploy:v1.1.0.polygon
 ```
