@@ -1,12 +1,11 @@
 import { HardhatUserConfig } from 'hardhat/config';
-import networks from './hardhat.network';
-import { dependencyCompiler, external } from './hardhat.config.dependencies'
 import 'hardhat-dependency-compiler';
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 import '@pooltogether/hardhat-deploy-markdown-export';
-
-// Custom Hardhat Tasks
+import networks from './hardhat.network';
+import { dependencyCompiler, external } from './hardhat.config.dependencies'
+// Hardhat Tasks
 import './tasks/Ticket'
 import './tasks/Manageable'
 

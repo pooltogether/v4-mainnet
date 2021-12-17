@@ -15,13 +15,6 @@ const networks: HardhatUserConfig['networks'] = {
       mnemonic,
     },
   },
-  polygon: {
-    chainId: 137,
-    url: process.env.POLYGON_RPC_URL,
-    accounts: {
-      mnemonic,
-    },
-  },
   mainnet: {
     chainId: 1,
     timeout: 1200000, // 20 minute timeout in ms
@@ -31,35 +24,20 @@ const networks: HardhatUserConfig['networks'] = {
       mnemonic,
     },
   },
-  mumbai: {
-    chainId: 80001,
-    url: 'https://rpc-mumbai.maticvigil.com',
+  polygon: {
+    chainId: 137,
+    url: process.env.POLYGON_RPC_URL,
     accounts: {
       mnemonic,
     },
   },
-  rinkeby: {
-    chainId: 4,
-    url: `https://rinkeby.infura.io/v3/${infuraApiKey}`,
-    accounts: {
-      mnemonic,
-    },
-  }
 };
 
 if (!!avalanche) {
-  networks.avalancheMainnet = {
+  networks.avalanche = {
     chainId: 43114,
     gas: 12000000,
     url: 'https://api.avax.network/ext/bc/C/rpc',
-    accounts: {
-      mnemonic,
-    },
-  }
-
-  networks.avalancheFuji = {
-    chainId: 43113,
-    url: 'https://api.avax-test.network/ext/bc/C/rpc',
     accounts: {
       mnemonic,
     },

@@ -33,8 +33,8 @@ export const dependencyCompiler = {
     "@pooltogether/v4-timelocks/contracts/L1TimelockTrigger.sol",
     "@pooltogether/v4-timelocks/contracts/L2TimelockTrigger.sol",
     "@pooltogether/v4-timelocks/contracts/DrawCalculatorTimelock.sol",
-    "@pooltogether/v4-timelocks/contracts/BeaconTimelockAndPushRouter.sol",
-    "@pooltogether/v4-timelocks/contracts/ReceiverTimelockAndPushRouter.sol",
+    "@pooltogether/v4-timelocks/contracts/BeaconTimelockTrigger.sol",
+    "@pooltogether/v4-timelocks/contracts/ReceiverTimelockTrigger.sol",
     // Periphery
     "@pooltogether/v4-periphery/contracts/PrizeFlush.sol",
     "@pooltogether/v4-periphery/contracts/PrizeTierHistory.sol",

@@ -40,7 +40,7 @@ const upgradeBeaconEthereumMainnet = async (hardhat: HardhatRuntimeEnvironment) 
       PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST // @NOTE:  1 USDC = 1000000 wei = Minimum ticket cost
     ]
   })
-  const beaconTimelockAndPushRouterResult = await deployAndLog('BeaconTimelockAndPushRouter', {
+  const beaconTimelockTrigger = await deployAndLog('BeaconTimelockTrigger', {
     from: deployer,
     args: [
       deployer,
@@ -53,10 +53,10 @@ const upgradeBeaconEthereumMainnet = async (hardhat: HardhatRuntimeEnvironment) 
   // Configure Contracts
   // ===================================================
 
-  await setManager('PrizeDistributionFactory', null, beaconTimelockAndPushRouterResult.address)
-  await setManager('BeaconTimelockAndPushRouter', null, defenderRelayer)
+  await setManager('PrizeDistributionFactory', null, beaconTimelockTrigger.address)
+  await setManager('BeaconTimelockTrigger', null, defenderRelayer)
   await transferOwnership('PrizeDistributionFactory', null, executiveTeam)
-  await transferOwnership('BeaconTimelockAndPushRouter', null, executiveTeam)
+  await transferOwnership('BeaconTimelockTrigger', null, executiveTeam)
 }
 
 export default upgradeBeaconEthereumMainnet;
