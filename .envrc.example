@@ -1,29 +1,25 @@
-# Used to deploy to testnets
+# Used to deploy
 export HDWALLET_MNEMONIC=""
 
-# Required for forking
-export ALCHEMY_API_KEY=""
-export ALCHEMY_URL=""
-export INFURA_API_KEY=""
-
+# Required for verifying
 export ETHERSCAN_API_KEY=
 export BSCSCAN_API_KEY=
-
-export MAINNET_RPC_URL=""
-export MAINNET_FORK_BLOCK_NUMBER=1
-export DISBURSE_ADDRESSES=""
-
-# Polygon Support
-export POLYGON_ENABLED=1
-export POLYGON_CHAIN_ID=137
-export POLYGON_RPC_URL=""
-export POLYGON_FORK_BLOCK_NUMBER=1
-export POLYGON_RPC_URL=""
+export SNOWTRACE_API_KEY=""
 export POLYGONSCAN_API_KEY=""
 
+# RPC Endpoints
+export MAINNET_RPC_URL=""
+export POLYGON_RPC_URL=""
+export AVALANCHE_RPC_URL="https://api.avax.network/ext/bc/C/rpc"
+
+# Ethereum Mainnet Support
+export MAINNET_FORK_BLOCK_NUMBER=13430284
+export MAINNET_CHAIN_ID=1
+
+# Polygon Forking Details
+export POLYGON_CHAIN_ID=137
+export POLYGON_FORK_BLOCK_NUMBER=20276769
+
 # Avalanche Support
-export AVALANCHE_ENABLED=1
 export AVALANCHE_CHAIN_ID=43114
-export AVALANCHE_FORK_BLOCK_NUMBER=1
-export AVALANCHE_RPC_URL=""
-export SNOWTRACE_API_KEY=""
+export AVALANCHE_FORK_BLOCK_NUMBER=8290744

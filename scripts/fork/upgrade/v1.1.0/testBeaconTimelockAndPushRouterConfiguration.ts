@@ -6,12 +6,12 @@ async function testBeaconTimelockAndPushRouterConfiguration(ptOperations: string
     const config = {
         beaconChain: {
           chainId: 1,
-          providerUrl: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
+          providerUrl: process.env.MAINNET_RPC_URL,
         },
         allPrizePoolNetworkChains: [
           {
             chainId: 137,
-            providerUrl: `https://polygon-mainnet.infura.io/v3/b81e24d29d1942b8bf04bf3c81ae3761`,
+            providerUrl: process.env.POLYGON_RPC_URL,
           },
           // {
           //   chainId: 43114,
