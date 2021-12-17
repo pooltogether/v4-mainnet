@@ -31,15 +31,6 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
     aaveLendingPoolAddressesProviderRegistry
   } = await getNamedAccounts()
 
-  console.log(
-    deployer,
-    executiveTeam,
-    aUSDC,
-    defenderRelayer,
-    aaveIncentivesController,
-    aaveLendingPoolAddressesProviderRegistry
-  )
-
   // ===================================================
   // Deploy Contracts
   // ===================================================

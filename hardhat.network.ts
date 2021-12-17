@@ -1,7 +1,5 @@
 import { HardhatUserConfig } from 'hardhat/config';
 const mnemonic = process.env.HDWALLET_MNEMONIC;
-const infuraApiKey = process.env.INFURA_API_KEY;
-const avalanche = process.env.AVALANCHE_ENABLED;
 
 const networks: HardhatUserConfig['networks'] = {
   localhost: {
@@ -31,10 +29,7 @@ const networks: HardhatUserConfig['networks'] = {
       mnemonic,
     },
   },
-};
-
-if (!!avalanche) {
-  networks.avalanche = {
+  avalanche: {
     chainId: 43114,
     gas: 12000000,
     url: 'https://api.avax.network/ext/bc/C/rpc',
