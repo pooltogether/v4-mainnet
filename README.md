@@ -21,12 +21,12 @@ This version upgrades the existing configuration, so some changes need to be com
 
 #### Polygon
 
-- exec team needs to claim ownership of PrizeDistributionFactory
-- exec team needs to claim ownership of ReceiverTimelockTrigger
-- exec team needs to claim ownership of PrizeTierHistory
-- PrizeDistributionBuffer needs to be managed by the PDFactory
-- DrawCalculatorTimelock needs to be managed by the ReceiverTimelockTrigger
-- DrawBuffer to be managed by the ReceiverTimelockTrigger
+1. Set the PrizeDistributionBuffer manager to be the new PrizeDistributionFactory
+2. Set the DrawCalculatorTimelock manager to be the ReceiverTimelockTrigger
+3. Set the DrawBuffer to be managed by the ReceiverTimelockTrigger
+4. exec team needs to claim ownership of PrizeDistributionFactory
+5. exec team needs to claim ownership of ReceiverTimelockTrigger
+6. exec team needs to claim ownership of PrizeTierHistory
 
 #### Mainnet
 
