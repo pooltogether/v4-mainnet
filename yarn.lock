@@ -592,10 +592,10 @@
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.1.0-beta.1.tgz#7ee1911cbe50e6f3c1a7b36040f42c32ed5489cf"
   integrity sha512-dd2Ayc76w2O5G1mCg74wY7ufBSkrQr8m34+zCqtnZi0fGgcW07qae6VprMRUN0lk+BLU+tS2YpW6cnNVkTO1ag==
 
-"@pooltogether/v4-timelocks@1.0.0-beta.5":
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-timelocks/-/v4-timelocks-1.0.0-beta.5.tgz#c9b684269b8f3e5e751c36468775b92c27bbd095"
-  integrity sha512-IyEVoI6OL3czM8Tx3yG60rmpBj2KdMGPWn0h0fnsU9SntQhyOumnJJWGAtKMAyT6KY3wCMH45h6ilbrW7eO9pQ==
+"@pooltogether/v4-timelocks@1.0.0-beta.6":
+  version "1.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-timelocks/-/v4-timelocks-1.0.0-beta.6.tgz#499269b8df40eff5527d027019b7f2f62e4f359c"
+  integrity sha512-zR0YlPU7gdwrX0UXuXfUYiZipf6Pfl/jVsHBGqxFV6tPDUYPzIy0gDiOv/A5jfWXGHe2meliZrx5FAqAuFQtdw==
 
 "@pooltogether/yield-source-interface@1.3.0":
   version "1.3.0"

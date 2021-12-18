@@ -11,7 +11,6 @@ export default async function upgradePolygon(hardhat: HardhatRuntimeEnvironment)
     dim(`Deploying: Receiver Chain Polygon Mainnet`)
     dim(`Version: 1.0.1 to 1.1.0`)
   } else { return }
-
   // @ts-ignore
   const { ethers, getNamedAccounts } = hardhat
   const {
@@ -28,7 +27,6 @@ export default async function upgradePolygon(hardhat: HardhatRuntimeEnvironment)
   // ===================================================
   // Deploy Contracts
   // ===================================================
-
   const prizeTierHistory = await deployAndLog('PrizeTierHistory', {
     from: deployer,
     args: [deployer]
@@ -45,7 +43,7 @@ export default async function upgradePolygon(hardhat: HardhatRuntimeEnvironment)
       PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST // @NOTE:  1 USDC = 1000000 wei = Minimum ticket cost
     ]
   })
-  const receiverTimelockAndPushRouterResult = await deployAndLog('ReceiverTimelockAndPushRouter', {
+  const receiverTimelockTrigger = await deployAndLog('ReceiverTimelockTrigger', {
     from: deployer,
     args: [
       deployer,
@@ -58,11 +56,10 @@ export default async function upgradePolygon(hardhat: HardhatRuntimeEnvironment)
   // ===================================================
   // Configure Contracts
   // ===================================================
-
   await pushDraw48()
-  await setManager('PrizeDistributionFactory', null, receiverTimelockAndPushRouterResult.address)
-  await setManager('ReceiverTimelockAndPushRouter', null, defenderRelayer)
+  await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address)
+  await setManager('ReceiverTimelockTrigger', null, defenderRelayer)
   await transferOwnership('PrizeDistributionFactory', null, executiveTeam)
-  await transferOwnership('ReceiverTimelockAndPushRouter', null, executiveTeam)
+  await transferOwnership('ReceiverTimelockTrigger', null, executiveTeam)
   await transferOwnership('PrizeTierHistory', null, executiveTeam)
 }

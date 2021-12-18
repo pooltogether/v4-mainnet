@@ -13,13 +13,6 @@ const networks: HardhatUserConfig['networks'] = {
       mnemonic,
     },
   },
-  polygon: {
-    chainId: 137,
-    url: process.env.POLYGON_RPC_URL,
-    accounts: {
-      mnemonic,
-    },
-  },
   mainnet: {
     chainId: 1,
     timeout: 1200000, // 20 minute timeout in ms
@@ -29,15 +22,22 @@ const networks: HardhatUserConfig['networks'] = {
       mnemonic,
     },
   },
-  avalancheMainnet: {
+  polygon: {
+    chainId: 137,
+    url: process.env.POLYGON_RPC_URL,
+    accounts: {
+      mnemonic,
+    },
+  },
+  avalanche: {
     chainId: 43114,
     gas: 12000000,
-    url: process.env.AVALANCHE_RPC_URL,
+    url: 'https://api.avax.network/ext/bc/C/rpc',
     accounts: {
       mnemonic,
     },
   }
-};
+}
 
 if (!!process.env.FORK_ENABLED) {
   networks.hardhat = {

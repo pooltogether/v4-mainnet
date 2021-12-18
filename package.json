@@ -25,6 +25,13 @@
     "deploy:v1.1.0.polygon": "DEPLOY=v1.1.0.polygon hardhat deploy --network polygon",
     "simulate:mainnet": "hardhat --config hardhat.config.ts run ./scripts/fork/beacon.mainnet.forkRunUpgradeV110.ts --network localhost",
     "simulate:polygon": "hardhat --config hardhat.config.ts run ./scripts/fork/receiver.polygon.forkRunUpgradeV110.ts --network localhost",
+    "node:ethereum": "DEPLOY=mainnet hardhat node --network hardhat",
+    "node:polygon": "DEPLOY=polygon hardhat node --network hardhat",
+    "node:avalanche": "DEPLOY=v1.1.0.avalanche hardhat node --network hardhat",
+    "upgrade:mainnet": "DEPLOY=v1.1.0.mainnet hardhat deploy --network mainnet",
+    "upgrade:polygon": "DEPLOY=v1.1.0.polygon hardhat deploy --network polygon",
+    "upgrade:mainnet:test": "DEPLOY=v1.1.0.mainnet hardhat deploy --network localhost",
+    "upgrade:polygon:test": "DEPLOY=v1.1.0.polygon hardhat deploy --network localhost",
     "verify:mainnet": "hardhat --config hardhat.config.ts run ./scripts/verify.ts --network mainnet",
     "verify:polygon": "hardhat --config hardhat.config.polygon.ts run ./scripts/verify.ts --network polygon",
     "verify:avalanche": "hardhat --config hardhat.config.avalanche.ts run ./scripts/verify.ts --network avalanche",
@@ -44,7 +51,7 @@
     "@pooltogether/owner-manager-contracts": "1.1.0",
     "@pooltogether/v4-core": "^1.2.0",
     "@pooltogether/v4-periphery": "1.1.0-beta.1",
-    "@pooltogether/v4-timelocks": "1.0.0-beta.5",
+    "@pooltogether/v4-timelocks": "1.0.0-beta.6",
     "@pooltogether/yield-source-interface": "1.3.0",
     "find": "^0.3.0",
     "glob": "^7.1.7"
@@ -83,6 +90,7 @@
     "artifacts",
     "deployments/polygon",
     "deployments/mainnet",
+    "deployments/avalanche",
     "mainnet.json"
   ]
 }
