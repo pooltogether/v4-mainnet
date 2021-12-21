@@ -42,13 +42,13 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
       aaveIncentivesController,
       aaveLendingPoolAddressesProviderRegistry,
       TOKEN_DECIMALS,
-      "PTaUSDCeY",
-      "PoolTogether aUSDC Yield",
+      "PTavUSDCeY",
+      "PoolTogether avUSDCeY",
       executiveTeam
     ]
   })
   const yieldSourcePrizePoolResult = await deployAndLog('YieldSourcePrizePool', { from: deployer, args: [deployer, aaveUsdcYieldSourceResult.address] })
-  const ticketResult = await deployAndLog('Ticket', { from: deployer, args: ["Ticket", "TICK", TOKEN_DECIMALS, yieldSourcePrizePoolResult.address] })
+  const ticketResult = await deployAndLog('Ticket', { from: deployer, args: ["PoolTogether avUSDCe Ticket", "PTavUSDCe", TOKEN_DECIMALS, yieldSourcePrizePoolResult.address] })
   const prizeTierHistoryResult = await deployAndLog('PrizeTierHistory', { from: deployer, args: [deployer] })
   const drawBufferResult = await deployAndLog('DrawBuffer', { from: deployer, args: [deployer, DRAW_BUFFER_CARDINALITY] })
   const prizeDistributionBufferResult = await deployAndLog('PrizeDistributionBuffer', { from: deployer, args: [deployer, PRIZE_DISTRIBUTION_BUFFER_CARDINALITY] })

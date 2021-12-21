@@ -17,7 +17,7 @@ const networks: HardhatUserConfig['networks'] = {
     chainId: 1,
     timeout: 1200000, // 20 minute timeout in ms
     url: process.env.MAINNET_RPC_URL,
-    gasPrice: 200000000000,
+    gasPrice: 80000000000,
     accounts: {
       mnemonic,
     },
@@ -31,7 +31,8 @@ const networks: HardhatUserConfig['networks'] = {
   },
   avalanche: {
     chainId: 43114,
-    gas: 12000000,
+    gasPrice: 100000000000,
+    // gas: 12000000,
     url: 'https://api.avax.network/ext/bc/C/rpc',
     accounts: {
       mnemonic,

@@ -13,7 +13,7 @@ const VERSION = {
 };
 
 const contractList = {
-  name: "Mainnet Linked Prize Pool",
+  name: "PoolTogether V4 Mainnet",
   version: VERSION,
   tags: {},
   contracts: [],

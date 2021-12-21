@@ -57,8 +57,8 @@ export default async function upgradePolygon(hardhat: HardhatRuntimeEnvironment)
   // Configure Contracts
   // ===================================================
   await pushDraw48()
-  await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address)
   await setManager('ReceiverTimelockTrigger', null, defenderRelayer)
+  await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address)
   await transferOwnership('PrizeDistributionFactory', null, executiveTeam)
   await transferOwnership('ReceiverTimelockTrigger', null, executiveTeam)
   await transferOwnership('PrizeTierHistory', null, executiveTeam)
