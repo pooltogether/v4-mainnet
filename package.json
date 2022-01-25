@@ -18,6 +18,8 @@
     "disburse": "hardhat run ./scripts/disburse.js --network ",
     "deposit": "hardhat run ./scripts/deposit.js --network ",
     "generate": "node ./scripts/generateContractList.ts",
+    "format": "prettier --config .prettierrc --write \"**/*.*.{ts,js}\"",
+    "format:file": "prettier --config .prettierrc --write",
     "deploy:v1.0.1.mainnet": "DEPLOY=mainnet hardhat deploy --network mainnet",
     "deploy:v1.0.1.polygon": "DEPLOY=polygon hardhat deploy --network polygon",
     "deploy:v1.1.0.avalanche": "DEPLOY=v1.1.0.avalanche hardhat deploy --network avalanche",
@@ -40,6 +42,9 @@
     "test:v1.1.0.mainnet": "yarn mainnetForkSetup; FORK_CHAIN_ID=$MAINNET_CHAIN_ID FORK_BLOCK_NUMBER=$MAINNET_FORK_BLOCK_NUMBER FORK_RPC_URL=$MAINNET_RPC_URL FORK_ENABLED=true DEPLOY=v1.1.0.mainnet hardhat node --no-reset --network hardhat",
     "test:v1.1.0.polygon": "yarn polygonForkSetup; FORK_CHAIN_ID=$POLYGON_CHAIN_ID FORK_BLOCK_NUMBER=$POLYGON_FORK_BLOCK_NUMBER FORK_RPC_URL=$POLYGON_RPC_URL FORK_ENABLED=true DEPLOY=v1.1.0.polygon hardhat node --no-reset --network hardhat",
     "test:v1.1.0.avalanche": "FORK_CHAIN_ID=$AVALANCHE_CHAIN_ID FORK_BLOCK_NUMBER=$AVALANCHE_FORK_BLOCK_NUMBER FORK_RPC_URL=$AVALANCHE_RPC_URL FORK_ENABLED=true DEPLOY=v1.1.0.avalanche hardhat node --no-reset --network hardhat",
+    "test:v1.2.0.mainnet": "yarn mainnetForkSetup; FORK_CHAIN_ID=$MAINNET_CHAIN_ID FORK_BLOCK_NUMBER=$MAINNET_FORK_BLOCK_NUMBER FORK_RPC_URL=$MAINNET_RPC_URL FORK_ENABLED=true DEPLOY=v1.2.0.mainnet hardhat node --no-reset --network hardhat",
+    "test:v1.2.0.polygon": "yarn polygonForkSetup; FORK_CHAIN_ID=$POLYGON_CHAIN_ID FORK_BLOCK_NUMBER=$POLYGON_FORK_BLOCK_NUMBER FORK_RPC_URL=$POLYGON_RPC_URL FORK_ENABLED=true DEPLOY=v1.2.0.polygon hardhat node --no-reset --network hardhat",
+    "test:v1.2.0.avalanche": "FORK_CHAIN_ID=$AVALANCHE_CHAIN_ID FORK_BLOCK_NUMBER=$AVALANCHE_FORK_BLOCK_NUMBER FORK_RPC_URL=$AVALANCHE_RPC_URL FORK_ENABLED=true DEPLOY=v1.2.0.avalanche hardhat node --no-reset --network hardhat",
     "mainnetForkSetup": "rm -rf deployments/localhost ; cp -r deployments/mainnet deployments/localhost",
     "polygonForkSetup": "rm -rf deployments/localhost ; cp -r deployments/polygon deployments/localhost"
   },
@@ -74,6 +79,7 @@
     "idx": "2.5.6",
     "jsonfile": "6.1.0",
     "luxon": "2.3.0",
+    "prettier": "2.5.1",
     "ts-node": "10.4.0",
     "typescript": "4.5.5"
   },
