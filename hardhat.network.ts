@@ -33,7 +33,7 @@ const networks: HardhatUserConfig['networks'] = {
     chainId: 43114,
     gasPrice: 100000000000,
     // gas: 12000000,
-    url: 'https://api.avax.network/ext/bc/C/rpc',
+    url: process.env.AVALANCHE_RPC_URL,
     accounts: {
       mnemonic,
     },
