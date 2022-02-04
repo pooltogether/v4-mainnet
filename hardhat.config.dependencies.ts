@@ -24,7 +24,6 @@ export const dependencyCompiler = {
     "@pooltogether/v4-core/contracts/prize-strategy/PrizeSplitStrategy.sol",
     "@pooltogether/v4-core/contracts/Reserve.sol",
     "@pooltogether/v4-core/contracts/prize-pool/YieldSourcePrizePool.sol",
-    // "@pooltogether/v4-core/contracts/test/ERC20Mintable.sol",
     "@pooltogether/v4-core/contracts/permit/EIP2612PermitAndDeposit.sol",
     // Owner/Manager
     "@pooltogether/owner-manager-contracts/contracts/Manageable.sol",
@@ -39,6 +38,7 @@ export const dependencyCompiler = {
     "@pooltogether/v4-periphery/contracts/PrizeFlush.sol",
     "@pooltogether/v4-periphery/contracts/PrizeTierHistory.sol",
     "@pooltogether/v4-periphery/contracts/PrizeDistributionFactory.sol",
+    "@pooltogether/v4-periphery/contracts/TwabRewards.sol",
     // yield source
     "@pooltogether/aave-yield-source/contracts/yield-source/ATokenYieldSource.sol"
   ]
