@@ -3,9 +3,9 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../../src/deployAndLog';
 
 export default async function deployToPolygon(hardhat: HardhatRuntimeEnvironment) {
-  if (process.env.DEPLOY === 'v1.2.0.polygon') {
+  if (process.env.DEPLOY === 'v1.2.1.polygon') {
     dim(`Deploying: TWAB Rewards Polygon Mainnet`)
-    dim(`Version: 1.2.0`)
+    dim(`Version: 1.2.1`)
   } else { return }
 
   const { ethers } = hardhat;
