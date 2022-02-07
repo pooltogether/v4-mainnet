@@ -3,9 +3,9 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../../src/deployAndLog';
 
 export default async function deployToEthereumMainnet(hardhat: HardhatRuntimeEnvironment){
-  if (process.env.DEPLOY === 'v1.2.0.mainnet') {
+  if (process.env.DEPLOY === 'v1.2.1.mainnet') {
     dim(`Deploying: TWAB Rewards Ethereum Mainnet`)
-    dim(`Version: 1.2.0`)
+    dim(`Version: 1.2.1`)
   } else { return }
 
   const { ethers } = hardhat;

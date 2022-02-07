@@ -6,7 +6,7 @@ The deployment scripts are separated into versions.
 
 - v1.0.1
 - v1.1.0
-- v1.2.0
+- v1.2.1
 
 # Getting Started
 
@@ -56,18 +56,18 @@ yarn test:v1.1.0.avalanche
 yarn test:v1.1.0.polygon
 ```
 
-## v1.2.0
+## v1.2.1
 
 ```
-yarn test:v1.2.0.mainnet
-```
-
-```
-yarn test:v1.2.0.avalanche
+yarn test:v1.2.1.mainnet
 ```
 
 ```
-yarn test:v1.2.0.polygon
+yarn test:v1.2.1.avalanche
+```
+
+```
+yarn test:v1.2.1.polygon
 ```
 
 # Deployment
@@ -98,18 +98,18 @@ yarn deploy:v1.1.0.avalanche
 yarn deploy:v1.1.0.polygon
 ```
 
-## v1.2.0
+## v1.2.1
 
 ```
-yarn deploy:v1.2.0.mainnet
-```
-
-```
-yarn deploy:v1.2.0.avalanche
+yarn deploy:v1.2.1.mainnet
 ```
 
 ```
-yarn deploy:v1.2.0.polygon
+yarn deploy:v1.2.1.avalanche
+```
+
+```
+yarn deploy:v1.2.1.polygon
 ```
 
 # Changelog
@@ -155,7 +155,7 @@ This version upgrades the existing configuration, so some changes need to be com
 - exec teams needs to claim ownership of PrizeDistributionBuffer
 - exec teams needs to claim ownership of ReceiverTimelockTrigger
 
-## v1.2.0
+## v1.2.1
 
 Deploy TWAB Rewards contract across Avalanche, Ethereum and Polygon.
 
