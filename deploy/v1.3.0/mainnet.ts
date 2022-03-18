@@ -2,10 +2,10 @@ import { dim, red } from 'chalk';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../../src/deployAndLog';
 
-export default async function deployToPolygon(hardhat: HardhatRuntimeEnvironment) {
-  if (process.env.DEPLOY === 'v1.2.1.polygon') {
-    dim(`Deploying: TWAB Rewards Polygon Mainnet`)
-    dim(`Version: 1.2.1`)
+export default async function deployToEthereumMainnet(hardhat: HardhatRuntimeEnvironment){
+  if (process.env.DEPLOY === 'v1.3.0.mainnet') {
+    dim(`Deploying: TWAB Delegator Ethereum Mainnet`)
+    dim(`Version: 1.3.0`)
   } else { return }
 
   const { getNamedAccounts, ethers } = hardhat;
@@ -21,9 +21,9 @@ export default async function deployToPolygon(hardhat: HardhatRuntimeEnvironment
   // ===================================================
 
   if (await prizePool.getTicket() === ticket.address) {
-    await deployAndLog('TwabRewards', {
+    await deployAndLog('TWABDelegator', {
       from: deployer,
-      args: [ticket.address],
+      args: ['PoolTogether Staked aUSDC Ticket', 'stkPTaUSDC', ticket.address],
       skipIfAlreadyDeployed: true,
     });
   } else {

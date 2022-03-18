@@ -7,6 +7,7 @@ The deployment scripts are separated into versions.
 - v1.0.1
 - v1.1.0
 - v1.2.1
+- v1.3.0
 
 # Getting Started
 
@@ -32,84 +33,30 @@ Note: You must configure RPC endpoints for archival nodes in the .envrc.
 
 ## Fork and Deploy
 
-## v1.0.1
-
 ```
-yarn test:v1.0.1.mainnet
+yarn test:v1.x.x.mainnet
 ```
 
 ```
-yarn test:v1.0.1.polygon
-```
-
-## v1.1.0
-
-```
-yarn test:v1.1.0.mainnet
+yarn test:v1.x.x.avalanche
 ```
 
 ```
-yarn test:v1.1.0.avalanche
-```
-
-```
-yarn test:v1.1.0.polygon
-```
-
-## v1.2.1
-
-```
-yarn test:v1.2.1.mainnet
-```
-
-```
-yarn test:v1.2.1.avalanche
-```
-
-```
-yarn test:v1.2.1.polygon
+yarn test:v1.x.x.polygon
 ```
 
 # Deployment
 
-If you wish to deploy the contracts, use the deployment commands:
-
-## v1.0.1
-
 ```
-yarn deploy:v1.0.1.mainnet
+yarn deploy:v1.x.x.mainnet
 ```
 
 ```
-yarn deploy:v1.0.1.polygon
-```
-
-## v1.1.0
-
-```
-yarn deploy:v1.1.0.mainnet
+yarn deploy:v1.x.x.avalanche
 ```
 
 ```
-yarn deploy:v1.1.0.avalanche
-```
-
-```
-yarn deploy:v1.1.0.polygon
-```
-
-## v1.2.1
-
-```
-yarn deploy:v1.2.1.mainnet
-```
-
-```
-yarn deploy:v1.2.1.avalanche
-```
-
-```
-yarn deploy:v1.2.1.polygon
+yarn deploy:v1.x.x.polygon
 ```
 
 # Changelog
@@ -158,4 +105,8 @@ This version upgrades the existing configuration, so some changes need to be com
 ## v1.2.1
 
 Deploy TWAB Rewards contract across Avalanche, Ethereum and Polygon.
+
+## v1.3.0
+
+Deploy TWAB Delegator contract across Avalanche, Ethereum and Polygon.
 

@@ -8,10 +8,10 @@ export default async function deployToEthereumMainnet(hardhat: HardhatRuntimeEnv
     dim(`Version: 1.2.1`)
   } else { return }
 
-  const { ethers } = hardhat;
-  const { getContract, getSigners } = ethers;
+  const { getNamedAccounts, ethers } = hardhat;
+  const { getContract } = ethers;
 
-  const [deployer] = await getSigners();
+  const { deployer } = await getNamedAccounts();
 
   const prizePool = await getContract('YieldSourcePrizePool');
   const ticket = await getContract('Ticket');
@@ -22,7 +22,7 @@ export default async function deployToEthereumMainnet(hardhat: HardhatRuntimeEnv
 
   if (await prizePool.getTicket() === ticket.address) {
     await deployAndLog('TwabRewards', {
-      from: deployer.address,
+      from: deployer,
       args: [ticket.address],
       skipIfAlreadyDeployed: true,
     });
