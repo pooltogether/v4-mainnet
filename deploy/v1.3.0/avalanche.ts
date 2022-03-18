@@ -26,7 +26,7 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
   if (await prizePool.getTicket() === ticket.address) {
     await deployAndLog('TWABDelegator', {
       from: deployer,
-      args: ['PoolTogether Staked aUSDC Ticket', 'stkPTaUSDC', ticket.address],
+      args: ['PoolTogether Staked avUSDCe Ticket', 'stkPTavUSDCe', ticket.address],
       skipIfAlreadyDeployed: true,
     });
   } else {
