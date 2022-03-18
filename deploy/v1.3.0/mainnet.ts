@@ -8,10 +8,10 @@ export default async function deployToEthereumMainnet(hardhat: HardhatRuntimeEnv
     dim(`Version: 1.3.0`)
   } else { return }
 
-  const { ethers } = hardhat;
-  const { getContract, getSigners } = ethers;
+  const { getNamedAccounts, ethers } = hardhat;
+  const { getContract } = ethers;
 
-  const [deployer] = await getSigners();
+  const { deployer } = await getNamedAccounts();
 
   const prizePool = await getContract('YieldSourcePrizePool');
   const ticket = await getContract('Ticket');

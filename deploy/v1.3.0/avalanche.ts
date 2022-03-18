@@ -11,10 +11,10 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
     return;
   }
 
-  const { ethers } = hardhat;
-  const { getContract, getSigners } = ethers;
+  const { getNamedAccounts, ethers } = hardhat;
+  const { getContract } = ethers;
 
-  const [deployer] = await getSigners();
+  const { deployer } = await getNamedAccounts();
 
   const prizePool = await getContract('YieldSourcePrizePool');
   const ticket = await getContract('Ticket');
