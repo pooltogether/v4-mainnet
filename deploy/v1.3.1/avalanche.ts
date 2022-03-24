@@ -17,5 +17,5 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
     });
     const prizeTierHistoryNew = await hre.ethers.getContract('PrizeTierHistory');
     await prizeTierHistoryNew.push(lastPrizeTier)
-    console.log('Upgrade Complete: v1.3.1.mainnet')
+    console.log('Upgrade Complete: v1.3.1.avalanche')
 }
