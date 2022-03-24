@@ -2,16 +2,20 @@ import { dim } from 'chalk';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../../src/deployAndLog';
 
-export default async function deployToEthereumMainnet(hardhat: HardhatRuntimeEnvironment){
+export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnvironment){
     if (process.env.DEPLOY === 'v1.3.1.mainnet') {
         dim(`Deploying: PrizeTierHistory Ethereum Mainnet`)
         dim(`Version: 1.3.1`)
     } else { return }
-    const { getNamedAccounts} = hardhat;
-    const { deployer } = await getNamedAccounts();
+    const { deployer } = await hre.getNamedAccounts();
+    const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
+    const lastPrizeTier = await prizeTierHistory.getPrizeTier(await(prizeTierHistory.getNewestDrawId()));
     await deployAndLog('PrizeTierHistory', {
         from: deployer,
         args: [deployer],
         skipIfAlreadyDeployed: false,
     });
+    const prizeTierHistoryNew = await hre.ethers.getContract('PrizeTierHistory');
+    await prizeTierHistoryNew.push(lastPrizeTier)
+    console.log('Upgrade Complete: v1.3.1.mainnet')
 }
