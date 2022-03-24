@@ -3,9 +3,9 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../../src/deployAndLog';
 
 export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnvironment){
-    if (process.env.DEPLOY === 'v1.3.1.mainnet') {
+    if (process.env.DEPLOY === 'v1.4.0.mainnet') {
         dim(`Deploying: PrizeTierHistory Ethereum Mainnet`)
-        dim(`Version: 1.3.1`)
+        dim(`Version: 1.4.0`)
     } else { return }
     const { deployer } = await hre.getNamedAccounts();
     const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
@@ -37,5 +37,5 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
         skipIfAlreadyDeployed: false,
     });
     
-    console.log('Upgrade Complete: v1.3.1.mainnet')
+    console.log('Upgrade Complete: v1.4.0.mainnet')
 }

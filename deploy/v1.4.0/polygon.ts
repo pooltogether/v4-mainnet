@@ -2,10 +2,10 @@ import { dim } from 'chalk';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../../src/deployAndLog';
 
-export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnvironment){
-    if (process.env.DEPLOY === 'v1.3.1.avalanche') {
-        dim(`Deploying: PrizeTierHistory Avalanche Mainnet`)
-        dim(`Version: 1.3.1`)
+export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironment){
+    if (process.env.DEPLOY === 'v1.4.0.polygon') {
+        dim(`Deploying: PrizeTierHistory Polygon Mainnet`)
+        dim(`Version: 1.4.0`)
     } else { return }
     const { deployer } = await hre.getNamedAccounts();
     const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
@@ -20,9 +20,9 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
     
     // Create a new instance of a PrizeDistributionFactory, and deploy it.
     // PrizeDistributionFactory has an immutable reference to PrizeTierHistory.
-    const drawBuffer = '0x31bcaf169d25f938a25c2e4c762f3d1d3fa7db2e'
-    const prizeDistributionBuffer = '0xc8faa39e06ddb8362cb8e3ffdadeb5bf7877eccb'
-    const ticket = '0xb27f379c050f6ed0973a01667458af6ecebc1d90'
+    const drawBuffer = '0x44b1d66e7b9d4467139924f31754f34cbc392f44'
+    const prizeDistributionBuffer = '0xcf6030bdeab4e503d186426510ad88c1da7125a3'
+    const ticket = '0x6a304dfdb9f808741244b6bfee65ca7b3b3a6076'
     const minPickCost = 1000000
     await deployAndLog('PrizeDistributionFactory', {
         from: deployer,
@@ -37,5 +37,5 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
         skipIfAlreadyDeployed: false,
     });
 
-    console.log('Upgrade Complete: v1.3.1.avalanche')
+    console.log('Upgrade Complete: v1.4.0.polygon')
 }
