@@ -1030,10 +1030,22 @@
     "@pooltogether/yield-source-interface" "1.3.0"
     deploy-eip-1820 "1.0.0"
 
-"@pooltogether/v4-periphery@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.2.0.tgz#342f7259a23a356775b5b404d09d98408614e1a2"
-  integrity sha512-4d00BNhCTUOAw0ponldpZrIKtILSA0R9q6KnFK93QxSkqlljqYwrDJiLAjPPDBaAwEwkzuadrNkjpb0K7QPg/A==
+"@pooltogether/v4-core@1.3.0-beta.1":
+  version "1.3.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-core/-/v4-core-1.3.0-beta.1.tgz#5fbb6123753b006b255f56c5a54174963c4d4146"
+  integrity sha512-w4jqm5Oq9Pj3hOuiXexTvI5Et04O4CJuSRXNBXz+YJ1oSylSbOzoVU1DuU0DNaHtMINFjTsyZ8AOh1+NAiTURg==
+  dependencies:
+    "@openzeppelin/contracts" "4.3.1"
+    "@pooltogether/fixed-point" "1.0.0"
+    "@pooltogether/owner-manager-contracts" "1.1.0"
+    "@pooltogether/pooltogether-rng-contracts" "1.4.0"
+    "@pooltogether/yield-source-interface" "1.3.0"
+    deploy-eip-1820 "1.0.0"
+
+"@pooltogether/v4-periphery@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.2.2.tgz#400f9acb642ebd2fa0a1acc9fed6a91041383e54"
+  integrity sha512-bzYr/v3e0Qudb3TDltTJdTkcd9/67CAwOQZwQwMa3/Jgcx0oRthpgTkyeGh2CnJyahIgbNpg7JPP/FlsAkiRkQ==
 
 "@pooltogether/v4-timelocks@1.1.0":
   version "1.1.0"

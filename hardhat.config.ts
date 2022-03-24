@@ -16,6 +16,7 @@ const optimizerEnabled = true;
 const config: HardhatUserConfig = {
   networks,
   defaultNetwork: 'mainnet',
+  // @ts-ignore
   dependencyCompiler,
   external,
   etherscan: {
