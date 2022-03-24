@@ -1,13 +1,16 @@
 import { dim } from 'chalk';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../../src/deployAndLog';
+import { setManager } from '../../src/setManager';
+import { transferOwnership } from '../../src/transferOwnership';
 
 export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironment){
     if (process.env.DEPLOY === 'v1.4.0.polygon') {
         dim(`Deploying: PrizeTierHistory Polygon Mainnet`)
         dim(`Version: 1.4.0`)
     } else { return }
-    const { deployer } = await hre.getNamedAccounts();
+    const { deployer, executiveTeam } = await hre.getNamedAccounts();
+    const receiverTimelockTrigger = await hre.ethers.getContract('ReceiverTimelockTrigger');
     const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
     const lastPrizeTier = await prizeTierHistory.getPrizeTier(await(prizeTierHistory.getNewestDrawId()));
     await deployAndLog('PrizeTierHistory', {
@@ -36,6 +39,10 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
         ],
         skipIfAlreadyDeployed: false,
     });
+
+    await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address);
+    await transferOwnership('PrizeDistributionFactory', null, executiveTeam);
+    await transferOwnership('PrizeTierHistory', null, executiveTeam);
 
     console.log('Upgrade Complete: v1.4.0.polygon')
 }
