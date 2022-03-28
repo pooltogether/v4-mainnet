@@ -16,7 +16,7 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
     await deployAndLog('PrizeTierHistory', {
         from: deployer,
         args: [deployer],
-        skipIfAlreadyDeployed: false,
+        skipIfAlreadyDeployed: true,
     });
     const prizeTierHistoryNew = await hre.ethers.getContract('PrizeTierHistory');
     await prizeTierHistoryNew.push(lastPrizeTier)
@@ -37,7 +37,7 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
             ticket,
             minPickCost,
         ],
-        skipIfAlreadyDeployed: false,
+        skipIfAlreadyDeployed: true,
     });
 
     await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address);

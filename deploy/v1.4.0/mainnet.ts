@@ -13,13 +13,13 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
     const beaconTimelockTrigger = await hre.ethers.getContract('BeaconTimelockTrigger');
     const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
     const lastPrizeTier = await prizeTierHistory.getPrizeTier(await(prizeTierHistory.getNewestDrawId()));
-    await deployAndLog('PrizeTierHistory', {
-        from: deployer,
-        args: [deployer],
-        skipIfAlreadyDeployed: false,
-    });
+    // await deployAndLog('PrizeTierHistory', {
+    //     from: deployer,
+    //     args: [deployer],
+    //     skipIfAlreadyDeployed: true,
+    // });
     const prizeTierHistoryNew = await hre.ethers.getContract('PrizeTierHistory');
-    await prizeTierHistoryNew.push(lastPrizeTier)
+    // await prizeTierHistoryNew.push(lastPrizeTier)
 
     // Create a new instance of a PrizeDistributionFactory, and deploy it.
     // PrizeDistributionFactory has an immutable reference to PrizeTierHistory.
