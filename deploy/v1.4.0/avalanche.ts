@@ -9,10 +9,15 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
         dim(`Deploying: PrizeTierHistory Avalanche Mainnet`)
         dim(`Version: 1.4.0`)
     } else { return }
-    const { deployer, executiveTeam } = await hre.getNamedAccounts();
-    const receiverTimelockTrigger = await hre.ethers.getContract('ReceiverTimelockTrigger');
+    const { deployer, executiveTeam, ptOperations, defenderRelayer } = await hre.getNamedAccounts();
+    const drawCalculator = await hre.ethers.getContract('DrawCalculator');
+
     const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
     const lastPrizeTier = await prizeTierHistory.getPrizeTier(await(prizeTierHistory.getNewestDrawId()));
+
+     /* PrizeTierHistory ------------------ */
+    // @dev Required by PrizeDistributionFactory
+    /* ----------------------------------- */
     await deployAndLog('PrizeTierHistory', {
         from: deployer,
         args: [deployer],
@@ -21,27 +26,80 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
     const prizeTierHistoryNew = await hre.ethers.getContract('PrizeTierHistory');
     await prizeTierHistoryNew.push(lastPrizeTier)
     
-    // Create a new instance of a PrizeDistributionFactory, and deploy it.
-    // PrizeDistributionFactory has an immutable reference to PrizeTierHistory.
-    const drawBuffer = '0x31bcaf169d25f938a25c2e4c762f3d1d3fa7db2e'
-    const prizeDistributionBuffer = '0xc8faa39e06ddb8362cb8e3ffdadeb5bf7877eccb'
-    const ticket = '0xb27f379c050f6ed0973a01667458af6ecebc1d90'
+    /* PrizeDistributionFactory ---------- */
+    // @dev Immutable reference to new PrizeTierHistory
+    // @dev Use existing references for the remaining contracts
+    // @dev Required by ReceiverTimelockTrigger
+    /* ----------------------------------- */
+    const drawBuffer = await hre.ethers.getContract('DrawBuffer');
+    const prizeDistributionBuffer = await hre.ethers.getContract('PrizeDistributionBuffer');
+    const ticket = await hre.ethers.getContract('Ticket');
     const minPickCost = 1000000
     await deployAndLog('PrizeDistributionFactory', {
         from: deployer,
         args: [
             deployer,
-            prizeTierHistoryNew.address,
-            drawBuffer,
-            prizeDistributionBuffer,
-            ticket,
+            prizeTierHistory.address,
+            drawBuffer.address,
+            prizeDistributionBuffer.address,
+            ticket.address,
             minPickCost,
         ],
         skipIfAlreadyDeployed: false,
     });
-    await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address);
+    const prizeDistributionFactory = await hre.ethers.getContract('PrizeDistributionFactory');
+
+    /* DrawCalculatorTimelock ------------ */
+    // @dev Required by ReceiverTimelockTrigger
+    /* ----------------------------------- */
+    await deployAndLog('DrawCalculatorTimelock', {
+        from: deployer,
+        args: [
+            deployer,
+            drawCalculator.address
+        ],
+        skipIfAlreadyDeployed: false,
+    });
+    const drawCalculatorTimelock = await hre.ethers.getContract('DrawCalculatorTimelock');
+
+    /* ReceiverTimelockTrigger ----------- */
+    // @dev Immutable reference to PrizeDistributionFactory
+    // @dev Immutable reference to DrawCalculatorTimelock
+    /* ----------------------------------- */
+    await deployAndLog('ReceiverTimelockTrigger', {
+        from: deployer,
+        args: [
+            deployer,
+            drawBuffer.address,
+            prizeDistributionFactory.address,
+            drawCalculatorTimelock.address,
+
+        ],
+        skipIfAlreadyDeployed: false,
+    });
+    const receiverTimelockTrigger = await hre.ethers.getContract('ReceiverTimelockTrigger');
+
+    /* Management ------------------------ */
+    // @dev Updates the sequential manager roles for the new contracts.
+    /* ----------------------------------- */
+    // PrizeTierHistory managed by ExecutiveTeam
+    // @dev Executive team is responsible for pushing new PrizeTiers
+    await setManager('PrizeTierHistory', null, executiveTeam);
+    // ReceiverTimelockTrigger managed by Defender Relayer
+    await setManager('ReceiverTimelockTrigger', null, defenderRelayer);
+    // DrawCalculatorTimelock managed by BeaconTimelockTrigger
+    await setManager('DrawCalculatorTimelock', null, receiverTimelockTrigger.address);
+    // PrizeDistributionFactory managed by DrawCalculatorTimelock
+    await setManager('PrizeDistributionFactory', null, drawCalculatorTimelock.address);
+
+    /* Ownership ------------------------- */
+    // @dev Relinquishes ownership of the new contracts to the Executive Team.
+    /* ----------------------------------- */
+    // PrizeDistributionFactory Owned by Executive Team
     await transferOwnership('PrizeDistributionFactory', null, executiveTeam);
-    await transferOwnership('PrizeTierHistory', null, executiveTeam);
+    // PrizeTierHistory Owned by PoolTogether Operations
+    // @dev Operations can quickly resolve an invalid PrizeTier via popAndPush
+    await transferOwnership('PrizeTierHistory', null, ptOperations);
 
     console.log('Upgrade Complete: v1.4.0.avalanche')
 }
