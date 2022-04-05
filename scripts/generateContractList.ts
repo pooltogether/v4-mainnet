@@ -1,5 +1,6 @@
 
 const fs = require("fs");
+const _ = require("lodash");
 const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
 const polygonDeployments = `${__dirname}/../deployments/polygon`;
 const avalancheDeployments = `${__dirname}/../deployments/avalanche`;
@@ -54,7 +55,7 @@ networkDeploymentPaths.forEach((networkDeploymentPath) => {
 });
 
 fs.writeFile(
-  `${__dirname}/../contracts.json`,
+  `${__dirname}/../mainnet.json`,
   JSON.stringify(contractList),
   (err) => {
     if (err) {

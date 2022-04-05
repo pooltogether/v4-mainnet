@@ -95,8 +95,8 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
     await setManager('BeaconTimelockTrigger', null, defenderRelayer); 
     // DrawCalculatorTimelock managed by BeaconTimelockTrigger
     await setManager('DrawCalculatorTimelock', null, beaconTimelockTrigger.address);
-    // PrizeDistributionFactory managed by DrawCalculatorTimelock
-    await setManager('PrizeDistributionFactory', null, drawCalculatorTimelock.address); 
+    // PrizeDistributionFactory managed by BeaconTimelockTrigger
+    await setManager('PrizeDistributionFactory', null, beaconTimelockTrigger.address); 
 
     /* Ownership ------------------------- */
     // @dev Relinquishes ownership of the new contracts to the Executive Team.

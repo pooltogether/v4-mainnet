@@ -89,8 +89,8 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
     await setManager('ReceiverTimelockTrigger', null, defenderRelayer);
     // DrawCalculatorTimelock managed by ReceiverTimelockTrigger
     await setManager('DrawCalculatorTimelock', null, receiverTimelockTrigger.address);
-    // PrizeDistributionFactory managed by DrawCalculatorTimelock
-    await setManager('PrizeDistributionFactory', null, drawCalculatorTimelock.address);
+    // PrizeDistributionFactory managed by ReceiverTimelockTrigger
+    await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address);
 
     /* Ownership ------------------------- */
     // @dev Relinquishes ownership of the new contracts to the Executive Team.
