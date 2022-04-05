@@ -33,8 +33,9 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
     await prizeTierHistory.push(lastPrizeTier)
 
     /* PrizeDistributionFactory ---------- */
-    // @dev Immutable reference to new PrizeTierHistory contract
+    // @dev Immutable reference to new PrizeTierHistory
     // @dev Use existing references for the remaining contracts
+    // @dev Required by BeaconTimelockTrigger
     /* ----------------------------------- */
     const drawBuffer = await hre.ethers.getContract('DrawBuffer');
     const prizeDistributionBuffer = await hre.ethers.getContract('PrizeDistributionBuffer');
@@ -68,8 +69,8 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
     const drawCalculatorTimelock = await hre.ethers.getContract('DrawCalculatorTimelock');
 
     /* BeaconTimelockTrigger ------------- */
-    // @dev Immutable reference to the PrizeDistributionFactory contract.
-    // @dev Immutable reference to the DrawCalculatorTimelock contract.
+    // @dev Immutable reference PrizeDistributionFactory
+    // @dev Immutable reference DrawCalculatorTimelock
     /* ----------------------------------- */
     await deployAndLog('BeaconTimelockTrigger', {
         from: deployer,
@@ -85,7 +86,7 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
     const beaconTimelockTrigger = await hre.ethers.getContract('BeaconTimelockTrigger');
 
     /* Management ------------------------ */
-    // @dev Updates the sequential manager roles for the new contracts.
+    // @dev Updates the manager roles for new contracts. A sequential management access control scheme is used.
     /* ----------------------------------- */
     // PrizeTierHistory managed by ExecutiveTeam
     // @dev Executive team is responsible for pushing new PrizeTiers

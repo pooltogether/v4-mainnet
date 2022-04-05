@@ -80,7 +80,7 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
     const receiverTimelockTrigger = await hre.ethers.getContract('ReceiverTimelockTrigger');
 
     /* Management ------------------------ */
-    // @dev Updates the sequential manager roles for the new contracts.
+    // @dev Updates the manager roles for new contracts. A sequential management access control scheme is used.
     /* ----------------------------------- */
     // PrizeTierHistory managed by ExecutiveTeam
     // @dev Executive team is responsible for pushing new PrizeTiers
