@@ -111,6 +111,5 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
     // BeaconTimelockTrigger Owned by Executive Team
     await transferOwnership('BeaconTimelockTrigger', null, executiveTeam);
     
-
     console.log('Upgrade Complete: v1.4.0.mainnet')
 }

@@ -105,7 +105,5 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
     // ReceiverTimelockTrigger Owned by Executive Team
     await transferOwnership('ReceiverTimelockTrigger', null, executiveTeam);
 
-    console.log('Upgrade Complete: v1.4.0.polygon')
-
     console.log('Upgrade Complete: v1.4.0.avalanche')
 }
