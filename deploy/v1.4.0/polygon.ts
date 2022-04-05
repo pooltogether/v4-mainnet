@@ -87,7 +87,7 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
     await setManager('PrizeTierHistory', null, executiveTeam);
     // ReceiverTimelockTrigger managed by Defender Relayer
     await setManager('ReceiverTimelockTrigger', null, defenderRelayer);
-    // DrawCalculatorTimelock managed by BeaconTimelockTrigger
+    // DrawCalculatorTimelock managed by ReceiverTimelockTrigger
     await setManager('DrawCalculatorTimelock', null, receiverTimelockTrigger.address);
     // PrizeDistributionFactory managed by DrawCalculatorTimelock
     await setManager('PrizeDistributionFactory', null, drawCalculatorTimelock.address);
@@ -95,11 +95,15 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
     /* Ownership ------------------------- */
     // @dev Relinquishes ownership of the new contracts to the Executive Team.
     /* ----------------------------------- */
-    // PrizeDistributionFactory Owned by Executive Team
-    await transferOwnership('PrizeDistributionFactory', null, executiveTeam);
     // PrizeTierHistory Owned by PoolTogether Operations
     // @dev Operations can quickly resolve an invalid PrizeTier via popAndPush
     await transferOwnership('PrizeTierHistory', null, ptOperations);
+    // DrawCalculatorTimelock Owned by Executive Team
+    await transferOwnership('DrawCalculatorTimelock', null, executiveTeam);
+    // PrizeDistributionFactory Owned by Executive Team
+    await transferOwnership('PrizeDistributionFactory', null, executiveTeam);
+    // ReceiverTimelockTrigger Owned by Executive Team
+    await transferOwnership('ReceiverTimelockTrigger', null, executiveTeam);
 
     console.log('Upgrade Complete: v1.4.0.polygon')
 }

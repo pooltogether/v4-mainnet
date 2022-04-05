@@ -101,12 +101,16 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
     /* Ownership ------------------------- */
     // @dev Relinquishes ownership of the new contracts to the Executive Team.
     /* ----------------------------------- */
-    
-    // PrizeDistributionFactory Owned by Executive Team
-    await transferOwnership('PrizeDistributionFactory', null, executiveTeam);
     // PrizeTierHistory Owned by Executive Team
     // @dev Operations can quickly resolve an invalid PrizeTier via popAndPush
     await transferOwnership('PrizeTierHistory', null, ptOperations);
+    // DrawCalculatorTimelock Owned by Executive Team
+    await transferOwnership('DrawCalculatorTimelock', null, executiveTeam);
+    // PrizeDistributionFactory Owned by Executive Team
+    await transferOwnership('PrizeDistributionFactory', null, executiveTeam);
+    // BeaconTimelockTrigger Owned by Executive Team
+    await transferOwnership('BeaconTimelockTrigger', null, executiveTeam);
     
+
     console.log('Upgrade Complete: v1.4.0.mainnet')
 }
