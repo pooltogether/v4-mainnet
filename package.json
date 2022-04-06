@@ -17,7 +17,7 @@
     "docs": "hardhat deploy-markdown-export --name 'V4 Mainnet' --npm-package-name @pooltogether/v4-mainnet --github-base-url 'https://github.com/pooltogether/v4-mainnet/tree/master' --output-filepath mainnet.md",
     "disburse": "hardhat run ./scripts/disburse.js --network ",
     "deposit": "hardhat run ./scripts/deposit.js --network ",
-    "generate": "node ./scripts/generateContractList.ts",
+    "generate": "ts-node ./scripts/generateContractList.ts",
     "format": "prettier --config .prettierrc --write \"**/*.*.{ts,js}\"",
     "format:file": "prettier --config .prettierrc --write",
     "deploy:v1.0.1.mainnet": "DEPLOY=mainnet hardhat deploy --network mainnet",
