@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@chainlink/contracts@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@chainlink/contracts/-/contracts-0.4.0.tgz#4bcfd486d02cdc73047f27904119d0f8cb7291f4"
+  integrity sha512-yZGeCBd7d+qxfw9r/JxtPzsW2kCc6MorPRZ/tDKnaJI98H99j5P2Fosfehmcwk6wVZlz+0Bp4kS1y480nw3Zow==
+
 "@cspotcode/source-map-consumer@0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-consumer/-/source-map-consumer-0.8.0.tgz#33bf4b7b39c178821606f669bbc447a6a629786b"
@@ -980,10 +985,10 @@
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.5.0.tgz#3fd75d57de172b3743cdfc1206883f56430409cc"
   integrity sha512-fdkzKPYMjrRiPK6K4y64e6GzULR7R7RwxSigHS8DDp7aWDeoReqsQI+cxHV1UuhAqX69L1lAaWDxenfP+xiqzA==
 
-"@pooltogether/aave-yield-source@2.0.0-beta.1":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@pooltogether/aave-yield-source/-/aave-yield-source-2.0.0-beta.1.tgz#76d3fd02e7b2fcd625565eb7fd2173423fbc461d"
-  integrity sha512-fEnbQJCYa0n25nJQ7+1gULNiqHTCCUaEmO6DPDTAe3O24gqA/QFTBI4sp2x9CrhH7ALCPSJMzHALn5IQKLhaZg==
+"@pooltogether/aave-yield-source@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/aave-yield-source/-/aave-yield-source-1.1.0.tgz#3ca045d82b587e5a08bfc7cf0d46a3eff6445b19"
+  integrity sha512-gZnd6Z0aZJEk5opDeVhw/KprCk9G3PA2trNTRyjXDoNM45BvoY7Hkd9ZSdupVMGHWhj+dRQ5lnO1Ug3A0CbL/Q==
   dependencies:
     "@openzeppelin/contracts" "4.3.2"
     "@pooltogether/fixed-point" "1.0.0"
@@ -1017,6 +1022,13 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@pooltogether/pooltogether-rng-contracts/-/pooltogether-rng-contracts-1.4.0.tgz#310b9667a1123cfcce718aa6d8eba7c434a53c75"
   integrity sha512-dNgDpDsCMxUxaz8u6OfpjSBtMOdcp8QkLC3cwJ6E++4ux0qY2ON+ZqJEHIC3q4ZVJ4Xf6FikMJF0a8SVNtl8Zw==
+
+"@pooltogether/pooltogether-rng-contracts@1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@pooltogether/pooltogether-rng-contracts/-/pooltogether-rng-contracts-1.5.1.tgz#cc2fd10d1b7a61be00d5b7136f94ff3c74cc6d33"
+  integrity sha512-GEfsPcdKD8Hpa5F4Z16rgkKIWP93cQYEwN5aoYCOpNUaiHB5kdI1s+tNECGD6ILDWfNpQq0MP6gfYoRV9DV0Ng==
+  dependencies:
+    "@pooltogether/owner-manager-contracts" "1.1.0"
 
 "@pooltogether/v4-core@1.2.0":
   version "1.2.0"
