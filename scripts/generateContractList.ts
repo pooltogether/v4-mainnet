@@ -8,6 +8,7 @@ const polygonDeployments = `${__dirname}/../deployments/polygon`;
 const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
 const avalancheDeployments = `${__dirname}/../deployments/avalanche`;
 const versionSplit = modulePackage.version.split(".");
+const patchSplit = versionSplit[2].split("-");
 
 const networkDeploymentPaths = [
   mainnetDeployments, 
@@ -18,7 +19,7 @@ const networkDeploymentPaths = [
 const PACKAGE_VERSION = {
   major: versionSplit[0],
   minor: versionSplit[1],
-  patch: versionSplit[2],
+  patch: patchSplit[0],
 }
 
 const contractListDescription = {
