@@ -36,7 +36,7 @@ const contractList = {
 writeContractBlobToHistoryArchive(contractList);
 
 fs.writeFile(
-  `${__dirname}/../mainnet.json`,
+  `${__dirname}/../contracts.json`,
   JSON.stringify(contractList),
   (err) => {
     if (err) {
