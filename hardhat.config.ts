@@ -26,7 +26,7 @@ const config: HardhatUserConfig = {
       default: 0,
     },
     rngService: {
-      1: '0xb2dc5571f477b1c5b36509a71013bfedd9cc492f',
+      1: '0xB2DC5571f477b1C5b36509a71013BFedD9Cc492F',
     },
     executiveTeam: {
       default: 0,
@@ -38,12 +38,13 @@ const config: HardhatUserConfig = {
       default: 0,
       1: '0x029Aa20Dcc15c022b1b61D420aaCf7f179A9C73f',
       137: '0xd2146c8D93fD7Edd45C07634af7038E825880a64',
+      43114: '0x9E5DA149A33f071B8870de01afC747224FA0c654',
     },
     defenderRelayer: {
       default: 0,
-      1: '0xdd0134236ab968f39c1ccfc5d3d0de577f73b6d7',
-      137: '0x167cb192f7eab0951b7b742e97a8207e209e15cb',
-      43114: '0xabcd4a0093232d729210c17b35b6aa8f66cab925',
+      1: '0xdd0134236Ab968f39C1CCFC5d3D0de577f73B6d7',
+      137: '0x167CB192f7eAB0951b7B742E97A8207E209e15Cb',
+      43114: '0xaBcD4a0093232d729210c17B35b6aA8f66CaB925',
     },
     aUSDC: {
       1: '0xBcca60bB61934080951369a648Fb03DF4F96263C',
