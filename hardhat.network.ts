@@ -31,6 +31,7 @@ const networks: HardhatUserConfig['networks'] = {
   avalanche: {
     chainId: 43114,
     url: process.env.AVALANCHE_RPC_URL,
+    blockGasLimit: 100000000000000,
     accounts: {
       mnemonic,
     },

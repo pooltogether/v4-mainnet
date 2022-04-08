@@ -41,7 +41,7 @@ export const dependencyCompiler = {
     '@pooltogether/v4-periphery/contracts/TwabRewards.sol',
     // TWAB Delegator
     '@pooltogether/v4-twab-delegator/contracts/TWABDelegator.sol',
-    // yield source
+    // YieldSource
     '@pooltogether/aave-yield-source/contracts/yield-source/ATokenYieldSource.sol',
   ],
 };

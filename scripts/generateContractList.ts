@@ -1,57 +1,39 @@
 
-const fs = require("fs");
-const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
+import fs from"fs";
+import modulePackage from"../package.json";
+import writeContractBlobToHistoryArchive from "./helpers/writeContractBlobToHistoryArchive";
+import convertDeploymentsToContractList from "./helpers/convertDeploymentsToContractList";
+
 const polygonDeployments = `${__dirname}/../deployments/polygon`;
+const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
 const avalancheDeployments = `${__dirname}/../deployments/avalanche`;
+const versionSplit = modulePackage.version.split(".");
+const patchSplit = versionSplit[2].split("-");
 
-const networkDeploymentPaths = [mainnetDeployments, polygonDeployments, avalancheDeployments];
+const networkDeploymentPaths = [
+  mainnetDeployments, 
+  polygonDeployments, 
+  avalancheDeployments
+];
 
-const VERSION = {
-  major: 1,
-  minor: 1,
-  patch: 0,
-};
+const PACKAGE_VERSION = {
+  major: versionSplit[0],
+  minor: versionSplit[1],
+  patch: patchSplit[0],
+}
 
-const contractList = {
+const contractListDescription = {
   name: "PoolTogether V4 Mainnet",
-  version: VERSION,
+  version: PACKAGE_VERSION,
   tags: {},
   contracts: [],
 };
-
-const formatContract = (chainId, contractName, deploymentBlob) => {
-  return {
-    chainId,
-    address: deploymentBlob.address,
-    version: VERSION,
-    type: contractName,
-    abi: deploymentBlob.abi,
-    tags: [],
-    extensions: {},
-  };
-};
-
-networkDeploymentPaths.forEach((networkDeploymentPath) => {
-  const contractDeploymentPaths = fs
-    .readdirSync(networkDeploymentPath)
-    .filter((path) => path.endsWith(".json"));
-  const chainId = Number(
-    fs.readFileSync(`${networkDeploymentPath}/.chainId`, "utf8")
-  );
-
-  contractDeploymentPaths.forEach((contractDeploymentFileName) => {
-    const contractName = contractDeploymentFileName.split(".")[0];
-    const contractDeployment = JSON.parse(
-      fs.readFileSync(
-        `${networkDeploymentPath}/${contractDeploymentFileName}`,
-        "utf8"
-      )
-    );
-    contractList.contracts.push(
-      formatContract(chainId, contractName, contractDeployment)
-    );
-  });
-});
+const contractsNew = convertDeploymentsToContractList(networkDeploymentPaths);
+const contractList = {
+  ...contractListDescription,
+  contracts: contractsNew,
+}
+writeContractBlobToHistoryArchive(contractList);
 
 fs.writeFile(
   `${__dirname}/../contracts.json`,
