@@ -3,8 +3,6 @@ import fs from"fs";
 import modulePackage from"../package.json";
 import writeContractBlobToHistoryArchive from "./helpers/writeContractBlobToHistoryArchive";
 import convertDeploymentsToContractList from "./helpers/convertDeploymentsToContractList";
-import CONTRACT_VERSIONS from '../CONTRACT_VERSIONS'
-import diffOldAndNewContractList from "./helpers/diffOldAndNewContractList";
 
 const polygonDeployments = `${__dirname}/../deployments/polygon`;
 const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
@@ -23,34 +21,26 @@ const PACKAGE_VERSION = {
   patch: versionSplit[2],
 }
 
-const contractList = {
+const contractListDescription = {
   name: "PoolTogether V4 Mainnet",
   version: PACKAGE_VERSION,
   tags: {},
   contracts: [],
 };
+const contractsNew = convertDeploymentsToContractList(networkDeploymentPaths);
+const contractList = {
+  ...contractListDescription,
+  contracts: contractsNew,
+}
+writeContractBlobToHistoryArchive(contractList);
 
-const mainnet = JSON.parse(fs.readFileSync(`${__dirname}/../mainnet.json`, "utf8"));
-writeContractBlobToHistoryArchive(mainnet);
-const contractListOld = mainnet.contracts;
-const contractListNew = convertDeploymentsToContractList(networkDeploymentPaths);
-const newContactsWithNextVersion  = diffOldAndNewContractList(contractListOld, contractListNew, CONTRACT_VERSIONS);
-const contractListMerged = [...newContactsWithNextVersion, ...contractListOld];
-writeContractBlobToHistoryArchive({
-  ...contractList,
-  contracts: contractListMerged,
-});
-
-// fs.writeFile(
-//   `${__dirname}/../mainnet.json`,
-//   JSON.stringify({
-//     ...contractList,
-//     contracts: contractListNew,
-//   }),
-//   (err) => {
-//     if (err) {
-//       console.error(err);
-//       return;
-//     }
-//   }
-// );
+fs.writeFile(
+  `${__dirname}/../mainnet.json`,
+  JSON.stringify(contractList),
+  (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+  }
+);
