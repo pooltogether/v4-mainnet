@@ -12,8 +12,8 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
     const { deployer, executiveTeam, ptOperations, defenderRelayer } = await hre.getNamedAccounts();
     const drawCalculator = await hre.ethers.getContract('DrawCalculator');
 
-    const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
-    const lastPrizeTier = await prizeTierHistory.getPrizeTier(await prizeTierHistory.getNewestDrawId());
+    const prizeTierHistoryOld = await hre.ethers.getContract('PrizeTierHistory');
+    const lastPrizeTier = await prizeTierHistoryOld.getPrizeTier(await prizeTierHistoryOld.getNewestDrawId());
 
      /* PrizeTierHistory ------------------ */
     // @dev Required by PrizeDistributionFactory
@@ -21,10 +21,10 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
     await deployAndLog('PrizeTierHistory', {
         from: deployer,
         args: [deployer],
-        skipIfAlreadyDeployed: false,
+        skipIfAlreadyDeployed: true,
     });
-    const prizeTierHistoryNew = await hre.ethers.getContract('PrizeTierHistory');
-    await prizeTierHistoryNew.push(lastPrizeTier)
+    const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
+    await prizeTierHistory.push(lastPrizeTier)
     
     /* PrizeDistributionFactory ---------- */
     // @dev Immutable reference to new PrizeTierHistory

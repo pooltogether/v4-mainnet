@@ -12,8 +12,8 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
     const { deployer, executiveTeam, ptOperations, defenderRelayer } = await hre.getNamedAccounts();
     const drawCalculator = await hre.ethers.getContract('DrawCalculator');
 
-    const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
-    const lastPrizeTier = await prizeTierHistory.getPrizeTier(await(prizeTierHistory.getNewestDrawId()));
+    const prizeTierHistoryOld = await hre.ethers.getContract('PrizeTierHistory');
+    const lastPrizeTier = await prizeTierHistoryOld.getPrizeTier(await(prizeTierHistoryOld.getNewestDrawId()));
 
      /* PrizeTierHistory ------------------ */
     // @dev Required by PrizeDistributionFactory
@@ -23,8 +23,8 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
         args: [deployer],
         skipIfAlreadyDeployed: false,
     });
-    const prizeTierHistoryNew = await hre.ethers.getContract('PrizeTierHistory');
-    await prizeTierHistoryNew.push(lastPrizeTier)
+    const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
+    await prizeTierHistory.push(lastPrizeTier)
     
     /* PrizeDistributionFactory ---------- */
     // @dev Immutable reference to new PrizeTierHistory
