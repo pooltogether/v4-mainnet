@@ -13,7 +13,7 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
     const drawCalculator = await hre.ethers.getContract('DrawCalculator');
 
     const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
-    const lastPrizeTier = await prizeTierHistory.getPrizeTier(await(prizeTierHistory.getNewestDrawId()));
+    const lastPrizeTier = await prizeTierHistory.getPrizeTier(await prizeTierHistory.getNewestDrawId());
 
      /* PrizeTierHistory ------------------ */
     // @dev Required by PrizeDistributionFactory
