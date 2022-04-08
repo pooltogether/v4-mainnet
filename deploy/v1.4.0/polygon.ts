@@ -21,7 +21,7 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
     await deployAndLog('PrizeTierHistory', {
         from: deployer,
         args: [deployer],
-        skipIfAlreadyDeployed: true,
+        skipIfAlreadyDeployed: false,
     });
     const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
     await prizeTierHistory.push(lastPrizeTier)

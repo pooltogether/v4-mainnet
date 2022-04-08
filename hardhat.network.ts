@@ -16,7 +16,6 @@ const networks: HardhatUserConfig['networks'] = {
   mainnet: {
     chainId: 1,
     timeout: 1200000, // 20 minute timeout in ms
-    blockGasLimit: 100000000000000,
     url: process.env.MAINNET_RPC_URL,
     accounts: {
       mnemonic,
@@ -32,6 +31,7 @@ const networks: HardhatUserConfig['networks'] = {
   avalanche: {
     chainId: 43114,
     url: process.env.AVALANCHE_RPC_URL,
+    blockGasLimit: 100000000000000,
     accounts: {
       mnemonic,
     },

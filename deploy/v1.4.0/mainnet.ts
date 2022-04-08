@@ -18,19 +18,19 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
     const { deployer, executiveTeam, ptOperations, defenderRelayer } = await hre.getNamedAccounts();
     const drawCalculator = await hre.ethers.getContract('DrawCalculator');
 
-    const prizeTierHistoryOld = await hre.ethers.getContract('PrizeTierHistory');
-    const lastPrizeTier = await prizeTierHistoryOld.getPrizeTier(await(prizeTierHistoryOld.getNewestDrawId()));
+    // const prizeTierHistoryOld = await hre.ethers.getContract('PrizeTierHistory');
+    // const lastPrizeTier = await prizeTierHistoryOld.getPrizeTier(await(prizeTierHistoryOld.getNewestDrawId()));
     
     /* PrizeTierHistory ------------------ */
     // @dev Required by PrizeDistributionFactory
     /* ----------------------------------- */
-    await deployAndLog('PrizeTierHistory', {
-        from: deployer,
-        args: [deployer],
-        skipIfAlreadyDeployed: false,
-    });
+    // await deployAndLog('PrizeTierHistory', {
+    //     from: deployer,
+    //     args: [deployer],
+    //     skipIfAlreadyDeployed: false,
+    // });
     const prizeTierHistory = await hre.ethers.getContract('PrizeTierHistory');
-    await prizeTierHistory.push(lastPrizeTier)
+    // await prizeTierHistory.push(lastPrizeTier)
 
     /* PrizeDistributionFactory ---------- */
     // @dev Immutable reference to new PrizeTierHistory
