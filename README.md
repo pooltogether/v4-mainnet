@@ -110,3 +110,13 @@ Deploy TWAB Rewards contract across Avalanche, Ethereum and Polygon.
 
 Deploy TWAB Delegator contract across Avalanche, Ethereum and Polygon.
 
+## v1.4.0
+
+Deploy new BeaconTimelockTrigger, DrawCalculatorTimelock, PrizeDistributionFactory and PrizeTierHistory contracts on Ethereum.
+
+Deploy new DrawCalculatorTimelock, PrizeDistributionFactory, PrizeTierHistory and ReceiverTimelockTrigger contracts on Avalanche and Polygon.
+
+## v1.5.0
+
+Deploy RNGChainlinkV2 on Ethereum.
+
