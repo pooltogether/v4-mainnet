@@ -32,7 +32,7 @@ export interface PrizePoolNetworkConfig {
     const drawBufferBeaconChain = await hre.ethers.getContract('DrawBuffer');
     const prizeTierHistoryBeaconChain = await hre.ethers.getContract('PrizeTierHistory');
     const prizeDistributionBufferBeaconChain = await hre.ethers.getContract('PrizeDistributionBuffer');
-    const beaconTimelockAndPushRouter = await hre.ethers.getContract('BeaconTimelockAndPushRouter');
+    const beaconTimelockAndPushRouter = await hre.ethers.getContract('BeaconTimelockTrigger');
     const ticketBeaconChain = await hre.ethers.getContract('Ticket');
   
     // TODO: throw error if any of the contracts is unavailable?

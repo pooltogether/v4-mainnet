@@ -1,5 +1,5 @@
 import hre from "hardhat"
-import contractsBlob from '../../../../mainnet.json';
+import contractsBlob from '../../../../contracts.json';
 import beaconDrawLockAndNetworkTotalSupplyPush from '../../actions/beaconDrawLockAndNetworkTotalSupplyPush'
 
 async function testBeaconTimelockAndPushRouterConfiguration(ptOperations: string) {
