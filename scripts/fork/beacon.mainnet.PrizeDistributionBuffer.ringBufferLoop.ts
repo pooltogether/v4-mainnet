@@ -19,13 +19,13 @@ export async function forkBeaconPrizeDistributionBufferAndTestRingBufferLoop() {
         );
     }
 
-    const drawCount = await prizeDistributionBufferBeaconChain.getPrizeDistributionCount();
-    const getNewestDraw = await prizeDistributionBufferBeaconChain.getNewestPrizeDistribution();
-    const getOldestDraw = await prizeDistributionBufferBeaconChain.getOldestPrizeDistribution();
+    const prizeDistributionCount = await prizeDistributionBufferBeaconChain.getPrizeDistributionCount();
+    const getNewestPrizeDistribution = await prizeDistributionBufferBeaconChain.getNewestPrizeDistribution();
+    const getOldestPrizeDistribution = await prizeDistributionBufferBeaconChain.getOldestPrizeDistribution();
     
-    console.log(drawCount, 'drawCount')
-    console.log(getNewestDraw.drawId, 'getNewestDraw')
-    console.log(getOldestDraw.drawId, 'getOldestDraw')
+    console.log(prizeDistributionCount, 'prizeDistributionCount')
+    console.log(getNewestPrizeDistribution.drawId, 'getNewestPrizeDistribution')
+    console.log(getOldestPrizeDistribution.drawId, 'getOldestPrizeDistribution')
 
     try {
         const getDraw1 = await prizeDistributionBufferBeaconChain.getPrizeDistribution(1);
