@@ -1008,10 +1008,10 @@
   resolved "https://registry.yarnpkg.com/@pooltogether/fixed-point/-/fixed-point-1.0.0.tgz#2c9fb9fe1cca557ca2be7b9ed7414d5edd5a816f"
   integrity sha512-YhvjswZuDpKK/NFboyeFWoXhq4763kbi/hNx0L5+6kCRUq8WruvXR4WFvWlDo+5Dx1UsaOnPygAMfrJT0h7bMw==
 
-"@pooltogether/hardhat-deploy-markdown-export@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@pooltogether/hardhat-deploy-markdown-export/-/hardhat-deploy-markdown-export-0.2.1.tgz#cda48c4e85d1be1e1b69455511dcf150435249c9"
-  integrity sha512-WKMQWtybHlRKsV3YIKDWBvvdR9d32Wp+DiEtIhzDAhnAD8NGfQptJcC9mgsqwLXg/h1isLiE+yr19ZNckSOYdw==
+"@pooltogether/hardhat-deploy-markdown-export@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@pooltogether/hardhat-deploy-markdown-export/-/hardhat-deploy-markdown-export-0.3.1.tgz#f5cb0ee5ec0273ac22b650f73ff6c971f72d0c45"
+  integrity sha512-1r2WK0tnMlkfPjnvqdDxcEwe8jR78HwsAdCtR7BtEZclKV9P/KfpS/r032t1tK5Nud3nz03puhluot9zUKhjAw==
 
 "@pooltogether/owner-manager-contracts@1.1.0":
   version "1.1.0"
