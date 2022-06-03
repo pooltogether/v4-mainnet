@@ -86,7 +86,7 @@
     "@ethersproject/hardware-wallets": "5.6.0",
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
     "@nomiclabs/hardhat-etherscan": "3.0.0",
-    "@pooltogether/hardhat-deploy-markdown-export": "0.3.1",
+    "@pooltogether/hardhat-deploy-markdown-export": "0.3.2",
     "@types/jsonfile": "6.0.1",
     "@types/node": "17.0.12",
     "ajv": "8.9.0",
