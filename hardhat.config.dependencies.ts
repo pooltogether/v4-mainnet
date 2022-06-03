@@ -6,6 +6,9 @@ export const external = {
     {
       artifacts: 'node_modules/@pooltogether/yield-source-interface/artifacts',
     },
+    {
+      artifacts: 'node_modules/@pooltogether/v4-periphery/artifacts',
+    },
   ],
   deployments: {
     mainnet: ['node_modules/@pooltogether/pooltogether-rng-contracts/deployments/mainnet'],
@@ -34,11 +37,6 @@ export const dependencyCompiler = {
     '@pooltogether/v4-timelocks/contracts/DrawCalculatorTimelock.sol',
     '@pooltogether/v4-timelocks/contracts/BeaconTimelockTrigger.sol',
     '@pooltogether/v4-timelocks/contracts/ReceiverTimelockTrigger.sol',
-    // Periphery
-    '@pooltogether/v4-periphery/contracts/PrizeFlush.sol',
-    '@pooltogether/v4-periphery/contracts/PrizeTierHistory.sol',
-    '@pooltogether/v4-periphery/contracts/PrizeDistributionFactory.sol',
-    '@pooltogether/v4-periphery/contracts/TwabRewards.sol',
     // TWAB Delegator
     '@pooltogether/v4-twab-delegator/contracts/TWABDelegator.sol',
     // YieldSource
