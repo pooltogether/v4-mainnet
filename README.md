@@ -120,3 +120,7 @@ Deploy new DrawCalculatorTimelock, PrizeDistributionFactory, PrizeTierHistory an
 
 Deploy RNGChainlinkV2 on Ethereum.
 
+## v1.5.1
+
+Redeploy TWABRewards on Avalanche, Ethereum and Polygon.
+
