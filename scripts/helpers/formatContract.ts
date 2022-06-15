@@ -1,18 +1,27 @@
 interface DeploymentBlob {
-    address: string;
-    abi: object;
+  address: string;
+  abi: object;
 }
 
-function formatContract(chainId: number, contractName: string, deploymentBlob: DeploymentBlob) {
-    return {
-      chainId,
-      address: deploymentBlob.address,
-      version: undefined,
-      type: contractName,
-      abi: deploymentBlob.abi,
-      tags: [],
-      extensions: {},
-    };
+export type Version = {
+  major: number;
+  minor: number;
+  patch: number;
 };
 
-export default formatContract
+export default function formatContract(
+  chainId: number,
+  contractName: string,
+  deploymentBlob: DeploymentBlob,
+  version: Version,
+) {
+  return {
+    chainId,
+    address: deploymentBlob.address,
+    version,
+    type: contractName,
+    abi: deploymentBlob.abi,
+    tags: [],
+    extensions: {},
+  };
+}

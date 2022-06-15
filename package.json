@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/v4-mainnet",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "main": "index.js",
   "repository": "git@github.com:pooltogether/v4-mainnet.git",
   "author": "PoolTogether Inc.",
