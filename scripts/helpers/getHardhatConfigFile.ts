@@ -1,5 +1,5 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { isBinance, isAvalancheFuji, isPolygon } from './isNetwork'
+import { isBinance, isAvalancheFuji, isPolygon, isOptimism } from './isNetwork'
 
 export function getHardhatConfigFile(hardhat: HardhatRuntimeEnvironment) {
   let config
@@ -11,6 +11,9 @@ export function getHardhatConfigFile(hardhat: HardhatRuntimeEnvironment) {
   }
   else if (isAvalancheFuji(hardhat)) {
     config = 'hardhat.config.avalanche.ts'
+  }
+  else if (isOptimism(hardhat)) {
+    config = 'hardhat.config.optimism.ts'
   }
   else {
     config = ''

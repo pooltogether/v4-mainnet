@@ -6,10 +6,11 @@ import convertDeploymentsToContractList from './helpers/convertDeploymentsToCont
 const polygonDeployments = `${__dirname}/../deployments/polygon`;
 const mainnetDeployments = `${__dirname}/../deployments/mainnet`;
 const avalancheDeployments = `${__dirname}/../deployments/avalanche`;
+const optimismDeployments = `${__dirname}/../deployments/optimism`;
 const versionSplit = modulePackage.version.split('.');
 const patchSplit = versionSplit[2].split('-');
 
-const networkDeploymentPaths = [mainnetDeployments, polygonDeployments, avalancheDeployments];
+const networkDeploymentPaths = [mainnetDeployments, polygonDeployments, avalancheDeployments, optimismDeployments];
 
 const PACKAGE_VERSION = {
   major: Number(versionSplit[0]),
