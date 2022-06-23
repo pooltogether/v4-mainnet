@@ -6,7 +6,7 @@ export ETHERSCAN_API_KEY=
 export BSCSCAN_API_KEY=
 export SNOWTRACE_API_KEY=""
 export POLYGONSCAN_API_KEY=""
-export OP_ETHERSCAN_API_KEY=''
+export OPTIMISM_ETHERSCAN_API_KEY=''
 
 # RPC Endpoints
 export MAINNET_RPC_URL=""
