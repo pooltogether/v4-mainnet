@@ -80,6 +80,29 @@ const config: HardhatUserConfig = {
           evmVersion: 'berlin',
         },
       },
+      {
+        version: '0.8.10',
+        settings: {
+          optimizer: {
+            enabled: optimizerEnabled,
+            runs: 2000,
+          },
+          evmVersion: 'london',
+        },
+      },
+    ],
+  },
+    compilers: [
+      {
+        version: '0.8.6',
+        settings: {
+          optimizer: {
+            enabled: optimizerEnabled,
+            runs: 2000,
+          },
+          evmVersion: 'berlin',
+        },
+      },
     ],
   },
 };
