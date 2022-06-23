@@ -65,7 +65,7 @@ export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironmen
     ]
   })
   const yieldSourcePrizePoolResult = await deployAndLog('YieldSourcePrizePool', { from: deployer, args: [deployer, aaveUsdcYieldSourceResult.address] })
-  const ticketResult = await deployAndLog('Ticket', { from: deployer, args: ["PoolTogether aOptUSDC Ticket", "aOptUSDC", TOKEN_DECIMALS, yieldSourcePrizePoolResult.address] })
+  const ticketResult = await deployAndLog('Ticket', { from: deployer, args: ["PoolTogether aOptUSDC Ticket", "PTaOptUSDC", TOKEN_DECIMALS, yieldSourcePrizePoolResult.address] })
   const prizeTierHistoryResult = await deployAndLog('PrizeTierHistory', { from: deployer, args: [deployer] })
   const drawBufferResult = await deployAndLog('DrawBuffer', { from: deployer, args: [deployer, DRAW_BUFFER_CARDINALITY] })
   const prizeDistributionBufferResult = await deployAndLog('PrizeDistributionBuffer', { from: deployer, args: [deployer, PRIZE_DISTRIBUTION_BUFFER_CARDINALITY] })
