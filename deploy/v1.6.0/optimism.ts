@@ -12,7 +12,7 @@ import { setTicket } from '../../src/setTicket';
 import { transferOwnership } from '../../src/transferOwnership';
 import { setManager } from '../../src/setManager';
 import { initPrizeSplit } from '../../src/initPrizeSplit';
-import { pushDraw48 } from '../../src/v1.1.0/pushDraw48';
+
 
 export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.6.0.optimism') {
@@ -62,18 +62,19 @@ export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironmen
       "PoolTogether aOptUSDC Yield",
       TOKEN_DECIMALS,
       executiveTeam
-    ]
+    ],
+    skipIfAlreadyDeployed: true
   })
-  const yieldSourcePrizePoolResult = await deployAndLog('YieldSourcePrizePool', { from: deployer, args: [deployer, aaveUsdcYieldSourceResult.address] })
-  const ticketResult = await deployAndLog('Ticket', { from: deployer, args: ["PoolTogether aOptUSDC Ticket", "PTaOptUSDC", TOKEN_DECIMALS, yieldSourcePrizePoolResult.address] })
-  const prizeTierHistoryResult = await deployAndLog('PrizeTierHistory', { from: deployer, args: [deployer] })
-  const drawBufferResult = await deployAndLog('DrawBuffer', { from: deployer, args: [deployer, DRAW_BUFFER_CARDINALITY] })
-  const prizeDistributionBufferResult = await deployAndLog('PrizeDistributionBuffer', { from: deployer, args: [deployer, PRIZE_DISTRIBUTION_BUFFER_CARDINALITY] })
-  const drawCalculatorResult = await deployAndLog('DrawCalculator', { from: deployer, args: [ticketResult.address, drawBufferResult.address, prizeDistributionBufferResult.address] })
-  const prizeDistributorResult = await deployAndLog('PrizeDistributor', { from: deployer, args: [executiveTeam, ticketResult.address, drawCalculatorTimelockResult.address] })
-  const prizeSplitStrategyResult = await deployAndLog('PrizeSplitStrategy', { from: deployer, args: [deployer, yieldSourcePrizePoolResult.address] })
-  const reserveResult = await deployAndLog('Reserve', { from: deployer, args: [deployer, ticketResult.address] })
-  const drawCalculatorTimelockResult = await deployAndLog('DrawCalculatorTimelock', { from: deployer, args: [deployer, drawCalculatorResult.address] })
+  const yieldSourcePrizePoolResult = await deployAndLog('YieldSourcePrizePool', { from: deployer, args: [deployer, aaveUsdcYieldSourceResult.address], skipIfAlreadyDeployed: true })
+  const ticketResult = await deployAndLog('Ticket', { from: deployer, args: ["PoolTogether aOptUSDC Ticket", "PTaOptUSDC", TOKEN_DECIMALS, yieldSourcePrizePoolResult.address], skipIfAlreadyDeployed: true })
+  const prizeTierHistoryResult = await deployAndLog('PrizeTierHistory', { from: deployer, args: [deployer], skipIfAlreadyDeployed: true })
+  const drawBufferResult = await deployAndLog('DrawBuffer', { from: deployer, args: [deployer, DRAW_BUFFER_CARDINALITY], skipIfAlreadyDeployed: true })
+  const prizeDistributionBufferResult = await deployAndLog('PrizeDistributionBuffer', { from: deployer, args: [deployer, PRIZE_DISTRIBUTION_BUFFER_CARDINALITY], skipIfAlreadyDeployed: true })
+  const drawCalculatorResult = await deployAndLog('DrawCalculator', { from: deployer, args: [ticketResult.address, drawBufferResult.address, prizeDistributionBufferResult.address], skipIfAlreadyDeployed: true })
+  const prizeSplitStrategyResult = await deployAndLog('PrizeSplitStrategy', { from: deployer, args: [deployer, yieldSourcePrizePoolResult.address], skipIfAlreadyDeployed: true })
+  const reserveResult = await deployAndLog('Reserve', { from: deployer, args: [deployer, ticketResult.address], skipIfAlreadyDeployed: true })
+  const drawCalculatorTimelockResult = await deployAndLog('DrawCalculatorTimelock', { from: deployer, args: [deployer, drawCalculatorResult.address], skipIfAlreadyDeployed: true })
+  const prizeDistributorResult = await deployAndLog('PrizeDistributor', { from: deployer, args: [executiveTeam, ticketResult.address, drawCalculatorTimelockResult.address], skipIfAlreadyDeployed: true })
   const prizeDistributionFactoryResult = await deployAndLog('PrizeDistributionFactory', {
     from: deployer,
     args: [
@@ -83,11 +84,12 @@ export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironmen
       prizeDistributionBufferResult.address,
       ticketResult.address,
       PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST // 1 USDC
-    ]
+    ],
+    skipIfAlreadyDeployed: true
   })
-  await deployAndLog('EIP2612PermitAndDeposit', { from: deployer })
-  const prizeFlushResult = await deployAndLog('PrizeFlush', { from: deployer, args: [deployer, prizeDistributorResult.address, prizeSplitStrategyResult.address, reserveResult.address]})
-  const receiverTimelockTrigger = await deployAndLog('ReceiverTimelockTrigger', { from: deployer, args: [deployer, drawBufferResult.address, prizeDistributionFactoryResult.address, drawCalculatorTimelockResult.address]})
+  await deployAndLog('EIP2612PermitAndDeposit', { from: deployer, skipIfAlreadyDeployed: true })
+  const prizeFlushResult = await deployAndLog('PrizeFlush', { from: deployer, args: [deployer, prizeDistributorResult.address, prizeSplitStrategyResult.address, reserveResult.address], skipIfAlreadyDeployed: true })
+  const receiverTimelockTrigger = await deployAndLog('ReceiverTimelockTrigger', { from: deployer, args: [deployer, drawBufferResult.address, prizeDistributionFactoryResult.address, drawCalculatorTimelockResult.address], skipIfAlreadyDeployed: true })
 
   await deployAndLog('TwabRewards', { from: deployer, args: [ticketResult.address], skipIfAlreadyDeployed: true });
   await deployAndLog('TWABDelegator', { from: deployer, args: ['PoolTogether Staked aOptUSDC Ticket', 'stkPTaOptUSDC', ticketResult.address], skipIfAlreadyDeployed: true });
@@ -106,7 +108,9 @@ export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironmen
   await setManager('DrawCalculatorTimelock', null, receiverTimelockTrigger.address)
   await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address)
   await setManager('PrizeDistributionBuffer', null, prizeDistributionFactoryResult.address)
+  await setManager('PrizeTierHistory', null, executiveTeam)
 
+  
   await transferOwnership('PrizeDistributionFactory', null, executiveTeam)
   await transferOwnership('DrawCalculatorTimelock', null, executiveTeam)
   await transferOwnership('PrizeFlush', null, executiveTeam)
