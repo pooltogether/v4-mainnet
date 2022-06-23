@@ -59,7 +59,7 @@ export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironmen
       aaveIncentivesController,
       aaveLendingPoolAddressesProviderRegistry,
       "PTaOptUSDCY",
-      "PoolTogether aOptUSDCY",
+      "PoolTogether aOptUSDC Yield",
       TOKEN_DECIMALS,
       executiveTeam
     ]
