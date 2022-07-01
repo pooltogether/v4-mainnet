@@ -124,3 +124,23 @@ Deploy RNGChainlinkV2 on Ethereum.
 
 Redeploy TWABRewards on Avalanche, Ethereum and Polygon.
 
+## v1.6.0
+
+Deploy USDC Prize Pool on Optimism.
+
+### v1.6.0 Post-Deploy Configuration Changes
+
+#### Optimism
+
+Executive team needs to claim ownership of the following contracts:
+- PrizeDistributionFactory
+- DrawCalculatorTimelock
+- PrizeFlush
+- Reserve
+- YieldSourcePrizePool
+- PrizeTierHistory
+- PrizeSplitStrategy
+- DrawBuffer
+- PrizeDistributionBuffer
+- ReceiverTimelockTrigger
+
