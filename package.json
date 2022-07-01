@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/v4-mainnet",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "main": "index.js",
   "repository": "git@github.com:pooltogether/v4-mainnet.git",
   "author": "PoolTogether Inc.",
@@ -35,11 +35,13 @@
     "deploy:v1.4.0.mainnet": "DEPLOY=v1.4.0.mainnet hardhat deploy --network mainnet",
     "deploy:v1.4.0.polygon": "DEPLOY=v1.4.0.polygon hardhat deploy --network polygon",
     "deploy:v1.5.0.mainnet": "DEPLOY=v1.5.0.mainnet hardhat deploy --network mainnet",
+    "deploy:v1.6.0.optimism": "DEPLOY=v1.6.0.optimism hardhat deploy --network optimism",
     "simulate:mainnet": "hardhat --config hardhat.config.ts run ./scripts/fork/beacon.mainnet.forkRunUpgradeV110.ts --network localhost",
     "simulate:polygon": "hardhat --config hardhat.config.ts run ./scripts/fork/receiver.polygon.forkRunUpgradeV110.ts --network localhost",
     "node:ethereum": "DEPLOY=mainnet hardhat node --network hardhat",
     "node:polygon": "DEPLOY=polygon hardhat node --network hardhat",
     "node:avalanche": "DEPLOY=v1.1.0.avalanche hardhat node --network hardhat",
+    "node:optimism": "DEPLOY=v1.6.0.optimism hardhat node --network hardhat",
     "upgrade:mainnet": "DEPLOY=v1.1.0.mainnet hardhat deploy --network mainnet",
     "upgrade:polygon": "DEPLOY=v1.1.0.polygon hardhat deploy --network polygon",
     "upgrade:mainnet:test": "DEPLOY=v1.1.0.mainnet hardhat deploy --network localhost",
@@ -47,6 +49,7 @@
     "verify:mainnet": "hardhat --config hardhat.config.ts run ./scripts/verify.ts --network mainnet",
     "verify:polygon": "hardhat --config hardhat.config.polygon.ts run ./scripts/verify.ts --network polygon",
     "verify:avalanche": "hardhat --config hardhat.config.avalanche.ts run ./scripts/verify.ts --network avalanche",
+    "verify:optimism": "hardhat --config hardhat.config.optimism.ts run ./scripts/verify.ts --network optimism",
     "test:v1.0.1.mainnet": "yarn mainnetForkSetup; FORK_CHAIN_ID=$MAINNET_CHAIN_ID FORK_BLOCK_NUMBER=$MAINNET_FORK_BLOCK_NUMBER FORK_RPC_URL=$MAINNET_RPC_URL FORK_ENABLED=true DEPLOY=mainnet hardhat node --no-reset --network hardhat",
     "test:v1.0.1.polygon": "yarn polygonForkSetup; FORK_CHAIN_ID=$POLYGON_CHAIN_ID FORK_BLOCK_NUMBER=$POLYGON_FORK_BLOCK_NUMBER FORK_RPC_URL=$POLYGON_RPC_URL FORK_ENABLED=true DEPLOY=polygon hardhat node --no-reset --network hardhat",
     "test:v1.1.0.mainnet": "yarn mainnetForkSetup; FORK_CHAIN_ID=$MAINNET_CHAIN_ID FORK_BLOCK_NUMBER=$MAINNET_FORK_BLOCK_NUMBER FORK_RPC_URL=$MAINNET_RPC_URL FORK_ENABLED=true DEPLOY=v1.1.0.mainnet hardhat node --no-reset --network hardhat",
@@ -62,14 +65,17 @@
     "test:v1.4.0.polygon": "yarn polygonForkSetup; FORK_CHAIN_ID=$POLYGON_CHAIN_ID FORK_BLOCK_NUMBER=$POLYGON_FORK_BLOCK_NUMBER FORK_RPC_URL=$POLYGON_RPC_URL FORK_ENABLED=true DEPLOY=v1.4.0.polygon hardhat node --no-reset --network hardhat",
     "test:v1.4.0.avalanche": "yarn avalancheForkSetup; FORK_CHAIN_ID=$AVALANCHE_CHAIN_ID FORK_BLOCK_NUMBER=$AVALANCHE_FORK_BLOCK_NUMBER FORK_RPC_URL=$AVALANCHE_RPC_URL FORK_ENABLED=true DEPLOY=v1.4.0.avalanche hardhat node --no-reset --network hardhat",
     "test:v1.5.0.mainnet": "yarn mainnetForkSetup; FORK_CHAIN_ID=$MAINNET_CHAIN_ID FORK_BLOCK_NUMBER=$MAINNET_FORK_BLOCK_NUMBER FORK_RPC_URL=$MAINNET_RPC_URL FORK_ENABLED=true DEPLOY=v1.5.0.mainnet hardhat node --no-reset --network hardhat",
+    "test:v1.6.0.optimism": "yarn optimismForkSetup; FORK_CHAIN_ID=$OPTIMISM_CHAIN_ID FORK_BLOCK_NUMBER=$OPTIMISM_FORK_BLOCK_NUMBER FORK_RPC_URL=$OPTIMISM_RPC_URL FORK_ENABLED=true DEPLOY=v1.6.0.optimism hardhat node --no-reset --network hardhat",
     "mainnetForkSetup": "rm -rf deployments/localhost ; cp -r deployments/mainnet deployments/localhost",
     "polygonForkSetup": "rm -rf deployments/localhost ; cp -r deployments/polygon deployments/localhost",
-    "avalancheForkSetup": "rm -rf deployments/localhost ; cp -r deployments/avalanche deployments/localhost"
+    "avalancheForkSetup": "rm -rf deployments/localhost ; cp -r deployments/avalanche deployments/localhost",
+    "optimismForkSetup": "rm -rf deployments/localhost ; cp -r deployments/optimism deployments/localhost"
   },
   "dependencies": {
     "@chainlink/contracts": "0.4.0",
     "@openzeppelin/contracts": "4.4.2",
-    "@pooltogether/aave-yield-source": "1.1.0",
+    "@pooltogether/aave-v3-yield-source": "1.1.0",
+    "@pooltogether/aave-yield-source": "1.2.0",
     "@pooltogether/draw-calculator-js": "1.0.3-beta.4",
     "@pooltogether/owner-manager-contracts": "1.1.0",
     "@pooltogether/pooltogether-rng-contracts": "1.5.1",
@@ -111,6 +117,7 @@
     "deployments/polygon",
     "deployments/mainnet",
     "deployments/avalanche",
+    "deployments/optimism",
     "contracts.json"
   ]
 }

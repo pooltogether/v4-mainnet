@@ -14,3 +14,8 @@ export function isAvalancheFuji(hardhat: HardhatRuntimeEnvironment) {
   const network = hardhat.network.name
   return /avalanche/.test(network) || /fuji/.test(network) || /avalancheFuji/.test(network)
 }
+
+export function isOptimism(hardhat: HardhatRuntimeEnvironment) {
+  const network = hardhat.network.name
+  return /optimism/.test(network) || /optimistic/.test(network) || /kovan/.test(network)
+}

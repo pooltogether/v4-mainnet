@@ -36,6 +36,13 @@ const networks: HardhatUserConfig['networks'] = {
       mnemonic,
     },
   },
+  optimism: {
+    chainId: 10,
+    url: process.env.OPTIMISM_RPC_URL,
+    accounts: {
+      mnemonic,
+    },
+  },
 };
 
 if (!!process.env.FORK_ENABLED) {

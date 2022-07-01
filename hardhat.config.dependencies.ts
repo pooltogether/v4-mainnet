@@ -41,6 +41,7 @@ export const dependencyCompiler = {
     '@pooltogether/v4-twab-delegator/contracts/TWABDelegator.sol',
     // YieldSource
     '@pooltogether/aave-yield-source/contracts/yield-source/ATokenYieldSource.sol',
+    '@pooltogether/aave-v3-yield-source/contracts/AaveV3YieldSource.sol',
     // Chainlink VRF
     '@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol',
     // RNG Service
