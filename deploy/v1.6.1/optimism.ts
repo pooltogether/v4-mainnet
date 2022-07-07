@@ -12,7 +12,7 @@ import { setTicket } from '../../src/setTicket';
 import { transferOwnership } from '../../src/transferOwnership';
 import { setManager } from '../../src/setManager';
 import { initPrizeSplit } from '../../src/initPrizeSplit';
-import { pushDraw264 } from '../../src/v1.6.1/pushDraw264';
+import { pushDraw266 } from '../../src/v1.6.1/pushDraw266';
 
 export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.6.1.optimism') {
@@ -186,7 +186,7 @@ export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironmen
   // Configure Contracts
   // ===================================================
 
-  await pushDraw264();
+  await pushDraw266();
   await initPrizeSplit();
   await setTicket(ticketResult.address);
   await setPrizeStrategy(prizeSplitStrategyResult.address);
