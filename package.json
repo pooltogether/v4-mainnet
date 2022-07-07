@@ -74,8 +74,8 @@
   "dependencies": {
     "@chainlink/contracts": "0.4.0",
     "@openzeppelin/contracts": "4.4.2",
-    "@pooltogether/aave-v3-yield-source": "1.1.0",
-    "@pooltogether/aave-yield-source": "1.2.0",
+    "@pooltogether/aave-v3-yield-source": "1.1.1",
+    "@pooltogether/aave-yield-source": "1.2.1",
     "@pooltogether/draw-calculator-js": "1.0.3-beta.4",
     "@pooltogether/owner-manager-contracts": "1.1.0",
     "@pooltogether/pooltogether-rng-contracts": "1.5.1",
