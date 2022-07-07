@@ -5,7 +5,7 @@ import { END_TIMESTAMP_OFFSET, EXPIRY_DURATION } from '../constants';
 const { ethers } = hardhat;
 
 export async function pushDraw266() {
-  yellow(`\nPushing Prize Tier configuration for Draw 48 onto the Prize Tier History...`);
+  yellow(`\nPushing Prize Tier configuration for Draw 266 onto the Prize Tier History...`);
   const prizeTierHistory = await ethers.getContract('PrizeTierHistory');
   const pushTx = await prizeTierHistory.push({
     drawId: 266,

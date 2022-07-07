@@ -13,6 +13,7 @@ import { transferOwnership } from '../../src/transferOwnership';
 import { setManager } from '../../src/setManager';
 import { initPrizeSplit } from '../../src/initPrizeSplit';
 import { pushDraw266 } from '../../src/v1.6.1/pushDraw266';
+import { setTimelock } from '../../src/setTimelock';
 
 export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.6.1.optimism') {
@@ -190,6 +191,8 @@ export default async function deployToOptimism(hardhat: HardhatRuntimeEnvironmen
   await initPrizeSplit();
   await setTicket(ticketResult.address);
   await setPrizeStrategy(prizeSplitStrategyResult.address);
+  await setTimelock({ timestamp: 1657300000, drawId: 265 });
+
   await setManager('ReceiverTimelockTrigger', null, defenderRelayer);
   await setManager('DrawBuffer', null, receiverTimelockTrigger.address);
   await setManager('PrizeFlush', null, defenderRelayer);
