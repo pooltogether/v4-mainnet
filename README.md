@@ -128,7 +128,7 @@ Redeploy TWABRewards on Avalanche, Ethereum and Polygon.
 
 Deploy USDC Prize Pool on Optimism.
 
-### v1.6.0 Post-Deploy Configuration Changes
+### Post-Deploy Configuration Changes
 
 #### Optimism
 
@@ -144,3 +144,19 @@ Executive team needs to claim ownership of the following contracts:
 - PrizeDistributionBuffer
 - ReceiverTimelockTrigger
 
+## v1.6.1
+
+Re-deploy USDC Prize Pool on Optimism.
+
+## v1.7.0
+
+Deploy RNGChainlinkV2 on Polygon and setup DrawBeacon to compute draw onchain.
+
+### Post-Deploy Configuration Changes
+
+#### Polygon
+
+Executive team needs to claim ownership of the following contracts:
+- RNGChainlinkV2
+- DrawBeacon
+- BeaconTimelockTrigger

@@ -11,10 +11,10 @@ import { transferOwnership } from '../../src/transferOwnership';
  *
  * NOTE: The final step to complete the update is a transition of the manager role on a PrizeDistributionBuffer to be the newly deployed PrizeDistributionFactoryV2.
  */
-export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnvironment) {
-  if (process.env.DEPLOY === 'v1.7.0.mainnet') {
-    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Ethereum Mainnet`);
-    dim(`Version: 1.7.0`);
+export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
+  if (process.env.DEPLOY === 'v1.8.0.optimism') {
+    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Optimism Mainnet`);
+    dim(`Version: 1.8.0`);
   } else {
     return;
   }

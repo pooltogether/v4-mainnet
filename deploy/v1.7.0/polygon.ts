@@ -1,89 +1,71 @@
+import { dim } from 'chalk';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
-import { dim } from '../../src/colors';
-import { PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST } from '../../src/constants';
+
+import {
+  BEACON_PERIOD_SECONDS,
+  RNG_TIMEOUT_SECONDS,
+} from '../../src/constants';
 import { deployAndLog } from '../../src/deployAndLog';
 import { setManager } from '../../src/setManager';
 import { transferOwnership } from '../../src/transferOwnership';
 
-/**
- * Prepares a PoolTogether Prize Pool Network to update from using PrizeTierHistory
- * and PrizeDistributionFactory to using PrizeTierHistoryV2 and PrizeDistributionFactoryV2.
- *
- * NOTE: The final step to complete the update is a transition of the manager role on a PrizeDistributionBuffer to be the newly deployed PrizeDistributionFactoryV2.
- */
-export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironment) {
+export default async function deployToEthereumMainnet(hardhat: HardhatRuntimeEnvironment){
   if (process.env.DEPLOY === 'v1.7.0.polygon') {
-    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Polygon Mainnet`);
-    dim(`Version: 1.7.0`);
-  } else {
-    return;
-  }
+    dim(`Deploying: DrawBeacon, RNGChainlinkV2, BeaconTimelockTrigger on Polygon`)
+    dim(`Version: 1.7.0`)
+  } else { return }
 
-  const { getNamedAccounts, ethers, getChainId } = hre;
+  const { getNamedAccounts, ethers } = hardhat;
+  const { getContract } = ethers;
 
-  const { deployer, executiveTeam, defenderRelayer } = await getNamedAccounts();
+  const { deployer, defenderRelayer, executiveTeam } = await getNamedAccounts();
 
-  const chainId = parseInt(await getChainId(), 10);
-
-  dim(`chainId ${chainId} `);
-  dim(`---------------------------------------------------`);
-  dim(`Named Accounts`);
-  dim(`---------------------------------------------------`);
-  dim(`deployer: ${deployer}`);
-  dim(`executiveTeam: ${executiveTeam}`);
-  dim(`defenderRelayer: ${defenderRelayer}`);
-  dim(`---------------------------------------------------\n`);
-  const startingBalance = await ethers.provider.getBalance((await ethers.getSigners())[0].address);
+  const drawBuffer = await getContract('DrawBuffer');
+  const drawCalculatorTimelock = await getContract('DrawCalculatorTimelock')
+  const prizeDistributionFactory = await getContract('PrizeDistributionFactory');
 
   // ===================================================
   // Deploy Contracts
   // ===================================================
 
-  const ticket = await hre.deployments.get('Ticket');
-  const pdb = await hre.deployments.get('PrizeDistributionBuffer');
-  const db = await hre.deployments.get('DrawBuffer');
-
-  // 1. Deploy or load PrizeTierHistoryV2
-  const pthv2 = await deployAndLog('PrizeTierHistoryV2', {
-    from: deployer,
-    args: [deployer],
-    skipIfAlreadyDeployed: true,
-  });
-
-  // 2. Deploy or load PrizeDistributionFactoryV2
-  const pdfv2 = await deployAndLog('PrizeDistributionFactoryV2', {
+  const rngServiceResult = await deployAndLog('RNGChainlinkV2', {
     from: deployer,
     args: [
       deployer,
-      pthv2.address,
-      db.address,
-      pdb.address,
-      ticket.address,
-      PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST,
+      '0xAE975071Be8F8eE67addBC1A82488F1C24858067', // VRF Coordinator address
+      472, // Subscription id
+      '0xcc294a196eeeb44da2888d17c0625cc88d70d9760a69d58d853ba6581a9ab0cd', // 500 gwei key hash gas lane
     ],
     skipIfAlreadyDeployed: true,
   });
 
-  // ===================================================
-  // Configure Contracts
-  // ===================================================
+  const drawBeaconResult = await deployAndLog('DrawBeacon', {
+    from: deployer,
+    args: [
+      deployer,
+      drawBuffer.address,
+      rngServiceResult.address,
+      411, // Starting DrawID
+      1669748400, // Nov 29, 2022, 7:00:00 PM UTC
+      BEACON_PERIOD_SECONDS, // 86400 = one day
+      RNG_TIMEOUT_SECONDS // 2 * 3600 = 2 hours
+    ],
+    skipIfAlreadyDeployed: true,
+  });
 
-  // 1. Set Manager of PTHV2 to Executive Team
-  await setManager('PrizeTierHistoryV2', null, executiveTeam);
+  await deployAndLog('BeaconTimelockTrigger', {
+    from: deployer,
+    args: [
+      deployer,
+      prizeDistributionFactory.address,
+      drawCalculatorTimelock.address
+    ]
+  });
 
-  // 2. Set Manager of PDFV2 to Defender Relayer
-  await setManager('PrizeDistributionFactoryV2', null, defenderRelayer);
+  await setManager('RNGChainlinkV2', null, drawBeaconResult.address);
+  await setManager('BeaconTimelockTrigger', null, defenderRelayer);
 
-  // 3. Transfer Ownership of PTHV2 to Executive Team
-  await transferOwnership('PrizeTierHistoryV2', null, executiveTeam);
-
-  // 4. Transfer Ownership of PDFV2 to Executive Team
-  await transferOwnership('PrizeDistributionFactoryV2', null, executiveTeam);
-
-  dim(`---------------------------------------------------`);
-  const costToDeploy = startingBalance.sub(
-    await ethers.provider.getBalance((await ethers.getSigners())[0].address),
-  );
-  dim(`Final balance of deployer ${deployer}: ${ethers.utils.formatEther(costToDeploy)} ETH`);
-  dim(`---------------------------------------------------`);
+  await transferOwnership('RNGChainlinkV2', null, executiveTeam);
+  await transferOwnership('DrawBeacon', null, executiveTeam);
+  await transferOwnership('BeaconTimelockTrigger', null, executiveTeam);
 }
