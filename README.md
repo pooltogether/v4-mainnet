@@ -160,3 +160,16 @@ Executive team needs to claim ownership of the following contracts:
 - RNGChainlinkV2
 - DrawBeacon
 - BeaconTimelockTrigger
+
+## v1.8.0
+
+Deploy RNGChainlinkV2 on Avalanche and setup DrawBeacon to compute draw onchain.
+
+### Post-Deploy Configuration Changes
+
+#### Avalanche
+
+Executive team needs to claim ownership of the following contracts:
+- RNGChainlinkV2
+- DrawBeacon
+- BeaconTimelockTrigger

@@ -20,6 +20,7 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
   }
 
   const { getNamedAccounts, ethers, getChainId } = hre;
+  const { getContract } = ethers;
 
   const { deployer, executiveTeam, defenderRelayer } = await getNamedAccounts();
 
@@ -40,45 +41,51 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
   // ===================================================
 
   const ticket = await hre.deployments.get('Ticket');
-  const pdb = await hre.deployments.get('PrizeDistributionBuffer');
-  const db = await hre.deployments.get('DrawBuffer');
+  const prizeDistributionBuffer = await hre.deployments.get('PrizeDistributionBuffer');
+  const drawBuffer = await hre.deployments.get('DrawBuffer');
 
   // 1. Deploy or load PrizeTierHistoryV2
-  const pthv2 = await deployAndLog('PrizeTierHistoryV2', {
+  const prizeTierHistoryV2 = await deployAndLog('PrizeTierHistoryV2', {
     from: deployer,
     args: [deployer],
     skipIfAlreadyDeployed: true,
   });
 
   // 2. Deploy or load PrizeDistributionFactoryV2
-  const pdfv2 = await deployAndLog('PrizeDistributionFactoryV2', {
+  const prizeDistributionFactoryV2 = await deployAndLog('PrizeDistributionFactoryV2', {
     from: deployer,
     args: [
       deployer,
-      pthv2.address,
-      db.address,
-      pdb.address,
+      prizeTierHistoryV2.address,
+      drawBuffer.address,
+      prizeDistributionBuffer.address,
       ticket.address,
       PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST,
     ],
     skipIfAlreadyDeployed: true,
   });
 
+  // 3. Load PrizeDistributor and DrawCalculator
+  const prizeDistributorContract = await getContract('PrizeDistributor');
+  const drawCalculatorContract = await getContract('DrawCalculator');
+
   // ===================================================
   // Configure Contracts
   // ===================================================
 
-  // 1. Set Manager of PTHV2 to Executive Team
+  // 1. Set Managers on new contracts
   await setManager('PrizeTierHistoryV2', null, executiveTeam);
-
-  // 2. Set Manager of PDFV2 to Defender Relayer
   await setManager('PrizeDistributionFactoryV2', null, defenderRelayer);
 
-  // 3. Transfer Ownership of PTHV2 to Executive Team
+  // 2. Transfer Ownership on new contracts
   await transferOwnership('PrizeTierHistoryV2', null, executiveTeam);
-
-  // 4. Transfer Ownership of PDFV2 to Executive Team
   await transferOwnership('PrizeDistributionFactoryV2', null, executiveTeam);
+
+  // 3. Complete Migration of old system
+  // transition to new Prize Distribution Factory
+  await setManager('PrizeDistributionBuffer', null, prizeDistributionFactoryV2.address);
+  // remove timelock
+  await prizeDistributorContract.setDrawCalculator(drawCalculatorContract.address);
 
   dim(`---------------------------------------------------`);
   const costToDeploy = startingBalance.sub(

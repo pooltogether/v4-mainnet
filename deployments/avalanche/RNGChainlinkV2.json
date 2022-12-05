@@ -1,0 +1,869 @@
+{
+  "address": "0xCfC11bc4676f8DC6BAB1C46f0D34a466493987D2",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "contract VRFCoordinatorV2Interface",
+          "name": "_vrfCoordinator",
+          "type": "address"
+        },
+        {
+          "internalType": "uint64",
+          "name": "_subscriptionId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_keyHash",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "have",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "want",
+          "type": "address"
+        }
+      ],
+      "name": "OnlyCoordinatorCanFulfill",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "keyHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "KeyHashSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newManager",
+          "type": "address"
+        }
+      ],
+      "name": "ManagerTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipOffered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "requestId",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "randomNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "RandomNumberCompleted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint32",
+          "name": "requestId",
+          "type": "uint32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RandomNumberRequested",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "subscriptionId",
+          "type": "uint64"
+        }
+      ],
+      "name": "SubscriptionIdSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract VRFCoordinatorV2Interface",
+          "name": "vrfCoordinator",
+          "type": "address"
+        }
+      ],
+      "name": "VrfCoordinatorSet",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "claimOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getKeyHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLastRequestId",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "requestId",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRequestFee",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "feeToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "requestFee",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getSubscriptionId",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getVrfCoordinator",
+      "outputs": [
+        {
+          "internalType": "contract VRFCoordinatorV2Interface",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_internalRequestId",
+          "type": "uint32"
+        }
+      ],
+      "name": "isRequestComplete",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "isCompleted",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "manager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pendingOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_internalRequestId",
+          "type": "uint32"
+        }
+      ],
+      "name": "randomNumber",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "randomNum",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "requestId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "randomWords",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "rawFulfillRandomWords",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "requestRandomNumber",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "requestId",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "lockBlock",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_keyHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "setKeyhash",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newManager",
+          "type": "address"
+        }
+      ],
+      "name": "setManager",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "_subscriptionId",
+          "type": "uint64"
+        }
+      ],
+      "name": "setSubscriptionId",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x65e1cb973a59902052de969083821efc06e354639ad5ef0be7309cb962c89b61",
+  "receipt": {
+    "to": null,
+    "from": "0x4D40eb12430A57965cEe3015348d490C6156dF20",
+    "contractAddress": "0xCfC11bc4676f8DC6BAB1C46f0D34a466493987D2",
+    "transactionIndex": 0,
+    "gasUsed": "974296",
+    "logsBloom": "0x00000000000000000000000000000008000001000000000000800000000000000000000000000000000000000040000000000000020000000000000000000000000000000000000000020000000000000001000000000000000000000000000000000000020000000000000000000800000000002000000800000000200000400000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000010000000000000000000000000000000000000004000000000000010000000060000000000002000000000000000000400000000000002000000000000001000000",
+    "blockHash": "0xc470d82f6a5db5e58c94a636660cdd7236a31402e358add87f6947374690c0fc",
+    "transactionHash": "0x65e1cb973a59902052de969083821efc06e354639ad5ef0be7309cb962c89b61",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 23092618,
+        "transactionHash": "0x65e1cb973a59902052de969083821efc06e354639ad5ef0be7309cb962c89b61",
+        "address": "0xCfC11bc4676f8DC6BAB1C46f0D34a466493987D2",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000004d40eb12430a57965cee3015348d490c6156df20"
+        ],
+        "data": "0x",
+        "logIndex": 0,
+        "blockHash": "0xc470d82f6a5db5e58c94a636660cdd7236a31402e358add87f6947374690c0fc"
+      },
+      {
+        "transactionIndex": 0,
+        "blockNumber": 23092618,
+        "transactionHash": "0x65e1cb973a59902052de969083821efc06e354639ad5ef0be7309cb962c89b61",
+        "address": "0xCfC11bc4676f8DC6BAB1C46f0D34a466493987D2",
+        "topics": [
+          "0x4cc41e06d3d0588be9be0e1469ba1934c4bd1cb8f4f70adf2aa31f4b92134b27",
+          "0x000000000000000000000000d5d517abe5cf79b7e95ec98db0f0277788aff634"
+        ],
+        "data": "0x",
+        "logIndex": 1,
+        "blockHash": "0xc470d82f6a5db5e58c94a636660cdd7236a31402e358add87f6947374690c0fc"
+      },
+      {
+        "transactionIndex": 0,
+        "blockNumber": 23092618,
+        "transactionHash": "0x65e1cb973a59902052de969083821efc06e354639ad5ef0be7309cb962c89b61",
+        "address": "0xCfC11bc4676f8DC6BAB1C46f0D34a466493987D2",
+        "topics": [
+          "0x68de96e24c66c14c012b5bd342251abc26a6003eaa438002bfe530f28ca63fed"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000061",
+        "logIndex": 2,
+        "blockHash": "0xc470d82f6a5db5e58c94a636660cdd7236a31402e358add87f6947374690c0fc"
+      },
+      {
+        "transactionIndex": 0,
+        "blockNumber": 23092618,
+        "transactionHash": "0x65e1cb973a59902052de969083821efc06e354639ad5ef0be7309cb962c89b61",
+        "address": "0xCfC11bc4676f8DC6BAB1C46f0D34a466493987D2",
+        "topics": [
+          "0xd013f86c8346660ebf421351882cd1b3c2f91883092df1800264c656b0db0cc6"
+        ],
+        "data": "0x89630569c9567e43c4fe7b1633258df9f2531b62f2352fa721cf3162ee4ecb46",
+        "logIndex": 3,
+        "blockHash": "0xc470d82f6a5db5e58c94a636660cdd7236a31402e358add87f6947374690c0fc"
+      }
+    ],
+    "blockNumber": 23092618,
+    "cumulativeGasUsed": "974296",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x4D40eb12430A57965cEe3015348d490C6156dF20",
+    "0xd5D517aBE5cF79B7e95eC98dB0f0277788aFF634",
+    97,
+    "0x89630569c9567e43c4fe7b1633258df9f2531b62f2352fa721cf3162ee4ecb46"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "81bc9ae0cb2caeb2744ac5c81556a380",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"contract VRFCoordinatorV2Interface\",\"name\":\"_vrfCoordinator\",\"type\":\"address\"},{\"internalType\":\"uint64\",\"name\":\"_subscriptionId\",\"type\":\"uint64\"},{\"internalType\":\"bytes32\",\"name\":\"_keyHash\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"have\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"want\",\"type\":\"address\"}],\"name\":\"OnlyCoordinatorCanFulfill\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"keyHash\",\"type\":\"bytes32\"}],\"name\":\"KeyHashSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousManager\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newManager\",\"type\":\"address\"}],\"name\":\"ManagerTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"pendingOwner\",\"type\":\"address\"}],\"name\":\"OwnershipOffered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"requestId\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"randomNumber\",\"type\":\"uint256\"}],\"name\":\"RandomNumberCompleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"requestId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RandomNumberRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"subscriptionId\",\"type\":\"uint64\"}],\"name\":\"SubscriptionIdSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract VRFCoordinatorV2Interface\",\"name\":\"vrfCoordinator\",\"type\":\"address\"}],\"name\":\"VrfCoordinatorSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"claimOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getKeyHash\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastRequestId\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"requestId\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRequestFee\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"feeToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"requestFee\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSubscriptionId\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getVrfCoordinator\",\"outputs\":[{\"internalType\":\"contract VRFCoordinatorV2Interface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_internalRequestId\",\"type\":\"uint32\"}],\"name\":\"isRequestComplete\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"manager\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pendingOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_internalRequestId\",\"type\":\"uint32\"}],\"name\":\"randomNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"randomNum\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestId\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"requestRandomNumber\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"requestId\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"lockBlock\",\"type\":\"uint32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_keyHash\",\"type\":\"bytes32\"}],\"name\":\"setKeyhash\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newManager\",\"type\":\"address\"}],\"name\":\"setManager\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"_subscriptionId\",\"type\":\"uint64\"}],\"name\":\"setSubscriptionId\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"KeyHashSet(bytes32)\":{\"params\":{\"keyHash\":\"Chainlink VRF keyHash\"}},\"SubscriptionIdSet(uint64)\":{\"params\":{\"subscriptionId\":\"Chainlink VRF subscription id\"}},\"VrfCoordinatorSet(address)\":{\"params\":{\"vrfCoordinator\":\"Address of the VRF Coordinator\"}}},\"kind\":\"dev\",\"methods\":{\"claimOwnership()\":{\"details\":\"This function is only callable by the `_pendingOwner`.\"},\"constructor\":{\"params\":{\"_keyHash\":\"Hash of the public key used to verify the VRF proof\",\"_owner\":\"Owner of the contract\",\"_subscriptionId\":\"Chainlink VRF subscription id\",\"_vrfCoordinator\":\"Address of the VRF Coordinator\"}},\"getKeyHash()\":{\"returns\":{\"_0\":\"bytes32 Chainlink VRF keyHash\"}},\"getLastRequestId()\":{\"returns\":{\"requestId\":\"The last request id used in the last request\"}},\"getRequestFee()\":{\"returns\":{\"feeToken\":\"The address of the token that is used to pay fees\",\"requestFee\":\"The fee required to be paid to make a request\"}},\"getSubscriptionId()\":{\"returns\":{\"_0\":\"uint64 Chainlink VRF subscription id\"}},\"getVrfCoordinator()\":{\"returns\":{\"_0\":\"address Chainlink VRF coordinator address\"}},\"isRequestComplete(uint32)\":{\"details\":\"For time-delayed requests, this function is used to check/confirm completion\",\"params\":{\"requestId\":\"The ID of the request used to get the results of the RNG service\"},\"returns\":{\"isCompleted\":\"True if the request has completed and a random number is available, false otherwise\"}},\"manager()\":{\"returns\":{\"_0\":\"Current `_manager` address.\"}},\"pendingOwner()\":{\"returns\":{\"_0\":\"Current `_pendingOwner` address.\"}},\"randomNumber(uint32)\":{\"params\":{\"requestId\":\"The ID of the request used to get the results of the RNG service\"},\"returns\":{\"randomNum\":\"The random number\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"requestRandomNumber()\":{\"details\":\"Some services will complete the request immediately, others may have a time-delaySome services require payment in the form of a token, such as $LINK for Chainlink VRF\",\"returns\":{\"lockBlock\":\"The block number at which the RNG service will start generating time-delayed randomness. The calling contract should \\\"lock\\\" all activity until the result is available via the `requestId`\",\"requestId\":\"The ID of the request used to get the results of the RNG service\"}},\"setKeyhash(bytes32)\":{\"details\":\"This function is only callable by the owner.\",\"params\":{\"keyHash\":\"Chainlink VRF keyHash\"}},\"setManager(address)\":{\"details\":\"Throws if called by any account other than the owner.\",\"params\":{\"_newManager\":\"New _manager address.\"},\"returns\":{\"_0\":\"Boolean to indicate if the operation was successful or not.\"}},\"setSubscriptionId(uint64)\":{\"details\":\"This function is only callable by the owner.\",\"params\":{\"subscriptionId\":\"Chainlink VRF subscription id\"}},\"transferOwnership(address)\":{\"params\":{\"_newOwner\":\"Address to transfer ownership to.\"}}},\"stateVariables\":{\"chainlinkRequestIds\":{\"details\":\"A mapping from Chainlink request ids to internal request ids\"},\"keyHash\":{\"details\":\"Hash of the public key used to verify the VRF proof\"},\"randomNumbers\":{\"details\":\"A list of random numbers from past requests mapped by request id\"},\"requestCounter\":{\"details\":\"A counter for the number of requests made used for request ids\"},\"requestLockBlock\":{\"details\":\"A list of blocks to be locked at based on past requests mapped by request id\"},\"subscriptionId\":{\"details\":\"Chainlink VRF subscription id\"},\"vrfCoordinator\":{\"details\":\"Reference to the VRFCoordinatorV2 deployed contract\"}},\"version\":1},\"userdoc\":{\"events\":{\"KeyHashSet(bytes32)\":{\"notice\":\"Emitted when the Chainlink VRF keyHash is set\"},\"RandomNumberCompleted(uint32,uint256)\":{\"notice\":\"Emitted when an existing request for a random number has been completed\"},\"RandomNumberRequested(uint32,address)\":{\"notice\":\"Emitted when a new request for a random number has been submitted\"},\"SubscriptionIdSet(uint64)\":{\"notice\":\"Emitted when the Chainlink VRF subscription id is set\"},\"VrfCoordinatorSet(address)\":{\"notice\":\"Emitted when the Chainlink VRF Coordinator address is set\"}},\"kind\":\"user\",\"methods\":{\"claimOwnership()\":{\"notice\":\"Allows the `_pendingOwner` address to finalize the transfer.\"},\"constructor\":{\"notice\":\"Constructor of the contract\"},\"getKeyHash()\":{\"notice\":\"Get Chainlink VRF keyHash associated with this contract.\"},\"getLastRequestId()\":{\"notice\":\"Gets the last request id used by the RNG service\"},\"getRequestFee()\":{\"notice\":\"Gets the Fee for making a Request against an RNG service\"},\"getSubscriptionId()\":{\"notice\":\"Get Chainlink VRF subscription id associated with this contract.\"},\"getVrfCoordinator()\":{\"notice\":\"Get Chainlink VRF coordinator contract address associated with this contract.\"},\"isRequestComplete(uint32)\":{\"notice\":\"Checks if the request for randomness from the 3rd-party service has completed\"},\"manager()\":{\"notice\":\"Gets current `_manager`.\"},\"owner()\":{\"notice\":\"Returns the address of the current owner.\"},\"pendingOwner()\":{\"notice\":\"Gets current `_pendingOwner`.\"},\"randomNumber(uint32)\":{\"notice\":\"Gets the random number produced by the 3rd-party service\"},\"renounceOwnership()\":{\"notice\":\"Renounce ownership of the contract.\"},\"requestRandomNumber()\":{\"notice\":\"Sends a request for a random number to the 3rd-party service\"},\"setKeyhash(bytes32)\":{\"notice\":\"Set Chainlink VRF keyHash.\"},\"setManager(address)\":{\"notice\":\"Set or change of manager.\"},\"setSubscriptionId(uint64)\":{\"notice\":\"Set Chainlink VRF subscription id associated with this contract.\"},\"transferOwnership(address)\":{\"notice\":\"Allows current owner to set the `_pendingOwner` address.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol\":\"RNGChainlinkV2\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\n/** ****************************************************************************\\n * @notice Interface for contracts using VRF randomness\\n * *****************************************************************************\\n * @dev PURPOSE\\n *\\n * @dev Reggie the Random Oracle (not his real job) wants to provide randomness\\n * @dev to Vera the verifier in such a way that Vera can be sure he's not\\n * @dev making his output up to suit himself. Reggie provides Vera a public key\\n * @dev to which he knows the secret key. Each time Vera provides a seed to\\n * @dev Reggie, he gives back a value which is computed completely\\n * @dev deterministically from the seed and the secret key.\\n *\\n * @dev Reggie provides a proof by which Vera can verify that the output was\\n * @dev correctly computed once Reggie tells it to her, but without that proof,\\n * @dev the output is indistinguishable to her from a uniform random sample\\n * @dev from the output space.\\n *\\n * @dev The purpose of this contract is to make it easy for unrelated contracts\\n * @dev to talk to Vera the verifier about the work Reggie is doing, to provide\\n * @dev simple access to a verifiable source of randomness. It ensures 2 things:\\n * @dev 1. The fulfillment came from the VRFCoordinator\\n * @dev 2. The consumer contract implements fulfillRandomWords.\\n * *****************************************************************************\\n * @dev USAGE\\n *\\n * @dev Calling contracts must inherit from VRFConsumerBase, and can\\n * @dev initialize VRFConsumerBase's attributes in their constructor as\\n * @dev shown:\\n *\\n * @dev   contract VRFConsumer {\\n * @dev     constructor(<other arguments>, address _vrfCoordinator, address _link)\\n * @dev       VRFConsumerBase(_vrfCoordinator) public {\\n * @dev         <initialization with other arguments goes here>\\n * @dev       }\\n * @dev   }\\n *\\n * @dev The oracle will have given you an ID for the VRF keypair they have\\n * @dev committed to (let's call it keyHash). Create subscription, fund it\\n * @dev and your consumer contract as a consumer of it (see VRFCoordinatorInterface\\n * @dev subscription management functions).\\n * @dev Call requestRandomWords(keyHash, subId, minimumRequestConfirmations,\\n * @dev callbackGasLimit, numWords),\\n * @dev see (VRFCoordinatorInterface for a description of the arguments).\\n *\\n * @dev Once the VRFCoordinator has received and validated the oracle's response\\n * @dev to your request, it will call your contract's fulfillRandomWords method.\\n *\\n * @dev The randomness argument to fulfillRandomWords is a set of random words\\n * @dev generated from your requestId and the blockHash of the request.\\n *\\n * @dev If your contract could have concurrent requests open, you can use the\\n * @dev requestId returned from requestRandomWords to track which response is associated\\n * @dev with which randomness request.\\n * @dev See \\\"SECURITY CONSIDERATIONS\\\" for principles to keep in mind,\\n * @dev if your contract could have multiple requests in flight simultaneously.\\n *\\n * @dev Colliding `requestId`s are cryptographically impossible as long as seeds\\n * @dev differ.\\n *\\n * *****************************************************************************\\n * @dev SECURITY CONSIDERATIONS\\n *\\n * @dev A method with the ability to call your fulfillRandomness method directly\\n * @dev could spoof a VRF response with any random value, so it's critical that\\n * @dev it cannot be directly called by anything other than this base contract\\n * @dev (specifically, by the VRFConsumerBase.rawFulfillRandomness method).\\n *\\n * @dev For your users to trust that your contract's random behavior is free\\n * @dev from malicious interference, it's best if you can write it so that all\\n * @dev behaviors implied by a VRF response are executed *during* your\\n * @dev fulfillRandomness method. If your contract must store the response (or\\n * @dev anything derived from it) and use it later, you must ensure that any\\n * @dev user-significant behavior which depends on that stored value cannot be\\n * @dev manipulated by a subsequent VRF request.\\n *\\n * @dev Similarly, both miners and the VRF oracle itself have some influence\\n * @dev over the order in which VRF responses appear on the blockchain, so if\\n * @dev your contract could have multiple VRF requests in flight simultaneously,\\n * @dev you must ensure that the order in which the VRF responses arrive cannot\\n * @dev be used to manipulate your contract's user-significant behavior.\\n *\\n * @dev Since the block hash of the block which contains the requestRandomness\\n * @dev call is mixed into the input to the VRF *last*, a sufficiently powerful\\n * @dev miner could, in principle, fork the blockchain to evict the block\\n * @dev containing the request, forcing the request to be included in a\\n * @dev different block with a different hash, and therefore a different input\\n * @dev to the VRF. However, such an attack would incur a substantial economic\\n * @dev cost. This cost scales with the number of blocks the VRF oracle waits\\n * @dev until it calls responds to a request. It is for this reason that\\n * @dev that you can signal to an oracle you'd like them to wait longer before\\n * @dev responding to the request (however this is not enforced in the contract\\n * @dev and so remains effective only in the case of unmodified oracle software).\\n */\\nabstract contract VRFConsumerBaseV2 {\\n  error OnlyCoordinatorCanFulfill(address have, address want);\\n  address private immutable vrfCoordinator;\\n\\n  /**\\n   * @param _vrfCoordinator address of VRFCoordinator contract\\n   */\\n  constructor(address _vrfCoordinator) {\\n    vrfCoordinator = _vrfCoordinator;\\n  }\\n\\n  /**\\n   * @notice fulfillRandomness handles the VRF response. Your contract must\\n   * @notice implement it. See \\\"SECURITY CONSIDERATIONS\\\" above for important\\n   * @notice principles to keep in mind when implementing your fulfillRandomness\\n   * @notice method.\\n   *\\n   * @dev VRFConsumerBaseV2 expects its subcontracts to have a method with this\\n   * @dev signature, and will call it once it has verified the proof\\n   * @dev associated with the randomness. (It is triggered via a call to\\n   * @dev rawFulfillRandomness, below.)\\n   *\\n   * @param requestId The Id initially returned by requestRandomness\\n   * @param randomWords the VRF output expanded to the requested number of words\\n   */\\n  function fulfillRandomWords(uint256 requestId, uint256[] memory randomWords) internal virtual;\\n\\n  // rawFulfillRandomness is called by VRFCoordinator when it receives a valid VRF\\n  // proof. rawFulfillRandomness then calls fulfillRandomness, after validating\\n  // the origin of the call\\n  function rawFulfillRandomWords(uint256 requestId, uint256[] memory randomWords) external {\\n    if (msg.sender != vrfCoordinator) {\\n      revert OnlyCoordinatorCanFulfill(msg.sender, vrfCoordinator);\\n    }\\n    fulfillRandomWords(requestId, randomWords);\\n  }\\n}\\n\",\"keccak256\":\"0xec8b7e3032e887dd0732d2a5f8552ddce64a99a81b0008ef0bcf6cad68a535fc\",\"license\":\"MIT\"},\"@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\ninterface VRFCoordinatorV2Interface {\\n  /**\\n   * @notice Get configuration relevant for making requests\\n   * @return minimumRequestConfirmations global min for request confirmations\\n   * @return maxGasLimit global max for request gas limit\\n   * @return s_provingKeyHashes list of registered key hashes\\n   */\\n  function getRequestConfig()\\n    external\\n    view\\n    returns (\\n      uint16,\\n      uint32,\\n      bytes32[] memory\\n    );\\n\\n  /**\\n   * @notice Request a set of random words.\\n   * @param keyHash - Corresponds to a particular oracle job which uses\\n   * that key for generating the VRF proof. Different keyHash's have different gas price\\n   * ceilings, so you can select a specific one to bound your maximum per request cost.\\n   * @param subId  - The ID of the VRF subscription. Must be funded\\n   * with the minimum subscription balance required for the selected keyHash.\\n   * @param minimumRequestConfirmations - How many blocks you'd like the\\n   * oracle to wait before responding to the request. See SECURITY CONSIDERATIONS\\n   * for why you may want to request more. The acceptable range is\\n   * [minimumRequestBlockConfirmations, 200].\\n   * @param callbackGasLimit - How much gas you'd like to receive in your\\n   * fulfillRandomWords callback. Note that gasleft() inside fulfillRandomWords\\n   * may be slightly less than this amount because of gas used calling the function\\n   * (argument decoding etc.), so you may need to request slightly more than you expect\\n   * to have inside fulfillRandomWords. The acceptable range is\\n   * [0, maxGasLimit]\\n   * @param numWords - The number of uint256 random values you'd like to receive\\n   * in your fulfillRandomWords callback. Note these numbers are expanded in a\\n   * secure way by the VRFCoordinator from a single random value supplied by the oracle.\\n   * @return requestId - A unique identifier of the request. Can be used to match\\n   * a request to a response in fulfillRandomWords.\\n   */\\n  function requestRandomWords(\\n    bytes32 keyHash,\\n    uint64 subId,\\n    uint16 minimumRequestConfirmations,\\n    uint32 callbackGasLimit,\\n    uint32 numWords\\n  ) external returns (uint256 requestId);\\n\\n  /**\\n   * @notice Create a VRF subscription.\\n   * @return subId - A unique subscription id.\\n   * @dev You can manage the consumer set dynamically with addConsumer/removeConsumer.\\n   * @dev Note to fund the subscription, use transferAndCall. For example\\n   * @dev  LINKTOKEN.transferAndCall(\\n   * @dev    address(COORDINATOR),\\n   * @dev    amount,\\n   * @dev    abi.encode(subId));\\n   */\\n  function createSubscription() external returns (uint64 subId);\\n\\n  /**\\n   * @notice Get a VRF subscription.\\n   * @param subId - ID of the subscription\\n   * @return balance - LINK balance of the subscription in juels.\\n   * @return reqCount - number of requests for this subscription, determines fee tier.\\n   * @return owner - owner of the subscription.\\n   * @return consumers - list of consumer address which are able to use this subscription.\\n   */\\n  function getSubscription(uint64 subId)\\n    external\\n    view\\n    returns (\\n      uint96 balance,\\n      uint64 reqCount,\\n      address owner,\\n      address[] memory consumers\\n    );\\n\\n  /**\\n   * @notice Request subscription owner transfer.\\n   * @param subId - ID of the subscription\\n   * @param newOwner - proposed new owner of the subscription\\n   */\\n  function requestSubscriptionOwnerTransfer(uint64 subId, address newOwner) external;\\n\\n  /**\\n   * @notice Request subscription owner transfer.\\n   * @param subId - ID of the subscription\\n   * @dev will revert if original owner of subId has\\n   * not requested that msg.sender become the new owner.\\n   */\\n  function acceptSubscriptionOwnerTransfer(uint64 subId) external;\\n\\n  /**\\n   * @notice Add a consumer to a VRF subscription.\\n   * @param subId - ID of the subscription\\n   * @param consumer - New consumer which can use the subscription\\n   */\\n  function addConsumer(uint64 subId, address consumer) external;\\n\\n  /**\\n   * @notice Remove a consumer from a VRF subscription.\\n   * @param subId - ID of the subscription\\n   * @param consumer - Consumer to remove from the subscription\\n   */\\n  function removeConsumer(uint64 subId, address consumer) external;\\n\\n  /**\\n   * @notice Cancel a subscription\\n   * @param subId - ID of the subscription\\n   * @param to - Where to send the remaining LINK to\\n   */\\n  function cancelSubscription(uint64 subId, address to) external;\\n}\\n\",\"keccak256\":\"0xcb29ee50ee2b05441e4deebf8b4756a0feec4f5497e36b6a1ca320f7ce561802\",\"license\":\"MIT\"},\"@pooltogether/owner-manager-contracts/contracts/Manageable.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"./Ownable.sol\\\";\\n\\n/**\\n * @title Abstract manageable contract that can be inherited by other contracts\\n * @notice Contract module based on Ownable which provides a basic access control mechanism, where\\n * there is an owner and a manager that can be granted exclusive access to specific functions.\\n *\\n * By default, the owner is the deployer of the contract.\\n *\\n * The owner account is set through a two steps process.\\n *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`\\n *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer\\n *\\n * The manager account needs to be set using {setManager}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyManager`, which can be applied to your functions to restrict their use to\\n * the manager.\\n */\\nabstract contract Manageable is Ownable {\\n    address private _manager;\\n\\n    /**\\n     * @dev Emitted when `_manager` has been changed.\\n     * @param previousManager previous `_manager` address.\\n     * @param newManager new `_manager` address.\\n     */\\n    event ManagerTransferred(address indexed previousManager, address indexed newManager);\\n\\n    /* ============ External Functions ============ */\\n\\n    /**\\n     * @notice Gets current `_manager`.\\n     * @return Current `_manager` address.\\n     */\\n    function manager() public view virtual returns (address) {\\n        return _manager;\\n    }\\n\\n    /**\\n     * @notice Set or change of manager.\\n     * @dev Throws if called by any account other than the owner.\\n     * @param _newManager New _manager address.\\n     * @return Boolean to indicate if the operation was successful or not.\\n     */\\n    function setManager(address _newManager) external onlyOwner returns (bool) {\\n        return _setManager(_newManager);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Set or change of manager.\\n     * @param _newManager New _manager address.\\n     * @return Boolean to indicate if the operation was successful or not.\\n     */\\n    function _setManager(address _newManager) private returns (bool) {\\n        address _previousManager = _manager;\\n\\n        require(_newManager != _previousManager, \\\"Manageable/existing-manager-address\\\");\\n\\n        _manager = _newManager;\\n\\n        emit ManagerTransferred(_previousManager, _newManager);\\n        return true;\\n    }\\n\\n    /* ============ Modifier Functions ============ */\\n\\n    /**\\n     * @dev Throws if called by any account other than the manager.\\n     */\\n    modifier onlyManager() {\\n        require(manager() == msg.sender, \\\"Manageable/caller-not-manager\\\");\\n        _;\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the manager or the owner.\\n     */\\n    modifier onlyManagerOrOwner() {\\n        require(manager() == msg.sender || owner() == msg.sender, \\\"Manageable/caller-not-manager-or-owner\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0xdd8ac008df192c6aa4df83e7037ab090970fda38e1f9fd712bc0ab5e0485fc04\",\"license\":\"GPL-3.0\"},\"@pooltogether/owner-manager-contracts/contracts/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title Abstract ownable contract that can be inherited by other contracts\\n * @notice Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner is the deployer of the contract.\\n *\\n * The owner account is set through a two steps process.\\n *      1. The current `owner` calls {transferOwnership} to set a `pendingOwner`\\n *      2. The `pendingOwner` calls {acceptOwnership} to accept the ownership transfer\\n *\\n * The manager account needs to be set using {setManager}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable {\\n    address private _owner;\\n    address private _pendingOwner;\\n\\n    /**\\n     * @dev Emitted when `_pendingOwner` has been changed.\\n     * @param pendingOwner new `_pendingOwner` address.\\n     */\\n    event OwnershipOffered(address indexed pendingOwner);\\n\\n    /**\\n     * @dev Emitted when `_owner` has been changed.\\n     * @param previousOwner previous `_owner` address.\\n     * @param newOwner new `_owner` address.\\n     */\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /* ============ Deploy ============ */\\n\\n    /**\\n     * @notice Initializes the contract setting `_initialOwner` as the initial owner.\\n     * @param _initialOwner Initial owner of the contract.\\n     */\\n    constructor(address _initialOwner) {\\n        _setOwner(_initialOwner);\\n    }\\n\\n    /* ============ External Functions ============ */\\n\\n    /**\\n     * @notice Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @notice Gets current `_pendingOwner`.\\n     * @return Current `_pendingOwner` address.\\n     */\\n    function pendingOwner() external view virtual returns (address) {\\n        return _pendingOwner;\\n    }\\n\\n    /**\\n     * @notice Renounce ownership of the contract.\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby removing any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() external virtual onlyOwner {\\n        _setOwner(address(0));\\n    }\\n\\n    /**\\n    * @notice Allows current owner to set the `_pendingOwner` address.\\n    * @param _newOwner Address to transfer ownership to.\\n    */\\n    function transferOwnership(address _newOwner) external onlyOwner {\\n        require(_newOwner != address(0), \\\"Ownable/pendingOwner-not-zero-address\\\");\\n\\n        _pendingOwner = _newOwner;\\n\\n        emit OwnershipOffered(_newOwner);\\n    }\\n\\n    /**\\n    * @notice Allows the `_pendingOwner` address to finalize the transfer.\\n    * @dev This function is only callable by the `_pendingOwner`.\\n    */\\n    function claimOwnership() external onlyPendingOwner {\\n        _setOwner(_pendingOwner);\\n        _pendingOwner = address(0);\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Internal function to set the `_owner` of the contract.\\n     * @param _newOwner New `_owner` address.\\n     */\\n    function _setOwner(address _newOwner) private {\\n        address _oldOwner = _owner;\\n        _owner = _newOwner;\\n        emit OwnershipTransferred(_oldOwner, _newOwner);\\n    }\\n\\n    /* ============ Modifier Functions ============ */\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        require(owner() == msg.sender, \\\"Ownable/caller-not-owner\\\");\\n        _;\\n    }\\n\\n    /**\\n    * @dev Throws if called by any account other than the `pendingOwner`.\\n    */\\n    modifier onlyPendingOwner() {\\n        require(msg.sender == _pendingOwner, \\\"Ownable/caller-not-pendingOwner\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0xfd0fd374812c8af45f2633cc7cc4811ccb7bad0a3902a43aded35939eb4a00d1\",\"license\":\"GPL-3.0\"},\"@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol\\\";\\nimport \\\"@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol\\\";\\nimport \\\"@pooltogether/owner-manager-contracts/contracts/Manageable.sol\\\";\\n\\nimport \\\"./RNGChainlinkV2Interface.sol\\\";\\n\\ncontract RNGChainlinkV2 is RNGChainlinkV2Interface, VRFConsumerBaseV2, Manageable {\\n  /* ============ Global Variables ============ */\\n\\n  /// @dev Reference to the VRFCoordinatorV2 deployed contract\\n  VRFCoordinatorV2Interface internal vrfCoordinator;\\n\\n  /// @dev A counter for the number of requests made used for request ids\\n  uint32 internal requestCounter;\\n\\n  /// @dev Chainlink VRF subscription id\\n  uint64 internal subscriptionId;\\n\\n  /// @dev Hash of the public key used to verify the VRF proof\\n  bytes32 internal keyHash;\\n\\n  /// @dev A list of random numbers from past requests mapped by request id\\n  mapping(uint32 => uint256) internal randomNumbers;\\n\\n  /// @dev A list of blocks to be locked at based on past requests mapped by request id\\n  mapping(uint32 => uint32) internal requestLockBlock;\\n\\n  /// @dev A mapping from Chainlink request ids to internal request ids\\n  mapping(uint256 => uint32) internal chainlinkRequestIds;\\n\\n  /* ============ Events ============ */\\n\\n  /**\\n   * @notice Emitted when the Chainlink VRF keyHash is set\\n   * @param keyHash Chainlink VRF keyHash\\n   */\\n  event KeyHashSet(bytes32 keyHash);\\n\\n  /**\\n   * @notice Emitted when the Chainlink VRF subscription id is set\\n   * @param subscriptionId Chainlink VRF subscription id\\n   */\\n  event SubscriptionIdSet(uint64 subscriptionId);\\n\\n  /**\\n   * @notice Emitted when the Chainlink VRF Coordinator address is set\\n   * @param vrfCoordinator Address of the VRF Coordinator\\n   */\\n  event VrfCoordinatorSet(VRFCoordinatorV2Interface indexed vrfCoordinator);\\n\\n  /* ============ Constructor ============ */\\n\\n  /**\\n   * @notice Constructor of the contract\\n   * @param _owner Owner of the contract\\n   * @param _vrfCoordinator Address of the VRF Coordinator\\n   * @param _subscriptionId Chainlink VRF subscription id\\n   * @param _keyHash Hash of the public key used to verify the VRF proof\\n   */\\n  constructor(\\n    address _owner,\\n    VRFCoordinatorV2Interface _vrfCoordinator,\\n    uint64 _subscriptionId,\\n    bytes32 _keyHash\\n  ) Ownable(_owner) VRFConsumerBaseV2(address(_vrfCoordinator)) {\\n    _setVRFCoordinator(_vrfCoordinator);\\n    _setSubscriptionId(_subscriptionId);\\n    _setKeyhash(_keyHash);\\n  }\\n\\n  /* ============ External Functions ============ */\\n\\n  /// @inheritdoc RNGInterface\\n  function requestRandomNumber()\\n    external\\n    override\\n    onlyManager\\n    returns (uint32 requestId, uint32 lockBlock)\\n  {\\n    uint256 _vrfRequestId = vrfCoordinator.requestRandomWords(\\n      keyHash,\\n      subscriptionId,\\n      3,\\n      1000000,\\n      1\\n    );\\n\\n    requestCounter++;\\n    uint32 _requestCounter = requestCounter;\\n\\n    requestId = _requestCounter;\\n    chainlinkRequestIds[_vrfRequestId] = _requestCounter;\\n\\n    lockBlock = uint32(block.number);\\n    requestLockBlock[_requestCounter] = lockBlock;\\n\\n    emit RandomNumberRequested(_requestCounter, msg.sender);\\n  }\\n\\n  /// @inheritdoc RNGInterface\\n  function isRequestComplete(uint32 _internalRequestId)\\n    external\\n    view\\n    override\\n    returns (bool isCompleted)\\n  {\\n    return randomNumbers[_internalRequestId] != 0;\\n  }\\n\\n  /// @inheritdoc RNGInterface\\n  function randomNumber(uint32 _internalRequestId)\\n    external\\n    view\\n    override\\n    returns (uint256 randomNum)\\n  {\\n    return randomNumbers[_internalRequestId];\\n  }\\n\\n  /// @inheritdoc RNGInterface\\n  function getLastRequestId() external view override returns (uint32 requestId) {\\n    return requestCounter;\\n  }\\n\\n  /// @inheritdoc RNGInterface\\n  function getRequestFee() external pure override returns (address feeToken, uint256 requestFee) {\\n    return (address(0), 0);\\n  }\\n\\n  /// @inheritdoc RNGChainlinkV2Interface\\n  function getKeyHash() external view override returns (bytes32) {\\n    return keyHash;\\n  }\\n\\n  /// @inheritdoc RNGChainlinkV2Interface\\n  function getSubscriptionId() external view override returns (uint64) {\\n    return subscriptionId;\\n  }\\n\\n  /// @inheritdoc RNGChainlinkV2Interface\\n  function getVrfCoordinator() external view override returns (VRFCoordinatorV2Interface) {\\n    return vrfCoordinator;\\n  }\\n\\n  /// @inheritdoc RNGChainlinkV2Interface\\n  function setSubscriptionId(uint64 _subscriptionId) external override onlyOwner {\\n    _setSubscriptionId(_subscriptionId);\\n  }\\n\\n  /// @inheritdoc RNGChainlinkV2Interface\\n  function setKeyhash(bytes32 _keyHash) external override onlyOwner {\\n    _setKeyhash(_keyHash);\\n  }\\n\\n  /* ============ Internal Functions ============ */\\n\\n  /**\\n   * @notice Callback function called by VRF Coordinator\\n   * @dev The VRF Coordinator will only call it once it has verified the proof associated with the randomness.\\n   * @param _vrfRequestId Chainlink VRF request id\\n   * @param _randomWords Chainlink VRF array of random words\\n   */\\n  function fulfillRandomWords(uint256 _vrfRequestId, uint256[] memory _randomWords)\\n    internal\\n    override\\n  {\\n    uint32 _internalRequestId = chainlinkRequestIds[_vrfRequestId];\\n    require(_internalRequestId > 0, \\\"RNGChainLink/requestId-incorrect\\\");\\n\\n    uint256 _randomNumber = _randomWords[0];\\n    randomNumbers[_internalRequestId] = _randomNumber;\\n\\n    emit RandomNumberCompleted(_internalRequestId, _randomNumber);\\n  }\\n\\n  /**\\n   * @notice Set Chainlink VRF coordinator contract address.\\n   * @param _vrfCoordinator Chainlink VRF coordinator contract address\\n   */\\n  function _setVRFCoordinator(VRFCoordinatorV2Interface _vrfCoordinator) internal {\\n    require(address(_vrfCoordinator) != address(0), \\\"RNGChainLink/vrf-not-zero-addr\\\");\\n    vrfCoordinator = _vrfCoordinator;\\n    emit VrfCoordinatorSet(_vrfCoordinator);\\n  }\\n\\n  /**\\n   * @notice Set Chainlink VRF subscription id associated with this contract.\\n   * @param _subscriptionId Chainlink VRF subscription id\\n   */\\n  function _setSubscriptionId(uint64 _subscriptionId) internal {\\n    require(_subscriptionId > 0, \\\"RNGChainLink/subId-gt-zero\\\");\\n    subscriptionId = _subscriptionId;\\n    emit SubscriptionIdSet(_subscriptionId);\\n  }\\n\\n  /**\\n   * @notice Set Chainlink VRF keyHash.\\n   * @param _keyHash Chainlink VRF keyHash\\n   */\\n  function _setKeyhash(bytes32 _keyHash) internal {\\n    require(_keyHash != bytes32(0), \\\"RNGChainLink/keyHash-not-empty\\\");\\n    keyHash = _keyHash;\\n    emit KeyHashSet(_keyHash);\\n  }\\n}\\n\",\"keccak256\":\"0xa771db41fc9ab0c9ad0620adb126185fd66797fd7257bae7df3f777ad4b2a292\",\"license\":\"GPL-3.0\"},\"@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2Interface.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol\\\";\\n\\nimport \\\"./RNGInterface.sol\\\";\\n\\n/**\\n * @title RNG Chainlink V2 Interface\\n * @notice Provides an interface for requesting random numbers from Chainlink VRF V2.\\n */\\ninterface RNGChainlinkV2Interface is RNGInterface {\\n  /**\\n   * @notice Get Chainlink VRF keyHash associated with this contract.\\n   * @return bytes32 Chainlink VRF keyHash\\n   */\\n  function getKeyHash() external view returns (bytes32);\\n\\n  /**\\n   * @notice Get Chainlink VRF subscription id associated with this contract.\\n   * @return uint64 Chainlink VRF subscription id\\n   */\\n  function getSubscriptionId() external view returns (uint64);\\n\\n  /**\\n   * @notice Get Chainlink VRF coordinator contract address associated with this contract.\\n   * @return address Chainlink VRF coordinator address\\n   */\\n  function getVrfCoordinator() external view returns (VRFCoordinatorV2Interface);\\n\\n  /**\\n   * @notice Set Chainlink VRF keyHash.\\n   * @dev This function is only callable by the owner.\\n   * @param keyHash Chainlink VRF keyHash\\n   */\\n  function setKeyhash(bytes32 keyHash) external;\\n\\n  /**\\n   * @notice Set Chainlink VRF subscription id associated with this contract.\\n   * @dev This function is only callable by the owner.\\n   * @param subscriptionId Chainlink VRF subscription id\\n   */\\n  function setSubscriptionId(uint64 subscriptionId) external;\\n}\\n\",\"keccak256\":\"0xc1fb0dfc19a27987253f98a9c7e9ebf57f1248004115f6f43308f85b5adaff71\",\"license\":\"GPL-3.0\"},\"@pooltogether/pooltogether-rng-contracts/contracts/RNGInterface.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\n/**\\n * @title Random Number Generator Interface\\n * @notice Provides an interface for requesting random numbers from 3rd-party RNG services (Chainlink VRF, Starkware VDF, etc..)\\n */\\ninterface RNGInterface {\\n  /**\\n   * @notice Emitted when a new request for a random number has been submitted\\n   * @param requestId The indexed ID of the request used to get the results of the RNG service\\n   * @param sender The indexed address of the sender of the request\\n   */\\n  event RandomNumberRequested(uint32 indexed requestId, address indexed sender);\\n\\n  /**\\n   * @notice Emitted when an existing request for a random number has been completed\\n   * @param requestId The indexed ID of the request used to get the results of the RNG service\\n   * @param randomNumber The random number produced by the 3rd-party service\\n   */\\n  event RandomNumberCompleted(uint32 indexed requestId, uint256 randomNumber);\\n\\n  /**\\n   * @notice Gets the last request id used by the RNG service\\n   * @return requestId The last request id used in the last request\\n   */\\n  function getLastRequestId() external view returns (uint32 requestId);\\n\\n  /**\\n   * @notice Gets the Fee for making a Request against an RNG service\\n   * @return feeToken The address of the token that is used to pay fees\\n   * @return requestFee The fee required to be paid to make a request\\n   */\\n  function getRequestFee() external view returns (address feeToken, uint256 requestFee);\\n\\n  /**\\n   * @notice Sends a request for a random number to the 3rd-party service\\n   * @dev Some services will complete the request immediately, others may have a time-delay\\n   * @dev Some services require payment in the form of a token, such as $LINK for Chainlink VRF\\n   * @return requestId The ID of the request used to get the results of the RNG service\\n   * @return lockBlock The block number at which the RNG service will start generating time-delayed randomness.\\n   * The calling contract should \\\"lock\\\" all activity until the result is available via the `requestId`\\n   */\\n  function requestRandomNumber() external returns (uint32 requestId, uint32 lockBlock);\\n\\n  /**\\n   * @notice Checks if the request for randomness from the 3rd-party service has completed\\n   * @dev For time-delayed requests, this function is used to check/confirm completion\\n   * @param requestId The ID of the request used to get the results of the RNG service\\n   * @return isCompleted True if the request has completed and a random number is available, false otherwise\\n   */\\n  function isRequestComplete(uint32 requestId) external view returns (bool isCompleted);\\n\\n  /**\\n   * @notice Gets the random number produced by the 3rd-party service\\n   * @param requestId The ID of the request used to get the results of the RNG service\\n   * @return randomNum The random number\\n   */\\n  function randomNumber(uint32 requestId) external returns (uint256 randomNum);\\n}\\n\",\"keccak256\":\"0x24803ae776bba768a3a3f65d3b7e5fc100c7b5881a8e5e39d6c5df2735a3b5cb\",\"license\":\"GPL-3.0\"}},\"version\":1}",
+  "bytecode": "0x60a06040523480156200001157600080fd5b506040516200127e3803806200127e8339810160408190526200003491620002b1565b6001600160601b0319606084901b166080528362000052816200007e565b506200005e83620000ce565b620000698262000174565b62000074816200022c565b505050506200032f565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6001600160a01b0381166200012a5760405162461bcd60e51b815260206004820152601e60248201527f524e47436861696e4c696e6b2f7672662d6e6f742d7a65726f2d61646472000060448201526064015b60405180910390fd5b600380546001600160a01b0319166001600160a01b0383169081179091556040517f4cc41e06d3d0588be9be0e1469ba1934c4bd1cb8f4f70adf2aa31f4b92134b2790600090a250565b6000816001600160401b031611620001cf5760405162461bcd60e51b815260206004820152601a60248201527f524e47436861696e4c696e6b2f73756249642d67742d7a65726f000000000000604482015260640162000121565b600380546001600160c01b0316600160c01b6001600160401b038416908102919091179091556040519081527f68de96e24c66c14c012b5bd342251abc26a6003eaa438002bfe530f28ca63fed906020015b60405180910390a150565b806200027b5760405162461bcd60e51b815260206004820152601e60248201527f524e47436861696e4c696e6b2f6b6579486173682d6e6f742d656d7074790000604482015260640162000121565b60048190556040518181527fd013f86c8346660ebf421351882cd1b3c2f91883092df1800264c656b0db0cc69060200162000221565b60008060008060808587031215620002c857600080fd5b8451620002d58162000316565b6020860151909450620002e88162000316565b60408601519093506001600160401b03811681146200030657600080fd5b6060959095015193969295505050565b6001600160a01b03811681146200032c57600080fd5b50565b60805160601c610f296200035560003960008181610320015261037b0152610f296000f3fe608060405234801561001057600080fd5b50600436106101365760003560e01c8063715018a6116100b2578063d0ebdbe711610081578063e30c397811610066578063e30c3978146102de578063ea7b4f77146102ef578063f2fde38b1461030257600080fd5b8063d0ebdbe71461029e578063de3d9fb7146102b157600080fd5b8063715018a61461023a5780638678a7b2146102425780638da5cb5b146102675780639d2a5f981461027857600080fd5b8063331bf12511610109578063481c6a75116100ee578063481c6a751461020e5780634e71e0c81461021f5780636309b7731461022757600080fd5b8063331bf125146101c45780633a19b9bc146101d657600080fd5b80630cb4a29d1461013b5780630d37b5371461016557806319c2b4c3146101795780631fe543e3146101af575b600080fd5b6003546001600160a01b03165b6040516001600160a01b0390911681526020015b60405180910390f35b60408051600080825260208201520161015c565b60035474010000000000000000000000000000000000000000900463ffffffff1660405163ffffffff909116815260200161015c565b6101c26101bd366004610d56565b610315565b005b6004545b60405190815260200161015c565b6101fe6101e4366004610e45565b63ffffffff16600090815260056020526040902054151590565b604051901515815260200161015c565b6002546001600160a01b0316610148565b6101c26103bb565b6101c2610235366004610d24565b610449565b6101c26104be565b61024a610533565b6040805163ffffffff93841681529290911660208301520161015c565b6000546001600160a01b0316610148565b6101c8610286366004610e45565b63ffffffff1660009081526005602052604090205490565b6101fe6102ac366004610cf4565b610763565b600354600160c01b900467ffffffffffffffff1660405167ffffffffffffffff909116815260200161015c565b6001546001600160a01b0316610148565b6101c26102fd366004610e6b565b6107dd565b6101c2610310366004610cf4565b61084f565b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146103ad576040517f1cf993f40000000000000000000000000000000000000000000000000000000081523360048201526001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001660248201526044015b60405180910390fd5b6103b7828261098b565b5050565b6001546001600160a01b031633146104155760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e65720060448201526064016103a4565b60015461042a906001600160a01b0316610a60565b6001805473ffffffffffffffffffffffffffffffffffffffff19169055565b3361045c6000546001600160a01b031690565b6001600160a01b0316146104b25760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6104bb81610abd565b50565b336104d16000546001600160a01b031690565b6001600160a01b0316146105275760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6105316000610a60565b565b600080336105496002546001600160a01b031690565b6001600160a01b03161461059f5760405162461bcd60e51b815260206004820152601d60248201527f4d616e61676561626c652f63616c6c65722d6e6f742d6d616e6167657200000060448201526064016103a4565b60038054600480546040517f5d3b1d3000000000000000000000000000000000000000000000000000000000815291820152600160c01b820467ffffffffffffffff1660248201526044810192909252620f42406064830152600160848301526000916001600160a01b0390911690635d3b1d309060a401602060405180830381600087803b15801561063157600080fd5b505af1158015610645573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106699190610d3d565b600380549192507401000000000000000000000000000000000000000090910463ffffffff1690601461069b83610e95565b82546101009290920a63ffffffff818102199093169183160217909155600354600084815260076020908152604080832080547401000000000000000000000000000000000000000090950486167fffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000095861681179091558084526006909252808320805490941643958616179093559151919650919450859250339183917fcf635b20f2defc1e71326dc4f0b616fa676e29a5bae87da19fcaddc550b33f039190a350509091565b6000336107786000546001600160a01b031690565b6001600160a01b0316146107ce5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6107d782610b46565b92915050565b336107f06000546001600160a01b031690565b6001600160a01b0316146108465760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6104bb81610c32565b336108626000546001600160a01b031690565b6001600160a01b0316146108b85760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6001600160a01b0381166109345760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d616460448201527f647265737300000000000000000000000000000000000000000000000000000060648201526084016103a4565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b60008281526007602052604090205463ffffffff16806109ed5760405162461bcd60e51b815260206004820181905260248201527f524e47436861696e4c696e6b2f7265717565737449642d696e636f727265637460448201526064016103a4565b600082600081518110610a0257610a02610ec7565b60209081029190910181015163ffffffff841660008181526005845260409081902083905551828152919350917f629394f18de7accce1179c28c39be59503a57cbcf45980a2772743b041b36271910160405180910390a250505050565b600080546001600160a01b0383811673ffffffffffffffffffffffffffffffffffffffff19831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b80610b0a5760405162461bcd60e51b815260206004820152601e60248201527f524e47436861696e4c696e6b2f6b6579486173682d6e6f742d656d707479000060448201526064016103a4565b60048190556040518181527fd013f86c8346660ebf421351882cd1b3c2f91883092df1800264c656b0db0cc6906020015b60405180910390a150565b6002546000906001600160a01b03908116908316811415610bcf5760405162461bcd60e51b815260206004820152602360248201527f4d616e61676561626c652f6578697374696e672d6d616e616765722d6164647260448201527f657373000000000000000000000000000000000000000000000000000000000060648201526084016103a4565b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0385811691821790925560405190918316907f9cb45c728de594dab506a1f1a8554e24c8eeaf983618d5ec5dd7bc6f3c49feee90600090a350600192915050565b60008167ffffffffffffffff1611610c8c5760405162461bcd60e51b815260206004820152601a60248201527f524e47436861696e4c696e6b2f73756249642d67742d7a65726f00000000000060448201526064016103a4565b6003805477ffffffffffffffffffffffffffffffffffffffffffffffff16600160c01b67ffffffffffffffff8416908102919091179091556040519081527f68de96e24c66c14c012b5bd342251abc26a6003eaa438002bfe530f28ca63fed90602001610b3b565b600060208284031215610d0657600080fd5b81356001600160a01b0381168114610d1d57600080fd5b9392505050565b600060208284031215610d3657600080fd5b5035919050565b600060208284031215610d4f57600080fd5b5051919050565b60008060408385031215610d6957600080fd5b8235915060208084013567ffffffffffffffff80821115610d8957600080fd5b818601915086601f830112610d9d57600080fd5b813581811115610daf57610daf610edd565b8060051b6040517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0603f83011681018181108582111715610df257610df2610edd565b604052828152858101935084860182860187018b1015610e1157600080fd5b600095505b83861015610e34578035855260019590950194938601938601610e16565b508096505050505050509250929050565b600060208284031215610e5757600080fd5b813563ffffffff81168114610d1d57600080fd5b600060208284031215610e7d57600080fd5b813567ffffffffffffffff81168114610d1d57600080fd5b600063ffffffff80831681811415610ebd57634e487b7160e01b600052601160045260246000fd5b6001019392505050565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052604160045260246000fdfea26469706673582212205e31f6977d0789e2ea185a5db4cf5698eb3198898cf06f04f5d767120890540b64736f6c63430008060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101365760003560e01c8063715018a6116100b2578063d0ebdbe711610081578063e30c397811610066578063e30c3978146102de578063ea7b4f77146102ef578063f2fde38b1461030257600080fd5b8063d0ebdbe71461029e578063de3d9fb7146102b157600080fd5b8063715018a61461023a5780638678a7b2146102425780638da5cb5b146102675780639d2a5f981461027857600080fd5b8063331bf12511610109578063481c6a75116100ee578063481c6a751461020e5780634e71e0c81461021f5780636309b7731461022757600080fd5b8063331bf125146101c45780633a19b9bc146101d657600080fd5b80630cb4a29d1461013b5780630d37b5371461016557806319c2b4c3146101795780631fe543e3146101af575b600080fd5b6003546001600160a01b03165b6040516001600160a01b0390911681526020015b60405180910390f35b60408051600080825260208201520161015c565b60035474010000000000000000000000000000000000000000900463ffffffff1660405163ffffffff909116815260200161015c565b6101c26101bd366004610d56565b610315565b005b6004545b60405190815260200161015c565b6101fe6101e4366004610e45565b63ffffffff16600090815260056020526040902054151590565b604051901515815260200161015c565b6002546001600160a01b0316610148565b6101c26103bb565b6101c2610235366004610d24565b610449565b6101c26104be565b61024a610533565b6040805163ffffffff93841681529290911660208301520161015c565b6000546001600160a01b0316610148565b6101c8610286366004610e45565b63ffffffff1660009081526005602052604090205490565b6101fe6102ac366004610cf4565b610763565b600354600160c01b900467ffffffffffffffff1660405167ffffffffffffffff909116815260200161015c565b6001546001600160a01b0316610148565b6101c26102fd366004610e6b565b6107dd565b6101c2610310366004610cf4565b61084f565b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146103ad576040517f1cf993f40000000000000000000000000000000000000000000000000000000081523360048201526001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001660248201526044015b60405180910390fd5b6103b7828261098b565b5050565b6001546001600160a01b031633146104155760405162461bcd60e51b815260206004820152601f60248201527f4f776e61626c652f63616c6c65722d6e6f742d70656e64696e674f776e65720060448201526064016103a4565b60015461042a906001600160a01b0316610a60565b6001805473ffffffffffffffffffffffffffffffffffffffff19169055565b3361045c6000546001600160a01b031690565b6001600160a01b0316146104b25760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6104bb81610abd565b50565b336104d16000546001600160a01b031690565b6001600160a01b0316146105275760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6105316000610a60565b565b600080336105496002546001600160a01b031690565b6001600160a01b03161461059f5760405162461bcd60e51b815260206004820152601d60248201527f4d616e61676561626c652f63616c6c65722d6e6f742d6d616e6167657200000060448201526064016103a4565b60038054600480546040517f5d3b1d3000000000000000000000000000000000000000000000000000000000815291820152600160c01b820467ffffffffffffffff1660248201526044810192909252620f42406064830152600160848301526000916001600160a01b0390911690635d3b1d309060a401602060405180830381600087803b15801561063157600080fd5b505af1158015610645573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106699190610d3d565b600380549192507401000000000000000000000000000000000000000090910463ffffffff1690601461069b83610e95565b82546101009290920a63ffffffff818102199093169183160217909155600354600084815260076020908152604080832080547401000000000000000000000000000000000000000090950486167fffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000095861681179091558084526006909252808320805490941643958616179093559151919650919450859250339183917fcf635b20f2defc1e71326dc4f0b616fa676e29a5bae87da19fcaddc550b33f039190a350509091565b6000336107786000546001600160a01b031690565b6001600160a01b0316146107ce5760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6107d782610b46565b92915050565b336107f06000546001600160a01b031690565b6001600160a01b0316146108465760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6104bb81610c32565b336108626000546001600160a01b031690565b6001600160a01b0316146108b85760405162461bcd60e51b815260206004820152601860248201527f4f776e61626c652f63616c6c65722d6e6f742d6f776e6572000000000000000060448201526064016103a4565b6001600160a01b0381166109345760405162461bcd60e51b815260206004820152602560248201527f4f776e61626c652f70656e64696e674f776e65722d6e6f742d7a65726f2d616460448201527f647265737300000000000000000000000000000000000000000000000000000060648201526084016103a4565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517f239a2ddded15777fa246aed5f7e1a9bc69a39d4eb4a397034d1d85766cca7d4c90600090a250565b60008281526007602052604090205463ffffffff16806109ed5760405162461bcd60e51b815260206004820181905260248201527f524e47436861696e4c696e6b2f7265717565737449642d696e636f727265637460448201526064016103a4565b600082600081518110610a0257610a02610ec7565b60209081029190910181015163ffffffff841660008181526005845260409081902083905551828152919350917f629394f18de7accce1179c28c39be59503a57cbcf45980a2772743b041b36271910160405180910390a250505050565b600080546001600160a01b0383811673ffffffffffffffffffffffffffffffffffffffff19831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b80610b0a5760405162461bcd60e51b815260206004820152601e60248201527f524e47436861696e4c696e6b2f6b6579486173682d6e6f742d656d707479000060448201526064016103a4565b60048190556040518181527fd013f86c8346660ebf421351882cd1b3c2f91883092df1800264c656b0db0cc6906020015b60405180910390a150565b6002546000906001600160a01b03908116908316811415610bcf5760405162461bcd60e51b815260206004820152602360248201527f4d616e61676561626c652f6578697374696e672d6d616e616765722d6164647260448201527f657373000000000000000000000000000000000000000000000000000000000060648201526084016103a4565b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0385811691821790925560405190918316907f9cb45c728de594dab506a1f1a8554e24c8eeaf983618d5ec5dd7bc6f3c49feee90600090a350600192915050565b60008167ffffffffffffffff1611610c8c5760405162461bcd60e51b815260206004820152601a60248201527f524e47436861696e4c696e6b2f73756249642d67742d7a65726f00000000000060448201526064016103a4565b6003805477ffffffffffffffffffffffffffffffffffffffffffffffff16600160c01b67ffffffffffffffff8416908102919091179091556040519081527f68de96e24c66c14c012b5bd342251abc26a6003eaa438002bfe530f28ca63fed90602001610b3b565b600060208284031215610d0657600080fd5b81356001600160a01b0381168114610d1d57600080fd5b9392505050565b600060208284031215610d3657600080fd5b5035919050565b600060208284031215610d4f57600080fd5b5051919050565b60008060408385031215610d6957600080fd5b8235915060208084013567ffffffffffffffff80821115610d8957600080fd5b818601915086601f830112610d9d57600080fd5b813581811115610daf57610daf610edd565b8060051b6040517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0603f83011681018181108582111715610df257610df2610edd565b604052828152858101935084860182860187018b1015610e1157600080fd5b600095505b83861015610e34578035855260019590950194938601938601610e16565b508096505050505050509250929050565b600060208284031215610e5757600080fd5b813563ffffffff81168114610d1d57600080fd5b600060208284031215610e7d57600080fd5b813567ffffffffffffffff81168114610d1d57600080fd5b600063ffffffff80831681811415610ebd57634e487b7160e01b600052601160045260246000fd5b6001019392505050565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052604160045260246000fdfea26469706673582212205e31f6977d0789e2ea185a5db4cf5698eb3198898cf06f04f5d767120890540b64736f6c63430008060033",
+  "devdoc": {
+    "events": {
+      "KeyHashSet(bytes32)": {
+        "params": {
+          "keyHash": "Chainlink VRF keyHash"
+        }
+      },
+      "SubscriptionIdSet(uint64)": {
+        "params": {
+          "subscriptionId": "Chainlink VRF subscription id"
+        }
+      },
+      "VrfCoordinatorSet(address)": {
+        "params": {
+          "vrfCoordinator": "Address of the VRF Coordinator"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "claimOwnership()": {
+        "details": "This function is only callable by the `_pendingOwner`."
+      },
+      "constructor": {
+        "params": {
+          "_keyHash": "Hash of the public key used to verify the VRF proof",
+          "_owner": "Owner of the contract",
+          "_subscriptionId": "Chainlink VRF subscription id",
+          "_vrfCoordinator": "Address of the VRF Coordinator"
+        }
+      },
+      "getKeyHash()": {
+        "returns": {
+          "_0": "bytes32 Chainlink VRF keyHash"
+        }
+      },
+      "getLastRequestId()": {
+        "returns": {
+          "requestId": "The last request id used in the last request"
+        }
+      },
+      "getRequestFee()": {
+        "returns": {
+          "feeToken": "The address of the token that is used to pay fees",
+          "requestFee": "The fee required to be paid to make a request"
+        }
+      },
+      "getSubscriptionId()": {
+        "returns": {
+          "_0": "uint64 Chainlink VRF subscription id"
+        }
+      },
+      "getVrfCoordinator()": {
+        "returns": {
+          "_0": "address Chainlink VRF coordinator address"
+        }
+      },
+      "isRequestComplete(uint32)": {
+        "details": "For time-delayed requests, this function is used to check/confirm completion",
+        "params": {
+          "requestId": "The ID of the request used to get the results of the RNG service"
+        },
+        "returns": {
+          "isCompleted": "True if the request has completed and a random number is available, false otherwise"
+        }
+      },
+      "manager()": {
+        "returns": {
+          "_0": "Current `_manager` address."
+        }
+      },
+      "pendingOwner()": {
+        "returns": {
+          "_0": "Current `_pendingOwner` address."
+        }
+      },
+      "randomNumber(uint32)": {
+        "params": {
+          "requestId": "The ID of the request used to get the results of the RNG service"
+        },
+        "returns": {
+          "randomNum": "The random number"
+        }
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "requestRandomNumber()": {
+        "details": "Some services will complete the request immediately, others may have a time-delaySome services require payment in the form of a token, such as $LINK for Chainlink VRF",
+        "returns": {
+          "lockBlock": "The block number at which the RNG service will start generating time-delayed randomness. The calling contract should \"lock\" all activity until the result is available via the `requestId`",
+          "requestId": "The ID of the request used to get the results of the RNG service"
+        }
+      },
+      "setKeyhash(bytes32)": {
+        "details": "This function is only callable by the owner.",
+        "params": {
+          "keyHash": "Chainlink VRF keyHash"
+        }
+      },
+      "setManager(address)": {
+        "details": "Throws if called by any account other than the owner.",
+        "params": {
+          "_newManager": "New _manager address."
+        },
+        "returns": {
+          "_0": "Boolean to indicate if the operation was successful or not."
+        }
+      },
+      "setSubscriptionId(uint64)": {
+        "details": "This function is only callable by the owner.",
+        "params": {
+          "subscriptionId": "Chainlink VRF subscription id"
+        }
+      },
+      "transferOwnership(address)": {
+        "params": {
+          "_newOwner": "Address to transfer ownership to."
+        }
+      }
+    },
+    "stateVariables": {
+      "chainlinkRequestIds": {
+        "details": "A mapping from Chainlink request ids to internal request ids"
+      },
+      "keyHash": {
+        "details": "Hash of the public key used to verify the VRF proof"
+      },
+      "randomNumbers": {
+        "details": "A list of random numbers from past requests mapped by request id"
+      },
+      "requestCounter": {
+        "details": "A counter for the number of requests made used for request ids"
+      },
+      "requestLockBlock": {
+        "details": "A list of blocks to be locked at based on past requests mapped by request id"
+      },
+      "subscriptionId": {
+        "details": "Chainlink VRF subscription id"
+      },
+      "vrfCoordinator": {
+        "details": "Reference to the VRFCoordinatorV2 deployed contract"
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "KeyHashSet(bytes32)": {
+        "notice": "Emitted when the Chainlink VRF keyHash is set"
+      },
+      "RandomNumberCompleted(uint32,uint256)": {
+        "notice": "Emitted when an existing request for a random number has been completed"
+      },
+      "RandomNumberRequested(uint32,address)": {
+        "notice": "Emitted when a new request for a random number has been submitted"
+      },
+      "SubscriptionIdSet(uint64)": {
+        "notice": "Emitted when the Chainlink VRF subscription id is set"
+      },
+      "VrfCoordinatorSet(address)": {
+        "notice": "Emitted when the Chainlink VRF Coordinator address is set"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "claimOwnership()": {
+        "notice": "Allows the `_pendingOwner` address to finalize the transfer."
+      },
+      "constructor": {
+        "notice": "Constructor of the contract"
+      },
+      "getKeyHash()": {
+        "notice": "Get Chainlink VRF keyHash associated with this contract."
+      },
+      "getLastRequestId()": {
+        "notice": "Gets the last request id used by the RNG service"
+      },
+      "getRequestFee()": {
+        "notice": "Gets the Fee for making a Request against an RNG service"
+      },
+      "getSubscriptionId()": {
+        "notice": "Get Chainlink VRF subscription id associated with this contract."
+      },
+      "getVrfCoordinator()": {
+        "notice": "Get Chainlink VRF coordinator contract address associated with this contract."
+      },
+      "isRequestComplete(uint32)": {
+        "notice": "Checks if the request for randomness from the 3rd-party service has completed"
+      },
+      "manager()": {
+        "notice": "Gets current `_manager`."
+      },
+      "owner()": {
+        "notice": "Returns the address of the current owner."
+      },
+      "pendingOwner()": {
+        "notice": "Gets current `_pendingOwner`."
+      },
+      "randomNumber(uint32)": {
+        "notice": "Gets the random number produced by the 3rd-party service"
+      },
+      "renounceOwnership()": {
+        "notice": "Renounce ownership of the contract."
+      },
+      "requestRandomNumber()": {
+        "notice": "Sends a request for a random number to the 3rd-party service"
+      },
+      "setKeyhash(bytes32)": {
+        "notice": "Set Chainlink VRF keyHash."
+      },
+      "setManager(address)": {
+        "notice": "Set or change of manager."
+      },
+      "setSubscriptionId(uint64)": {
+        "notice": "Set Chainlink VRF subscription id associated with this contract."
+      },
+      "transferOwnership(address)": {
+        "notice": "Allows current owner to set the `_pendingOwner` address."
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 5205,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 5207,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "_pendingOwner",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 5103,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "_manager",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 5371,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "vrfCoordinator",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_contract(VRFCoordinatorV2Interface)146"
+      },
+      {
+        "astId": 5374,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "requestCounter",
+        "offset": 20,
+        "slot": "3",
+        "type": "t_uint32"
+      },
+      {
+        "astId": 5377,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "subscriptionId",
+        "offset": 24,
+        "slot": "3",
+        "type": "t_uint64"
+      },
+      {
+        "astId": 5380,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "keyHash",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 5385,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "randomNumbers",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_uint32,t_uint256)"
+      },
+      {
+        "astId": 5390,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "requestLockBlock",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_uint32,t_uint32)"
+      },
+      {
+        "astId": 5395,
+        "contract": "@pooltogether/pooltogether-rng-contracts/contracts/RNGChainlinkV2.sol:RNGChainlinkV2",
+        "label": "chainlinkRequestIds",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_uint256,t_uint32)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(VRFCoordinatorV2Interface)146": {
+        "encoding": "inplace",
+        "label": "contract VRFCoordinatorV2Interface",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_uint256,t_uint32)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint32)",
+        "numberOfBytes": "32",
+        "value": "t_uint32"
+      },
+      "t_mapping(t_uint32,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint32,t_uint32)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => uint32)",
+        "numberOfBytes": "32",
+        "value": "t_uint32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      },
+      "t_uint64": {
+        "encoding": "inplace",
+        "label": "uint64",
+        "numberOfBytes": "8"
+      }
+    }
+  }
+}
