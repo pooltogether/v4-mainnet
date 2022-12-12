@@ -2,10 +2,7 @@ const fs = require('fs');
 
 import formatContractNew, { Version } from './formatContract';
 
-export default function convertDeploymentsToContractList(
-  networkDeploymentPaths: string[],
-  version: Version,
-) {
+export default function convertDeploymentsToContractList(networkDeploymentPaths: string[]) {
   let contractList = [];
 
   networkDeploymentPaths.forEach((networkDeploymentPath) => {
@@ -20,7 +17,7 @@ export default function convertDeploymentsToContractList(
         fs.readFileSync(`${networkDeploymentPath}/${contractDeploymentFileName}`, 'utf8'),
       );
 
-      contractList.push(formatContractNew(chainId, contractName, contractDeployment, version));
+      contractList.push(formatContractNew(chainId, contractName, contractDeployment));
     });
   });
 
