@@ -1,5 +1,5 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
-import { dim } from '../../src/colors';
+import { dim, green } from '../../src/colors';
 import { PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST } from '../../src/constants';
 import { deployAndLog } from '../../src/deployAndLog';
 import { setManager } from '../../src/setManager';
@@ -11,9 +11,9 @@ import { transferOwnership } from '../../src/transferOwnership';
  *
  * NOTE: The final step to complete the update is a transition of the manager role on a PrizeDistributionBuffer to be the newly deployed PrizeDistributionFactoryV2.
  */
-export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
-  if (process.env.DEPLOY === 'v1.10.0.optimism') {
-    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Optimism Mainnet`);
+export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnvironment) {
+  if (process.env.DEPLOY === 'v1.9.0.avalanche') {
+    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Avalanche Mainnet`);
     dim(`Version: 1.10.0`);
   } else {
     return;
@@ -40,6 +40,7 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   // Deploy Contracts
   // ===================================================
 
+  // Load existing contracts
   const ticket = await hre.deployments.get('Ticket');
   const prizeDistributionBuffer = await hre.deployments.get('PrizeDistributionBuffer');
   const drawBuffer = await hre.deployments.get('DrawBuffer');
@@ -47,7 +48,7 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   // 1. Deploy or load PrizeTierHistoryV2
   const prizeTierHistoryV2 = await deployAndLog('PrizeTierHistoryV2', {
     from: deployer,
-    args: [deployer],
+    args: [executiveTeam],
     skipIfAlreadyDeployed: true,
   });
 
@@ -87,6 +88,10 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   // remove timelock
   await prizeDistributorContract.setDrawCalculator(drawCalculatorContract.address);
 
+  dim(`---------------------------------------------------`);
+  green(
+    `NOTE: The final step to complete the update is a transition of the manager role on the PrizeDistributionBuffer at ${prizeDistributionBuffer.address} to be the newly deployed PrizeDistributionFactoryV2.`,
+  );
   dim(`---------------------------------------------------`);
   const costToDeploy = startingBalance.sub(
     await ethers.provider.getBalance((await ethers.getSigners())[0].address),

@@ -11,9 +11,9 @@ import { transferOwnership } from '../../src/transferOwnership';
  *
  * NOTE: The final step to complete the update is a transition of the manager role on a PrizeDistributionBuffer to be the newly deployed PrizeDistributionFactoryV2.
  */
-export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironment) {
-  if (process.env.DEPLOY === 'v1.10.0.polygon') {
-    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Polygon Mainnet`);
+export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnvironment) {
+  if (process.env.DEPLOY === 'v1.9.0.mainnet') {
+    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Ethereum Mainnet`);
     dim(`Version: 1.10.0`);
   } else {
     return;
@@ -47,7 +47,7 @@ export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironm
   // 1. Deploy or load PrizeTierHistoryV2
   const prizeTierHistoryV2 = await deployAndLog('PrizeTierHistoryV2', {
     from: deployer,
-    args: [deployer],
+    args: [executiveTeam],
     skipIfAlreadyDeployed: true,
   });
 
