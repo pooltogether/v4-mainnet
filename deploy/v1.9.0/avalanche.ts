@@ -2,6 +2,7 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { dim, green } from '../../src/colors';
 import { PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST } from '../../src/constants';
 import { deployAndLog } from '../../src/deployAndLog';
+import { setDrawCalculator } from '../../src/setDrawCalculator';
 import { setManager } from '../../src/setManager';
 import { transferOwnership } from '../../src/transferOwnership';
 
@@ -9,7 +10,7 @@ import { transferOwnership } from '../../src/transferOwnership';
  * Prepares a PoolTogether Prize Pool Network to update from using PrizeTierHistory
  * and PrizeDistributionFactory to using PrizeTierHistoryV2 and PrizeDistributionFactoryV2.
  *
- * NOTE: The final step to complete the update is a transition of the manager role on a PrizeDistributionBuffer to be the newly deployed PrizeDistributionFactoryV2.
+ * NOTE: The final step to complete the update is a transition of the manager role on a PrizeDistributionBuffer to be the newly deployed PrizeDistributionFactoryV2 and to remove the DrawCalculatorTimelock by setting the DrawCalculator on the PrizeDistributor by calling setDrawCalculator().
  */
 export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.9.0.avalanche') {
@@ -66,8 +67,7 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
     skipIfAlreadyDeployed: true,
   });
 
-  // 3. Load PrizeDistributor and DrawCalculator
-  const prizeDistributorContract = await getContract('PrizeDistributor');
+  // 3. Load DrawCalculator
   const drawCalculatorContract = await getContract('DrawCalculator');
 
   // ===================================================
@@ -76,7 +76,6 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
 
   // 1. Set Managers on new contracts
   await setManager('PrizeTierHistoryV2', null, executiveTeam);
-  await setManager('PrizeDistributionFactoryV2', null, defenderRelayer);
 
   // 2. Transfer Ownership on new contracts
   await transferOwnership('PrizeTierHistoryV2', null, executiveTeam);
@@ -86,12 +85,8 @@ export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnviro
   // transition to new Prize Distribution Factory
   await setManager('PrizeDistributionBuffer', null, prizeDistributionFactoryV2.address);
   // remove timelock
-  await prizeDistributorContract.setDrawCalculator(drawCalculatorContract.address);
+  await setDrawCalculator(drawCalculatorContract.address);
 
-  dim(`---------------------------------------------------`);
-  green(
-    `NOTE: The final step to complete the update is a transition of the manager role on the PrizeDistributionBuffer at ${prizeDistributionBuffer.address} to be the newly deployed PrizeDistributionFactoryV2.`,
-  );
   dim(`---------------------------------------------------`);
   const costToDeploy = startingBalance.sub(
     await ethers.provider.getBalance((await ethers.getSigners())[0].address),

@@ -18,6 +18,12 @@ export function yellow(...args) {
   }
 }
 
+export function red(...args) {
+  if (!process.env.HIDE_DEPLOY_LOG) {
+    console.log(chalk.red.call(chalk, ...args));
+  }
+}
+
 export function green(...args) {
   if (!process.env.HIDE_DEPLOY_LOG) {
     console.log(chalk.green.call(chalk, ...args));
@@ -25,5 +31,9 @@ export function green(...args) {
 }
 
 export default {
-  dim, cyan, yellow, green
-}
+  dim,
+  cyan,
+  red,
+  yellow,
+  green,
+};
