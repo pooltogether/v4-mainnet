@@ -10,7 +10,12 @@ const optimismDeployments = `${__dirname}/../deployments/optimism`;
 const versionSplit = modulePackage.version.split('.');
 const patchSplit = versionSplit[2].split('-');
 
-const networkDeploymentPaths = [mainnetDeployments, polygonDeployments, avalancheDeployments, optimismDeployments];
+const networkDeploymentPaths = [
+  mainnetDeployments,
+  polygonDeployments,
+  avalancheDeployments,
+  optimismDeployments,
+];
 
 const PACKAGE_VERSION = {
   major: Number(versionSplit[0]),
@@ -25,7 +30,7 @@ const contractListDescription = {
   contracts: [],
 };
 
-const contractsNew = convertDeploymentsToContractList(networkDeploymentPaths, PACKAGE_VERSION);
+const contractsNew = convertDeploymentsToContractList(networkDeploymentPaths);
 const contractList = {
   ...contractListDescription,
   contracts: contractsNew,
