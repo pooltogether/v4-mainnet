@@ -1,35 +1,35 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\rmcpe\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @pooltogether/aave-v3-yield-source
+  /Users/dylan_developer/Library/pnpm/nodejs/16.16.0/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js publish --tag beta
 
 PATH: 
-  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\rmcpe\bin;C:\Python310\Scripts;C:\Python310;C:\Python39\Scripts;C:\Python39;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn;C:\Program Files\Azure Data Studio\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs;C:\Users\rmcpe\AppData\Local\Microsoft\WindowsApps;C:\Users\rmcpe\.dotnet\tools;C:\MainContent\Programs\Microsoft VS Code\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\rmcpe\AppData\Roaming\npm
+  /Users/dylan_developer/Library/pnpm:/usr/local/bin:/Users/dylan_developer/.nvm/versions/node/v17.9.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/dylan_developer/Library/pnpm/nodejs/16.16.0/bin:/Users/dylan_developer/.foundry/bin
 
 Yarn version: 
-  1.22.10
+  1.22.19
 
 Node version: 
-  16.14.2
+  16.16.0
 
 Platform: 
-  win32 x64
+  darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@pooltogether%2faave-v3-yield-source: Not found
-      at Request.params.callback [as _callback] (C:\Users\rmcpe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
-      at Request.self.callback (C:\Users\rmcpe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
-      at Request.emit (node:events:526:28)
-      at Request.<anonymous> (C:\Users\rmcpe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
-      at Request.emit (node:events:526:28)
-      at IncomingMessage.<anonymous> (C:\Users\rmcpe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
-      at Object.onceWrapper (node:events:645:28)
-      at IncomingMessage.emit (node:events:538:35)
-      at endReadableNT (node:internal/streams/readable:1345:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  Error: canceled
+      at Interface.<anonymous> (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:137150:13)
+      at Interface.emit (node:events:527:28)
+      at Interface._ttyWrite (node:readline:1081:16)
+      at ReadStream.onkeypress (node:readline:288:10)
+      at ReadStream.emit (node:events:527:28)
+      at emitKeys (node:internal/readline/utils:358:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (node:internal/readline/emitKeypressEvents:61:36)
+      at ReadStream.emit (node:events:527:28)
+      at addChunk (node:internal/streams/readable:315:12)
 
 npm manifest: 
   {
     "name": "@pooltogether/v4-mainnet",
-    "version": "1.6.0",
+    "version": "1.8.1-beta.1",
     "main": "index.js",
     "repository": "git@github.com:pooltogether/v4-mainnet.git",
     "author": "PoolTogether Inc.",
@@ -65,12 +65,19 @@ npm manifest:
       "deploy:v1.4.0.polygon": "DEPLOY=v1.4.0.polygon hardhat deploy --network polygon",
       "deploy:v1.5.0.mainnet": "DEPLOY=v1.5.0.mainnet hardhat deploy --network mainnet",
       "deploy:v1.6.0.optimism": "DEPLOY=v1.6.0.optimism hardhat deploy --network optimism",
+      "deploy:v1.6.1.optimism": "DEPLOY=v1.6.1.optimism hardhat deploy --network optimism",
+      "deploy:v1.7.0.polygon": "DEPLOY=v1.7.0.polygon hardhat deploy --network polygon",
+      "deploy:v1.8.0.avalanche": "DEPLOY=v1.8.0.avalanche hardhat deploy --network avalanche",
+      "deploy:v1.9.0.mainnet": "DEPLOY=v1.9.0.mainnet hardhat deploy --network mainnet",
+      "deploy:v1.9.0.optimism": "DEPLOY=v1.9.0.optimism hardhat deploy --network optimism",
+      "deploy:v1.9.0.polygon": "DEPLOY=v1.9.0.polygon hardhat deploy --network polygon",
+      "deploy:v1.9.0.avalanche": "DEPLOY=v1.9.0.avalanche hardhat deploy --network avalanche",
       "simulate:mainnet": "hardhat --config hardhat.config.ts run ./scripts/fork/beacon.mainnet.forkRunUpgradeV110.ts --network localhost",
       "simulate:polygon": "hardhat --config hardhat.config.ts run ./scripts/fork/receiver.polygon.forkRunUpgradeV110.ts --network localhost",
       "node:ethereum": "DEPLOY=mainnet hardhat node --network hardhat",
       "node:polygon": "DEPLOY=polygon hardhat node --network hardhat",
       "node:avalanche": "DEPLOY=v1.1.0.avalanche hardhat node --network hardhat",
-      "node:optimism": "DEPLOY=v1.6.0.optimism hardhat node --network hardhat",
+      "node:optimism": "DEPLOY=v1.6.1.optimism hardhat node --network hardhat",
       "upgrade:mainnet": "DEPLOY=v1.1.0.mainnet hardhat deploy --network mainnet",
       "upgrade:polygon": "DEPLOY=v1.1.0.polygon hardhat deploy --network polygon",
       "upgrade:mainnet:test": "DEPLOY=v1.1.0.mainnet hardhat deploy --network localhost",
@@ -95,6 +102,7 @@ npm manifest:
       "test:v1.4.0.avalanche": "yarn avalancheForkSetup; FORK_CHAIN_ID=$AVALANCHE_CHAIN_ID FORK_BLOCK_NUMBER=$AVALANCHE_FORK_BLOCK_NUMBER FORK_RPC_URL=$AVALANCHE_RPC_URL FORK_ENABLED=true DEPLOY=v1.4.0.avalanche hardhat node --no-reset --network hardhat",
       "test:v1.5.0.mainnet": "yarn mainnetForkSetup; FORK_CHAIN_ID=$MAINNET_CHAIN_ID FORK_BLOCK_NUMBER=$MAINNET_FORK_BLOCK_NUMBER FORK_RPC_URL=$MAINNET_RPC_URL FORK_ENABLED=true DEPLOY=v1.5.0.mainnet hardhat node --no-reset --network hardhat",
       "test:v1.6.0.optimism": "yarn optimismForkSetup; FORK_CHAIN_ID=$OPTIMISM_CHAIN_ID FORK_BLOCK_NUMBER=$OPTIMISM_FORK_BLOCK_NUMBER FORK_RPC_URL=$OPTIMISM_RPC_URL FORK_ENABLED=true DEPLOY=v1.6.0.optimism hardhat node --no-reset --network hardhat",
+      "test:v1.6.1.optimism": "yarn optimismForkSetup; FORK_CHAIN_ID=$OPTIMISM_CHAIN_ID FORK_BLOCK_NUMBER=$OPTIMISM_FORK_BLOCK_NUMBER FORK_RPC_URL=$OPTIMISM_RPC_URL FORK_ENABLED=true DEPLOY=v1.6.1.optimism hardhat node --no-reset --network hardhat",
       "mainnetForkSetup": "rm -rf deployments/localhost ; cp -r deployments/mainnet deployments/localhost",
       "polygonForkSetup": "rm -rf deployments/localhost ; cp -r deployments/polygon deployments/localhost",
       "avalancheForkSetup": "rm -rf deployments/localhost ; cp -r deployments/avalanche deployments/localhost",
@@ -103,7 +111,8 @@ npm manifest:
     "dependencies": {
       "@chainlink/contracts": "0.4.0",
       "@openzeppelin/contracts": "4.4.2",
-      "@pooltogether/aave-yield-source": "1.1.0",
+      "@pooltogether/aave-v3-yield-source": "1.1.1",
+      "@pooltogether/aave-yield-source": "1.2.1",
       "@pooltogether/draw-calculator-js": "1.0.3-beta.4",
       "@pooltogether/owner-manager-contracts": "1.1.0",
       "@pooltogether/pooltogether-rng-contracts": "1.5.1",
@@ -120,7 +129,7 @@ npm manifest:
       "@ethersproject/hardware-wallets": "5.6.0",
       "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
       "@nomiclabs/hardhat-etherscan": "3.0.0",
-      "@pooltogether/hardhat-deploy-markdown-export": "0.3.2",
+      "@pooltogether/hardhat-deploy-markdown-export": "0.3.5",
       "@types/jsonfile": "6.0.1",
       "@types/node": "17.0.12",
       "ajv": "8.9.0",
@@ -157,6 +166,22 @@ Lockfile:
   # THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
   # yarn lockfile v1
   
+  
+  "@aave/core-v3@1.13.1", "@aave/core-v3@^1.10.0":
+    version "1.13.1"
+    resolved "https://registry.yarnpkg.com/@aave/core-v3/-/core-v3-1.13.1.tgz#09fbb0ca218cc1d1d75d9ba50a3719f7ba53422f"
+    integrity sha512-BDXQhp3hQxl3nA+QuUatOE8q0pizIpGxdx5DYsKcitE+zAWiljuSvF74LSV49xnoQkznZWI1XVgXGcLEl3N4Ng==
+    dependencies:
+      "@nomiclabs/hardhat-etherscan" "^2.1.7"
+      axios-curlirize "^1.3.7"
+      tmp-promise "^3.0.2"
+  
+  "@aave/periphery-v3@1.10.0":
+    version "1.10.0"
+    resolved "https://registry.yarnpkg.com/@aave/periphery-v3/-/periphery-v3-1.10.0.tgz#ce66d49f7a998b3046f9b2c54c25917b3dc06655"
+    integrity sha512-1sDWiojMcJUHr3htntSodDRnPr/41wNTklc0r8a9larZAuz2B2MrjX/3XnplNvhTx6HWHP4x3W9IbRs8AZgh7g==
+    dependencies:
+      "@aave/core-v3" "^1.10.0"
   
   "@chainlink/contracts@0.4.0":
     version "0.4.0"
@@ -1028,6 +1053,7 @@ Lockfile:
       tweetnacl-util "^0.15.1"
   
   "@nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers", hardhat-deploy-ethers@0.3.0-beta.13:
+    name "@nomiclabs/hardhat-ethers"
     version "0.3.0-beta.13"
     resolved "https://registry.yarnpkg.com/hardhat-deploy-ethers/-/hardhat-deploy-ethers-0.3.0-beta.13.tgz#b96086ff768ddf69928984d5eb0a8d78cfca9366"
     integrity sha512-PdWVcKB9coqWV1L7JTpfXRCI91Cgwsm7KLmBcwZ8f0COSm1xtABHZTyz3fvF6p42cTnz1VM0QnfDvMFlIRkSNw==
@@ -1036,6 +1062,19 @@ Lockfile:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-etherscan/-/hardhat-etherscan-3.0.0.tgz#06e0d59787f01f1296d829e8d43fece50e7ffff1"
     integrity sha512-E5s35dCHmzuY6pFqlgTdDGQr2xIyUJ3f91m6e7HYlPGz0FGzad9Nem/y0L7L3FHG4LPYg1UObkQVUzqBjtyAOA==
+    dependencies:
+      "@ethersproject/abi" "^5.1.2"
+      "@ethersproject/address" "^5.0.2"
+      cbor "^5.0.2"
+      debug "^4.1.1"
+      fs-extra "^7.0.1"
+      node-fetch "^2.6.0"
+      semver "^6.3.0"
+  
+  "@nomiclabs/hardhat-etherscan@^2.1.7":
+    version "2.1.8"
+    resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-etherscan/-/hardhat-etherscan-2.1.8.tgz#e206275e96962cd15e5ba9148b44388bc922d8c2"
+    integrity sha512-0+rj0SsZotVOcTLyDOxnOc3Gulo8upo0rsw/h+gBPcmtj91YqYJNhdARHoBxOhhE8z+5IUQPx+Dii04lXT14PA==
     dependencies:
       "@ethersproject/abi" "^5.1.2"
       "@ethersproject/address" "^5.0.2"
@@ -1065,10 +1104,21 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.5.0.tgz#3fd75d57de172b3743cdfc1206883f56430409cc"
     integrity sha512-fdkzKPYMjrRiPK6K4y64e6GzULR7R7RwxSigHS8DDp7aWDeoReqsQI+cxHV1UuhAqX69L1lAaWDxenfP+xiqzA==
   
-  "@pooltogether/aave-yield-source@1.1.0":
-    version "1.1.0"
-    resolved "https://registry.yarnpkg.com/@pooltogether/aave-yield-source/-/aave-yield-source-1.1.0.tgz#3ca045d82b587e5a08bfc7cf0d46a3eff6445b19"
-    integrity sha512-gZnd6Z0aZJEk5opDeVhw/KprCk9G3PA2trNTRyjXDoNM45BvoY7Hkd9ZSdupVMGHWhj+dRQ5lnO1Ug3A0CbL/Q==
+  "@pooltogether/aave-v3-yield-source@1.1.1":
+    version "1.1.1"
+    resolved "https://registry.yarnpkg.com/@pooltogether/aave-v3-yield-source/-/aave-v3-yield-source-1.1.1.tgz#4df4ec6e5736a34e0af82bde77242b8196cd3b5c"
+    integrity sha512-lYNrsNp0uc2ZiE7e6ufzTaQ8YZ3RTi25xJp8liqEtyVRbNYlLxQDbvH1Lf0g8nwnTflzjLMEo0CtcdUY1UXsPg==
+    dependencies:
+      "@aave/core-v3" "1.13.1"
+      "@aave/periphery-v3" "1.10.0"
+      "@openzeppelin/contracts" "4.5.0"
+      "@pooltogether/owner-manager-contracts" "1.1.0"
+      "@pooltogether/yield-source-interface" "1.3.0"
+  
+  "@pooltogether/aave-yield-source@1.2.1":
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/@pooltogether/aave-yield-source/-/aave-yield-source-1.2.1.tgz#4531aed29f510c7ec930267b2751cd976df5c6bb"
+    integrity sha512-3SOA8nTh/V2rCiyMDVonfURtSNcVdJy0zwpwYQ85lkV9OOU0pXxclhJjt03E3mGSwlJDHp+XeunGzmOmsNtLCQ==
     dependencies:
       "@openzeppelin/contracts" "4.3.2"
       "@pooltogether/fixed-point" "1.0.0"
@@ -1088,10 +1138,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@pooltogether/fixed-point/-/fixed-point-1.0.0.tgz#2c9fb9fe1cca557ca2be7b9ed7414d5edd5a816f"
     integrity sha512-YhvjswZuDpKK/NFboyeFWoXhq4763kbi/hNx0L5+6kCRUq8WruvXR4WFvWlDo+5Dx1UsaOnPygAMfrJT0h7bMw==
   
-  "@pooltogether/hardhat-deploy-markdown-export@0.3.2":
-    version "0.3.2"
-    resolved "https://registry.yarnpkg.com/@pooltogether/hardhat-deploy-markdown-export/-/hardhat-deploy-markdown-export-0.3.2.tgz#ee25e1c14f11d8eb85cd4d2752d425f2f827476c"
-    integrity sha512-DnNEmWG0AwWRiQbQinWerNnUzOT+wNuw6gxe8OEXfwDsOtCukNubMldJaP550+hgwLl8pOQdJp0v66WajR0WFQ==
+  "@pooltogether/hardhat-deploy-markdown-export@0.3.5":
+    version "0.3.5"
+    resolved "https://registry.yarnpkg.com/@pooltogether/hardhat-deploy-markdown-export/-/hardhat-deploy-markdown-export-0.3.5.tgz#52b8d97f54f7128ac40795ab1ab1a8cbb1ad89f4"
+    integrity sha512-ho29xvI5hmnVlCPmug8Qjbw0XQl43Jld3LfanQ8bEsxkAx85sXyZFHgwUvjMpXTsjOeFr058gIKfmx/QIcUHew==
   
   "@pooltogether/owner-manager-contracts@1.1.0":
     version "1.1.0"
@@ -1500,6 +1550,11 @@ Lockfile:
     version "0.4.0"
     resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
     integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
+  
+  axios-curlirize@^1.3.7:
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/axios-curlirize/-/axios-curlirize-1.4.0.tgz#9a42565c953163a75e510c5083b062babf4ea973"
+    integrity sha512-hpA7L+WbAuN/gWOabr4cAjv7F0ELP3Sl9O36cJ3g2cOL9hf8iB2cjPQ8j91fpmUrKRABYEGiVVDSSjnjV3aUrg==
   
   axios@^0.21.1:
     version "0.21.4"
@@ -3374,6 +3429,13 @@ Lockfile:
     dependencies:
       glob "^7.1.3"
   
+  rimraf@^3.0.0:
+    version "3.0.2"
+    resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-3.0.2.tgz#f1a5402ba6220ad52cc1282bac1ae3aa49fd061a"
+    integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
+    dependencies:
+      glob "^7.1.3"
+  
   ripemd160@^2.0.0, ripemd160@^2.0.1:
     version "2.0.2"
     resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-2.0.2.tgz#a1c1a6f624751577ba5d07914cbc92850585890c"
@@ -3660,12 +3722,26 @@ Lockfile:
       inherits "^2.0.3"
       readable-stream "^3.1.1"
   
+  tmp-promise@^3.0.2:
+    version "3.0.3"
+    resolved "https://registry.yarnpkg.com/tmp-promise/-/tmp-promise-3.0.3.tgz#60a1a1cc98c988674fcbfd23b6e3367bdeac4ce7"
+    integrity sha512-RwM7MoPojPxsOBYnyd2hy0bxtIlVrihNs9pj5SUvY8Zz1sQcQG2tG1hSr8PDxfgEB8RNKDhqbIlroIarSNDNsQ==
+    dependencies:
+      tmp "^0.2.0"
+  
   tmp@0.0.33:
     version "0.0.33"
     resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.0.33.tgz#6d34335889768d21b2bcda0aa277ced3b1bfadf9"
     integrity sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==
     dependencies:
       os-tmpdir "~1.0.2"
+  
+  tmp@^0.2.0:
+    version "0.2.1"
+    resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.2.1.tgz#8457fc3037dcf4719c251367a1af6500ee1ccf14"
+    integrity sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==
+    dependencies:
+      rimraf "^3.0.0"
   
   to-regex-range@^5.0.1:
     version "5.0.1"
