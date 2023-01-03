@@ -48,7 +48,7 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
   // 1. Deploy or load PrizeTierHistoryV2
   const prizeTierHistoryV2 = await deployAndLog('PrizeTierHistoryV2', {
     from: deployer,
-    args: [executiveTeam],
+    args: [deployer],
     skipIfAlreadyDeployed: true,
   });
 
@@ -83,6 +83,7 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
   // 3. Complete Migration of old system
   // transition to new Prize Distribution Factory
   await setManager('PrizeDistributionBuffer', null, prizeDistributionFactoryV2.address);
+
   // remove timelock
   await setDrawCalculator(drawCalculatorContract.address);
 
