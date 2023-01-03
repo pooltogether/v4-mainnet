@@ -90,6 +90,6 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   const costToDeploy = startingBalance.sub(
     await ethers.provider.getBalance((await ethers.getSigners())[0].address),
   );
-  dim(`Final balance of deployer ${deployer}: ${ethers.utils.formatEther(costToDeploy)} ETH`);
+  dim(`Deployment cost for deployer ${deployer}: ${ethers.utils.formatEther(costToDeploy)} ETH`);
   dim(`---------------------------------------------------`);
 }
