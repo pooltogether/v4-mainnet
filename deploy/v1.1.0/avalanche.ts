@@ -4,9 +4,9 @@ import {
   DRAW_BUFFER_CARDINALITY,
   PRIZE_DISTRIBUTION_BUFFER_CARDINALITY,
   PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST,
-  TOKEN_DECIMALS
-} from '../../src/constants'
-import { deployAndLog } from '../../src/deployAndLog'
+  TOKEN_DECIMALS,
+} from '../../src/constants';
+import { deployAndLog } from '../../src/deployAndLog';
 import { setPrizeStrategy } from '../../src/setPrizeStrategy';
 import { setTicket } from '../../src/setTicket';
 import { transferOwnership } from '../../src/transferOwnership';
@@ -16,11 +16,13 @@ import { pushDraw48 } from '../../src/v1.1.0/pushDraw48';
 
 export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.1.0.avalanche') {
-    dim(`Deploying: Receiver Chain Avalanche Mainnet`)
-    dim(`Version: 1.1.0`)
-  } else { return }
+    dim(`Deploying: Receiver Chain Avalanche Mainnet`);
+    dim(`Version: 1.1.0`);
+  } else {
+    return;
+  }
 
-  const { getNamedAccounts } = hardhat
+  const { getNamedAccounts } = hardhat;
 
   const {
     deployer,
@@ -28,8 +30,8 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
     aUSDC,
     defenderRelayer,
     aaveIncentivesController,
-    aaveLendingPoolAddressesProviderRegistry
-  } = await getNamedAccounts()
+    aaveLendingPoolAddressesProviderRegistry,
+  } = await getNamedAccounts();
 
   // ===================================================
   // Deploy Contracts
@@ -42,21 +44,56 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
       aaveIncentivesController,
       aaveLendingPoolAddressesProviderRegistry,
       TOKEN_DECIMALS,
-      "PTavUSDCeY",
-      "PoolTogether avUSDCeY",
-      executiveTeam
-    ]
-  })
-  const yieldSourcePrizePoolResult = await deployAndLog('YieldSourcePrizePool', { from: deployer, args: [deployer, aaveUsdcYieldSourceResult.address] })
-  const ticketResult = await deployAndLog('Ticket', { from: deployer, args: ["PoolTogether avUSDCe Ticket", "PTavUSDCe", TOKEN_DECIMALS, yieldSourcePrizePoolResult.address] })
-  const prizeTierHistoryResult = await deployAndLog('PrizeTierHistory', { from: deployer, args: [deployer] })
-  const drawBufferResult = await deployAndLog('DrawBuffer', { from: deployer, args: [deployer, DRAW_BUFFER_CARDINALITY] })
-  const prizeDistributionBufferResult = await deployAndLog('PrizeDistributionBuffer', { from: deployer, args: [deployer, PRIZE_DISTRIBUTION_BUFFER_CARDINALITY] })
-  const drawCalculatorResult = await deployAndLog('DrawCalculator', { from: deployer, args: [ticketResult.address, drawBufferResult.address, prizeDistributionBufferResult.address] })
-  const prizeDistributorResult = await deployAndLog('PrizeDistributor', { from: deployer, args: [executiveTeam, ticketResult.address, drawCalculatorResult.address] })
-  const prizeSplitStrategyResult = await deployAndLog('PrizeSplitStrategy', { from: deployer, args: [deployer, yieldSourcePrizePoolResult.address] })
-  const reserveResult = await deployAndLog('Reserve', { from: deployer, args: [deployer, ticketResult.address] })
-  const drawCalculatorTimelockResult = await deployAndLog('DrawCalculatorTimelock', { from: deployer, args: [deployer, drawCalculatorResult.address] })
+      'PTavUSDCeY',
+      'PoolTogether avUSDCeY',
+      executiveTeam,
+    ],
+  });
+  const yieldSourcePrizePoolResult = await deployAndLog('YieldSourcePrizePool', {
+    from: deployer,
+    args: [deployer, aaveUsdcYieldSourceResult.address],
+  });
+  const ticketResult = await deployAndLog('Ticket', {
+    from: deployer,
+    args: [
+      'PoolTogether avUSDCe Ticket',
+      'PTavUSDCe',
+      TOKEN_DECIMALS,
+      yieldSourcePrizePoolResult.address,
+    ],
+  });
+  const prizeTierHistoryResult = await deployAndLog('PrizeTierHistory', {
+    from: deployer,
+    args: [deployer],
+  });
+  const drawBufferResult = await deployAndLog('DrawBuffer', {
+    from: deployer,
+    args: [deployer, DRAW_BUFFER_CARDINALITY],
+  });
+  const prizeDistributionBufferResult = await deployAndLog('PrizeDistributionBuffer', {
+    from: deployer,
+    args: [deployer, PRIZE_DISTRIBUTION_BUFFER_CARDINALITY],
+  });
+  const drawCalculatorResult = await deployAndLog('DrawCalculator', {
+    from: deployer,
+    args: [ticketResult.address, drawBufferResult.address, prizeDistributionBufferResult.address],
+  });
+  const prizeDistributorResult = await deployAndLog('PrizeDistributor', {
+    from: deployer,
+    args: [executiveTeam, ticketResult.address, drawCalculatorResult.address],
+  });
+  const prizeSplitStrategyResult = await deployAndLog('PrizeSplitStrategy', {
+    from: deployer,
+    args: [deployer, yieldSourcePrizePoolResult.address],
+  });
+  const reserveResult = await deployAndLog('Reserve', {
+    from: deployer,
+    args: [deployer, ticketResult.address],
+  });
+  const drawCalculatorTimelockResult = await deployAndLog('DrawCalculatorTimelock', {
+    from: deployer,
+    args: [deployer, drawCalculatorResult.address],
+  });
   const prizeDistributionFactoryResult = await deployAndLog('PrizeDistributionFactory', {
     from: deployer,
     args: [
@@ -65,37 +102,53 @@ export default async function deployToAvalanche(hardhat: HardhatRuntimeEnvironme
       drawBufferResult.address,
       prizeDistributionBufferResult.address,
       ticketResult.address,
-      PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST // 1 USDC
-    ]
-  })
-  await deployAndLog('EIP2612PermitAndDeposit', { from: deployer })
-  const prizeFlushResult = await deployAndLog('PrizeFlush', { from: deployer, args: [deployer, prizeDistributorResult.address, prizeSplitStrategyResult.address, reserveResult.address]})
-  const receiverTimelockTrigger = await deployAndLog('ReceiverTimelockTrigger', { from: deployer, args: [deployer, drawBufferResult.address, prizeDistributionFactoryResult.address, drawCalculatorTimelockResult.address]})
+      PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST, // 1 USDC
+    ],
+  });
+  await deployAndLog('EIP2612PermitAndDeposit', { from: deployer, skipIfAlreadyDeployed: true });
+  const prizeFlushResult = await deployAndLog('PrizeFlush', {
+    from: deployer,
+    args: [
+      deployer,
+      prizeDistributorResult.address,
+      prizeSplitStrategyResult.address,
+      reserveResult.address,
+    ],
+  });
+  const receiverTimelockTrigger = await deployAndLog('ReceiverTimelockTrigger', {
+    from: deployer,
+    args: [
+      deployer,
+      drawBufferResult.address,
+      prizeDistributionFactoryResult.address,
+      drawCalculatorTimelockResult.address,
+    ],
+  });
 
   // ===================================================
   // Configure Contracts
   // ===================================================
 
-  await pushDraw48()
-  await initPrizeSplit()
-  await setTicket(ticketResult.address)
-  await setPrizeStrategy(prizeSplitStrategyResult.address)
-  await setManager('ReceiverTimelockTrigger', null, defenderRelayer)
-  await setManager('DrawBuffer', null, receiverTimelockTrigger.address)
-  await setManager('PrizeFlush', null, defenderRelayer)
-  await setManager('Reserve', null, prizeFlushResult.address)
-  await setManager('DrawCalculatorTimelock', null, receiverTimelockTrigger.address)
-  await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address)
-  await setManager('PrizeDistributionBuffer', null, prizeDistributionFactoryResult.address)
+  await pushDraw48();
+  await initPrizeSplit();
+  await setTicket(ticketResult.address);
+  await setPrizeStrategy(prizeSplitStrategyResult.address);
+  await setManager('ReceiverTimelockTrigger', null, defenderRelayer);
+  await setManager('DrawBuffer', null, receiverTimelockTrigger.address);
+  await setManager('PrizeFlush', null, defenderRelayer);
+  await setManager('Reserve', null, prizeFlushResult.address);
+  await setManager('DrawCalculatorTimelock', null, receiverTimelockTrigger.address);
+  await setManager('PrizeDistributionFactory', null, receiverTimelockTrigger.address);
+  await setManager('PrizeDistributionBuffer', null, prizeDistributionFactoryResult.address);
 
-  await transferOwnership('PrizeDistributionFactory', null, executiveTeam)
-  await transferOwnership('DrawCalculatorTimelock', null, executiveTeam)
-  await transferOwnership('PrizeFlush', null, executiveTeam)
-  await transferOwnership('Reserve', null, executiveTeam)
-  await transferOwnership('YieldSourcePrizePool', null, executiveTeam)
-  await transferOwnership('PrizeTierHistory', null, executiveTeam)
-  await transferOwnership('PrizeSplitStrategy', null, executiveTeam)
-  await transferOwnership('DrawBuffer', null, executiveTeam)
-  await transferOwnership('PrizeDistributionBuffer', null, executiveTeam)
-  await transferOwnership('ReceiverTimelockTrigger', null, executiveTeam)
+  await transferOwnership('PrizeDistributionFactory', null, executiveTeam);
+  await transferOwnership('DrawCalculatorTimelock', null, executiveTeam);
+  await transferOwnership('PrizeFlush', null, executiveTeam);
+  await transferOwnership('Reserve', null, executiveTeam);
+  await transferOwnership('YieldSourcePrizePool', null, executiveTeam);
+  await transferOwnership('PrizeTierHistory', null, executiveTeam);
+  await transferOwnership('PrizeSplitStrategy', null, executiveTeam);
+  await transferOwnership('DrawBuffer', null, executiveTeam);
+  await transferOwnership('PrizeDistributionBuffer', null, executiveTeam);
+  await transferOwnership('ReceiverTimelockTrigger', null, executiveTeam);
 }

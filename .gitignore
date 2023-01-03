@@ -33,6 +33,9 @@ coverage.json
 # OSX
 .DS_Store
 
+# Logs
+yarn-error.log
+
 # Development Notes
 Networks.md
 *.dev.md
