@@ -35,6 +35,13 @@ const config: HardhatUserConfig = {
       43114: '0x6323A881Ea07f64dD8ec67B15fBB5dC6383eFAc6',
       10: '0x8d352083F7094dc51Cd7dA8c5C0985AD6e149629',
     },
+    prizeTeam: {
+      default: 0,
+      1: '0xB87b4E170A8Ec9Ee0faDD451c15e1D04df535855',
+      137: '0x5bC3D2d94751211A1b7Dec1848EA3664DAF0b194',
+      43114: '0x49Bf8d9B1a535D6f7ddb7F94762282249530ecDa',
+      10: '0x2AA9c535101554d1B48B911625030Cbc53c8fBcF',
+    },
     ptOperations: {
       default: 0,
       1: '0x029Aa20Dcc15c022b1b61D420aaCf7f179A9C73f',

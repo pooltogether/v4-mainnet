@@ -23,7 +23,7 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   const { getNamedAccounts, ethers, getChainId } = hre;
   const { getContract } = ethers;
 
-  const { deployer, executiveTeam, defenderRelayer } = await getNamedAccounts();
+  const { deployer, defenderRelayer, executiveTeam, prizeTeam } = await getNamedAccounts();
 
   const chainId = parseInt(await getChainId(), 10);
 
@@ -33,6 +33,7 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   dim(`---------------------------------------------------`);
   dim(`deployer: ${deployer}`);
   dim(`executiveTeam: ${executiveTeam}`);
+  dim(`prizeTeam: ${prizeTeam}`);
   dim(`defenderRelayer: ${defenderRelayer}`);
   dim(`---------------------------------------------------\n`);
   const startingBalance = await ethers.provider.getBalance((await ethers.getSigners())[0].address);
@@ -74,7 +75,7 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   // ===================================================
 
   // 1. Set Managers on new contracts
-  await setManager('PrizeTierHistoryV2', null, executiveTeam);
+  await setManager('PrizeTierHistoryV2', null, prizeTeam);
 
   // 2. Transfer Ownership on new contracts
   await transferOwnership('PrizeTierHistoryV2', null, executiveTeam);
