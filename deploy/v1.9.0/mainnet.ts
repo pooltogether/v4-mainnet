@@ -70,6 +70,12 @@ export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnviron
   // 3. Load DrawCalculator
   const drawCalculatorContract = await getContract('DrawCalculator');
 
+  await deployAndLog('DrawDispatcher', {
+    from: deployer,
+    args: [drawBuffer.address],
+    skipIfAlreadyDeployed: true,
+  });
+
   // ===================================================
   // Configure Contracts
   // ===================================================
