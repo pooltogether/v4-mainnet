@@ -1,10 +1,15 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
+
 import { dim } from '../../src/colors';
-import { PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST } from '../../src/constants';
+import {
+  ETHEREUM_MAINNET_CHAIN_ID,
+  PRIZE_DISTRIBUTION_FACTORY_MINIMUM_PICK_COST,
+} from '../../src/constants';
 import { deployAndLog } from '../../src/deployAndLog';
 import { setDrawCalculator } from '../../src/setDrawCalculator';
 import { setManager } from '../../src/setManager';
 import { transferOwnership } from '../../src/transferOwnership';
+import { getContractAddress } from '../../scripts/helpers/getContract';
 
 /**
  * Prepares a PoolTogether Prize Pool Network to update from using PrizeTierHistory
@@ -14,8 +19,10 @@ import { transferOwnership } from '../../src/transferOwnership';
  */
 export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.9.0.optimism') {
-    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Optimism Mainnet`);
-    dim(`Version: 1.10.0`);
+    dim(
+      `Deploying: PrizeTierHistoryV2, PrizeDistributionFactoryV2 and DrawExecutor on Optimism Mainnet`,
+    );
+    dim(`Version: 1.9.0`);
   } else {
     return;
   }
@@ -23,7 +30,8 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   const { getNamedAccounts, ethers, getChainId } = hre;
   const { getContract } = ethers;
 
-  const { deployer, defenderRelayer, executiveTeam, prizeTeam } = await getNamedAccounts();
+  const { deployer, defenderRelayer, executiveTeam, messageExecutor, prizeTeam } =
+    await getNamedAccounts();
 
   const chainId = parseInt(await getChainId(), 10);
 
@@ -70,6 +78,17 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   // 3. Load DrawCalculator
   const drawCalculatorContract = await getContract('DrawCalculator');
 
+  const drawDispatcherAddress = await getContractAddress(
+    'DrawDispatcher',
+    ETHEREUM_MAINNET_CHAIN_ID,
+  );
+
+  const drawExecutorResult = await deployAndLog('DrawExecutor', {
+    from: deployer,
+    args: [ETHEREUM_MAINNET_CHAIN_ID, drawDispatcherAddress, messageExecutor, drawBuffer.address],
+    skipIfAlreadyDeployed: true,
+  });
+
   // ===================================================
   // Configure Contracts
   // ===================================================
@@ -85,8 +104,11 @@ export default async function deployToOptimism(hre: HardhatRuntimeEnvironment) {
   // transition to new Prize Distribution Factory
   await setManager('PrizeDistributionBuffer', null, prizeDistributionFactoryV2.address);
 
-  // remove timelock
+  // Remove DrawCalculatorTimelock
   await setDrawCalculator(drawCalculatorContract.address);
+
+  // Remove ReceiverTimelockTrigger
+  await setManager('DrawBuffer', null, drawExecutorResult.address);
 
   dim(`---------------------------------------------------`);
   const costToDeploy = startingBalance.sub(

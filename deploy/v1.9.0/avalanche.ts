@@ -15,7 +15,7 @@ import { transferOwnership } from '../../src/transferOwnership';
 export default async function deployToAvalancheMainnet(hre: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.9.0.avalanche') {
     dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Avalanche Mainnet`);
-    dim(`Version: 1.10.0`);
+    dim(`Version: 1.9.0`);
   } else {
     return;
   }

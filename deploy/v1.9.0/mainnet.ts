@@ -14,8 +14,10 @@ import { transferOwnership } from '../../src/transferOwnership';
  */
 export default async function deployToEthereumMainnet(hre: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.9.0.mainnet') {
-    dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Ethereum Mainnet`);
-    dim(`Version: 1.10.0`);
+    dim(
+      `Deploying: PrizeTierHistoryV2, PrizeDistributionFactoryV2 and DrawDispatcher on Ethereum Mainnet`,
+    );
+    dim(`Version: 1.9.0`);
   } else {
     return;
   }

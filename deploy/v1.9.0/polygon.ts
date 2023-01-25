@@ -15,7 +15,7 @@ import { transferOwnership } from '../../src/transferOwnership';
 export default async function deployToPolygonMainnet(hre: HardhatRuntimeEnvironment) {
   if (process.env.DEPLOY === 'v1.9.0.polygon') {
     dim(`Deploying: PrizeTierHistoryV2 and PrizeDistributionFactoryV2 on Polygon Mainnet`);
-    dim(`Version: 1.10.0`);
+    dim(`Version: 1.9.0`);
   } else {
     return;
   }
