@@ -1,0 +1,338 @@
+{
+  "address": "0xAc4fF319adAc4c7d109f4024A33328088370A064",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IDrawBuffer",
+          "name": "_drawBuffer",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract ISingleMessageDispatcher",
+          "name": "dispatcher",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "toChainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "drawExecutor",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "winningRandomNumber",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint32",
+              "name": "drawId",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "timestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "beaconPeriodStartedAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint32",
+              "name": "beaconPeriodSeconds",
+              "type": "uint32"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IDrawBeacon.Draw",
+          "name": "draw",
+          "type": "tuple"
+        }
+      ],
+      "name": "DrawDispatched",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract ISingleMessageDispatcher",
+          "name": "dispatcher",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "toChainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "drawExecutor",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "winningRandomNumber",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint32",
+              "name": "drawId",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "timestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "beaconPeriodStartedAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint32",
+              "name": "beaconPeriodSeconds",
+              "type": "uint32"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IDrawBeacon.Draw[]",
+          "name": "draws",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "DrawsDispatched",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISingleMessageDispatcher",
+          "name": "_dispatcher",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_toChainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_drawExecutor",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_drawId",
+          "type": "uint32"
+        }
+      ],
+      "name": "dispatchDraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISingleMessageDispatcher",
+          "name": "_dispatcher",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_toChainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_drawExecutor",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32[]",
+          "name": "_drawIds",
+          "type": "uint32[]"
+        }
+      ],
+      "name": "dispatchDraws",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISingleMessageDispatcher",
+          "name": "_dispatcher",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_toChainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_drawExecutor",
+          "type": "address"
+        }
+      ],
+      "name": "dispatchNewestDraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "drawBuffer",
+      "outputs": [
+        {
+          "internalType": "contract IDrawBuffer",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x0c4180ca63d11092f053538dc2acb37e53bb0e33671f38664733d3e111eb8e28",
+  "receipt": {
+    "to": null,
+    "from": "0x4D40eb12430A57965cEe3015348d490C6156dF20",
+    "contractAddress": "0xAc4fF319adAc4c7d109f4024A33328088370A064",
+    "transactionIndex": 68,
+    "gasUsed": "687904",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x0e3f35b9329241a2e3b7725b308a02ba416d709e63307cc073831495cb796dd6",
+    "transactionHash": "0x0c4180ca63d11092f053538dc2acb37e53bb0e33671f38664733d3e111eb8e28",
+    "logs": [],
+    "blockNumber": 16486167,
+    "cumulativeGasUsed": "5823351",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x78Ea5a9595279DC2F9608283875571b1151F19D4"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "43e560d8d518aaa11ff91c21c2f0677c",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IDrawBuffer\",\"name\":\"_drawBuffer\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract ISingleMessageDispatcher\",\"name\":\"dispatcher\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"toChainId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"drawExecutor\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"winningRandomNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"timestamp\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"beaconPeriodStartedAt\",\"type\":\"uint64\"},{\"internalType\":\"uint32\",\"name\":\"beaconPeriodSeconds\",\"type\":\"uint32\"}],\"indexed\":false,\"internalType\":\"struct IDrawBeacon.Draw\",\"name\":\"draw\",\"type\":\"tuple\"}],\"name\":\"DrawDispatched\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract ISingleMessageDispatcher\",\"name\":\"dispatcher\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"toChainId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"drawExecutor\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"winningRandomNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"timestamp\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"beaconPeriodStartedAt\",\"type\":\"uint64\"},{\"internalType\":\"uint32\",\"name\":\"beaconPeriodSeconds\",\"type\":\"uint32\"}],\"indexed\":false,\"internalType\":\"struct IDrawBeacon.Draw[]\",\"name\":\"draws\",\"type\":\"tuple[]\"}],\"name\":\"DrawsDispatched\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"contract ISingleMessageDispatcher\",\"name\":\"_dispatcher\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_toChainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_drawExecutor\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_drawId\",\"type\":\"uint32\"}],\"name\":\"dispatchDraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISingleMessageDispatcher\",\"name\":\"_dispatcher\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_toChainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_drawExecutor\",\"type\":\"address\"},{\"internalType\":\"uint32[]\",\"name\":\"_drawIds\",\"type\":\"uint32[]\"}],\"name\":\"dispatchDraws\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract ISingleMessageDispatcher\",\"name\":\"_dispatcher\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_toChainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_drawExecutor\",\"type\":\"address\"}],\"name\":\"dispatchNewestDraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"drawBuffer\",\"outputs\":[{\"internalType\":\"contract IDrawBuffer\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"PoolTogether Inc Team\",\"events\":{\"DrawDispatched(address,uint256,address,(uint256,uint32,uint64,uint64,uint32))\":{\"params\":{\"dispatcher\":\"Address of the dispatcher on Ethereum that dispatched the draw\",\"draw\":\"Draw that was dispatched\",\"drawExecutor\":\"Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\",\"toChainId\":\"ID of the receiving chain\"}},\"DrawsDispatched(address,uint256,address,(uint256,uint32,uint64,uint64,uint32)[])\":{\"params\":{\"dispatcher\":\"Address of the dispatcher on Ethereum that dispatched the draws\",\"drawExecutor\":\"Address of the DrawExecutor on the receiving chain that will push the draws onto the DrawBuffer\",\"draws\":\"Draws that were dispatched\",\"toChainId\":\"ID of the receiving chain\"}}},\"kind\":\"dev\",\"methods\":{\"constructor\":{\"params\":{\"_drawBuffer\":\"Address of the DrawBuffer from which draws are retrieved\"}},\"dispatchDraw(address,uint256,address,uint32)\":{\"details\":\"Will revert if the draw does not exist.\",\"params\":{\"_dispatcher\":\"Address of the dispatcher on Ethereum that will be used to dispatch the draw\",\"_drawExecutor\":\"Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\",\"_drawId\":\"Id of the draw to dispatch\",\"_toChainId\":\"ID of the receiving chain\"}},\"dispatchDraws(address,uint256,address,uint32[])\":{\"details\":\"`_drawIds` must be ordered in ascending and contiguous order.Will revert if one of the draw does not exist.\",\"params\":{\"_dispatcher\":\"Address of the dispatcher on Ethereum that will be used to dispatch the draw\",\"_drawExecutor\":\"Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\",\"_drawIds\":\"Array of draw ids to dispatch\",\"_toChainId\":\"ID of the receiving chain\"}},\"dispatchNewestDraw(address,uint256,address)\":{\"params\":{\"_dispatcher\":\"Address of the dispatcher on Ethereum that will be used to dispatch the draw\",\"_drawExecutor\":\"Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\",\"_toChainId\":\"ID of the receiving chain\"}}},\"title\":\"PoolTogether V4 DrawDispatcher\",\"version\":1},\"userdoc\":{\"events\":{\"DrawDispatched(address,uint256,address,(uint256,uint32,uint64,uint64,uint32))\":{\"notice\":\"Emitted when the `draw` has been dispatched.\"},\"DrawsDispatched(address,uint256,address,(uint256,uint32,uint64,uint64,uint32)[])\":{\"notice\":\"Emitted when the `draws` have been dispatched.\"}},\"kind\":\"user\",\"methods\":{\"constructor\":{\"notice\":\"DrawDispatcher constructor.\"},\"dispatchDraw(address,uint256,address,uint32)\":{\"notice\":\"Retrieves and dispatch draw.\"},\"dispatchDraws(address,uint256,address,uint32[])\":{\"notice\":\"Retrieves and dispatch draws.\"},\"dispatchNewestDraw(address,uint256,address)\":{\"notice\":\"Retrieves and dispatch the newest recorded draw.\"},\"drawBuffer()\":{\"notice\":\"DrawBuffer from which draws are retrieved.\"}},\"notice\":\"The DrawDispatcher smart contract relies on ERC-5164 to dispatch draws from Ethereum to another L1 or L2         where Chainlink VRF 2.0 may not be available to compute draws.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DrawDispatcher.sol\":\"DrawDispatcher\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"@pooltogether/pooltogether-rng-contracts/contracts/RNGInterface.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity >=0.6.0;\\n\\n/// @title Random Number Generator Interface\\n/// @notice Provides an interface for requesting random numbers from 3rd-party RNG services (Chainlink VRF, Starkware VDF, etc..)\\ninterface RNGInterface {\\n\\n  /// @notice Emitted when a new request for a random number has been submitted\\n  /// @param requestId The indexed ID of the request used to get the results of the RNG service\\n  /// @param sender The indexed address of the sender of the request\\n  event RandomNumberRequested(uint32 indexed requestId, address indexed sender);\\n\\n  /// @notice Emitted when an existing request for a random number has been completed\\n  /// @param requestId The indexed ID of the request used to get the results of the RNG service\\n  /// @param randomNumber The random number produced by the 3rd-party service\\n  event RandomNumberCompleted(uint32 indexed requestId, uint256 randomNumber);\\n\\n  /// @notice Gets the last request id used by the RNG service\\n  /// @return requestId The last request id used in the last request\\n  function getLastRequestId() external view returns (uint32 requestId);\\n\\n  /// @notice Gets the Fee for making a Request against an RNG service\\n  /// @return feeToken The address of the token that is used to pay fees\\n  /// @return requestFee The fee required to be paid to make a request\\n  function getRequestFee() external view returns (address feeToken, uint256 requestFee);\\n\\n  /// @notice Sends a request for a random number to the 3rd-party service\\n  /// @dev Some services will complete the request immediately, others may have a time-delay\\n  /// @dev Some services require payment in the form of a token, such as $LINK for Chainlink VRF\\n  /// @return requestId The ID of the request used to get the results of the RNG service\\n  /// @return lockBlock The block number at which the RNG service will start generating time-delayed randomness.  The calling contract\\n  /// should \\\"lock\\\" all activity until the result is available via the `requestId`\\n  function requestRandomNumber() external returns (uint32 requestId, uint32 lockBlock);\\n\\n  /// @notice Checks if the request for randomness from the 3rd-party service has completed\\n  /// @dev For time-delayed requests, this function is used to check/confirm completion\\n  /// @param requestId The ID of the request used to get the results of the RNG service\\n  /// @return isCompleted True if the request has completed and a random number is available, false otherwise\\n  function isRequestComplete(uint32 requestId) external view returns (bool isCompleted);\\n\\n  /// @notice Gets the random number produced by the 3rd-party service\\n  /// @param requestId The ID of the request used to get the results of the RNG service\\n  /// @return randomNum The random number\\n  function randomNumber(uint32 requestId) external returns (uint256 randomNum);\\n}\\n\",\"keccak256\":\"0xf917c68439d7476cd226f475e8fce940e0cf1d32cb0ff12e8537072a07f2b1da\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/interfaces/IDrawBeacon.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@pooltogether/pooltogether-rng-contracts/contracts/RNGInterface.sol\\\";\\nimport \\\"./IDrawBuffer.sol\\\";\\n\\n/** @title  IDrawBeacon\\n  * @author PoolTogether Inc Team\\n  * @notice The DrawBeacon interface.\\n*/\\ninterface IDrawBeacon {\\n\\n    /// @notice Draw struct created every draw\\n    /// @param winningRandomNumber The random number returned from the RNG service\\n    /// @param drawId The monotonically increasing drawId for each draw\\n    /// @param timestamp Unix timestamp of the draw. Recorded when the draw is created by the DrawBeacon.\\n    /// @param beaconPeriodStartedAt Unix timestamp of when the draw started\\n    /// @param beaconPeriodSeconds Unix timestamp of the beacon draw period for this draw.\\n    struct Draw {\\n        uint256 winningRandomNumber;\\n        uint32 drawId;\\n        uint64 timestamp;\\n        uint64 beaconPeriodStartedAt;\\n        uint32 beaconPeriodSeconds;\\n    }\\n\\n    /**\\n     * @notice Emit when a new DrawBuffer has been set.\\n     * @param newDrawBuffer       The new DrawBuffer address\\n     */\\n    event DrawBufferUpdated(IDrawBuffer indexed newDrawBuffer);\\n\\n    /**\\n     * @notice Emit when a draw has opened.\\n     * @param startedAt Start timestamp\\n     */\\n    event BeaconPeriodStarted(uint64 indexed startedAt);\\n\\n    /**\\n     * @notice Emit when a draw has started.\\n     * @param rngRequestId  draw id\\n     * @param rngLockBlock  Block when draw becomes invalid\\n     */\\n    event DrawStarted(uint32 indexed rngRequestId, uint32 rngLockBlock);\\n\\n    /**\\n     * @notice Emit when a draw has been cancelled.\\n     * @param rngRequestId  draw id\\n     * @param rngLockBlock  Block when draw becomes invalid\\n     */\\n    event DrawCancelled(uint32 indexed rngRequestId, uint32 rngLockBlock);\\n\\n    /**\\n     * @notice Emit when a draw has been completed.\\n     * @param randomNumber  Random number generated from draw\\n     */\\n    event DrawCompleted(uint256 randomNumber);\\n\\n    /**\\n     * @notice Emit when a RNG service address is set.\\n     * @param rngService  RNG service address\\n     */\\n    event RngServiceUpdated(RNGInterface indexed rngService);\\n\\n    /**\\n     * @notice Emit when a draw timeout param is set.\\n     * @param rngTimeout  draw timeout param in seconds\\n     */\\n    event RngTimeoutSet(uint32 rngTimeout);\\n\\n    /**\\n     * @notice Emit when the drawPeriodSeconds is set.\\n     * @param drawPeriodSeconds Time between draw\\n     */\\n    event BeaconPeriodSecondsUpdated(uint32 drawPeriodSeconds);\\n\\n    /**\\n     * @notice Returns the number of seconds remaining until the beacon period can be complete.\\n     * @return The number of seconds remaining until the beacon period can be complete.\\n     */\\n    function beaconPeriodRemainingSeconds() external view returns (uint64);\\n\\n    /**\\n     * @notice Returns the timestamp at which the beacon period ends\\n     * @return The timestamp at which the beacon period ends.\\n     */\\n    function beaconPeriodEndAt() external view returns (uint64);\\n\\n    /**\\n     * @notice Returns whether a Draw can be started.\\n     * @return True if a Draw can be started, false otherwise.\\n     */\\n    function canStartDraw() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether a Draw can be completed.\\n     * @return True if a Draw can be completed, false otherwise.\\n     */\\n    function canCompleteDraw() external view returns (bool);\\n\\n    /**\\n     * @notice Calculates when the next beacon period will start.\\n     * @param time The timestamp to use as the current time\\n     * @return The timestamp at which the next beacon period would start\\n     */\\n    function calculateNextBeaconPeriodStartTime(uint64 time) external view returns (uint64);\\n\\n    /**\\n     * @notice Can be called by anyone to cancel the draw request if the RNG has timed out.\\n     */\\n    function cancelDraw() external;\\n\\n    /**\\n     * @notice Completes the Draw (RNG) request and pushes a Draw onto DrawBuffer.\\n     */\\n    function completeDraw() external;\\n\\n    /**\\n     * @notice Returns the block number that the current RNG request has been locked to.\\n     * @return The block number that the RNG request is locked to\\n     */\\n    function getLastRngLockBlock() external view returns (uint32);\\n\\n    /**\\n     * @notice Returns the current RNG Request ID.\\n     * @return The current Request ID\\n     */\\n    function getLastRngRequestId() external view returns (uint32);\\n\\n    /**\\n     * @notice Returns whether the beacon period is over\\n     * @return True if the beacon period is over, false otherwise\\n     */\\n    function isBeaconPeriodOver() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether the random number request has completed.\\n     * @return True if a random number request has completed, false otherwise.\\n     */\\n    function isRngCompleted() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether a random number has been requested\\n     * @return True if a random number has been requested, false otherwise.\\n     */\\n    function isRngRequested() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether the random number request has timed out.\\n     * @return True if a random number request has timed out, false otherwise.\\n     */\\n    function isRngTimedOut() external view returns (bool);\\n\\n    /**\\n     * @notice Allows the owner to set the beacon period in seconds.\\n     * @param beaconPeriodSeconds The new beacon period in seconds.  Must be greater than zero.\\n     */\\n    function setBeaconPeriodSeconds(uint32 beaconPeriodSeconds) external;\\n\\n    /**\\n     * @notice Allows the owner to set the RNG request timeout in seconds. This is the time that must elapsed before the RNG request can be cancelled and the pool unlocked.\\n     * @param rngTimeout The RNG request timeout in seconds.\\n     */\\n    function setRngTimeout(uint32 rngTimeout) external;\\n\\n    /**\\n     * @notice Sets the RNG service that the Prize Strategy is connected to\\n     * @param rngService The address of the new RNG service interface\\n     */\\n    function setRngService(RNGInterface rngService) external;\\n\\n    /**\\n     * @notice Starts the Draw process by starting random number request. The previous beacon period must have ended.\\n     * @dev The RNG-Request-Fee is expected to be held within this contract before calling this function\\n     */\\n    function startDraw() external;\\n\\n    /**\\n     * @notice Set global DrawBuffer variable.\\n     * @dev    All subsequent Draw requests/completions will be pushed to the new DrawBuffer.\\n     * @param newDrawBuffer DrawBuffer address\\n     * @return DrawBuffer\\n     */\\n    function setDrawBuffer(IDrawBuffer newDrawBuffer) external returns (IDrawBuffer);\\n}\\n\",\"keccak256\":\"0x43213073a191399978af2c7464c5e39af09efeeb503005d4e2a79705c40baa32\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/interfaces/IDrawBuffer.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"../interfaces/IDrawBeacon.sol\\\";\\n\\n/** @title  IDrawBuffer\\n  * @author PoolTogether Inc Team\\n  * @notice The DrawBuffer interface.\\n*/\\ninterface IDrawBuffer {\\n    /**\\n     * @notice Emit when a new draw has been created.\\n     * @param drawId Draw id\\n     * @param draw The Draw struct\\n     */\\n    event DrawSet(uint32 indexed drawId, IDrawBeacon.Draw draw);\\n\\n    /**\\n     * @notice Read a ring buffer cardinality\\n     * @return Ring buffer cardinality\\n     */\\n    function getBufferCardinality() external view returns (uint32);\\n\\n    /**\\n     * @notice Read a Draw from the draws ring buffer.\\n     * @dev    Read a Draw using the Draw.drawId to calculate position in the draws ring buffer.\\n     * @param drawId Draw.drawId\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getDraw(uint32 drawId) external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Read multiple Draws from the draws ring buffer.\\n     * @dev    Read multiple Draws using each drawId to calculate position in the draws ring buffer.\\n     * @param drawIds Array of drawIds\\n     * @return IDrawBeacon.Draw[]\\n     */\\n    function getDraws(uint32[] calldata drawIds) external view returns (IDrawBeacon.Draw[] memory);\\n\\n    /**\\n     * @notice Gets the number of Draws held in the draw ring buffer.\\n     * @dev If no Draws have been pushed, it will return 0.\\n     * @dev If the ring buffer is full, it will return the cardinality.\\n     * @dev Otherwise, it will return the NewestDraw index + 1.\\n     * @return Number of Draws held in the draw ring buffer.\\n     */\\n    function getDrawCount() external view returns (uint32);\\n\\n    /**\\n     * @notice Read newest Draw from draws ring buffer.\\n     * @dev    Uses the nextDrawIndex to calculate the most recently added Draw.\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getNewestDraw() external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Read oldest Draw from draws ring buffer.\\n     * @dev    Finds the oldest Draw by comparing and/or diffing totalDraws with the cardinality.\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getOldestDraw() external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Push Draw onto draws ring buffer history.\\n     * @dev    Push new draw onto draws history via authorized manager or owner.\\n     * @param draw IDrawBeacon.Draw\\n     * @return Draw.drawId\\n     */\\n    function pushDraw(IDrawBeacon.Draw calldata draw) external returns (uint32);\\n\\n    /**\\n     * @notice Set existing Draw in draws ring buffer with new parameters.\\n     * @dev    Updating a Draw should be used sparingly and only in the event an incorrect Draw parameter has been stored.\\n     * @param newDraw IDrawBeacon.Draw\\n     * @return Draw.drawId\\n     */\\n    function setDraw(IDrawBeacon.Draw calldata newDraw) external returns (uint32);\\n}\\n\",\"keccak256\":\"0x209ff20406b6b45ff5eff40af05c41a5d697441fc84e2e015e6828d874ccaa83\",\"license\":\"GPL-3.0\"},\"contracts/DrawDispatcher.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport { IDrawBeacon } from \\\"@pooltogether/v4-core/contracts/interfaces/IDrawBeacon.sol\\\";\\nimport { IDrawBuffer } from \\\"@pooltogether/v4-core/contracts/interfaces/IDrawBuffer.sol\\\";\\n\\nimport { ISingleMessageDispatcher } from \\\"./interfaces/ISingleMessageDispatcher.sol\\\";\\n\\n/**\\n * @title PoolTogether V4 DrawDispatcher\\n * @author PoolTogether Inc Team\\n * @notice The DrawDispatcher smart contract relies on ERC-5164 to dispatch draws from Ethereum to another L1 or L2\\n *         where Chainlink VRF 2.0 may not be available to compute draws.\\n */\\ncontract DrawDispatcher {\\n    /**\\n     * @notice Emitted when the `draw` has been dispatched.\\n     * @param dispatcher Address of the dispatcher on Ethereum that dispatched the draw\\n     * @param toChainId ID of the receiving chain\\n     * @param drawExecutor Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\\n     * @param draw Draw that was dispatched\\n     */\\n    event DrawDispatched(\\n        ISingleMessageDispatcher indexed dispatcher,\\n        uint256 indexed toChainId,\\n        address indexed drawExecutor,\\n        IDrawBeacon.Draw draw\\n    );\\n\\n    /**\\n     * @notice Emitted when the `draws` have been dispatched.\\n     * @param dispatcher Address of the dispatcher on Ethereum that dispatched the draws\\n     * @param toChainId ID of the receiving chain\\n     * @param drawExecutor Address of the DrawExecutor on the receiving chain that will push the draws onto the DrawBuffer\\n     * @param draws Draws that were dispatched\\n     */\\n    event DrawsDispatched(\\n        ISingleMessageDispatcher indexed dispatcher,\\n        uint256 indexed toChainId,\\n        address indexed drawExecutor,\\n        IDrawBeacon.Draw[] draws\\n    );\\n\\n    /// @notice DrawBuffer from which draws are retrieved.\\n    IDrawBuffer public immutable drawBuffer;\\n\\n    /**\\n     * @notice DrawDispatcher constructor.\\n     * @param _drawBuffer Address of the DrawBuffer from which draws are retrieved\\n     */\\n    constructor(IDrawBuffer _drawBuffer) {\\n        require(address(_drawBuffer) != address(0), \\\"DD/drawBuffer-not-zero-address\\\");\\n\\n        drawBuffer = _drawBuffer;\\n    }\\n\\n    /**\\n     * @notice Retrieves and dispatch the newest recorded draw.\\n     * @param _dispatcher Address of the dispatcher on Ethereum that will be used to dispatch the draw\\n     * @param _toChainId ID of the receiving chain\\n     * @param _drawExecutor Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\\n     */\\n    function dispatchNewestDraw(\\n        ISingleMessageDispatcher _dispatcher,\\n        uint256 _toChainId,\\n        address _drawExecutor\\n    ) external {\\n        IDrawBeacon.Draw memory _newestDraw = drawBuffer.getNewestDraw();\\n        _dispatchDraw(_dispatcher, _toChainId, _drawExecutor, _newestDraw);\\n    }\\n\\n    /**\\n     * @notice Retrieves and dispatch draw.\\n     * @dev Will revert if the draw does not exist.\\n     * @param _dispatcher Address of the dispatcher on Ethereum that will be used to dispatch the draw\\n     * @param _toChainId ID of the receiving chain\\n     * @param _drawExecutor Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\\n     * @param _drawId Id of the draw to dispatch\\n     */\\n    function dispatchDraw(\\n        ISingleMessageDispatcher _dispatcher,\\n        uint256 _toChainId,\\n        address _drawExecutor,\\n        uint32 _drawId\\n    ) external {\\n        require(_drawId > 0, \\\"DD/drawId-gt-zero\\\");\\n\\n        IDrawBeacon.Draw memory _draw = drawBuffer.getDraw(_drawId);\\n        _dispatchDraw(_dispatcher, _toChainId, _drawExecutor, _draw);\\n    }\\n\\n    /**\\n     * @notice Retrieves and dispatch draws.\\n     * @dev `_drawIds` must be ordered in ascending and contiguous order.\\n     * @dev Will revert if one of the draw does not exist.\\n     * @param _dispatcher Address of the dispatcher on Ethereum that will be used to dispatch the draw\\n     * @param _toChainId ID of the receiving chain\\n     * @param _drawExecutor Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\\n     * @param _drawIds Array of draw ids to dispatch\\n     */\\n    function dispatchDraws(\\n        ISingleMessageDispatcher _dispatcher,\\n        uint256 _toChainId,\\n        address _drawExecutor,\\n        uint32[] calldata _drawIds\\n    ) external {\\n        IDrawBeacon.Draw[] memory _draws = drawBuffer.getDraws(_drawIds);\\n\\n        _dispatchMessage(\\n            _dispatcher,\\n            _toChainId,\\n            _drawExecutor,\\n            abi.encodeWithSignature(\\\"pushDraws((uint256,uint32,uint64,uint64,uint32)[])\\\", _draws)\\n        );\\n\\n        emit DrawsDispatched(_dispatcher, _toChainId, _drawExecutor, _draws);\\n    }\\n\\n    /**\\n     * @notice Dispatch the passed `draw`.\\n     * @param _dispatcher Address of the dispatcher on Ethereum that will be used to dispatch the draw\\n     * @param _toChainId ID of the receiving chain\\n     * @param _drawExecutor Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer\\n     * @param _draw Draw to dispatch\\n     */\\n    function _dispatchDraw(\\n        ISingleMessageDispatcher _dispatcher,\\n        uint256 _toChainId,\\n        address _drawExecutor,\\n        IDrawBeacon.Draw memory _draw\\n    ) internal {\\n        _dispatchMessage(\\n            _dispatcher,\\n            _toChainId,\\n            _drawExecutor,\\n            abi.encodeWithSignature(\\\"pushDraw((uint256,uint32,uint64,uint64,uint32))\\\", _draw)\\n        );\\n\\n        emit DrawDispatched(_dispatcher, _toChainId, _drawExecutor, _draw);\\n    }\\n\\n    /**\\n     * @notice Dispatch encoded call.\\n     * @param _dispatcher Address of the dispatcher on Ethereum that will dispatch the call\\n     * @param _toChainId ID of the receiving chain\\n     * @param _drawExecutor Address of the DrawExecutor on the receiving chain that will receive the call\\n     * @param _data Calldata to dispatch\\n     */\\n    function _dispatchMessage(\\n        ISingleMessageDispatcher _dispatcher,\\n        uint256 _toChainId,\\n        address _drawExecutor,\\n        bytes memory _data\\n    ) internal {\\n        require(address(_dispatcher) != address(0), \\\"DD/dispatcher-not-zero-address\\\");\\n        require(_drawExecutor != address(0), \\\"DD/drawExecutor-not-zero-address\\\");\\n\\n        _dispatcher.dispatchMessage(_toChainId, _drawExecutor, _data);\\n    }\\n}\\n\",\"keccak256\":\"0xa3de9bd3964fd175bf3c50e30039c90448ecf513df8985755098c3b37f196c95\",\"license\":\"GPL-3.0\"},\"contracts/interfaces/ISingleMessageDispatcher.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\n/**\\n * @title ERC-5164: Cross-Chain Execution Standard, optional SingleMessageDispatcher extension\\n * @dev See https://eips.ethereum.org/EIPS/eip-5164\\n */\\ninterface ISingleMessageDispatcher {\\n    /**\\n     * @notice Dispatch a message to the receiving chain.\\n     * @dev Must compute and return an ID uniquely identifying the message.\\n     * @dev Must emit the `MessageDispatched` event when successfully dispatched.\\n     * @param toChainId ID of the receiving chain\\n     * @param to Address on the receiving chain that will receive `data`\\n     * @param data Data dispatched to the receiving chain\\n     * @return bytes32 ID uniquely identifying the message\\n     */\\n    function dispatchMessage(\\n        uint256 toChainId,\\n        address to,\\n        bytes calldata data\\n    ) external returns (bytes32);\\n}\\n\",\"keccak256\":\"0x7227945b9c104d957d72c9110c13ad77bde5812bc65eedb50361b6e2584f16b5\",\"license\":\"GPL-3.0\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b50604051610c78380380610c7883398101604081905261002f9161009e565b6001600160a01b0381166100895760405162461bcd60e51b815260206004820152601e60248201527f44442f647261774275666665722d6e6f742d7a65726f2d616464726573730000604482015260640160405180910390fd5b60601b6001600160601b0319166080526100ce565b6000602082840312156100b057600080fd5b81516001600160a01b03811681146100c757600080fd5b9392505050565b60805160601c610b796100ff6000396000818160910152818160d30152818161020801526102d20152610b796000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806336ffe7a2146100515780634abbf2281461006657806386f1464714610079578063ce343bb61461008c575b600080fd5b61006461005f3660046107b5565b6100cf565b005b610064610074366004610899565b610176565b6100646100873660046107f7565b61029f565b6100b37f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b03909116815260200160405180910390f35b60007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316630edb1d2e6040518163ffffffff1660e01b815260040160a06040518083038186803b15801561012a57600080fd5b505afa15801561013e573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061016291906108ec565b905061017084848484610427565b50505050565b60008163ffffffff16116101d15760405162461bcd60e51b815260206004820152601160248201527f44442f6472617749642d67742d7a65726f00000000000000000000000000000060448201526064015b60405180910390fd5b6040517f83c34aaf00000000000000000000000000000000000000000000000000000000815263ffffffff821660048201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906383c34aaf9060240160a06040518083038186803b15801561025257600080fd5b505afa158015610266573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061028a91906108ec565b905061029885858584610427565b5050505050565b6040517fd0bb78f30000000000000000000000000000000000000000000000000000000081526000906001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063d0bb78f39061030990869086906004016109a5565b60006040518083038186803b15801561032157600080fd5b505afa158015610335573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261035d91908101906106e2565b90506103d386868684604051602401610376919061090f565b60408051601f198184030181529190526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f555dd560000000000000000000000000000000000000000000000000000000001790526104ed565b836001600160a01b031685876001600160a01b03167feca46acce8a2e776243c8866a9ccbe11b6dc03ad1cf1f802f36714d3260124e284604051610417919061090f565b60405180910390a4505050505050565b61049b8484848460405160240161043e91906109f0565b60408051601f198184030181529190526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f089eb925000000000000000000000000000000000000000000000000000000001790526104ed565b816001600160a01b031683856001600160a01b03167f22e618b95c54407a3ebf356907db11abbdd414b92f49f8da996020d19c2f0010846040516104df91906109f0565b60405180910390a450505050565b6001600160a01b0384166105435760405162461bcd60e51b815260206004820152601e60248201527f44442f646973706174636865722d6e6f742d7a65726f2d61646472657373000060448201526064016101c8565b6001600160a01b0382166105995760405162461bcd60e51b815260206004820181905260248201527f44442f647261774578656375746f722d6e6f742d7a65726f2d6164647265737360448201526064016101c8565b6040517ffe39827b0000000000000000000000000000000000000000000000000000000081526001600160a01b0385169063fe39827b906105e290869086908690600401610a4c565b602060405180830381600087803b1580156105fc57600080fd5b505af1158015610610573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610298919061079c565b600060a0828403121561064657600080fd5b60405160a0810181811067ffffffffffffffff8211171561066957610669610aea565b806040525080915082518152602083015161068381610b31565b6020820152610694604084016106c5565b60408201526106a5606084016106c5565b606082015260808301516106b881610b31565b6080919091015292915050565b805167ffffffffffffffff811681146106dd57600080fd5b919050565b600060208083850312156106f557600080fd5b825167ffffffffffffffff8082111561070d57600080fd5b818501915085601f83011261072157600080fd5b81518181111561073357610733610aea565b610741848260051b01610ab9565b818152848101925083850160a0808402860187018a101561076157600080fd5b600095505b8386101561078e576107788a83610634565b8552600195909501949386019390810190610766565b509098975050505050505050565b6000602082840312156107ae57600080fd5b5051919050565b6000806000606084860312156107ca57600080fd5b83356107d581610b19565b92506020840135915060408401356107ec81610b19565b809150509250925092565b60008060008060006080868803121561080f57600080fd5b853561081a81610b19565b945060208601359350604086013561083181610b19565b9250606086013567ffffffffffffffff8082111561084e57600080fd5b818801915088601f83011261086257600080fd5b81358181111561087157600080fd5b8960208260051b850101111561088657600080fd5b9699959850939650602001949392505050565b600080600080608085870312156108af57600080fd5b84356108ba81610b19565b93506020850135925060408501356108d181610b19565b915060608501356108e181610b31565b939692955090935050565b600060a082840312156108fe57600080fd5b6109088383610634565b9392505050565b6020808252825182820181905260009190848201906040850190845b818110156109995761098683855180518252602081015163ffffffff80821660208501526040830151915067ffffffffffffffff80831660408601528060608501511660608601525080608084015116608085015250505050565b9284019260a0929092019160010161092b565b50909695505050505050565b60208082528181018390526000908460408401835b868110156109e55782356109cd81610b31565b63ffffffff16825291830191908301906001016109ba565b509695505050505050565b60a08101610a46828480518252602081015163ffffffff80821660208501526040830151915067ffffffffffffffff80831660408601528060608501511660608601525080608084015116608085015250505050565b92915050565b838152600060206001600160a01b0385168184015260606040840152835180606085015260005b81811015610a8f57858101830151858201608001528201610a73565b81811115610aa1576000608083870101525b50601f01601f19169290920160800195945050505050565b604051601f8201601f1916810167ffffffffffffffff81118282101715610ae257610ae2610aea565b604052919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b6001600160a01b0381168114610b2e57600080fd5b50565b63ffffffff81168114610b2e57600080fdfea26469706673582212200d317a067fff3d99bc91d1299ba6ff87781a80c8297ad207257534523af3541c64736f6c63430008060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806336ffe7a2146100515780634abbf2281461006657806386f1464714610079578063ce343bb61461008c575b600080fd5b61006461005f3660046107b5565b6100cf565b005b610064610074366004610899565b610176565b6100646100873660046107f7565b61029f565b6100b37f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b03909116815260200160405180910390f35b60007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316630edb1d2e6040518163ffffffff1660e01b815260040160a06040518083038186803b15801561012a57600080fd5b505afa15801561013e573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061016291906108ec565b905061017084848484610427565b50505050565b60008163ffffffff16116101d15760405162461bcd60e51b815260206004820152601160248201527f44442f6472617749642d67742d7a65726f00000000000000000000000000000060448201526064015b60405180910390fd5b6040517f83c34aaf00000000000000000000000000000000000000000000000000000000815263ffffffff821660048201526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906383c34aaf9060240160a06040518083038186803b15801561025257600080fd5b505afa158015610266573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061028a91906108ec565b905061029885858584610427565b5050505050565b6040517fd0bb78f30000000000000000000000000000000000000000000000000000000081526000906001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063d0bb78f39061030990869086906004016109a5565b60006040518083038186803b15801561032157600080fd5b505afa158015610335573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261035d91908101906106e2565b90506103d386868684604051602401610376919061090f565b60408051601f198184030181529190526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f555dd560000000000000000000000000000000000000000000000000000000001790526104ed565b836001600160a01b031685876001600160a01b03167feca46acce8a2e776243c8866a9ccbe11b6dc03ad1cf1f802f36714d3260124e284604051610417919061090f565b60405180910390a4505050505050565b61049b8484848460405160240161043e91906109f0565b60408051601f198184030181529190526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f089eb925000000000000000000000000000000000000000000000000000000001790526104ed565b816001600160a01b031683856001600160a01b03167f22e618b95c54407a3ebf356907db11abbdd414b92f49f8da996020d19c2f0010846040516104df91906109f0565b60405180910390a450505050565b6001600160a01b0384166105435760405162461bcd60e51b815260206004820152601e60248201527f44442f646973706174636865722d6e6f742d7a65726f2d61646472657373000060448201526064016101c8565b6001600160a01b0382166105995760405162461bcd60e51b815260206004820181905260248201527f44442f647261774578656375746f722d6e6f742d7a65726f2d6164647265737360448201526064016101c8565b6040517ffe39827b0000000000000000000000000000000000000000000000000000000081526001600160a01b0385169063fe39827b906105e290869086908690600401610a4c565b602060405180830381600087803b1580156105fc57600080fd5b505af1158015610610573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610298919061079c565b600060a0828403121561064657600080fd5b60405160a0810181811067ffffffffffffffff8211171561066957610669610aea565b806040525080915082518152602083015161068381610b31565b6020820152610694604084016106c5565b60408201526106a5606084016106c5565b606082015260808301516106b881610b31565b6080919091015292915050565b805167ffffffffffffffff811681146106dd57600080fd5b919050565b600060208083850312156106f557600080fd5b825167ffffffffffffffff8082111561070d57600080fd5b818501915085601f83011261072157600080fd5b81518181111561073357610733610aea565b610741848260051b01610ab9565b818152848101925083850160a0808402860187018a101561076157600080fd5b600095505b8386101561078e576107788a83610634565b8552600195909501949386019390810190610766565b509098975050505050505050565b6000602082840312156107ae57600080fd5b5051919050565b6000806000606084860312156107ca57600080fd5b83356107d581610b19565b92506020840135915060408401356107ec81610b19565b809150509250925092565b60008060008060006080868803121561080f57600080fd5b853561081a81610b19565b945060208601359350604086013561083181610b19565b9250606086013567ffffffffffffffff8082111561084e57600080fd5b818801915088601f83011261086257600080fd5b81358181111561087157600080fd5b8960208260051b850101111561088657600080fd5b9699959850939650602001949392505050565b600080600080608085870312156108af57600080fd5b84356108ba81610b19565b93506020850135925060408501356108d181610b19565b915060608501356108e181610b31565b939692955090935050565b600060a082840312156108fe57600080fd5b6109088383610634565b9392505050565b6020808252825182820181905260009190848201906040850190845b818110156109995761098683855180518252602081015163ffffffff80821660208501526040830151915067ffffffffffffffff80831660408601528060608501511660608601525080608084015116608085015250505050565b9284019260a0929092019160010161092b565b50909695505050505050565b60208082528181018390526000908460408401835b868110156109e55782356109cd81610b31565b63ffffffff16825291830191908301906001016109ba565b509695505050505050565b60a08101610a46828480518252602081015163ffffffff80821660208501526040830151915067ffffffffffffffff80831660408601528060608501511660608601525080608084015116608085015250505050565b92915050565b838152600060206001600160a01b0385168184015260606040840152835180606085015260005b81811015610a8f57858101830151858201608001528201610a73565b81811115610aa1576000608083870101525b50601f01601f19169290920160800195945050505050565b604051601f8201601f1916810167ffffffffffffffff81118282101715610ae257610ae2610aea565b604052919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b6001600160a01b0381168114610b2e57600080fd5b50565b63ffffffff81168114610b2e57600080fdfea26469706673582212200d317a067fff3d99bc91d1299ba6ff87781a80c8297ad207257534523af3541c64736f6c63430008060033",
+  "devdoc": {
+    "author": "PoolTogether Inc Team",
+    "events": {
+      "DrawDispatched(address,uint256,address,(uint256,uint32,uint64,uint64,uint32))": {
+        "params": {
+          "dispatcher": "Address of the dispatcher on Ethereum that dispatched the draw",
+          "draw": "Draw that was dispatched",
+          "drawExecutor": "Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer",
+          "toChainId": "ID of the receiving chain"
+        }
+      },
+      "DrawsDispatched(address,uint256,address,(uint256,uint32,uint64,uint64,uint32)[])": {
+        "params": {
+          "dispatcher": "Address of the dispatcher on Ethereum that dispatched the draws",
+          "drawExecutor": "Address of the DrawExecutor on the receiving chain that will push the draws onto the DrawBuffer",
+          "draws": "Draws that were dispatched",
+          "toChainId": "ID of the receiving chain"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "params": {
+          "_drawBuffer": "Address of the DrawBuffer from which draws are retrieved"
+        }
+      },
+      "dispatchDraw(address,uint256,address,uint32)": {
+        "details": "Will revert if the draw does not exist.",
+        "params": {
+          "_dispatcher": "Address of the dispatcher on Ethereum that will be used to dispatch the draw",
+          "_drawExecutor": "Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer",
+          "_drawId": "Id of the draw to dispatch",
+          "_toChainId": "ID of the receiving chain"
+        }
+      },
+      "dispatchDraws(address,uint256,address,uint32[])": {
+        "details": "`_drawIds` must be ordered in ascending and contiguous order.Will revert if one of the draw does not exist.",
+        "params": {
+          "_dispatcher": "Address of the dispatcher on Ethereum that will be used to dispatch the draw",
+          "_drawExecutor": "Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer",
+          "_drawIds": "Array of draw ids to dispatch",
+          "_toChainId": "ID of the receiving chain"
+        }
+      },
+      "dispatchNewestDraw(address,uint256,address)": {
+        "params": {
+          "_dispatcher": "Address of the dispatcher on Ethereum that will be used to dispatch the draw",
+          "_drawExecutor": "Address of the DrawExecutor on the receiving chain that will push the draw onto the DrawBuffer",
+          "_toChainId": "ID of the receiving chain"
+        }
+      }
+    },
+    "title": "PoolTogether V4 DrawDispatcher",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "DrawDispatched(address,uint256,address,(uint256,uint32,uint64,uint64,uint32))": {
+        "notice": "Emitted when the `draw` has been dispatched."
+      },
+      "DrawsDispatched(address,uint256,address,(uint256,uint32,uint64,uint64,uint32)[])": {
+        "notice": "Emitted when the `draws` have been dispatched."
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "constructor": {
+        "notice": "DrawDispatcher constructor."
+      },
+      "dispatchDraw(address,uint256,address,uint32)": {
+        "notice": "Retrieves and dispatch draw."
+      },
+      "dispatchDraws(address,uint256,address,uint32[])": {
+        "notice": "Retrieves and dispatch draws."
+      },
+      "dispatchNewestDraw(address,uint256,address)": {
+        "notice": "Retrieves and dispatch the newest recorded draw."
+      },
+      "drawBuffer()": {
+        "notice": "DrawBuffer from which draws are retrieved."
+      }
+    },
+    "notice": "The DrawDispatcher smart contract relies on ERC-5164 to dispatch draws from Ethereum to another L1 or L2         where Chainlink VRF 2.0 may not be available to compute draws.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
