@@ -1,0 +1,378 @@
+{
+  "address": "0x85c0D1c1714dA886052C1b04c42FF7076Ff5e222",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_originChainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_drawDispatcher",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_executor",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IDrawBuffer",
+          "name": "_drawBuffer",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "winningRandomNumber",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint32",
+              "name": "drawId",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "timestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "beaconPeriodStartedAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint32",
+              "name": "beaconPeriodSeconds",
+              "type": "uint32"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IDrawBeacon.Draw",
+          "name": "draw",
+          "type": "tuple"
+        }
+      ],
+      "name": "DrawPushed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "winningRandomNumber",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint32",
+              "name": "drawId",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "timestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "beaconPeriodStartedAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint32",
+              "name": "beaconPeriodSeconds",
+              "type": "uint32"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IDrawBeacon.Draw[]",
+          "name": "draws",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "DrawsPushed",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "drawBuffer",
+      "outputs": [
+        {
+          "internalType": "contract IDrawBuffer",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "drawDispatcher",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_executor",
+          "type": "address"
+        }
+      ],
+      "name": "isTrustedExecutor",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "originChainId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "winningRandomNumber",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint32",
+              "name": "drawId",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "timestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "beaconPeriodStartedAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint32",
+              "name": "beaconPeriodSeconds",
+              "type": "uint32"
+            }
+          ],
+          "internalType": "struct IDrawBeacon.Draw",
+          "name": "_draw",
+          "type": "tuple"
+        }
+      ],
+      "name": "pushDraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "winningRandomNumber",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint32",
+              "name": "drawId",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "timestamp",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "beaconPeriodStartedAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint32",
+              "name": "beaconPeriodSeconds",
+              "type": "uint32"
+            }
+          ],
+          "internalType": "struct IDrawBeacon.Draw[]",
+          "name": "_draws",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "pushDraws",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "trustedExecutor",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x1b6cf5cb2898e26b94c61549c3d25d677234d145bcc4841a66bf9bc878aa77be",
+  "receipt": {
+    "to": null,
+    "from": "0x4D40eb12430A57965cEe3015348d490C6156dF20",
+    "contractAddress": "0x85c0D1c1714dA886052C1b04c42FF7076Ff5e222",
+    "transactionIndex": 0,
+    "gasUsed": "553275",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x7df5f4d06110143e72216e68624aa859d39a80979bc212f4ef6027fbb998b799",
+    "transactionHash": "0x1b6cf5cb2898e26b94c61549c3d25d677234d145bcc4841a66bf9bc878aa77be",
+    "logs": [],
+    "blockNumber": 70418042,
+    "cumulativeGasUsed": "553275",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    1,
+    "0xAc4fF319adAc4c7d109f4024A33328088370A064",
+    "0x890a87E71E731342a6d10e7628bd1F0733ce3296",
+    "0x267DD4034830Bb4ba9314e0471C1dDFD79849777"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "43e560d8d518aaa11ff91c21c2f0677c",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_originChainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_drawDispatcher\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_executor\",\"type\":\"address\"},{\"internalType\":\"contract IDrawBuffer\",\"name\":\"_drawBuffer\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"winningRandomNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"timestamp\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"beaconPeriodStartedAt\",\"type\":\"uint64\"},{\"internalType\":\"uint32\",\"name\":\"beaconPeriodSeconds\",\"type\":\"uint32\"}],\"indexed\":false,\"internalType\":\"struct IDrawBeacon.Draw\",\"name\":\"draw\",\"type\":\"tuple\"}],\"name\":\"DrawPushed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"winningRandomNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"timestamp\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"beaconPeriodStartedAt\",\"type\":\"uint64\"},{\"internalType\":\"uint32\",\"name\":\"beaconPeriodSeconds\",\"type\":\"uint32\"}],\"indexed\":false,\"internalType\":\"struct IDrawBeacon.Draw[]\",\"name\":\"draws\",\"type\":\"tuple[]\"}],\"name\":\"DrawsPushed\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"drawBuffer\",\"outputs\":[{\"internalType\":\"contract IDrawBuffer\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"drawDispatcher\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_executor\",\"type\":\"address\"}],\"name\":\"isTrustedExecutor\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"originChainId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"winningRandomNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"timestamp\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"beaconPeriodStartedAt\",\"type\":\"uint64\"},{\"internalType\":\"uint32\",\"name\":\"beaconPeriodSeconds\",\"type\":\"uint32\"}],\"internalType\":\"struct IDrawBeacon.Draw\",\"name\":\"_draw\",\"type\":\"tuple\"}],\"name\":\"pushDraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"winningRandomNumber\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"drawId\",\"type\":\"uint32\"},{\"internalType\":\"uint64\",\"name\":\"timestamp\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"beaconPeriodStartedAt\",\"type\":\"uint64\"},{\"internalType\":\"uint32\",\"name\":\"beaconPeriodSeconds\",\"type\":\"uint32\"}],\"internalType\":\"struct IDrawBeacon.Draw[]\",\"name\":\"_draws\",\"type\":\"tuple[]\"}],\"name\":\"pushDraws\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"trustedExecutor\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"PoolTogether Inc Team\",\"details\":\"This contract does not ensure draw ordering and draws should always be bridged in ascending and contiguous order.\",\"events\":{\"DrawPushed((uint256,uint32,uint64,uint64,uint32))\":{\"params\":{\"draw\":\"Draw that was pushed\"}},\"DrawsPushed((uint256,uint32,uint64,uint64,uint32)[])\":{\"params\":{\"draws\":\"Draws that were pushed\"}}},\"kind\":\"dev\",\"methods\":{\"constructor\":{\"params\":{\"_drawBuffer\":\"Address of the DrawBuffer onto which draws are pushed\",\"_drawDispatcher\":\"Address of the DrawDispatcher on the origin chain that dispatch the draws\",\"_executor\":\"Address of the ERC-5164 contract that executes the bridged calls\",\"_originChainId\":\"ID of the origin chain\"}},\"isTrustedExecutor(address)\":{\"params\":{\"_executor\":\"Address to check\"}},\"pushDraw((uint256,uint32,uint64,uint64,uint32))\":{\"details\":\"Only the `executor` is able to call this function.\",\"params\":{\"_draw\":\"Draw to push\"}},\"pushDraws((uint256,uint32,uint64,uint64,uint32)[])\":{\"details\":\"Only the `executor` is able to call this function.`draws` must be ordered in ascending and contiguous order.\",\"params\":{\"_draws\":\"Draws to push\"}}},\"title\":\"PoolTogether V4 DrawExecutor\",\"version\":1},\"userdoc\":{\"events\":{\"DrawPushed((uint256,uint32,uint64,uint64,uint32))\":{\"notice\":\"Emitted when the `draw` has been pushed.\"},\"DrawsPushed((uint256,uint32,uint64,uint64,uint32)[])\":{\"notice\":\"Emitted when the `draws` have been pushed.\"}},\"kind\":\"user\",\"methods\":{\"constructor\":{\"notice\":\"DrawExecutor constructor.\"},\"drawBuffer()\":{\"notice\":\"DrawBuffer onto which draws are pushed.\"},\"drawDispatcher()\":{\"notice\":\"DrawDispatcher contract on the origin chain that dispatch the draws.\"},\"isTrustedExecutor(address)\":{\"notice\":\"Check which executor this contract trust.\"},\"originChainId()\":{\"notice\":\"ID of the origin chain.\"},\"pushDraw((uint256,uint32,uint64,uint64,uint32))\":{\"notice\":\"Push `draw` onto the DrawBuffer.\"},\"pushDraws((uint256,uint32,uint64,uint64,uint32)[])\":{\"notice\":\"Push `draws` onto the DrawBuffer.\"},\"trustedExecutor()\":{\"notice\":\"Address of the trusted executor contract.\"}},\"notice\":\"The DrawExecutor smart contract relies on ERC-5164 to receive draws from Ethereum         and push them onto the DrawBuffer.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DrawExecutor.sol\":\"DrawExecutor\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"@pooltogether/pooltogether-rng-contracts/contracts/RNGInterface.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity >=0.6.0;\\n\\n/// @title Random Number Generator Interface\\n/// @notice Provides an interface for requesting random numbers from 3rd-party RNG services (Chainlink VRF, Starkware VDF, etc..)\\ninterface RNGInterface {\\n\\n  /// @notice Emitted when a new request for a random number has been submitted\\n  /// @param requestId The indexed ID of the request used to get the results of the RNG service\\n  /// @param sender The indexed address of the sender of the request\\n  event RandomNumberRequested(uint32 indexed requestId, address indexed sender);\\n\\n  /// @notice Emitted when an existing request for a random number has been completed\\n  /// @param requestId The indexed ID of the request used to get the results of the RNG service\\n  /// @param randomNumber The random number produced by the 3rd-party service\\n  event RandomNumberCompleted(uint32 indexed requestId, uint256 randomNumber);\\n\\n  /// @notice Gets the last request id used by the RNG service\\n  /// @return requestId The last request id used in the last request\\n  function getLastRequestId() external view returns (uint32 requestId);\\n\\n  /// @notice Gets the Fee for making a Request against an RNG service\\n  /// @return feeToken The address of the token that is used to pay fees\\n  /// @return requestFee The fee required to be paid to make a request\\n  function getRequestFee() external view returns (address feeToken, uint256 requestFee);\\n\\n  /// @notice Sends a request for a random number to the 3rd-party service\\n  /// @dev Some services will complete the request immediately, others may have a time-delay\\n  /// @dev Some services require payment in the form of a token, such as $LINK for Chainlink VRF\\n  /// @return requestId The ID of the request used to get the results of the RNG service\\n  /// @return lockBlock The block number at which the RNG service will start generating time-delayed randomness.  The calling contract\\n  /// should \\\"lock\\\" all activity until the result is available via the `requestId`\\n  function requestRandomNumber() external returns (uint32 requestId, uint32 lockBlock);\\n\\n  /// @notice Checks if the request for randomness from the 3rd-party service has completed\\n  /// @dev For time-delayed requests, this function is used to check/confirm completion\\n  /// @param requestId The ID of the request used to get the results of the RNG service\\n  /// @return isCompleted True if the request has completed and a random number is available, false otherwise\\n  function isRequestComplete(uint32 requestId) external view returns (bool isCompleted);\\n\\n  /// @notice Gets the random number produced by the 3rd-party service\\n  /// @param requestId The ID of the request used to get the results of the RNG service\\n  /// @return randomNum The random number\\n  function randomNumber(uint32 requestId) external returns (uint256 randomNum);\\n}\\n\",\"keccak256\":\"0xf917c68439d7476cd226f475e8fce940e0cf1d32cb0ff12e8537072a07f2b1da\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/interfaces/IDrawBeacon.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@pooltogether/pooltogether-rng-contracts/contracts/RNGInterface.sol\\\";\\nimport \\\"./IDrawBuffer.sol\\\";\\n\\n/** @title  IDrawBeacon\\n  * @author PoolTogether Inc Team\\n  * @notice The DrawBeacon interface.\\n*/\\ninterface IDrawBeacon {\\n\\n    /// @notice Draw struct created every draw\\n    /// @param winningRandomNumber The random number returned from the RNG service\\n    /// @param drawId The monotonically increasing drawId for each draw\\n    /// @param timestamp Unix timestamp of the draw. Recorded when the draw is created by the DrawBeacon.\\n    /// @param beaconPeriodStartedAt Unix timestamp of when the draw started\\n    /// @param beaconPeriodSeconds Unix timestamp of the beacon draw period for this draw.\\n    struct Draw {\\n        uint256 winningRandomNumber;\\n        uint32 drawId;\\n        uint64 timestamp;\\n        uint64 beaconPeriodStartedAt;\\n        uint32 beaconPeriodSeconds;\\n    }\\n\\n    /**\\n     * @notice Emit when a new DrawBuffer has been set.\\n     * @param newDrawBuffer       The new DrawBuffer address\\n     */\\n    event DrawBufferUpdated(IDrawBuffer indexed newDrawBuffer);\\n\\n    /**\\n     * @notice Emit when a draw has opened.\\n     * @param startedAt Start timestamp\\n     */\\n    event BeaconPeriodStarted(uint64 indexed startedAt);\\n\\n    /**\\n     * @notice Emit when a draw has started.\\n     * @param rngRequestId  draw id\\n     * @param rngLockBlock  Block when draw becomes invalid\\n     */\\n    event DrawStarted(uint32 indexed rngRequestId, uint32 rngLockBlock);\\n\\n    /**\\n     * @notice Emit when a draw has been cancelled.\\n     * @param rngRequestId  draw id\\n     * @param rngLockBlock  Block when draw becomes invalid\\n     */\\n    event DrawCancelled(uint32 indexed rngRequestId, uint32 rngLockBlock);\\n\\n    /**\\n     * @notice Emit when a draw has been completed.\\n     * @param randomNumber  Random number generated from draw\\n     */\\n    event DrawCompleted(uint256 randomNumber);\\n\\n    /**\\n     * @notice Emit when a RNG service address is set.\\n     * @param rngService  RNG service address\\n     */\\n    event RngServiceUpdated(RNGInterface indexed rngService);\\n\\n    /**\\n     * @notice Emit when a draw timeout param is set.\\n     * @param rngTimeout  draw timeout param in seconds\\n     */\\n    event RngTimeoutSet(uint32 rngTimeout);\\n\\n    /**\\n     * @notice Emit when the drawPeriodSeconds is set.\\n     * @param drawPeriodSeconds Time between draw\\n     */\\n    event BeaconPeriodSecondsUpdated(uint32 drawPeriodSeconds);\\n\\n    /**\\n     * @notice Returns the number of seconds remaining until the beacon period can be complete.\\n     * @return The number of seconds remaining until the beacon period can be complete.\\n     */\\n    function beaconPeriodRemainingSeconds() external view returns (uint64);\\n\\n    /**\\n     * @notice Returns the timestamp at which the beacon period ends\\n     * @return The timestamp at which the beacon period ends.\\n     */\\n    function beaconPeriodEndAt() external view returns (uint64);\\n\\n    /**\\n     * @notice Returns whether a Draw can be started.\\n     * @return True if a Draw can be started, false otherwise.\\n     */\\n    function canStartDraw() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether a Draw can be completed.\\n     * @return True if a Draw can be completed, false otherwise.\\n     */\\n    function canCompleteDraw() external view returns (bool);\\n\\n    /**\\n     * @notice Calculates when the next beacon period will start.\\n     * @param time The timestamp to use as the current time\\n     * @return The timestamp at which the next beacon period would start\\n     */\\n    function calculateNextBeaconPeriodStartTime(uint64 time) external view returns (uint64);\\n\\n    /**\\n     * @notice Can be called by anyone to cancel the draw request if the RNG has timed out.\\n     */\\n    function cancelDraw() external;\\n\\n    /**\\n     * @notice Completes the Draw (RNG) request and pushes a Draw onto DrawBuffer.\\n     */\\n    function completeDraw() external;\\n\\n    /**\\n     * @notice Returns the block number that the current RNG request has been locked to.\\n     * @return The block number that the RNG request is locked to\\n     */\\n    function getLastRngLockBlock() external view returns (uint32);\\n\\n    /**\\n     * @notice Returns the current RNG Request ID.\\n     * @return The current Request ID\\n     */\\n    function getLastRngRequestId() external view returns (uint32);\\n\\n    /**\\n     * @notice Returns whether the beacon period is over\\n     * @return True if the beacon period is over, false otherwise\\n     */\\n    function isBeaconPeriodOver() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether the random number request has completed.\\n     * @return True if a random number request has completed, false otherwise.\\n     */\\n    function isRngCompleted() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether a random number has been requested\\n     * @return True if a random number has been requested, false otherwise.\\n     */\\n    function isRngRequested() external view returns (bool);\\n\\n    /**\\n     * @notice Returns whether the random number request has timed out.\\n     * @return True if a random number request has timed out, false otherwise.\\n     */\\n    function isRngTimedOut() external view returns (bool);\\n\\n    /**\\n     * @notice Allows the owner to set the beacon period in seconds.\\n     * @param beaconPeriodSeconds The new beacon period in seconds.  Must be greater than zero.\\n     */\\n    function setBeaconPeriodSeconds(uint32 beaconPeriodSeconds) external;\\n\\n    /**\\n     * @notice Allows the owner to set the RNG request timeout in seconds. This is the time that must elapsed before the RNG request can be cancelled and the pool unlocked.\\n     * @param rngTimeout The RNG request timeout in seconds.\\n     */\\n    function setRngTimeout(uint32 rngTimeout) external;\\n\\n    /**\\n     * @notice Sets the RNG service that the Prize Strategy is connected to\\n     * @param rngService The address of the new RNG service interface\\n     */\\n    function setRngService(RNGInterface rngService) external;\\n\\n    /**\\n     * @notice Starts the Draw process by starting random number request. The previous beacon period must have ended.\\n     * @dev The RNG-Request-Fee is expected to be held within this contract before calling this function\\n     */\\n    function startDraw() external;\\n\\n    /**\\n     * @notice Set global DrawBuffer variable.\\n     * @dev    All subsequent Draw requests/completions will be pushed to the new DrawBuffer.\\n     * @param newDrawBuffer DrawBuffer address\\n     * @return DrawBuffer\\n     */\\n    function setDrawBuffer(IDrawBuffer newDrawBuffer) external returns (IDrawBuffer);\\n}\\n\",\"keccak256\":\"0x43213073a191399978af2c7464c5e39af09efeeb503005d4e2a79705c40baa32\",\"license\":\"GPL-3.0\"},\"@pooltogether/v4-core/contracts/interfaces/IDrawBuffer.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"../interfaces/IDrawBeacon.sol\\\";\\n\\n/** @title  IDrawBuffer\\n  * @author PoolTogether Inc Team\\n  * @notice The DrawBuffer interface.\\n*/\\ninterface IDrawBuffer {\\n    /**\\n     * @notice Emit when a new draw has been created.\\n     * @param drawId Draw id\\n     * @param draw The Draw struct\\n     */\\n    event DrawSet(uint32 indexed drawId, IDrawBeacon.Draw draw);\\n\\n    /**\\n     * @notice Read a ring buffer cardinality\\n     * @return Ring buffer cardinality\\n     */\\n    function getBufferCardinality() external view returns (uint32);\\n\\n    /**\\n     * @notice Read a Draw from the draws ring buffer.\\n     * @dev    Read a Draw using the Draw.drawId to calculate position in the draws ring buffer.\\n     * @param drawId Draw.drawId\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getDraw(uint32 drawId) external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Read multiple Draws from the draws ring buffer.\\n     * @dev    Read multiple Draws using each drawId to calculate position in the draws ring buffer.\\n     * @param drawIds Array of drawIds\\n     * @return IDrawBeacon.Draw[]\\n     */\\n    function getDraws(uint32[] calldata drawIds) external view returns (IDrawBeacon.Draw[] memory);\\n\\n    /**\\n     * @notice Gets the number of Draws held in the draw ring buffer.\\n     * @dev If no Draws have been pushed, it will return 0.\\n     * @dev If the ring buffer is full, it will return the cardinality.\\n     * @dev Otherwise, it will return the NewestDraw index + 1.\\n     * @return Number of Draws held in the draw ring buffer.\\n     */\\n    function getDrawCount() external view returns (uint32);\\n\\n    /**\\n     * @notice Read newest Draw from draws ring buffer.\\n     * @dev    Uses the nextDrawIndex to calculate the most recently added Draw.\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getNewestDraw() external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Read oldest Draw from draws ring buffer.\\n     * @dev    Finds the oldest Draw by comparing and/or diffing totalDraws with the cardinality.\\n     * @return IDrawBeacon.Draw\\n     */\\n    function getOldestDraw() external view returns (IDrawBeacon.Draw memory);\\n\\n    /**\\n     * @notice Push Draw onto draws ring buffer history.\\n     * @dev    Push new draw onto draws history via authorized manager or owner.\\n     * @param draw IDrawBeacon.Draw\\n     * @return Draw.drawId\\n     */\\n    function pushDraw(IDrawBeacon.Draw calldata draw) external returns (uint32);\\n\\n    /**\\n     * @notice Set existing Draw in draws ring buffer with new parameters.\\n     * @dev    Updating a Draw should be used sparingly and only in the event an incorrect Draw parameter has been stored.\\n     * @param newDraw IDrawBeacon.Draw\\n     * @return Draw.drawId\\n     */\\n    function setDraw(IDrawBeacon.Draw calldata newDraw) external returns (uint32);\\n}\\n\",\"keccak256\":\"0x209ff20406b6b45ff5eff40af05c41a5d697441fc84e2e015e6828d874ccaa83\",\"license\":\"GPL-3.0\"},\"contracts/DrawExecutor.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\nimport \\\"@pooltogether/v4-core/contracts/interfaces/IDrawBuffer.sol\\\";\\n\\nimport { ExecutorAware } from \\\"./abstract/ExecutorAware.sol\\\";\\n\\n/**\\n * @title PoolTogether V4 DrawExecutor\\n * @author PoolTogether Inc Team\\n * @notice The DrawExecutor smart contract relies on ERC-5164 to receive draws from Ethereum\\n *         and push them onto the DrawBuffer.\\n * @dev This contract does not ensure draw ordering and draws should always be bridged in ascending and contiguous order.\\n */\\ncontract DrawExecutor is ExecutorAware {\\n    /**\\n     * @notice Emitted when the `draw` has been pushed.\\n     * @param draw Draw that was pushed\\n     */\\n    event DrawPushed(IDrawBeacon.Draw draw);\\n\\n    /**\\n     * @notice Emitted when the `draws` have been pushed.\\n     * @param draws Draws that were pushed\\n     */\\n    event DrawsPushed(IDrawBeacon.Draw[] draws);\\n\\n    /// @notice ID of the origin chain.\\n    uint256 public immutable originChainId;\\n\\n    /// @notice DrawDispatcher contract on the origin chain that dispatch the draws.\\n    address public immutable drawDispatcher;\\n\\n    /// @notice DrawBuffer onto which draws are pushed.\\n    IDrawBuffer public immutable drawBuffer;\\n\\n    /**\\n     * @notice DrawExecutor constructor.\\n     * @param _originChainId ID of the origin chain\\n     * @param _drawDispatcher Address of the DrawDispatcher on the origin chain that dispatch the draws\\n     * @param _executor Address of the ERC-5164 contract that executes the bridged calls\\n     * @param _drawBuffer Address of the DrawBuffer onto which draws are pushed\\n     */\\n    constructor(\\n        uint256 _originChainId,\\n        address _drawDispatcher,\\n        address _executor,\\n        IDrawBuffer _drawBuffer\\n    ) ExecutorAware(_executor) {\\n        require(_originChainId != 0, \\\"DE/originChainId-not-zero\\\");\\n        require(address(_drawDispatcher) != address(0), \\\"DE/drawDispatcher-not-zero-adrs\\\");\\n        require(address(_drawBuffer) != address(0), \\\"DE/drawBuffer-not-zero-address\\\");\\n\\n        originChainId = _originChainId;\\n        drawDispatcher = _drawDispatcher;\\n        drawBuffer = _drawBuffer;\\n    }\\n\\n    /**\\n     * @notice Push `draw` onto the DrawBuffer.\\n     * @dev Only the `executor` is able to call this function.\\n     * @param _draw Draw to push\\n     */\\n    function pushDraw(IDrawBeacon.Draw calldata _draw) external {\\n        _checkSender();\\n\\n        drawBuffer.pushDraw(_draw);\\n\\n        emit DrawPushed(_draw);\\n    }\\n\\n    /**\\n     * @notice Push `draws` onto the DrawBuffer.\\n     * @dev Only the `executor` is able to call this function.\\n     * @dev `draws` must be ordered in ascending and contiguous order.\\n     * @param _draws Draws to push\\n     */\\n    function pushDraws(IDrawBeacon.Draw[] calldata _draws) external {\\n        _checkSender();\\n\\n        uint256 _drawsLength = _draws.length;\\n\\n        for (uint256 i; i < _drawsLength; i++) {\\n            drawBuffer.pushDraw(_draws[i]);\\n        }\\n\\n        emit DrawsPushed(_draws);\\n    }\\n\\n    /**\\n     * @notice Checks that:\\n     *          - the call has been dispatched from the supported chain\\n     *          - the sender on the receiving chain is the executor\\n     *          - the sender on the origin chain is the DrawDispatcher\\n     */\\n    function _checkSender() internal view {\\n        require(_fromChainId() == originChainId, \\\"DE/l1-chainId-not-supported\\\");\\n        require(isTrustedExecutor(msg.sender), \\\"DE/l2-sender-not-executor\\\");\\n        require(_msgSender() == address(drawDispatcher), \\\"DE/l1-sender-not-dispatcher\\\");\\n    }\\n}\\n\",\"keccak256\":\"0xe07dbadb6d239738f65968e240b68a8e99447669146c30e5adf092015f82d636\",\"license\":\"GPL-3.0\"},\"contracts/abstract/ExecutorAware.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity 0.8.6;\\n\\n/**\\n * @title ExecutorAware abstract contract\\n * @notice The ExecutorAware contract allows contracts on a receiving chain to execute messages from an origin chain.\\n *         These messages are sent by the `MessageDispatcher` contract which live on the origin chain.\\n *         The `MessageExecutor` contract on the receiving chain executes these messages\\n *         and then forward them to an ExecutorAware contract on the receiving chain.\\n * @dev This contract implements EIP-2771 (https://eips.ethereum.org/EIPS/eip-2771)\\n *      to ensure that messages are sent by a trusted `MessageExecutor` contract.\\n */\\nabstract contract ExecutorAware {\\n    /* ============ Variables ============ */\\n\\n    /// @notice Address of the trusted executor contract.\\n    address public immutable trustedExecutor;\\n\\n    /* ============ Constructor ============ */\\n\\n    /**\\n     * @notice ExecutorAware constructor.\\n     * @param _executor Address of the `MessageExecutor` contract\\n     */\\n    constructor(address _executor) {\\n        require(_executor != address(0), \\\"executor-not-zero-address\\\");\\n        trustedExecutor = _executor;\\n    }\\n\\n    /* ============ External Functions ============ */\\n\\n    /**\\n     * @notice Check which executor this contract trust.\\n     * @param _executor Address to check\\n     */\\n    function isTrustedExecutor(address _executor) public view returns (bool) {\\n        return _executor == trustedExecutor;\\n    }\\n\\n    /* ============ Internal Functions ============ */\\n\\n    /**\\n     * @notice Retrieve messageId from message data.\\n     * @return _msgDataMessageId ID uniquely identifying the message that was executed\\n     */\\n    function _messageId() internal pure returns (bytes32 _msgDataMessageId) {\\n        _msgDataMessageId;\\n\\n        if (msg.data.length >= 84) {\\n            assembly {\\n                _msgDataMessageId := calldataload(sub(calldatasize(), 84))\\n            }\\n        }\\n    }\\n\\n    /**\\n     * @notice Retrieve fromChainId from message data.\\n     * @return _msgDataFromChainId ID of the chain that dispatched the messages\\n     */\\n    function _fromChainId() internal pure returns (uint256 _msgDataFromChainId) {\\n        _msgDataFromChainId;\\n\\n        if (msg.data.length >= 52) {\\n            assembly {\\n                _msgDataFromChainId := calldataload(sub(calldatasize(), 52))\\n            }\\n        }\\n    }\\n\\n    /**\\n     * @notice Retrieve signer address from message data.\\n     * @return _signer Address of the signer\\n     */\\n    function _msgSender() internal view returns (address payable _signer) {\\n        _signer = payable(msg.sender);\\n\\n        if (msg.data.length >= 20 && isTrustedExecutor(_signer)) {\\n            assembly {\\n                _signer := shr(96, calldataload(sub(calldatasize(), 20)))\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x92e046ddce746ac11a5485315b79eb0581e099b7557deacc7d30845866ccd940\",\"license\":\"GPL-3.0\"}},\"version\":1}",
+  "bytecode": "0x61010060405234801561001157600080fd5b50604051610b86380380610b86833981016040819052610030916101bb565b816001600160a01b03811661008c5760405162461bcd60e51b815260206004820152601960248201527f6578656375746f722d6e6f742d7a65726f2d616464726573730000000000000060448201526064015b60405180910390fd5b60601b6001600160601b031916608052836100e95760405162461bcd60e51b815260206004820152601960248201527f44452f6f726967696e436861696e49642d6e6f742d7a65726f000000000000006044820152606401610083565b6001600160a01b03831661013f5760405162461bcd60e51b815260206004820152601f60248201527f44452f64726177446973706174636865722d6e6f742d7a65726f2d61647273006044820152606401610083565b6001600160a01b0381166101955760405162461bcd60e51b815260206004820152601e60248201527f44452f647261774275666665722d6e6f742d7a65726f2d6164647265737300006044820152606401610083565b60a093909352506001600160601b0319606091821b811660c05291901b1660e052610228565b600080600080608085870312156101d157600080fd5b8451935060208501516101e381610210565b60408601519093506101f481610210565b606086015190925061020581610210565b939692955090935050565b6001600160a01b038116811461022557600080fd5b50565b60805160601c60a05160c05160601c60e05160601c6108ed610299600039600081816101920152818161022001526102f80152600081816101b9015261050c015260008181609c015261040c01526000818160d6015281816101400152818161048701526105f001526108ed6000f3fe608060405234801561001057600080fd5b506004361061007d5760003560e01c8063555dd5601161005b578063555dd5601461011d578063672657ca14610130578063ce343bb61461018d578063d0831b0d146101b457600080fd5b8063089eb925146100825780630ac7f5611461009757806339584b19146100d1575b600080fd5b61009561009036600461070e565b6101db565b005b6100be7f000000000000000000000000000000000000000000000000000000000000000081565b6040519081526020015b60405180910390f35b6100f87f000000000000000000000000000000000000000000000000000000000000000081565b60405173ffffffffffffffffffffffffffffffffffffffff90911681526020016100c8565b61009561012b366004610699565b6102e2565b61017d61013e36600461065c565b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff90811691161490565b60405190151581526020016100c8565b6100f87f000000000000000000000000000000000000000000000000000000000000000081565b6100f87f000000000000000000000000000000000000000000000000000000000000000081565b6101e361040a565b6040517f089eb92500000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000169063089eb925906102559084906004016107ff565b602060405180830381600087803b15801561026f57600080fd5b505af1158015610283573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102a79190610726565b507f857d942e6b33b7d0b971df9330addcbc31d65f0acfaeb894b8096ed1417de5fd816040516102d791906107ff565b60405180910390a150565b6102ea61040a565b8060005b818110156103cb577f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663089eb92585858481811061034457610344610873565b905060a002016040518263ffffffff1660e01b815260040161036691906107ff565b602060405180830381600087803b15801561038057600080fd5b505af1158015610394573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103b89190610726565b50806103c381610813565b9150506102ee565b507f1c1d0c61b54b8e97768a1a183f91b7f55f13b25891958d38f426393937da08f683836040516103fd9291906107bd565b60405180910390a1505050565b7f00000000000000000000000000000000000000000000000000000000000000006104336105ae565b146104855760405162461bcd60e51b815260206004820152601b60248201527f44452f6c312d636861696e49642d6e6f742d737570706f72746564000000000060448201526064015b60405180910390fd5b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16331461050a5760405162461bcd60e51b815260206004820152601960248201527f44452f6c322d73656e6465722d6e6f742d6578656375746f7200000000000000604482015260640161047c565b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff166105496105e1565b73ffffffffffffffffffffffffffffffffffffffff16146105ac5760405162461bcd60e51b815260206004820152601b60248201527f44452f6c312d73656e6465722d6e6f742d646973706174636865720000000000604482015260640161047c565b565b6000603436106105de57507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcc3601355b90565b336014361080159061062c57507f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff908116908216145b156105de57507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffec36013560601c90565b60006020828403121561066e57600080fd5b813573ffffffffffffffffffffffffffffffffffffffff8116811461069257600080fd5b9392505050565b600080602083850312156106ac57600080fd5b823567ffffffffffffffff808211156106c457600080fd5b818501915085601f8301126106d857600080fd5b8135818111156106e757600080fd5b86602060a0830285010111156106fc57600080fd5b60209290920196919550909350505050565b600060a0828403121561072057600080fd5b50919050565b60006020828403121561073857600080fd5b8151610692816108a2565b803582526020810135610755816108a2565b63ffffffff908116602084015260408201359067ffffffffffffffff80831680841461078057600080fd5b604086015260608401359250821680831461079a57600080fd5b6060850152608083013591506107af826108a2565b808216608085015250505050565b6020808252810182905260008360408301825b858110156107f5576107e28284610743565b60a09283019291909101906001016107d0565b5095945050505050565b60a0810161080d8284610743565b92915050565b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82141561086c577f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b5060010190565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b63ffffffff811681146108b457600080fd5b5056fea26469706673582212209fb1efa89320f30a0a841239725c5c6b404adf7e9bb325a6ca4618a600be669e64736f6c63430008060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061007d5760003560e01c8063555dd5601161005b578063555dd5601461011d578063672657ca14610130578063ce343bb61461018d578063d0831b0d146101b457600080fd5b8063089eb925146100825780630ac7f5611461009757806339584b19146100d1575b600080fd5b61009561009036600461070e565b6101db565b005b6100be7f000000000000000000000000000000000000000000000000000000000000000081565b6040519081526020015b60405180910390f35b6100f87f000000000000000000000000000000000000000000000000000000000000000081565b60405173ffffffffffffffffffffffffffffffffffffffff90911681526020016100c8565b61009561012b366004610699565b6102e2565b61017d61013e36600461065c565b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff90811691161490565b60405190151581526020016100c8565b6100f87f000000000000000000000000000000000000000000000000000000000000000081565b6100f87f000000000000000000000000000000000000000000000000000000000000000081565b6101e361040a565b6040517f089eb92500000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000169063089eb925906102559084906004016107ff565b602060405180830381600087803b15801561026f57600080fd5b505af1158015610283573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102a79190610726565b507f857d942e6b33b7d0b971df9330addcbc31d65f0acfaeb894b8096ed1417de5fd816040516102d791906107ff565b60405180910390a150565b6102ea61040a565b8060005b818110156103cb577f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1663089eb92585858481811061034457610344610873565b905060a002016040518263ffffffff1660e01b815260040161036691906107ff565b602060405180830381600087803b15801561038057600080fd5b505af1158015610394573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103b89190610726565b50806103c381610813565b9150506102ee565b507f1c1d0c61b54b8e97768a1a183f91b7f55f13b25891958d38f426393937da08f683836040516103fd9291906107bd565b60405180910390a1505050565b7f00000000000000000000000000000000000000000000000000000000000000006104336105ae565b146104855760405162461bcd60e51b815260206004820152601b60248201527f44452f6c312d636861696e49642d6e6f742d737570706f72746564000000000060448201526064015b60405180910390fd5b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16331461050a5760405162461bcd60e51b815260206004820152601960248201527f44452f6c322d73656e6465722d6e6f742d6578656375746f7200000000000000604482015260640161047c565b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff166105496105e1565b73ffffffffffffffffffffffffffffffffffffffff16146105ac5760405162461bcd60e51b815260206004820152601b60248201527f44452f6c312d73656e6465722d6e6f742d646973706174636865720000000000604482015260640161047c565b565b6000603436106105de57507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcc3601355b90565b336014361080159061062c57507f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff908116908216145b156105de57507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffec36013560601c90565b60006020828403121561066e57600080fd5b813573ffffffffffffffffffffffffffffffffffffffff8116811461069257600080fd5b9392505050565b600080602083850312156106ac57600080fd5b823567ffffffffffffffff808211156106c457600080fd5b818501915085601f8301126106d857600080fd5b8135818111156106e757600080fd5b86602060a0830285010111156106fc57600080fd5b60209290920196919550909350505050565b600060a0828403121561072057600080fd5b50919050565b60006020828403121561073857600080fd5b8151610692816108a2565b803582526020810135610755816108a2565b63ffffffff908116602084015260408201359067ffffffffffffffff80831680841461078057600080fd5b604086015260608401359250821680831461079a57600080fd5b6060850152608083013591506107af826108a2565b808216608085015250505050565b6020808252810182905260008360408301825b858110156107f5576107e28284610743565b60a09283019291909101906001016107d0565b5095945050505050565b60a0810161080d8284610743565b92915050565b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82141561086c577f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b5060010190565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b63ffffffff811681146108b457600080fd5b5056fea26469706673582212209fb1efa89320f30a0a841239725c5c6b404adf7e9bb325a6ca4618a600be669e64736f6c63430008060033",
+  "devdoc": {
+    "author": "PoolTogether Inc Team",
+    "details": "This contract does not ensure draw ordering and draws should always be bridged in ascending and contiguous order.",
+    "events": {
+      "DrawPushed((uint256,uint32,uint64,uint64,uint32))": {
+        "params": {
+          "draw": "Draw that was pushed"
+        }
+      },
+      "DrawsPushed((uint256,uint32,uint64,uint64,uint32)[])": {
+        "params": {
+          "draws": "Draws that were pushed"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "params": {
+          "_drawBuffer": "Address of the DrawBuffer onto which draws are pushed",
+          "_drawDispatcher": "Address of the DrawDispatcher on the origin chain that dispatch the draws",
+          "_executor": "Address of the ERC-5164 contract that executes the bridged calls",
+          "_originChainId": "ID of the origin chain"
+        }
+      },
+      "isTrustedExecutor(address)": {
+        "params": {
+          "_executor": "Address to check"
+        }
+      },
+      "pushDraw((uint256,uint32,uint64,uint64,uint32))": {
+        "details": "Only the `executor` is able to call this function.",
+        "params": {
+          "_draw": "Draw to push"
+        }
+      },
+      "pushDraws((uint256,uint32,uint64,uint64,uint32)[])": {
+        "details": "Only the `executor` is able to call this function.`draws` must be ordered in ascending and contiguous order.",
+        "params": {
+          "_draws": "Draws to push"
+        }
+      }
+    },
+    "title": "PoolTogether V4 DrawExecutor",
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "DrawPushed((uint256,uint32,uint64,uint64,uint32))": {
+        "notice": "Emitted when the `draw` has been pushed."
+      },
+      "DrawsPushed((uint256,uint32,uint64,uint64,uint32)[])": {
+        "notice": "Emitted when the `draws` have been pushed."
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "constructor": {
+        "notice": "DrawExecutor constructor."
+      },
+      "drawBuffer()": {
+        "notice": "DrawBuffer onto which draws are pushed."
+      },
+      "drawDispatcher()": {
+        "notice": "DrawDispatcher contract on the origin chain that dispatch the draws."
+      },
+      "isTrustedExecutor(address)": {
+        "notice": "Check which executor this contract trust."
+      },
+      "originChainId()": {
+        "notice": "ID of the origin chain."
+      },
+      "pushDraw((uint256,uint32,uint64,uint64,uint32))": {
+        "notice": "Push `draw` onto the DrawBuffer."
+      },
+      "pushDraws((uint256,uint32,uint64,uint64,uint32)[])": {
+        "notice": "Push `draws` onto the DrawBuffer."
+      },
+      "trustedExecutor()": {
+        "notice": "Address of the trusted executor contract."
+      }
+    },
+    "notice": "The DrawExecutor smart contract relies on ERC-5164 to receive draws from Ethereum         and push them onto the DrawBuffer.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
