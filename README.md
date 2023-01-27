@@ -173,3 +173,15 @@ Executive team needs to claim ownership of the following contracts:
 - RNGChainlinkV2
 - DrawBeacon
 - BeaconTimelockTrigger
+
+## v1.9.0
+
+Deploy DPR upgrade to Avalanche, Ethereum, Polygon and Optimism.
+
+### Post-Deploy Configuration Changes
+
+#### All networks
+
+Executive team needs to claim ownership of the following contracts:
+- PrizeTierHistoryV2
+- PrizeDistributionFactoryV2
